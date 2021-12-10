@@ -1,0 +1,216 @@
+<resources>
+    <string name="app_name">Patient</string>
+
+
+    <!--    Sign up-->
+
+    <string name="dcp">DCP</string>
+    <string name="Sign_up">Sign Up</string>
+    <string name="new_dcp">New to DCP ? Please Provide your details!!!</string>
+    <string name="Firstname">Firstname</string>
+    <string name="Lastname">Lastname</string>
+    <string name="email">Email</string>
+    <string name="mobile_Number">Mobile Number</string>
+    <string name="Password">Password</string>
+    <string name="Conform_Password">Conform Password</string>
+
+    <!--    Sign in-->
+
+    <string name="ForgotPassword">Forgot Password?</string>
+    <string name="RememberMe">Remember Me</string>
+    <string name="sign_in_with">or Sign in with Fingerprint or Face</string>
+    <string name="sign_in">Sign In</string>
+    <string name="sign_in_into">Please Sign in into your account!!</string>
+
+    <!--    navigation-->
+    <string name="profile_setting">Profile</string>
+    <string name="My_Appointment">My Appointment</string>
+    <string name="My_Chats">My Chats</string>
+    <string name="My_Lab_Test">My Lab Test</string>
+    <string name="My_Medicine_Orders">My Medicine Orders</string>
+    <string name="My_Order">My Order</string>
+    <string name="completed_assignment">Completed Assignment</string>
+    <string name="My_Reviews_and_Rating">My Reviews and Rating</string>
+    <string name="my_question">MY Question</string>
+    <string name="My_Wallets">My Wallets</string>
+    <string name="My_prescriptions">My prescriptions</string>
+    <string name="Account_Setting">Account Setting</string>
+    <string name="logout">Logout</string>
+
+
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+    <!--    Profile_setting_personal-->
+    <string name="first_name">Firstname</string>
+    <string name="last_name">Lastname</string>
+    <string name="Speciality">Speciality</string>
+    <string name="Speciality_subcategory">Speciality-Subcategory</string>
+    <string name="education">Education</string>
+    <string name="Language_Spoken">Language Spoken</string>
+    <string name="Language_Spoken_Language_Spoken">Language Spoken, Language Spoken</string>
+    <string name="Total_years_of_experience">Total years of experience</string>
+    <string name="years_of_experience">10 years of experience</string>
+    <string name="Address">Address</string>
+    <string name="Update_Photo">Update Photo</string>
+    <string name="Choose_new_photo">Choose new photo</string>
+    <string name="Submit">Submit</string>
+
+
+    <!--    Profile_setting_Clinical-->
+    <string name="Clinic_Name">Clinic Name</string>
+    <string name="Location_of_clinic">Location of clinic</string>
+    <string name="Location_of_clini_hint">Lorem ipsum dolor sit amet, consetetur.</string>
+    <string name="From_to_To_days">From to To days</string>
+    <string name="Open_Time">Open Time</string>
+    <string name="Close_Time">Close Time</string>
+    <string name="Offline_Consultancy_Fees">Offline Consultancy Fees</string>
+    <string name="Doctor_availability_status">Doctor’s availability status</string>
+
+    <!--    manage_calendar-->
+    <string name="Booking_Id">Booking Id</string>
+    <string name="Doctor_Name">Doctor Name</string>
+    <string name="Location">Location</string>
+    <string name="Pending">Pending</string>
+    <string name="View_Booking_Details">View Booking Details</string>
+
+    <!--    Manage Booking Request-->
+    <string name="Order_Date">Order Date</string>
+    <string name="Booking_of">Booking of</string>
+    <string name="Booking_Time">Booking Time</string>
+    <string name="Accept">Accept</string>
+    <string name="Cancel">Cancel</string>
+
+
+    <!--    Completed Assignment-->
+    <string name="Prescription">Prescription</string>
+    <string name="Invoice">Invoice</string>
+    <string name="Document">Document</string>
+    <string name="Appointment_Date">Appointment Date</string>
+    <string name="Amount_paid">Amount paid</string>
+    <string name="Chat_With_Patient">Chat With Patient</string>
+
+
+    <!--    Wallet  -->
+
+    <string name="Transaction_Id">Transaction Id</string>
+    <string name="Transaction_Date">Transaction Date</string>
+    <string name="Order_Id">Order Id / Service Id</string>
+    <string name="Transaction_Amount">Transaction Amount</string>
+    <string name="Current_Wallet_Balance">Current Wallet Balance:</string>
+    <string name="Amount">Amount</string>
+    <string name="Enter_Amount">Enter Amount</string>
+
+
+    <!--    Account Setting-->
+    <string name="Change_Password">Change Password</string>
+    <string name="Enter_Old_Password">Enter Old Password</string>
+    <string name="New_Password">New Password</string>
+    <string name="Enter_New_Password">Enter New Password</string>
+    <string name="Payment_gateway_ID">Payment gateway ID</string>
+    <string name="Enter_Payment_gateway_ID">Enter_Payment gateway ID</string>
+    <string name="Deactivate_Account">Deactivate Account</string>
+
+    <!--    Revenue-->
+
+    <string name="Transaction_History">Transaction History</string>
+
+
+    <!--    Home-->
+
+    <string name="Doctor_Consultation">Doctor Consultation</string>
+    <string name="Home_Care_Servicies">Home Care Servicies</string>
+    <string name="Lab_Tests">Lab Tests</string>
+    <string name="Medicine">Medicine</string>
+    <string name="Health_care">Health care &amp; Other product</string>
+    <string name="Stress_buster_zone">Stress buster zone</string>
+    <string name="Ask_Questions">Ask Questions</string>
+    <string name="Knowledge_Forum">Knowledge Forum</string>
+    <string name="Find_Your_Doctors">Find Your Doctors</string>
+    <string name="View_all">View all</string>
+    <string name="Choose_from">Choose from top specialities</string>
+    <string name="Health_Care_services">Health Care Services</string>
+    <string name="Health_Checkup_at_Home">Health Checkup at Home</string>
+
+
+    <!--    Doctor Consultation-->
+    <string name="Ask_Doctor">Ask Doctor</string>
+
+    <!--    Doctor profile-->
+
+    <string name="Details">Details</string>
+    <string name="Education_Details">Education Details</string>
+    <string name="Experience">Experience</string>
+    <string name="About_Me">About Me</string>
+    <string name="Clinic_Info">Clinic Info</string>
+    <string name="Uploaded_Images">Uploaded Images</string>
+    <string name="Doctor_availability">Doctor\'s availability status</string>
+    <string name="From_Days">From to To days</string>
+    <string name="OpenClose_Time">Open-Close Time</string>
+    <string name="Schedule_video">Schedule Video Consultancy Appointment</string>
+    <string name="Price_Per_slot">Price per slot </string>
+    <string name="Rating">Ratings</string>
+    <string name="Afternoon">Afternoon</string>
+    <string name="Evening">Evening</string>
+    <string name="Morning">Morning</string>
+    <string name="Enter_Comments">Enter Comments</string>
+    <string name="Upload_Report_File">Upload Report File</string>
+    <string name="Choose_report">Choose report</string>
+    <string name="Book_am_Appointment">Book an Appointment</string>
+
+
+    <!--    bookAppointment-->
+    <string name="Confirmation">Confirmation</string>
+    <string name="Booking_for">Booking for</string>
+    <string name="Status_of_Booking">Status of Booking</string>
+    <string name="Patient_Details">Patient Details</string>
+    <string name="Patient_Name">Patient Name</string>
+    <string name="Booking_Details">Booking Details</string>
+    <string name="Booked_Service_time">Booked Service time</string>
+    <string name="Clinic_Address">Clinic Address</string>
+    <string name="Total_Amount">Total Amount</string>
+    <string name="Admin_Fees">Admin Fees</string>
+    <string name="Amount_Status">Amount Status</string>
+    <string name="Upload_Document">Upload Document</string>
+    <string name="Download_Report_File">Download Report File</string>
+    <string name="Chat">Chat</string>
+    <string name="Start_Video">Start Video</string>
+
+    <!--    care Services-->
+    <string name="Book_Now">Book Now</string>
+    <string name="Know_More">Know More</string>
+    <string name="Find_InHome_Care">Find In-Home Care Near You</string>
+    <string name="Where_is_car_needed">Where is care needed?</string>
+    <string name="Enter_Postal_Code">Enter Postal Code</string>
+    <string name="Name">Name</string>
+    <string name="Enter_Full_Name">Enter Full Name</string>
+    <string name="Enter_Email_Id">Enter Email Id</string>
+    <string name="Phone_Number">Phone Number</string>
+    <string name="Enter_Phone_Number">Enter Phone Number</string>
+    <string name="Find_Care">Find Care</string>
+
+
+    <!--filer-->
+
+    <string name="Category">Category</string>
+    <string name="Category_Name">Category Name</string>
+    <string name="Male">Male</string>
+    <string name="Female">Female</string>
+    <string name="Any_Day">Any Day</string>
+    <string name="Gender">Gender</string>
+    <string name="Day">Day</string>
+    <string name="Next_3_days">Next 3 days</string>
+    <string name="Today">Today</string>
+    <string name="Consultancy_fees">Consultancy fees</string>
+    <string name="Years_of_experience">Years of experience</string>
+    <string name="Video_consult">Video consult</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+
+
+
+</resources>

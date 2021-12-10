@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ProfileSetting"
+        android:title="@string/profile_setting" />
+
+    <item
+        android:id="@+id/MyAppointment"
+        android:title="@string/My_Appointment" />
+
+    <item
+        android:id="@+id/MyChats"
+        android:title="@string/My_Chats" />
+    <item
+        android:id="@+id/MyLabTest"
+        android:title="@string/My_Lab_Test" />
+    <item
+        android:id="@+id/MyMedicineOrders"
+        android:title="@string/My_Medicine_Orders" />
+    <item
+        android:id="@+id/MyOrder"
+        android:title="@string/My_Order" />
+    <item
+        android:id="@+id/MyReviewRating"
+        android:title="@string/My_Reviews_and_Rating" />
+    <item
+        android:id="@+id/MYQuestion"
+        android:title="@string/my_question" />
+
+    <item
+        android:id="@+id/MyWallets"
+        android:title="@string/My_Wallets" />
+
+    <item
+        android:id="@+id/MyPrescriptions"
+        android:title="@string/My_prescriptions" />
+
+    <item
+        android:id="@+id/AccountSetting"
+        android:title="@string/Account_Setting" />
+
+    <item
+        android:id="@+id/Logout"
+        android:title="@string/logout" />
+
+</menu>

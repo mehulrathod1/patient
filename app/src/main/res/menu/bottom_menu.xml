@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/icon_ionic_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/Revenue"
+        android:icon="@drawable/icon_revenue"
+        android:title="Revenue" />
+
+    <item
+
+        android:id="@+id/no"
+        android:title="" />
+
+    <item
+        android:id="@+id/Chats"
+        android:icon="@drawable/icon_ionic_chatbubbles"
+        android:title="Chats" />
+
+    <item
+        android:id="@+id/Profile"
+        android:icon="@drawable/icon_material_person"
+        android:title="Profile" />
+
+</menu>

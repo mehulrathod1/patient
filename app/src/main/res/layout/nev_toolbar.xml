@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_56sdp">
+
+
+        <ImageView
+            android:id="@+id/nevBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:background="@drawable/back_button_bg"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/icon_nev" />
+
+        <TextView
+            android:id="@+id/header_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:gravity="center"
+            android:text="DCP"
+            android:textColor="@color/action_mode_color_300"
+            android:textSize="@dimen/_22sdp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
