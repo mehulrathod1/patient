@@ -7,11 +7,14 @@
         android:id="@+id/nevBackHeader"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_200sdp"
-        android:background="@color/action_mode_color" />
+        android:background="@drawable/rectangle51"
+        android:scaleType="centerCrop" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_30sdp"
         android:layout_marginLeft="@dimen/_20sdp"
+        android:padding="@dimen/_5sdp"
+        android:background="@drawable/back_button_bg"
         android:src="@drawable/nev_back" />
 </RelativeLayout>

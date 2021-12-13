@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_grey_200"
-    tools:context=".fragment.ProfileSettingClinical">
+    android:background="@color/md_grey_200">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -29,15 +28,16 @@
                     style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Clinic_Name" />
+                    android:text="@string/Details_of_allergies" />
 
                 <EditText
                     style="@style/heading_text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_120sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Clinic_Name"
+                    android:gravity="top"
+                    android:hint="@string/Details_of_allergies"
                     android:padding="10dp" />
 
             </LinearLayout>
@@ -52,15 +52,16 @@
                     style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Location_of_clinic" />
+                    android:text="@string/Current_Past_Medications" />
 
                 <EditText
                     style="@style/heading_text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_120sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Language_Spoken_Language_Spoken"
+                    android:gravity="top"
+                    android:hint="@string/Current_Past_Medications"
                     android:padding="10dp" />
 
             </LinearLayout>
@@ -75,15 +76,16 @@
                     style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/From_to_To_days" />
+                    android:text="@string/Past_surgery_injury" />
 
                 <EditText
                     style="@style/heading_text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_120sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/From_to_To_days"
+                    android:gravity="top"
+                    android:hint="@string/Past_surgery_injury"
                     android:padding="10dp" />
 
             </LinearLayout>
@@ -98,84 +100,16 @@
                     style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Open_Time" />
+                    android:text="@string/Any_chronic_disease" />
 
                 <EditText
                     style="@style/heading_text"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_120sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Open_Time"
-                    android:padding="10dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/sub_heading_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Close_Time" />
-
-                <EditText
-                    style="@style/heading_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Close_Time"
-                    android:padding="10dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/sub_heading_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Offline_Consultancy_Fees" />
-
-                <EditText
-                    style="@style/heading_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Offline_Consultancy_Fees"
-                    android:padding="10dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/sub_heading_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Doctor_availability_status" />
-
-                <EditText
-                    style="@style/heading_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Doctor_availability_status"
+                    android:gravity="top"
+                    android:hint="@string/Any_chronic_disease"
                     android:padding="10dp" />
 
             </LinearLayout>

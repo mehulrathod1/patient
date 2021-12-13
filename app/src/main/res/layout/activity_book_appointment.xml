@@ -1,0 +1,706 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_grey"
+    tools:context=".activity.DoctorProfile">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:id="@+id/relative"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <ImageView
+                    android:id="@+id/ProfileImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_250sdp"
+                    android:src="@color/action_mode_color" />
+
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:background="@drawable/back_button_bg"
+                    android:padding="@dimen/_5sdp"
+                    android:src="@drawable/nev_back" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_52sdp"
+                    android:layout_below="@id/ProfileImage"
+                    android:layout_marginLeft="@dimen/_12sdp"
+                    android:layout_marginRight="@dimen/_12sdp"
+                    android:gravity="center_vertical"
+                    android:text="Dr. Daksh Kumar"
+                    android:textColor="@color/action_mode_color"
+                    android:textSize="@dimen/_20sdp" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relative"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_12sdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:gravity="center_vertical"
+                                android:text="@string/Confirmation"
+                                android:textColor="@color/action_mode_color_edt"
+                                android:textSize="@dimen/_18sdp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@color/action_mode_color_edt" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Booking_Id"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Speciality"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Doctor_Name"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Booking_for"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Status_of_Booking"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_12sdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:gravity="center_vertical"
+                                android:text="@string/Patient_Details"
+                                android:textColor="@color/action_mode_color_edt"
+                                android:textSize="@dimen/_18sdp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@color/action_mode_color_edt" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Patient_Name"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Location"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_12sdp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_35sdp"
+                                android:gravity="center_vertical"
+                                android:text="@string/Booking_Details"
+                                android:textColor="@color/action_mode_color_edt"
+                                android:textSize="@dimen/_18sdp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:layout_marginTop="@dimen/_4sdp"
+                                android:layout_marginBottom="@dimen/_4sdp"
+                                android:background="@color/action_mode_color_edt" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Booked_Service_time"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Clinic_Address"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight=".5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Total_Amount"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Admin_Fees"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Amount_Status"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="@dimen/_30sdp"
+                                    android:layout_weight="7.5"
+                                    android:weightSum="5">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="2"
+                                        android:text="Lorem ipsum."
+                                        android:textColor="@color/action_mode_color_edt"
+                                        android:textSize="@dimen/_14sdp" />
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="@dimen/_30sdp"
+                                        android:layout_weight="2"
+                                        android:background="@color/action_mode_color"
+                                        android:gravity="center"
+                                        android:text="pay Now"
+                                        android:textColor="@color/white"
+                                        android:textSize="@dimen/_14sdp" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Upload_Document"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:weightSum="10">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2"
+                                    android:text="@string/Download_Report_File"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7.5"
+                                    android:text="Lorem ipsum."
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_marginTop="@dimen/_18sdp"
+                                    android:background="@drawable/time_bg"
+                                    android:gravity="center"
+                                    android:text="@string/Chat"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_20sdp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_marginTop="@dimen/_18sdp"
+                                    android:background="@color/action_mode_color"
+                                    android:gravity="center"
+                                    android:text="@string/Start_Video"
+                                    android:textColor="@color/white"
+                                    android:textSize="@dimen/_20sdp" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+
+
+</RelativeLayout>

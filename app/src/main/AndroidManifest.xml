@@ -10,6 +10,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Patient">
         <activity
+            android:name=".activity.MyPrescriptions"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MyQuestion"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MyOrder"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MedicinesOrder"
+            android:exported="true" />
+        <activity
+            android:name=".activity.LabTest"
+            android:exported="true" />
+        <activity
+            android:name=".activity.ChatDashboard"
+            android:exported="true" />
+        <activity
+            android:name=".activity.Chat"
+            android:exported="true" />
+        <activity
+            android:name=".activity.Search"
+            android:exported="true" />
+        <activity
+            android:name=".activity.BookAppointment"
+            android:exported="true" />
+        <activity
+            android:name=".activity.DoctorProfile"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AccountSetting"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MyWallet"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MyReview"
+            android:exported="true" />
+        <activity
+            android:name=".activity.MyAppointments"
+            android:exported="true" />
+        <activity
             android:name=".activity.ProfileSetting"
             android:exported="true" />
         <activity
@@ -26,7 +68,7 @@
         </activity>
         <activity
             android:name=".activity.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>

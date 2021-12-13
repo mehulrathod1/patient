@@ -27,7 +27,7 @@
                 style="@style/sub_heading_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Clinic_Name" />
+                android:text="@string/Smoking" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
@@ -59,7 +59,7 @@
                 style="@style/sub_heading_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Location_of_clinic" />
+                android:text="@string/Alchol" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
@@ -91,7 +91,7 @@
                 style="@style/sub_heading_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/From_to_To_days" />
+                android:text="@string/Workout_level" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
@@ -111,6 +111,29 @@
                     android:textSize="@dimen/_18sdp" />
             </com.google.android.material.textfield.TextInputLayout>
 
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/sub_heading_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Sports_involvement" />
+
+            <EditText
+                style="@style/heading_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/profile_edt_bg"
+                android:hint="@string/Sports_involvement"
+                android:padding="10dp" />
 
         </LinearLayout>
 

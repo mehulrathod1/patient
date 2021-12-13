@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_18sdp">
+
+                <TextView
+                    android:id="@+id/homeCare"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Filter"
+                    android:textColor="@color/action_mode_color"
+                    android:textSize="@dimen/_20sdp" />
+
+                <ImageView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="@dimen/_18sdp"
+                    android:src="@drawable/ic_close_24" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_below="@id/homeCare"
+                    android:layout_marginLeft="@dimen/_50sdp"
+                    android:layout_marginTop="@dimen/_12sdp"
+                    android:layout_marginRight="@dimen/_50sdp"
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@color/black" />
+
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/layout"
+                android:layout_margin="@dimen/_12sdp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/header_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Category"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:text="@string/Category_Name"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/Category_Name"
+                        android:textColor="@color/action_mode_color_edt"
+
+
+                        />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/Category_Name"
+                        android:textColor="@color/action_mode_color_edt"
+
+                        />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/Category_Name"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/Category_Name"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/header_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Gender"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:text="@string/Male"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/Female"
+                        android:textColor="@color/action_mode_color_edt"
+
+
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/header_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Day"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:text="@string/Any_Day"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/Today"
+                        android:textColor="@color/action_mode_color_edt"
+
+
+                        />
+
+                    <CheckBox
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/Next_3_days"
+                        android:textColor="@color/action_mode_color_edt"
+
+                        />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/header_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Consultancy_fees"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
+
+                        android:id="@+id/seekbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:maxWidth="@dimen/_1sdp"
+                        app:bar_color="@color/action_mode_color_edt"
+                        app:bar_highlight_color="@color/action_mode_color_300"
+                        app:corner_radius="10"
+                        app:data_type="_integer"
+                        app:left_thumb_color="@color/action_mode_color_300"
+                        app:left_thumb_color_pressed="@color/action_mode_color_edt"
+                        app:right_thumb_color="@color/action_mode_color_300"
+                        app:right_thumb_color_pressed="@color/action_mode_color_edt"
+                        app:steps="1" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/header_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Years_of_experience"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
+                        android:id="@+id/rangeSeekbar1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:maxWidth="@dimen/_1sdp"
+                        app:bar_color="@color/action_mode_color_edt"
+                        app:bar_highlight_color="@color/action_mode_color_300"
+                        app:left_thumb_color="@color/action_mode_color_300" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/header_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Video_consult"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_marginTop="@dimen/_12sdp"
+                        android:text="@string/Yes"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <RadioButton
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:text="@string/No"
+                        android:textColor="@color/action_mode_color_edt"
+
+
+                        />
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

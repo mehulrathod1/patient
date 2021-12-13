@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_60sdp"
+            android:background="@color/md_grey"
+            android:orientation="vertical">
+
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/md_grey"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/_8sdp"
+                        android:background="@drawable/search_bg"
+                        android:gravity="center_horizontal"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginRight="@dimen/_12sdp"
+                            android:src="@drawable/icon_ionic_search" />
+
+                        <TextView
+                            style="@style/sub_heading_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="@dimen/_46sdp"
+                            android:gravity="center"
+                            android:text="Search"
+                            android:textColor="@color/action_mode_color_edt" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/md_grey"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_8sdp"
+                            android:background="@drawable/search_bg"
+                            android:gravity="center_horizontal"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginRight="@dimen/_6sdp"
+                                android:src="@drawable/ic_location_on_24" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
+                                android:layout_width="wrap_content"
+                                android:layout_height="@dimen/_40sdp"
+                                android:layout_margin="@dimen/_4sdp"
+                                android:gravity="center"
+                                app:boxStrokeWidth="0dp"
+                                app:boxStrokeWidthFocused="0dp"
+                                app:hintAnimationEnabled="false"
+                                app:hintEnabled="false">
+
+                                <AutoCompleteTextView
+                                    android:id="@+id/countryName"
+                                    style="@style/sub_heading_text"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:backgroundTint="@color/white"
+                                    android:padding="@dimen/_10sdp"
+                                    android:text="Gujarat"
+                                    android:textColor="@color/action_mode_color_300" />
+                            </com.google.android.material.textfield.TextInputLayout>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_12sdp"
+                            app:cardBackgroundColor="@color/md_grey"
+                            app:cardCornerRadius="@dimen/_8sdp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.4"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/_8sdp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Heal at Home"
+                                        android:textColor="@color/action_mode_color"
+                                        android:textSize="@dimen/_20sdp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_18sdp"
+                                        android:text="India's largest home health care company"
+                                        android:textColor="@color/action_mode_color_edt"
+                                        android:textSize="@dimen/_14sdp" />
+
+                                    <TextView
+                                        android:id="@+id/bookNow"
+                                        android:layout_width="@dimen/_100sdp"
+                                        android:layout_height="@dimen/_30sdp"
+                                        android:layout_marginTop="@dimen/_18sdp"
+                                        android:background="@drawable/button_blue_border"
+                                        android:gravity="center"
+                                        android:text="Book Now"
+                                        android:textColor="@color/white" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:id="@+id/im_slider"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/action_mode_color"
+                                        android:scaleType="centerCrop" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:background="@color/white"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_8sdp"
+                                android:layout_marginRight="@dimen/_8sdp">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/Health_Care_services"
+                                    android:textColor="@color/action_mode_color"
+                                    android:textSize="@dimen/_20sdp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:gravity="right"
+                                    android:text="@string/View_all"
+                                    android:textColor="@color/action_mode_color_300" />
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:orientation="vertical">
+
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/healthCareRecycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" />
+
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:background="@color/white">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_12sdp"
+                            app:cardBackgroundColor="@color/md_grey"
+                            app:cardCornerRadius="@dimen/_8sdp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.4"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/_8sdp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Physiotherapy At Home"
+                                        android:textColor="@color/action_mode_color"
+                                        android:textSize="@dimen/_20sdp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_18sdp"
+                                        android:text="India's largest home health care company"
+                                        android:textColor="@color/action_mode_color_edt"
+                                        android:textSize="@dimen/_14sdp" />
+
+                                    <TextView
+                                        android:layout_width="@dimen/_100sdp"
+                                        android:layout_height="@dimen/_30sdp"
+                                        android:layout_marginTop="@dimen/_18sdp"
+                                        android:background="@drawable/know_more_button_bg"
+                                        android:gravity="center"
+                                        android:text="Know More"
+                                        android:textColor="@color/action_mode_color_edt" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/action_mode_color"
+                                        android:scaleType="centerCrop" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:background="@color/white">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_12sdp"
+                            app:cardBackgroundColor="@color/md_grey"
+                            app:cardCornerRadius="@dimen/_8sdp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.4"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/_8sdp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="ICU At Home"
+                                        android:textColor="@color/action_mode_color"
+                                        android:textSize="@dimen/_20sdp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_18sdp"
+                                        android:text="India's largest home health care company"
+                                        android:textColor="@color/action_mode_color_edt"
+                                        android:textSize="@dimen/_14sdp" />
+
+                                    <TextView
+                                        android:layout_width="@dimen/_100sdp"
+                                        android:layout_height="@dimen/_30sdp"
+                                        android:layout_marginTop="@dimen/_18sdp"
+                                        android:background="@drawable/know_more_button_bg"
+                                        android:gravity="center"
+                                        android:text="Know More"
+                                        android:textColor="@color/action_mode_color_edt" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/action_mode_color"
+                                        android:scaleType="centerCrop" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:background="@color/white">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="@dimen/_12sdp"
+                            app:cardBackgroundColor="@color/md_grey"
+                            app:cardCornerRadius="@dimen/_8sdp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1.4"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/_8sdp">
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="Diagnostics At Home"
+                                        android:textColor="@color/action_mode_color"
+                                        android:textSize="@dimen/_20sdp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="@dimen/_18sdp"
+                                        android:text="India's largest home health care company"
+                                        android:textColor="@color/action_mode_color_edt"
+                                        android:textSize="@dimen/_14sdp" />
+
+                                    <TextView
+                                        android:layout_width="@dimen/_100sdp"
+                                        android:layout_height="@dimen/_30sdp"
+                                        android:layout_marginTop="@dimen/_18sdp"
+                                        android:background="@drawable/know_more_button_bg"
+                                        android:gravity="center"
+                                        android:text="Know More"
+                                        android:textColor="@color/action_mode_color_edt" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1">
+
+                                    <ImageView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:background="@color/action_mode_color"
+                                        android:scaleType="centerCrop" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </ScrollView>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

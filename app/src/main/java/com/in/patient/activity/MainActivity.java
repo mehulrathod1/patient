@@ -23,6 +23,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.in.patient.R;
+import com.in.patient.fragment.DoctorConsultSecond;
+import com.in.patient.fragment.DoctorConsultant;
+import com.in.patient.fragment.HomeDashboard;
+import com.in.patient.fragment.Medicines;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout my_drawer_layout;
     CoordinatorLayout coordinator;
     BottomNavigationView bottomNavigationView;
-    FloatingActionButton request;
+    FloatingActionButton search;
+    Fragment fragment;
 
 
     @Override
@@ -46,6 +51,21 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         init();
+        fragment = new HomeDashboard();
+        loadFragment(fragment);
+
+
+        int index = getIntent().getIntExtra("s", 0);
+        if (index == 1) {
+            fragment = new DoctorConsultant();
+            loadFragment(fragment);
+        }
+        if (index == 2) {
+
+            fragment = new DoctorConsultSecond();
+            loadFragment(fragment);
+
+        }
     }
 
     public void init() {
@@ -55,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         firstFrame = findViewById(R.id.firstFrame);
         header_title = findViewById(R.id.header_title);
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
-        request = findViewById(R.id.Request);
+        search = findViewById(R.id.Search);
         bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
 
         coordinator.setVisibility(View.VISIBLE);
@@ -92,10 +112,11 @@ public class MainActivity extends AppCompatActivity {
                 drawerLayout.closeDrawers();
             }
         });
-        request.setOnClickListener(new View.OnClickListener() {
+        search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                moveNext(Search.class);
 
             }
         });
@@ -107,14 +128,13 @@ public class MainActivity extends AppCompatActivity {
 
                 switch (item.getItemId()) {
                     case R.id.home:
-
-
+                        loadFragment(new HomeDashboard());
                         break;
                     case R.id.Revenue:
-
+                        loadFragment(new DoctorConsultSecond());
                         break;
-                    case R.id.Chats:
-
+                    case R.id.Medicine:
+                        loadFragment(new Medicines());
                         break;
 
                     case R.id.Profile:
@@ -125,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         Navigation.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
 
@@ -134,11 +153,53 @@ public class MainActivity extends AppCompatActivity {
                 int id = menuItem.getItemId();
                 switch (id) {
                     case R.id.ProfileSetting:
-
                         drawerLayout.closeDrawers();
                         moveNext(ProfileSetting.class);
-
                         break;
+                    case R.id.MyAppointment:
+                        drawerLayout.closeDrawers();
+                        moveNext(MyAppointments.class);
+                        break;
+
+                    case R.id.MyChats:
+                        drawerLayout.closeDrawers();
+                        moveNext(Chat.class);
+                        break;
+                    case R.id.MyLabTest:
+                        drawerLayout.closeDrawers();
+                        moveNext(LabTest.class);
+                        break;
+                    case R.id.MyMedicineOrders:
+                        drawerLayout.closeDrawers();
+                        moveNext(MedicinesOrder.class);
+                        break;
+                    case R.id.MyOrder:
+                        drawerLayout.closeDrawers();
+                        moveNext(MyOrder.class);
+                        break;
+                    case R.id.MyReviewRating:
+                        drawerLayout.closeDrawers();
+                        moveNext(MyReview.class);
+                        break;
+
+                    case R.id.MYQuestion:
+                        drawerLayout.closeDrawers();
+                        moveNext(MyQuestion.class);
+                        break;
+                    case R.id.MyPrescriptions:
+                        drawerLayout.closeDrawers();
+                        moveNext(MyPrescriptions.class);
+                        break;
+                    case R.id.MyWallets:
+                        drawerLayout.closeDrawers();
+                        moveNext(MyWallet.class);
+                        break;
+
+                    case R.id.AccountSetting:
+                        drawerLayout.closeDrawers();
+                        moveNext(AccountSetting.class);
+                        break;
+
                 }
                 return false;
             }
@@ -152,4 +213,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    private void loadFragment(Fragment fragment) {
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.firstFrame, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
 }

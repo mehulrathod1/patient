@@ -98,7 +98,7 @@
                     style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Speciality" />
+                    android:text="@string/Email_id" />
 
                 <EditText
                     style="@style/heading_text"
@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Speciality"
+                    android:hint="@string/Email_id"
                     android:padding="10dp" />
 
             </LinearLayout>
@@ -121,7 +121,7 @@
                     style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Speciality_subcategory" />
+                    android:text="@string/Contact_Number" />
 
                 <EditText
                     style="@style/heading_text"
@@ -129,7 +129,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Speciality_subcategory"
+                    android:hint="@string/Contact_Number"
                     android:padding="10dp" />
 
             </LinearLayout>
@@ -144,7 +144,7 @@
                     style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/education" />
+                    android:text="@string/Age" />
 
                 <EditText
                     style="@style/heading_text"
@@ -152,7 +152,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/education"
+                    android:hint="@string/Age"
                     android:padding="10dp" />
 
             </LinearLayout>
@@ -167,7 +167,7 @@
                     style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Language_Spoken" />
+                    android:text="@string/Gender" />
 
                 <EditText
                     style="@style/heading_text"
@@ -175,7 +175,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Language_Spoken_Language_Spoken"
+                    android:hint="@string/Gender"
                     android:padding="10dp" />
 
             </LinearLayout>
@@ -190,7 +190,7 @@
                     style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Total_years_of_experience" />
+                    android:text="@string/DOB" />
 
                 <EditText
                     style="@style/heading_text"
@@ -198,10 +198,126 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/years_of_experience"
+                    android:hint="@string/DOB"
                     android:padding="10dp" />
 
             </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/sub_heading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Blood_Group" />
+
+                <EditText
+                    style="@style/heading_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/profile_edt_bg"
+                    android:hint="@string/Blood_Group"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/sub_heading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Marital_status" />
+
+                <EditText
+                    style="@style/heading_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/profile_edt_bg"
+                    android:hint="@string/Marital_status"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/sub_heading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Height" />
+
+                <EditText
+                    style="@style/heading_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/profile_edt_bg"
+                    android:hint="@string/Height"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/sub_heading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Weight" />
+
+                <EditText
+                    style="@style/heading_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/profile_edt_bg"
+                    android:hint="@string/Weight"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/sub_heading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Emergency_contact" />
+
+                <EditText
+                    style="@style/heading_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/profile_edt_bg"
+                    android:hint="@string/Emergency_contact"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -242,6 +358,8 @@
                     <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_150sdp"
+                        android:src="@drawable/rectangle51"
+                        android:scaleType="centerCrop"
                         android:background="@color/action_mode_color" />
                 </LinearLayout>
 

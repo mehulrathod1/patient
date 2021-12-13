@@ -69,12 +69,12 @@
                 </com.google.android.material.bottomappbar.BottomAppBar>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/Request"
+                    android:id="@+id/Search"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/white"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/calendar_three"
+                    android:src="@drawable/icon_feather_search"
                     app:borderWidth="0dp"
                     app:layout_anchor="@id/bottomAppBar"
                     app:tint="@color/action_mode_color" />

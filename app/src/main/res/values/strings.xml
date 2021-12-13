@@ -44,33 +44,34 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-
     <!--    Profile_setting_personal-->
     <string name="first_name">Firstname</string>
     <string name="last_name">Lastname</string>
-    <string name="Speciality">Speciality</string>
-    <string name="Speciality_subcategory">Speciality-Subcategory</string>
-    <string name="education">Education</string>
-    <string name="Language_Spoken">Language Spoken</string>
-    <string name="Language_Spoken_Language_Spoken">Language Spoken, Language Spoken</string>
-    <string name="Total_years_of_experience">Total years of experience</string>
-    <string name="years_of_experience">10 years of experience</string>
+    <string name="Email_id">Email id</string>
+    <string name="Contact_Number">Contact Number</string>
+    <string name="Age">Age</string>
+    <string name="DOB">DOB</string>
+    <string name="Blood_Group">Blood Group</string>
+    <string name="Marital_status">Marital status</string>
+    <string name="Height">Height</string>
+    <string name="Weight">Weight</string>
+    <string name="Emergency_contact">Emergency contact</string>
     <string name="Address">Address</string>
     <string name="Update_Photo">Update Photo</string>
     <string name="Choose_new_photo">Choose new photo</string>
     <string name="Submit">Submit</string>
 
 
-    <!--    Profile_setting_Clinical-->
-    <string name="Clinic_Name">Clinic Name</string>
-    <string name="Location_of_clinic">Location of clinic</string>
-    <string name="Location_of_clini_hint">Lorem ipsum dolor sit amet, consetetur.</string>
-    <string name="From_to_To_days">From to To days</string>
-    <string name="Open_Time">Open Time</string>
-    <string name="Close_Time">Close Time</string>
-    <string name="Offline_Consultancy_Fees">Offline Consultancy Fees</string>
-    <string name="Doctor_availability_status">Doctor’s availability status</string>
+    <!--    Profile_setting_Medical-->
 
+    <string name="Details_of_allergies">Details of allergies</string>
+    <string name="Current_Past_Medications">Current &amp; Past Medications</string>
+    <string name="Past_surgery_injury">Past surgery or injury</string>
+    <string name="Any_chronic_disease">Any chronic disease</string>
+    <string name="Smoking">Smoking</string>
+    <string name="Alchol">Alchol</string>
+    <string name="Workout_level">Workout level</string>
+    <string name="Sports_involvement">Sports involvement</string>
     <!--    manage_calendar-->
     <string name="Booking_Id">Booking Id</string>
     <string name="Doctor_Name">Doctor Name</string>
@@ -161,6 +162,16 @@
     <string name="Upload_Report_File">Upload Report File</string>
     <string name="Choose_report">Choose report</string>
     <string name="Book_am_Appointment">Book an Appointment</string>
+    <string name="Speciality">Speciality</string>
+    <string name="Language_Spoken">Language Spoken</string>
+    <string name="Language_Spoken_Language_Spoken">Language Spoken, Language Spoken</string>
+    <string name="Clinic_Name">Clinic Name</string>
+    <string name="Location_of_clinic">Location of clinic</string>
+    <string name="From_to_To_days">From to To days</string>
+    <string name="Open_Time">Open Time</string>
+    <string name="Close_Time">Close Time</string>
+    <string name="Offline_Consultancy_Fees">Offline Consultancy Fees</string>
+    <string name="Doctor_availability_status">Doctor’s availability status</string>
 
 
     <!--    bookAppointment-->
@@ -211,6 +222,39 @@
     <string name="Yes">Yes</string>
     <string name="No">No</string>
 
+    <!--   Medicine-->
+
+    <string name="Enter_Medicine">Enter Medicine</string>
+    <string name="Add_Cart">Add to Cart</string>
+    <string name="title_activity_chat_dashboard">ChatDashboard</string>
+
+
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!--    Lab Test-->
+    <string name="Date_of_Booking">Date of Booking</string>
+    <string name="Refund_Status">Refund Status</string>
+    <string name="Invoice_Report">Invoice &amp; Report</string>
+    <string name="Need_Help">Need Help ?</string>
+
+    <!--    My Medicine order-->
+    <string name="Medicine_Order_Id">Order Id</string>
+    <string name="Shipping_Address">Shipping Address</string>
+    <string name="order_detail">Order Detail</string>
+    <string name="Payment_Status">Payment Status</string>
+    <string name="Delivery_address">Delivery address</string>
+    <string name="Order_Status">Order Status</string>
+
+<!--    service category-->
+<!--    <string name="next">Next</string>-->
+<!--    <string name="next">Next</string>-->
+<!--    <string name="next">Next</string>-->
 
 
 </resources>

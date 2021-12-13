@@ -8,8 +8,8 @@
 
     <item
         android:id="@+id/Revenue"
-        android:icon="@drawable/icon_revenue"
-        android:title="Revenue" />
+        android:icon="@drawable/icon_material_person"
+        android:title="Doctor" />
 
     <item
 
@@ -17,13 +17,13 @@
         android:title="" />
 
     <item
-        android:id="@+id/Chats"
-        android:icon="@drawable/icon_ionic_chatbubbles"
-        android:title="Chats" />
+        android:id="@+id/Medicine"
+        android:icon="@drawable/medicin"
+        android:title="Medicine" />
 
     <item
         android:id="@+id/Profile"
-        android:icon="@drawable/icon_material_person"
-        android:title="Profile" />
+        android:icon="@drawable/g"
+        android:title="Lab" />
 
 </menu>
