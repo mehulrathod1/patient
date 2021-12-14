@@ -26,6 +26,7 @@ import com.in.patient.R;
 import com.in.patient.fragment.DoctorConsultSecond;
 import com.in.patient.fragment.DoctorConsultant;
 import com.in.patient.fragment.HomeDashboard;
+import com.in.patient.fragment.Lab;
 import com.in.patient.fragment.Medicines;
 
 public class MainActivity extends AppCompatActivity {
@@ -139,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.Profile:
 
+                        loadFragment(new Lab());
                         break;
                 }
                 return true;

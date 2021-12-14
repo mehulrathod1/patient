@@ -22,6 +22,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.in.patient.R;
 import com.in.patient.activity.DoctorProfile;
+import com.in.patient.activity.LabTest;
 import com.in.patient.adapter.FindDoctorAdapter;
 import com.in.patient.adapter.HealthCareAdapter;
 import com.in.patient.adapter.SliderPagerAdapter;
@@ -54,7 +55,7 @@ public class HomeDashboard extends Fragment {
     FindDoctorAdapter adapter;
     List<FindDoctorModel> list = new ArrayList<>();
 
-    LinearLayout doctorConsultant, homeCare;
+    LinearLayout doctorConsultant, homeCare, labTest, medicines, healthProduct;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class HomeDashboard extends Fragment {
         recyclerData();
         healthCareData();
         healthCheckupData();
-//        addBottomDots(0);
+        addBottomDots(0);
 
         return view;
     }
@@ -85,6 +86,9 @@ public class HomeDashboard extends Fragment {
 
         doctorConsultant = view.findViewById(R.id.doctorConsultant);
         homeCare = view.findViewById(R.id.homeCare);
+        labTest = view.findViewById(R.id.labTest);
+        medicines = view.findViewById(R.id.medicines);
+        healthProduct = view.findViewById(R.id.healthProduct);
         viewAllDoctor = view.findViewById(R.id.viewAllDoctor);
         viewAllServices = view.findViewById(R.id.viewAllServices);
         viewAllCheckup = view.findViewById(R.id.viewAllCheckup);
@@ -117,7 +121,7 @@ public class HomeDashboard extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-//                addBottomDots(position);
+                addBottomDots(position);
             }
 
             @Override
@@ -163,6 +167,27 @@ public class HomeDashboard extends Fragment {
                 loadFragment(fragment);
             }
         });
+        labTest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new Lab();
+                loadFragment(fragment);
+            }
+        });
+        medicines.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new Medicines();
+                loadFragment(fragment);
+            }
+        });
+        healthProduct.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment fragment = new Product();
+                loadFragment(fragment);
+            }
+        });
         viewAllDoctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -186,14 +211,7 @@ public class HomeDashboard extends Fragment {
         });
     }
 
-    private void loadFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.firstFrame, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
 
-    }
 
     private void addBottomDots(int currentPage) {
         dots = new TextView[slider_image_list.size()];
@@ -230,7 +248,7 @@ public class HomeDashboard extends Fragment {
             @Override
             public void onButtonClick(int position) {
 
-                Fragment fragment = new DoctorConsultant();
+                Fragment fragment = new DoctorConsultSecond();
                 loadFragment(fragment);
             }
         });
@@ -288,6 +306,13 @@ public class HomeDashboard extends Fragment {
         healthCheckupRecycler.setLayoutManager(mLayoutManager);
         healthCheckupRecycler.setAdapter(healthCareAdapter);
     }
+    private void loadFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.firstFrame, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
 
+    }
 
 }

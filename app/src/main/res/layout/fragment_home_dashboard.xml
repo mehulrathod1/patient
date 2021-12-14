@@ -187,6 +187,7 @@
                             </LinearLayout>
 
                             <LinearLayout
+                                android:id="@+id/labTest"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_8sdp"
@@ -208,6 +209,7 @@
                             </LinearLayout>
 
                             <LinearLayout
+                                android:id="@+id/medicines"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_8sdp"
@@ -239,6 +241,7 @@
 
 
                             <LinearLayout
+                                android:id="@+id/healthProduct"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_8sdp"

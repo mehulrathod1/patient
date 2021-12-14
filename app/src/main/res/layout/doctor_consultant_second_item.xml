@@ -164,7 +164,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/AskQuestions"
+                    android:id="@+id/BookAppointment"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_36sdp"
                     android:background="@color/action_mode_color"

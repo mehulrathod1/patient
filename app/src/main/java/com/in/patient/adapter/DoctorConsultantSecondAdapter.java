@@ -1,5 +1,6 @@
 package com.in.patient.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -40,7 +41,7 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         DoctorConsultantSecondModel model = list.get(position);
 
         holder.DoctorName.setText(model.getDoctorName());
@@ -52,7 +53,7 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
         holder.available.setText(model.getAvailable());
 
 
-        holder.AskQuestions.setOnClickListener(new View.OnClickListener() {
+        holder.BookAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 click.onItemClick(position);
@@ -67,7 +68,7 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView speciality, exp, Location, LikePercentage, Rate, available, DoctorName, AskQuestions;
+        TextView speciality, exp, Location, LikePercentage, Rate, available, DoctorName, BookAppointment;
         ImageView profileImage;
 
         public ViewHolder(@NonNull View itemView) {
@@ -79,7 +80,7 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
             Location = itemView.findViewById(R.id.Location);
             LikePercentage = itemView.findViewById(R.id.LikePercentage);
             Rate = itemView.findViewById(R.id.Rate);
-            AskQuestions = itemView.findViewById(R.id.AskQuestions);
+            BookAppointment = itemView.findViewById(R.id.BookAppointment);
             available = itemView.findViewById(R.id.available);
             profileImage = itemView.findViewById(R.id.profileImage);
 

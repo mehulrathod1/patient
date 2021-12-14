@@ -11,22 +11,24 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.in.patient.R;
-import com.in.patient.fragment.Medicines;
-import com.in.patient.model.MedicinesModel;
+import com.in.patient.fragment.Product;
+import com.in.patient.model.OrderModel;
+import com.in.patient.model.ProductModel;
 
 import java.util.List;
 
-public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.ViewHolder> {
-    List<MedicinesModel> list;
+public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
+
+    List<ProductModel> list;
     Context context;
     Click click;
 
 
     public interface Click {
-        void OnItemClick(int position);
+        void ItemClick(int position);
     }
 
-    public MedicinesAdapter(List<MedicinesModel> list, Context context, Click click) {
+    public ProductAdapter(List<ProductModel> list, Context context, Click click) {
         this.list = list;
         this.context = context;
         this.click = click;
@@ -36,26 +38,27 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.medicines_item, parent, false);
+                .inflate(R.layout.product_item, parent, false);
         return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        MedicinesModel model = list.get(position);
+        ProductModel model = list.get(position);
 
-        holder.MedicineName.setText(model.getMedicineName());
-        holder.MedicineDescription.setText(model.getMedicineDescription());
-        holder.MedicinePrice.setText(model.getMedicinePrice());
+        holder.ProductName.setText(model.getProductName());
+        holder.description.setText(model.getDescription());
+        holder.Price.setText(model.getPrice());
 
-        holder.AddToCart.setOnClickListener(new View.OnClickListener() {
+        holder.buyNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                click.OnItemClick(position);
+                click.ItemClick(position);
             }
         });
+
+
     }
 
     @Override
@@ -65,15 +68,16 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView MedicineName, MedicineDescription, MedicinePrice, AddToCart;
+        TextView ProductName, description, Price, buyNow;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            MedicineName = itemView.findViewById(R.id.MedicineName);
-            MedicineDescription = itemView.findViewById(R.id.MedicineDescription);
-            MedicinePrice = itemView.findViewById(R.id.MedicinePrice);
-            AddToCart = itemView.findViewById(R.id.AddToCart);
+            ProductName = itemView.findViewById(R.id.ProductName);
+            description = itemView.findViewById(R.id.description);
+            Price = itemView.findViewById(R.id.Price);
+            buyNow = itemView.findViewById(R.id.buyNow);
+
         }
     }
 }

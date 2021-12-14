@@ -251,10 +251,10 @@
     <string name="Delivery_address">Delivery address</string>
     <string name="Order_Status">Order Status</string>
 
-<!--    service category-->
-<!--    <string name="next">Next</string>-->
-<!--    <string name="next">Next</string>-->
-<!--    <string name="next">Next</string>-->
+    <!--    service category-->
+    <!--    <string name="next">Next</string>-->
+    <!--    <string name="next">Next</string>-->
+    <!--    <string name="next">Next</string>-->
 
 
 </resources>

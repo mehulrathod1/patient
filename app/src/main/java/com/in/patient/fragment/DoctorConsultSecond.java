@@ -1,5 +1,6 @@
 package com.in.patient.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.in.patient.R;
+import com.in.patient.activity.DoctorProfile;
 import com.in.patient.adapter.DoctorConsultantSecondAdapter;
 import com.in.patient.model.DoctorConsultantSecondModel;
 
@@ -76,6 +78,8 @@ public class DoctorConsultSecond extends Fragment {
             @Override
             public void onItemClick(int position) {
 
+                Intent intent = new Intent(getContext(), DoctorProfile.class);
+                startActivity(intent);
             }
         });
 

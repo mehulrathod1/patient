@@ -1,6 +1,5 @@
 package com.in.patient.fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -14,22 +13,22 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.in.patient.R;
-import com.in.patient.activity.DoctorProfile;
-import com.in.patient.activity.Search;
-import com.in.patient.adapter.DoctorConsultantAdapter;
 import com.in.patient.adapter.MedicinesAdapter;
-import com.in.patient.model.DoctorConsultModel;
+import com.in.patient.adapter.ProductAdapter;
 import com.in.patient.model.MedicinesModel;
+import com.in.patient.model.ProductModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Medicines extends Fragment {
+public class Product extends Fragment {
+
 
     RecyclerView recyclerView;
-    MedicinesAdapter adapter;
-    List<MedicinesModel> list = new ArrayList<>();
+    ProductAdapter adapter;
+    List<ProductModel> list = new ArrayList<>();
     View view;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -40,7 +39,7 @@ public class Medicines extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view = inflater.inflate(R.layout.fragment_medicines, container, false);
+        view = inflater.inflate(R.layout.fragment_product, container, false);
         init();
         recyclerData();
         return view;
@@ -53,7 +52,7 @@ public class Medicines extends Fragment {
 
     public void recyclerData() {
 
-        MedicinesModel model = new MedicinesModel("Medicines name", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.", "$199");
+        ProductModel model = new ProductModel("Product Name", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.", "$199");
         list.add(model);
         list.add(model);
         list.add(model);
@@ -63,11 +62,12 @@ public class Medicines extends Fragment {
         list.add(model);
 
 
-        adapter = new MedicinesAdapter(list, getContext(), new MedicinesAdapter.Click() {
+        adapter = new ProductAdapter(list, getContext(), new ProductAdapter.Click() {
             @Override
-            public void OnItemClick(int position) {
+            public void ItemClick(int position) {
 
-                Fragment fragment = new Cart();
+
+                Fragment fragment = new ProductDetail();
                 loadFragment(fragment);
 
             }

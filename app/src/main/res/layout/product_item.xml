@@ -36,7 +36,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/rectangle77">
+                        android:src="@drawable/rectangle118">
 
                     </ImageView>
 
@@ -44,21 +44,20 @@
 
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_8sdp"
                     android:layout_weight="2"
-                    android:gravity="center_vertical"
                     android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_8sdp"
                         android:layout_marginBottom="@dimen/_8sdp"
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/LabName"
+                            android:id="@+id/ProductName"
                             style="@style/sub_heading_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -75,31 +74,35 @@
                             android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
                             android:textColor="@color/black_text_color" />
 
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_8sdp"
+                        android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/Location"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/Price"
+                            style="@style/sub_heading_text"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:drawableLeft="@drawable/location_on_24"
-                            android:drawablePadding="@dimen/_8sdp"
-                            android:text="Location"
-                            android:textColor="@color/action_mode_color_edt"
-                            android:textSize="@dimen/_12sdp" />
-
+                            android:layout_weight="1"
+                            android:text="$199"
+                            android:textColor="@color/action_mode_color_300" />
 
                         <TextView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="36dp"
-                            android:layout_gravity="center_horizontal"
-                            android:layout_margin="@dimen/_16sdp"
-                            android:background="@drawable/semi_button_bg"
+                            android:id="@+id/buyNow"
+                            android:layout_width="0dp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:layout_marginRight="@dimen/_16sdp"
+                            android:layout_weight="1"
+                            android:background="@drawable/buy_now_bg"
                             android:gravity="center"
-                            android:text="View Lab"
-                            android:textAllCaps="false"
-
-                            android:textColor="@color/white" />
+                            android:text="Buy Now"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
 
 
                     </LinearLayout>
@@ -111,3 +114,4 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
+
