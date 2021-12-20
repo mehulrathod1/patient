@@ -29,7 +29,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_my_wallet.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_profile_setting.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_search.xml" value="0.20416666666666666" />
-        <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_sign_in.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_sign_in.xml" value="0.12" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_sign_up.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/book_now_dialog.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/chat_item.xml" value="0.20416666666666666" />
@@ -37,6 +37,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/doctor_counsult_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/doctor_price_per_slot_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/doctot_uploaad_image_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/dropdown_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/filter_dialog.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/find_doctor_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_care_services.xml" value="0.20416666666666666" />
@@ -51,7 +52,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_product_detail.xml" value="0.18" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_profile_setting_lifestyle.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_profile_setting_medical.xml" value="0.20416666666666666" />
-        <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_profile_setting_personal.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_profile_setting_personal.xml" value="0.30246913580246915" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_redemption.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_searvice_category.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_transaction_history.xml" value="0.20416666666666666" />
@@ -69,7 +70,9 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/nev_header.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/nev_toolbar.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/product_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/profile_spinner_text.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/services_category_item.xml" value="0.33" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/spinner_textview.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/toolbar.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/transaction_history_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />

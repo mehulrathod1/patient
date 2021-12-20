@@ -1,62 +1,142 @@
 package com.in.patient.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class MyAppointmentModel {
-    String BookingId, DoctorName, CityName, Price, profileImage, Status;
+    @SerializedName("status")
+    @Expose
+    String status;
 
-    public MyAppointmentModel(String bookingId, String doctorName, String cityName, String price, String profileImage, String status) {
-        BookingId = bookingId;
-        DoctorName = doctorName;
-        CityName = cityName;
-        Price = price;
-        this.profileImage = profileImage;
-        Status = status;
-    }
+    @SerializedName("message")
+    @Expose
+    String message;
 
-    public String getBookingId() {
-        return BookingId;
-    }
-
-    public void setBookingId(String bookingId) {
-        BookingId = bookingId;
-    }
-
-    public String getDoctorName() {
-        return DoctorName;
-    }
-
-    public void setDoctorName(String doctorName) {
-        DoctorName = doctorName;
-    }
-
-    public String getCityName() {
-        return CityName;
-    }
-
-    public void setCityName(String cityName) {
-        CityName = cityName;
-    }
-
-    public String getPrice() {
-        return Price;
-    }
-
-    public void setPrice(String price) {
-        Price = price;
-    }
-
-    public String getProfileImage() {
-        return profileImage;
-    }
-
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
-    }
+    @SerializedName("data")
+    @Expose
+    List<AppointmentData> medicinesDataList = new ArrayList<>();
 
     public String getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(String status) {
-        Status = status;
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public List<AppointmentData> getMedicinesDataList() {
+        return medicinesDataList;
+    }
+
+    public void setMedicinesDataList(List<AppointmentData> medicinesDataList) {
+        this.medicinesDataList = medicinesDataList;
+    }
+
+    public static class AppointmentData {
+        @SerializedName("booing id")
+        @Expose
+        String booingId;
+
+        @SerializedName("Doctor Name")
+        @Expose
+        String DoctorName;
+
+        @SerializedName("Location")
+        @Expose
+        String Location;
+
+        @SerializedName("Status")
+        @Expose
+        String Status;
+
+        @SerializedName("Profile")
+        @Expose
+        String Profile;
+
+        @SerializedName("Booking Date")
+        @Expose
+        String BookingDate;
+
+        @SerializedName("Fees")
+        @Expose
+        String Fees;
+
+
+        public AppointmentData(String booingId, String doctorName, String location, String status, String profile, String bookingDate, String fees) {
+            this.booingId = booingId;
+            DoctorName = doctorName;
+            Location = location;
+            Status = status;
+            Profile = profile;
+            BookingDate = bookingDate;
+            Fees = fees;
+        }
+
+        public String getBooingId() {
+            return booingId;
+        }
+
+        public void setBooingId(String booingId) {
+            this.booingId = booingId;
+        }
+
+        public String getDoctorName() {
+            return DoctorName;
+        }
+
+        public void setDoctorName(String doctorName) {
+            DoctorName = doctorName;
+        }
+
+        public String getLocation() {
+            return Location;
+        }
+
+        public void setLocation(String location) {
+            Location = location;
+        }
+
+        public String getStatus() {
+            return Status;
+        }
+
+        public void setStatus(String status) {
+            Status = status;
+        }
+
+        public String getProfile() {
+            return Profile;
+        }
+
+        public void setProfile(String profile) {
+            Profile = profile;
+        }
+
+        public String getBookingDate() {
+            return BookingDate;
+        }
+
+        public void setBookingDate(String bookingDate) {
+            BookingDate = bookingDate;
+        }
+
+        public String getFees() {
+            return Fees;
+        }
+
+        public void setFees(String fees) {
+            Fees = fees;
+        }
     }
 }

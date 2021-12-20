@@ -5,11 +5,13 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.in.patient.R;
 import com.in.patient.fragment.Medicines;
 import com.in.patient.model.MedicinesModel;
@@ -17,7 +19,7 @@ import com.in.patient.model.MedicinesModel;
 import java.util.List;
 
 public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.ViewHolder> {
-    List<MedicinesModel> list;
+    List<MedicinesModel.MedicinesData> list;
     Context context;
     Click click;
 
@@ -26,7 +28,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
         void OnItemClick(int position);
     }
 
-    public MedicinesAdapter(List<MedicinesModel> list, Context context, Click click) {
+    public MedicinesAdapter(List<MedicinesModel.MedicinesData> list, Context context, Click click) {
         this.list = list;
         this.context = context;
         this.click = click;
@@ -43,11 +45,15 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        MedicinesModel model = list.get(position);
+        MedicinesModel.MedicinesData model = list.get(position);
 
-        holder.MedicineName.setText(model.getMedicineName());
-        holder.MedicineDescription.setText(model.getMedicineDescription());
-        holder.MedicinePrice.setText(model.getMedicinePrice());
+        holder.MedicineName.setText(model.getMedicines_name());
+        holder.MedicineDescription.setText(model.getDescription());
+        holder.MedicinePrice.setText(model.getPrice());
+
+        Glide.with(context)
+                .load(model.getMedicine_image())
+                .into(holder.medicinesImage);
 
         holder.AddToCart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -66,6 +72,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView MedicineName, MedicineDescription, MedicinePrice, AddToCart;
+        ImageView medicinesImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -74,6 +81,7 @@ public class MedicinesAdapter extends RecyclerView.Adapter<MedicinesAdapter.View
             MedicineDescription = itemView.findViewById(R.id.MedicineDescription);
             MedicinePrice = itemView.findViewById(R.id.MedicinePrice);
             AddToCart = itemView.findViewById(R.id.AddToCart);
+            medicinesImage = itemView.findViewById(R.id.medicinesImage);
         }
     }
 }

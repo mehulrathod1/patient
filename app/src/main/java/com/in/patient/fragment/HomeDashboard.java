@@ -130,27 +130,27 @@ public class HomeDashboard extends Fragment {
             }
         });
 
-        final Handler handler = new Handler();
-
-        final Runnable update = new Runnable() {
-            public void run() {
-                if (page_position == slider_image_list.size()) {
-                    page_position = 0;
-                } else {
-                    page_position = page_position + 1;
-                }
-                vp_slider.setCurrentItem(page_position, true);
-            }
-        };
-
-        new Timer().schedule(new TimerTask() {
-
-
-            @Override
-            public void run() {
-                handler.post(update);
-            }
-        }, 100, 5000);
+//        final Handler handler = new Handler();
+//
+//        final Runnable update = new Runnable() {
+//            public void run() {
+//                if (page_position == slider_image_list.size()) {
+//                    page_position = 0;
+//                } else {
+//                    page_position = page_position + 1;
+//                }
+//                vp_slider.setCurrentItem(page_position, true);
+//            }
+//        };
+//
+//        new Timer().schedule(new TimerTask() {
+//
+//
+//            @Override
+//            public void run() {
+//                handler.post(update);
+//            }
+//        }, 100, 5000);
 
 
         doctorConsultant.setOnClickListener(new View.OnClickListener() {

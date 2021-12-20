@@ -43,6 +43,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_8sdp"
+                    android:fontFamily="@font/montserrat_semi_bold"
                     android:text="@string/sign_in"
                     android:textColor="@color/action_mode_color"
                     android:textSize="@dimen/_34sdp" />
@@ -50,6 +51,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
                     android:text="@string/sign_in_into"
                     android:textColor="@color/action_mode_color_300"
                     android:textSize="@dimen/_16sdp" />
@@ -68,50 +70,44 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:hintAnimationEnabled="false"
                     app:boxStrokeWidth="0dp"
                     app:boxStrokeWidthFocused="0dp"
+                    app:hintAnimationEnabled="false"
                     app:hintEnabled="false">
 
                     <EditText
                         android:id="@+id/edtEmail"
+                        style="@style/form_style"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
-                        android:background="@drawable/edt_bg"
                         android:hint="@string/email"
                         android:imeOptions="actionNext"
                         android:inputType="textEmailAddress"
-                        android:lines="1"
-                        android:padding="10dp"
-                        android:textAlignment="viewStart"
-                        android:textSize="@dimen/_18sdp" />
+                        android:lines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
 
-
                     android:id="@+id/etPasswordLayout"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:layout_marginTop="@dimen/_24sdp"
-                    app:hintAnimationEnabled="false"
-                    app:hintEnabled="false"
                     app:boxStrokeWidth="0dp"
                     app:boxStrokeWidthFocused="0dp"
+                    app:hintAnimationEnabled="false"
+                    app:hintEnabled="false"
                     app:passwordToggleEnabled="true">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/edtPassword"
+                        style="@style/form_style"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_50sdp"
-                        android:background="@drawable/edt_bg"
+                        android:fontFamily="@font/montserrat_regular"
                         android:hint="@string/Password"
                         android:imeOptions="actionDone"
                         android:inputType="textPassword"
-                        android:padding="5sp"
-                        android:textAlignment="viewStart"
-                        android:textSize="@dimen/_18sdp"
                         app:hintEnabled="false" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -127,8 +123,10 @@
 
                 <TextView
                     android:id="@+id/forgotPassword"
+                    style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
                     android:text="@string/ForgotPassword"
                     android:textColor="@color/action_mode_color" />
 
@@ -143,8 +141,10 @@
 
                 <CheckBox
                     android:id="@+id/rememberMe"
+                    style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_regular"
                     android:text="@string/RememberMe"
                     android:textColor="#515151" />
             </LinearLayout>
@@ -163,10 +163,11 @@
                     android:gravity="center">
 
                     <TextView
+                        style="@style/sub_heading_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="@string/sign_in_with"
-                        android:textSize="@dimen/_16sdp"
                         android:textColor="@color/action_mode_color_300" />
 
                 </LinearLayout>
@@ -189,8 +190,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/_10sdp"
                         android:layout_weight="1"
-                        android:src="@drawable/icon_material_face"
-                        />
+                        android:src="@drawable/icon_material_face" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -207,6 +207,7 @@
                     android:layout_height="@dimen/_46sdp"
                     android:background="@drawable/button_bg"
                     android:text="@string/sign_in"
+                    android:textAllCaps="false"
                     android:textSize="@dimen/_20sdp" />
 
             </LinearLayout>

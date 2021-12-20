@@ -32,13 +32,12 @@
                     android:text="@string/first_name" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtFirstName"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/first_name"
-                    android:padding="10dp" />
+                    android:hint="@string/first_name" />
 
             </LinearLayout>
 
@@ -55,38 +54,15 @@
                     android:text="@string/last_name" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtLastName"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/last_name"
-                    android:padding="10dp" />
+                    android:hint="@string/last_name" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/sub_heading_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/first_name" />
-
-                <EditText
-                    style="@style/heading_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/first_name"
-                    android:padding="10dp" />
-
-            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -101,13 +77,12 @@
                     android:text="@string/Email_id" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtEmail"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Email_id"
-                    android:padding="10dp" />
+                    android:hint="@string/Email_id" />
 
             </LinearLayout>
 
@@ -124,13 +99,12 @@
                     android:text="@string/Contact_Number" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtNumber"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Contact_Number"
-                    android:padding="10dp" />
+                    android:hint="@string/Contact_Number" />
 
             </LinearLayout>
 
@@ -147,13 +121,12 @@
                     android:text="@string/Age" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtAge"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Age"
-                    android:padding="10dp" />
+                    android:hint="@string/Age" />
 
             </LinearLayout>
 
@@ -170,13 +143,12 @@
                     android:text="@string/Gender" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtGender"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Gender"
-                    android:padding="10dp" />
+                    android:hint="@string/Gender" />
 
             </LinearLayout>
 
@@ -193,13 +165,12 @@
                     android:text="@string/DOB" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtDob"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/DOB"
-                    android:padding="10dp" />
+                    android:hint="@string/DOB" />
 
             </LinearLayout>
 
@@ -216,13 +187,12 @@
                     android:text="@string/Blood_Group" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtBloodGroup"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Blood_Group"
-                    android:padding="10dp" />
+                    android:hint="@string/Blood_Group" />
 
             </LinearLayout>
 
@@ -239,13 +209,12 @@
                     android:text="@string/Marital_status" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtMaritalStatus"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Marital_status"
-                    android:padding="10dp" />
+                    android:hint="@string/Marital_status" />
 
             </LinearLayout>
 
@@ -262,13 +231,12 @@
                     android:text="@string/Height" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtHeight"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Height"
-                    android:padding="10dp" />
+                    android:hint="@string/Height" />
 
             </LinearLayout>
 
@@ -285,13 +253,12 @@
                     android:text="@string/Weight" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtWeight"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Weight"
-                    android:padding="10dp" />
+                    android:hint="@string/Weight" />
 
             </LinearLayout>
 
@@ -308,13 +275,12 @@
                     android:text="@string/Emergency_contact" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtEmergencyNumber"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Emergency_contact"
-                    android:padding="10dp" />
+                    android:hint="@string/Emergency_contact" />
 
             </LinearLayout>
 
@@ -332,14 +298,16 @@
                     android:text="@string/Address" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtAddress"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_150sdp"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
+                    android:fontFamily="@font/montserrat_semi_bold"
                     android:gravity="top"
                     android:hint="@string/Address"
-                    android:padding="10dp" />
+                    android:padding="10dp"
+                    android:textSize="@dimen/_16sdp" />
 
             </LinearLayout>
 
@@ -356,11 +324,12 @@
                     android:layout_weight="0.8">
 
                     <ImageView
+                        android:id="@+id/profileImage"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_150sdp"
-                        android:src="@drawable/rectangle51"
+                        android:background="@color/action_mode_color"
                         android:scaleType="centerCrop"
-                        android:background="@color/action_mode_color" />
+                        android:src="@drawable/rectangle51" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -373,17 +342,22 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/_16sdp"
+                        android:layout_marginBottom="@dimen/_15sdp"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="@string/Update_Photo"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textColor="@color/action_mode_color_edt" />
 
                     <TextView
+                        android:id="@+id/choosePhoto"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/edt_bg"
+                        android:fontFamily="@font/montserrat_semi_bold"
                         android:padding="@dimen/_4sdp"
                         android:text="@string/Choose_new_photo"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -396,10 +370,12 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/btnSignIn"
+                    android:id="@+id/Submit"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_60sdp"
+                    android:fontFamily="@font/montserrat_semi_bold"
                     android:text="@string/Submit"
+                    android:textAllCaps="false"
                     android:textSize="@dimen/_20sdp" />
 
             </LinearLayout>

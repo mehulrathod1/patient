@@ -31,14 +31,13 @@
                     android:text="@string/Details_of_allergies" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtDetail"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
                     android:gravity="top"
-                    android:hint="@string/Details_of_allergies"
-                    android:padding="10dp" />
+                    android:hint="@string/Details_of_allergies" />
 
             </LinearLayout>
 
@@ -55,14 +54,13 @@
                     android:text="@string/Current_Past_Medications" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtCurrent"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
                     android:gravity="top"
-                    android:hint="@string/Current_Past_Medications"
-                    android:padding="10dp" />
+                    android:hint="@string/Current_Past_Medications" />
 
             </LinearLayout>
 
@@ -79,14 +77,13 @@
                     android:text="@string/Past_surgery_injury" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtPast"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
                     android:gravity="top"
-                    android:hint="@string/Past_surgery_injury"
-                    android:padding="10dp" />
+                    android:hint="@string/Past_surgery_injury" />
 
             </LinearLayout>
 
@@ -103,14 +100,13 @@
                     android:text="@string/Any_chronic_disease" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/edtAny"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_120sdp"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
                     android:gravity="top"
-                    android:hint="@string/Any_chronic_disease"
-                    android:padding="10dp" />
+                    android:hint="@string/Any_chronic_disease" />
 
             </LinearLayout>
 
@@ -123,10 +119,12 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/btnSignIn"
+                    android:id="@+id/btnSubmit"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_60sdp"
+                    android:fontFamily="@font/montserrat_semi_bold"
                     android:text="@string/Submit"
+                    android:textAllCaps="false"
                     android:textSize="@dimen/_20sdp" />
 
             </LinearLayout>

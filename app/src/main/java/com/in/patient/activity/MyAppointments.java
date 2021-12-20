@@ -1,5 +1,8 @@
 package com.in.patient.activity;
 
+import static com.in.patient.globle.Glob.Token;
+import static com.in.patient.globle.Glob.user_id;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,10 +15,17 @@ import android.widget.TextView;
 
 import com.in.patient.R;
 import com.in.patient.adapter.MyAppointmentAdapter;
+import com.in.patient.globle.Glob;
 import com.in.patient.model.MyAppointmentModel;
+import com.in.patient.retrofit.Api;
+import com.in.patient.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MyAppointments extends AppCompatActivity {
 
@@ -25,7 +35,7 @@ public class MyAppointments extends AppCompatActivity {
 
     MyAppointmentAdapter adapter;
     RecyclerView recyclerView;
-    List<MyAppointmentModel> list = new ArrayList<>();
+    List<MyAppointmentModel.AppointmentData> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +44,7 @@ public class MyAppointments extends AppCompatActivity {
         getSupportActionBar().hide();
 
         init();
-        recyclerData();
+        getMyAppointment(Token, user_id);
     }
 
 
@@ -45,6 +55,8 @@ public class MyAppointments extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler);
 
         headerTitle.setText("My Appointment");
+
+        Glob.progressDialog(this);
 
 
         nevBack.setOnClickListener(new View.OnClickListener() {
@@ -57,16 +69,49 @@ public class MyAppointments extends AppCompatActivity {
 
     }
 
+
+    public void getMyAppointment(String token, String user_id) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+        call.getMyAppointment(token, user_id).enqueue(new Callback<MyAppointmentModel>() {
+            @Override
+            public void onResponse(Call<MyAppointmentModel> call, Response<MyAppointmentModel> response) {
+
+                MyAppointmentModel myAppointmentModel = response.body();
+                List<MyAppointmentModel.AppointmentData> DataList = myAppointmentModel.getMedicinesDataList();
+
+                for (int i = 0; i < DataList.size(); i++) {
+                    MyAppointmentModel.AppointmentData model = DataList.get(i);
+
+                    MyAppointmentModel.AppointmentData data = new MyAppointmentModel.AppointmentData(
+                            model.getBooingId(),
+                            model.getDoctorName(),
+                            model.getLocation(),
+                            model.getStatus(),
+                            model.getProfile(),
+                            model.getFees(),
+                            model.getFees()
+                    );
+
+                    list.add(data);
+                }
+                recyclerData();
+                Glob.dialog.dismiss();
+
+            }
+
+            @Override
+            public void onFailure(Call<MyAppointmentModel> call, Throwable t) {
+
+            }
+        });
+
+    }
+
     public void recyclerData() {
 
-        MyAppointmentModel model = new MyAppointmentModel("9956328", "Lorem ipsum.", "Gujarat ", "$199", "", "Pending");
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
 
         adapter = new MyAppointmentAdapter(list, getApplicationContext(), new MyAppointmentAdapter.Click() {
             @Override
@@ -77,8 +122,8 @@ public class MyAppointments extends AppCompatActivity {
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(mLayoutManager);
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
-
 
 }
