@@ -12,17 +12,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
 import com.in.patient.R;
+import com.in.patient.globle.Glob;
 import com.in.patient.model.FindDoctorModel;
 
 import java.util.List;
 
 public class FindDoctorAdapter extends RecyclerView.Adapter<FindDoctorAdapter.ViewHolder> {
-    List<FindDoctorModel> list;
+    List<FindDoctorModel.DoctorSpecialities> list;
     Context context;
     Click click;
 
-    public FindDoctorAdapter(List<FindDoctorModel> list, Context context, Click click) {
+    public FindDoctorAdapter(List<FindDoctorModel.DoctorSpecialities> list, Context context, Click click) {
         this.list = list;
         this.context = context;
         this.click = click;
@@ -42,9 +44,13 @@ public class FindDoctorAdapter extends RecyclerView.Adapter<FindDoctorAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        FindDoctorModel model = list.get(position);
+        FindDoctorModel.DoctorSpecialities model = list.get(position);
 
-        holder.category.setText(model.getCategory());
+        holder.category.setText(model.getSpecialistName());
+
+        Glide.with(context)
+                .load(model.getSpecialistImg())
+                .into(holder.profileImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

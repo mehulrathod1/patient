@@ -82,6 +82,7 @@ public class Medicines extends Fragment {
             @Override
             public void onResponse(Call<MedicinesModel> call, Response<MedicinesModel> response) {
 
+                list.clear();
                 MedicinesModel medicinesModel = response.body();
 
                 List<MedicinesModel.MedicinesData> DataList = medicinesModel.getMedicinesDataList();
@@ -91,7 +92,7 @@ public class Medicines extends Fragment {
                     MedicinesModel.MedicinesData model = DataList.get(i);
 
                     MedicinesModel.MedicinesData data = new MedicinesModel.MedicinesData(
-                            model.getMedicines_name(), "$"+model.getPrice(), model.getDescription(),
+                            model.getMedicines_name(), "$" + model.getPrice(), model.getDescription(),
                             model.getMedicine_image()
                     );
                     list.add(data);

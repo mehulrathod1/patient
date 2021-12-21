@@ -26,13 +26,21 @@ import com.in.patient.activity.LabTest;
 import com.in.patient.adapter.FindDoctorAdapter;
 import com.in.patient.adapter.HealthCareAdapter;
 import com.in.patient.adapter.SliderPagerAdapter;
+import com.in.patient.globle.Glob;
 import com.in.patient.model.CareAndCheckupModel;
 import com.in.patient.model.FindDoctorModel;
+import com.in.patient.retrofit.Api;
+import com.in.patient.retrofit.RetrofitClient;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeDashboard extends Fragment {
 
@@ -53,7 +61,7 @@ public class HomeDashboard extends Fragment {
     List<CareAndCheckupModel> healthList = new ArrayList<>();
 
     FindDoctorAdapter adapter;
-    List<FindDoctorModel> list = new ArrayList<>();
+    List<FindDoctorModel.DoctorSpecialities> list = new ArrayList<>();
 
     LinearLayout doctorConsultant, homeCare, labTest, medicines, healthProduct;
 
@@ -69,10 +77,10 @@ public class HomeDashboard extends Fragment {
         view = inflater.inflate(R.layout.fragment_home_dashboard, container, false);
 
         init();
-        recyclerData();
         healthCareData();
         healthCheckupData();
         addBottomDots(0);
+        getDoctorSpecialist(Glob.Token, Glob.user_id);
 
         return view;
     }
@@ -211,8 +219,6 @@ public class HomeDashboard extends Fragment {
         });
     }
 
-
-
     private void addBottomDots(int currentPage) {
         dots = new TextView[slider_image_list.size()];
 
@@ -229,20 +235,45 @@ public class HomeDashboard extends Fragment {
             dots[currentPage].setTextColor(Color.parseColor("#233E8B"));
     }
 
-    public void recyclerData() {
 
-        FindDoctorModel model = new FindDoctorModel("", "General Physician");
-        FindDoctorModel model1 = new FindDoctorModel("", "Skin and Hair Specialist");
-        FindDoctorModel model2 = new FindDoctorModel("", "Sexologist");
-        FindDoctorModel model3 = new FindDoctorModel("", "Gynaecologist");
-        FindDoctorModel model4 = new FindDoctorModel("", "Bone and joint Specialist");
-        FindDoctorModel model5 = new FindDoctorModel("", "Ear Nose Throat");
-        list.add(model);
-        list.add(model1);
-        list.add(model2);
-        list.add(model3);
-        list.add(model4);
-        list.add(model5);
+    public void getDoctorSpecialist(String token, String user_id) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+
+        call.getDoctorSpecialist(token, user_id).enqueue(new Callback<FindDoctorModel>() {
+            @Override
+            public void onResponse(Call<FindDoctorModel> call, Response<FindDoctorModel> response) {
+
+                FindDoctorModel findDoctorModel = response.body();
+
+                List<FindDoctorModel.DoctorSpecialities> DataList = findDoctorModel.getDoctorSpecialitiesList();
+
+                for (int i = 0; i < DataList.size(); i++) {
+
+                    FindDoctorModel.DoctorSpecialities model = DataList.get(i);
+
+                    FindDoctorModel.DoctorSpecialities data = new FindDoctorModel.DoctorSpecialities(
+                            model.getSpecialistId(), model.getSpecialistName(),
+                            model.getSpecialistImg()
+                    );
+                    list.add(data);
+
+                }
+                DoctorSpecialistData();
+
+            }
+
+            @Override
+            public void onFailure(Call<FindDoctorModel> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    public void DoctorSpecialistData() {
+
 
         adapter = new FindDoctorAdapter(list, getContext(), new FindDoctorAdapter.Click() {
             @Override
@@ -254,6 +285,7 @@ public class HomeDashboard extends Fragment {
         });
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
 
@@ -306,6 +338,7 @@ public class HomeDashboard extends Fragment {
         healthCheckupRecycler.setLayoutManager(mLayoutManager);
         healthCheckupRecycler.setAdapter(healthCareAdapter);
     }
+
     private void loadFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

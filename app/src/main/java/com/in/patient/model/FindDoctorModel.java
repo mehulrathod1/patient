@@ -1,27 +1,75 @@
 package com.in.patient.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class FindDoctorModel {
 
-    String profileImage,category;
+    @SerializedName("status")
+    @Expose
+    String status;
 
-    public FindDoctorModel(String profileImage, String category) {
-        this.profileImage = profileImage;
-        this.category = category;
+    @SerializedName("message")
+    @Expose
+    String message;
+
+    @SerializedName("data")
+    @Expose
+    List<DoctorSpecialities> doctorSpecialitiesList = new ArrayList<>();
+
+    public List<DoctorSpecialities> getDoctorSpecialitiesList() {
+        return doctorSpecialitiesList;
     }
 
-    public String getProfileImage() {
-        return profileImage;
+    public void setDoctorSpecialitiesList(List<DoctorSpecialities> doctorSpecialitiesList) {
+        this.doctorSpecialitiesList = doctorSpecialitiesList;
     }
 
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
-    }
+    public static class DoctorSpecialities {
 
-    public String getCategory() {
-        return category;
-    }
+        @SerializedName("Specialist id")
+        @Expose
+        String SpecialistId;
 
-    public void setCategory(String category) {
-        this.category = category;
+        @SerializedName("Specialist Name")
+        @Expose
+        String SpecialistName;
+
+        @SerializedName("Specialist img")
+        @Expose
+        String SpecialistImg;
+
+        public DoctorSpecialities(String specialistId, String specialistName, String specialistImg) {
+            SpecialistId = specialistId;
+            SpecialistName = specialistName;
+            SpecialistImg = specialistImg;
+        }
+
+        public String getSpecialistId() {
+            return SpecialistId;
+        }
+
+        public void setSpecialistId(String specialistId) {
+            SpecialistId = specialistId;
+        }
+
+        public String getSpecialistName() {
+            return SpecialistName;
+        }
+
+        public void setSpecialistName(String specialistName) {
+            SpecialistName = specialistName;
+        }
+
+        public String getSpecialistImg() {
+            return SpecialistImg;
+        }
+
+        public void setSpecialistImg(String specialistImg) {
+            SpecialistImg = specialistImg;
+        }
     }
 }

@@ -1,73 +1,146 @@
 package com.in.patient.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DoctorConsultantSecondModel {
 
-    String DoctorName, speciality, exp, Location, available, LikePercentage, Rate;
+    @SerializedName("status")
+    @Expose
+    String status;
 
-    public DoctorConsultantSecondModel(String doctorName, String speciality, String exp, String location, String available, String likePercentage, String rate) {
+    @SerializedName("message")
+    @Expose
+    String message;
 
-        DoctorName = doctorName;
-        this.speciality = speciality;
-        this.exp = exp;
-        Location = location;
-        this.available = available;
-        LikePercentage = likePercentage;
-        Rate = rate;
+
+    @SerializedName("data")
+    @Expose
+    List<ConsultantData> consultantDataList = new ArrayList<>();
+
+    public String getStatus() {
+        return status;
     }
 
-    public String getDoctorName() {
-        return DoctorName;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
-    public void setDoctorName(String doctorName) {
-        DoctorName = doctorName;
+    public String getMessage() {
+        return message;
     }
 
-    public String getSpeciality() {
-        return speciality;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public void setSpeciality(String speciality) {
-        this.speciality = speciality;
+    public List<ConsultantData> getConsultantDataList() {
+        return consultantDataList;
     }
 
-    public String getExp() {
-        return exp;
+    public void setConsultantDataList(List<ConsultantData> consultantDataList) {
+        this.consultantDataList = consultantDataList;
     }
 
-    public void setExp(String exp) {
-        this.exp = exp;
-    }
+    public static class ConsultantData {
 
-    public String getLocation() {
-        return Location;
-    }
+        @SerializedName("user_id")
+        @Expose
+        String user_id;
 
-    public void setLocation(String location) {
-        Location = location;
-    }
+        @SerializedName("first_name")
+        @Expose
+        String first_name;
 
-    public String getAvailable() {
-        return available;
-    }
+        @SerializedName("last_name")
+        @Expose
+        String last_name;
 
-    public void setAvailable(String available) {
-        this.available = available;
-    }
+        @SerializedName("specialist")
+        @Expose
+        String specialist;
 
-    public String getLikePercentage() {
-        return LikePercentage;
-    }
+        @SerializedName("experience")
+        @Expose
+        String experience;
 
-    public void setLikePercentage(String likePercentage) {
-        LikePercentage = likePercentage;
-    }
+        @SerializedName("location")
+        @Expose
+        String location;
 
-    public String getRate() {
-        return Rate;
-    }
+        @SerializedName("profile_image")
+        @Expose
+        String profile_image;
 
-    public void setRate(String rate) {
-        Rate = rate;
+
+        public ConsultantData(String user_id, String first_name, String last_name, String specialist, String experience, String location, String profile_image) {
+            this.user_id = user_id;
+            this.first_name = first_name;
+            this.last_name = last_name;
+            this.specialist = specialist;
+            this.experience = experience;
+            this.location = location;
+            this.profile_image = profile_image;
+        }
+
+
+        public String getUser_id() {
+            return user_id;
+        }
+
+        public void setUser_id(String user_id) {
+            this.user_id = user_id;
+        }
+
+        public String getFirst_name() {
+            return first_name;
+        }
+
+        public void setFirst_name(String first_name) {
+            this.first_name = first_name;
+        }
+
+        public String getLast_name() {
+            return last_name;
+        }
+
+        public void setLast_name(String last_name) {
+            this.last_name = last_name;
+        }
+
+        public String getSpecialist() {
+            return specialist;
+        }
+
+        public void setSpecialist(String specialist) {
+            this.specialist = specialist;
+        }
+
+        public String getExperience() {
+            return experience;
+        }
+
+        public void setExperience(String experience) {
+            this.experience = experience;
+        }
+
+        public String getLocation() {
+            return location;
+        }
+
+        public void setLocation(String location) {
+            this.location = location;
+        }
+
+        public String getProfile_image() {
+            return profile_image;
+        }
+
+        public void setProfile_image(String profile_image) {
+            this.profile_image = profile_image;
+        }
     }
 }

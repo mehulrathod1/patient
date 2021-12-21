@@ -12,13 +12,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
 import com.in.patient.R;
 import com.in.patient.model.DoctorConsultantSecondModel;
 
 import java.util.List;
 
 public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorConsultantSecondAdapter.ViewHolder> {
-    List<DoctorConsultantSecondModel> list;
+    List<DoctorConsultantSecondModel.ConsultantData> list;
     Context context;
     Click click;
 
@@ -26,7 +27,7 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
         void onItemClick(int position);
     }
 
-    public DoctorConsultantSecondAdapter(List<DoctorConsultantSecondModel> list, Context context, Click click) {
+    public DoctorConsultantSecondAdapter(List<DoctorConsultantSecondModel.ConsultantData> list, Context context, Click click) {
         this.list = list;
         this.context = context;
         this.click = click;
@@ -42,16 +43,20 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        DoctorConsultantSecondModel model = list.get(position);
+        DoctorConsultantSecondModel.ConsultantData model = list.get(position);
 
-        holder.DoctorName.setText(model.getDoctorName());
-        holder.exp.setText(model.getExp());
-        holder.LikePercentage.setText(model.getLikePercentage());
-        holder.Rate.setText(model.getRate());
-        holder.speciality.setText(model.getSpeciality());
+        holder.DoctorName.setText(model.getFirst_name() + model.getLast_name());
+        holder.exp.setText(model.getExperience());
+//        holder.LikePercentage.setText(model.getLikePercentage());
+//        holder.Rate.setText(model.getRate());
+        holder.speciality.setText(model.getSpecialist());
         holder.Location.setText(model.getLocation());
-        holder.available.setText(model.getAvailable());
+//        holder.available.setText(model.getAvailable());
 
+
+        Glide.with(context)
+                .load(model.getProfile_image())
+                .into(holder.profileImage);
 
         holder.BookAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
