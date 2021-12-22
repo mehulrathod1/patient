@@ -18,24 +18,26 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.in.patient.R;
+import com.in.patient.adapter.DayAdapter;
 import com.in.patient.adapter.DoctorTimePriceAdapter;
 import com.in.patient.adapter.DoctorUploadedImageAdapter;
 import com.in.patient.adapter.MyReviewAdapter;
 import com.in.patient.globle.Glob;
+import com.in.patient.model.AddBookingAppointmentModel;
 import com.in.patient.model.CareAndCheckupModel;
 import com.in.patient.model.DoctorProfileModel;
 import com.in.patient.model.DoctorTimePrice;
 import com.in.patient.model.MyReviewModel;
-import com.in.patient.model.TimeSlotModel;
 import com.in.patient.retrofit.Api;
+import com.in.patient.retrofit.Data;
 import com.in.patient.retrofit.RetrofitClient;
+import com.in.patient.retrofit.TimeSlotItem;
+import com.in.patient.retrofit.TimeSlotModel;
 
-import java.security.DomainLoadStoreParameter;
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import retrofit2.Call;
@@ -47,7 +49,7 @@ public class DoctorProfile extends AppCompatActivity {
 
     TextView doctorName, txtDoctorEducation, doctorSpeciality, languageSpoken, experience, txtClinicName, txtClinicLocation, txtFromDay, txtOpenCloseTime, txtFees, txtStatus;
 
-    RecyclerView recyclerView, reviewRecycler, timeRecycler;
+    RecyclerView recyclerView, reviewRecycler, timeRecycler, dayRecycler;
     DoctorUploadedImageAdapter adapter;
     List<CareAndCheckupModel> list = new ArrayList<>();
 
@@ -61,7 +63,12 @@ public class DoctorProfile extends AppCompatActivity {
 
     ImageView backButton;
 
-    List<String> day;
+    String doctorId;
+
+
+    DayAdapter dayAdapter;
+    List<String> dayList = new ArrayList<>();
+    List<String> dateList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,53 +77,43 @@ public class DoctorProfile extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
-        Date d = new Date();
-        String dayOfTheWeek = sdf.format(d);
-        Log.e("dare", "onCreate: " + dayOfTheWeek);
-
-        day = new ArrayList<>();
-        day.add("Sunday");
-        day.add("Monday");
-        day.add("Tuesday");
-        day.add("Wednesday");
-        day.add("Thursday");
-        day.add("Friday");
-        day.add("Saturday");
-
-
-        for (int t = 0; t < day.size(); t++) {
-
-            Log.e("sdfgfdssdf", "onCreate: " + day.get(t));
-        }
-
-
-        DateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-        Calendar calendar = Calendar.getInstance();
-        calendar.setFirstDayOfWeek(3);
-        calendar.set(Calendar.DAY_OF_WEEK, 3);
-
-        String[] days = new String[7];
-        for (int i = 2; i < 7; i++) {
-            days[i] = format.format(calendar.getTime());
-            calendar.add(Calendar.DAY_OF_MONTH, 1);
-            Log.e("dare", "d" + days[i]);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        for (int i = 0; i < 7; i++) {
+            Calendar calendar = new GregorianCalendar();
+            calendar.add(Calendar.DATE, i);
+            String day = sdf.format(calendar.getTime());
+            Log.i("cmvhclv", day);
+            dateList.add(day);
+            Log.e("datalisr", "onCreate: " + dateList.get(i));
 
         }
 
+
+        SimpleDateFormat sddf = new SimpleDateFormat("EEEE");
+        for (int i = 0; i < 7; i++) {
+            Calendar calendar = new GregorianCalendar();
+            calendar.add(Calendar.DATE, i);
+            String day = sddf.format(calendar.getTime());
+            Log.i("cmvhclv", day);
+            dayList.add(day);
+            Log.e("datalisr", "onCreate: " + dayList.get(i));
+
+
+        }
 
         Intent intent = getIntent();
-        String id = intent.getStringExtra("doctorId");
+        doctorId = intent.getStringExtra("doctorId");
 
 
-        Log.e("id", "onCreate: " + id);
+        Log.e("id", "onCreate: " + doctorId);
 
         init();
         imageData();
         reviewData();
         timePriceData();
+        dayData();
 
-        getDoctorProfile(Token, user_id, id);
+        getDoctorProfile(Token, user_id, doctorId);
 
 //        getTimeSlot(Token,user_id,id,"2021-12-13");
 
@@ -126,6 +123,8 @@ public class DoctorProfile extends AppCompatActivity {
         recyclerView = findViewById(R.id.recycler);
         reviewRecycler = findViewById(R.id.reviewRecycler);
         timeRecycler = findViewById(R.id.timeRecycler);
+        dayRecycler = findViewById(R.id.dayRecycler);
+
         bookAppointment = findViewById(R.id.BookAppointment);
         backButton = findViewById(R.id.backButton);
 
@@ -148,8 +147,8 @@ public class DoctorProfile extends AppCompatActivity {
         bookAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), BookAppointment.class);
-                startActivity(intent);
+
+                addBookingAppointment(Token, user_id, doctorId, "2021-12-13", "15:00:00");
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -235,6 +234,27 @@ public class DoctorProfile extends AppCompatActivity {
         timeRecycler.setAdapter(doctorTimePriceAdapter);
     }
 
+    public void dayData() {
+
+
+        dayAdapter = new DayAdapter(dayList, getApplicationContext(), new DayAdapter.Click() {
+            @Override
+            public void itemClick(int position) {
+
+                String s = dateList.get(position);
+
+                Log.e("dfggf", "itemClick: " + s);
+
+                getTimeSlot(Token, user_id, "13", "2021-12-13");
+
+            }
+        });
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        dayRecycler.setLayoutManager(mLayoutManager);
+        dayRecycler.setAdapter(dayAdapter);
+    }
+
     public void getDoctorProfile(String token, String user_id, String doctor_id) {
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
@@ -272,38 +292,73 @@ public class DoctorProfile extends AppCompatActivity {
 
     }
 
-//    public void getTimeSlot(String token,String user_id ,String doctor_id, String date) {
-//
-//        Api call = RetrofitClient.getClient(Base_Url).create(Api.class);
-//        dialog.show();
-//
-//
-//        call.getTimeSlot(token, user_id, doctor_id, date).enqueue(new Callback<TimeSlotModel>() {
-//            @Override
-//            public void onResponse(Call<TimeSlotModel> call, Response<TimeSlotModel> response) {
-//
-//                TimeSlotModel timeSlotModel = response.body();
-//                TimeSlotModel.TimeData timeData = timeSlotModel.getTimeData();
-//                List<TimeSlotModel.TimeData.TimeSlot> DataList = timeData.getTimeSlotList();
-//
-//                for (int i = 0; i < DataList.size(); i++) {
-//
-//                    TimeSlotModel.TimeData.TimeSlot model = DataList.get(i);
-//
-//                    TimeSlotModel.TimeData.TimeSlot data = new TimeSlotModel.TimeData.TimeSlot(
-//                            model.getSlotTime(), model.getStatus());
-//
-//                    Log.e("timesloa", "onResponse: " + model.getSlotTime());
-//                    Log.e("timesloa", "onResponse: " + model.getStatus());
-//
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<TimeSlotModel> call, Throwable t) {
-//
-//            }
-//        });
-//    }
+    public void addBookingAppointment(String token, String patient_id, String doctor_id, String booking_date, String slot_time) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+
+        call.addBookingAppointment(token, patient_id, doctor_id, booking_date, slot_time).enqueue(new Callback<AddBookingAppointmentModel>() {
+            @Override
+            public void onResponse(Call<AddBookingAppointmentModel> call, Response<AddBookingAppointmentModel> response) {
+
+                AddBookingAppointmentModel model = response.body();
+
+                Log.e("booking id", "onResponse: " + model.getData().getBookingID());
+
+                String booking_id = model.getData().getBookingID();
+                dialog.dismiss();
+//                Toast.makeText(getApplicationContext(), "" + s, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), BookAppointment.class);
+                intent.putExtra("bookingId", booking_id);
+                startActivity(intent);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<AddBookingAppointmentModel> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    public void getTimeSlot(String token, String user_id, String doctor_id, String date) {
+
+        Api call = RetrofitClient.getClient(Base_Url).create(Api.class);
+        dialog.show();
+
+
+        call.getTimeSlot(token, user_id, doctor_id, date).enqueue(new Callback<TimeSlotModel>() {
+            @Override
+            public void onResponse(Call<TimeSlotModel> call, Response<TimeSlotModel> response) {
+
+                TimeSlotModel timeSlotModel = response.body();
+
+                Data data = timeSlotModel.getData();
+
+
+                List<TimeSlotItem> DataList = data.getTimeSlot();
+
+                for (int i = 0; i < DataList.size(); i++) {
+
+                    TimeSlotItem model = DataList.get(i);
+
+                    TimeSlotItem timeData = new TimeSlotItem(model.getSlotTime(), model.getStatus());
+
+                    Log.e("time", "onResponse: " + timeData.getSlotTime());
+
+                }
+
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<TimeSlotModel> call, Throwable t) {
+
+            }
+        });
+
+    }
 }

@@ -12,11 +12,6 @@ public class CommonModel {
     @Expose
     String message;
 
-    @SerializedName("data")
-    @Expose
-    String data;
-
-
     public Boolean getStatus() {
         return status;
     }
@@ -31,13 +26,5 @@ public class CommonModel {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public String getData() {
-        return data;
-    }
-
-    public void setData(String data) {
-        this.data = data;
     }
 }

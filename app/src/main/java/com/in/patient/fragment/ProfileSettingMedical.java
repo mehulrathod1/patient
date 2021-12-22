@@ -10,9 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.in.patient.R;
 import com.in.patient.globle.Glob;
+import com.in.patient.model.CommonModel;
 import com.in.patient.model.ProfileMedicalModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
@@ -50,6 +52,20 @@ public class ProfileSettingMedical extends Fragment {
         edtAny = view.findViewById(R.id.edtAny);
         btnSubmit = view.findViewById(R.id.btnSubmit);
 
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                updateProfileMedical(Glob.Token, Glob.user_id,
+                        edtDetail.getText().toString(),
+                        edtCurrent.getText().toString(),
+                        edtPast.getText().toString(),
+                        edtAny.getText().toString()
+
+
+                );
+            }
+        });
 
     }
 
@@ -76,5 +92,30 @@ public class ProfileSettingMedical extends Fragment {
 
             }
         });
+    }
+
+    public void updateProfileMedical(String token, String user_id, String details_of_allergies, String current_and_past_medication,
+                                     String past_surgery_injury, String chronic_disease) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+        call.updateProfileMedical(token, user_id, details_of_allergies, current_and_past_medication,
+                past_surgery_injury, chronic_disease).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+
+                CommonModel model = response.body();
+
+                getProfileMedical(Glob.Token, Glob.user_id);
+
+                Toast.makeText(getContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+
+            }
+        });
+
     }
 }

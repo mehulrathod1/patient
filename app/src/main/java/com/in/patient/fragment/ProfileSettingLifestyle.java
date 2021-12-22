@@ -9,11 +9,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.in.patient.R;
 import com.in.patient.globle.Glob;
+import com.in.patient.model.CommonModel;
 import com.in.patient.model.ProfileLifestyleModel;
 import com.in.patient.model.ProfileMedicalModel;
 import com.in.patient.retrofit.Api;
@@ -31,6 +34,7 @@ public class ProfileSettingLifestyle extends Fragment {
     View view;
     Spinner spnSmoking, spnAlcohol, spnWorkoutLevel;
     EditText edtSportInvolvement;
+    Button btnSubmit;
     ArrayAdapter<String> smokingAdapter, alcoholAdapter, workoutAdapter;
     List<String> smokingList, alcoholList, workoutList;
 
@@ -57,6 +61,7 @@ public class ProfileSettingLifestyle extends Fragment {
         spnAlcohol = view.findViewById(R.id.spnAlcohol);
         spnWorkoutLevel = view.findViewById(R.id.spnWorkoutLevel);
         edtSportInvolvement = view.findViewById(R.id.edtSportInvolvement);
+        btnSubmit = view.findViewById(R.id.btnSubmit);
 
         smokingList = new ArrayList<>();
         smokingList.add("yes");
@@ -86,6 +91,18 @@ public class ProfileSettingLifestyle extends Fragment {
         workoutAdapter.setDropDownViewResource(R.layout.dropdown_item);
         spnWorkoutLevel.setAdapter(workoutAdapter);
 
+        btnSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                updateProfileLifestyle(Glob.Token, Glob.user_id, spnSmoking.getSelectedItem().toString(),
+                        spnAlcohol.getSelectedItem().toString(),
+                        spnWorkoutLevel.getSelectedItem().toString(), edtSportInvolvement.getText().toString()
+                );
+
+            }
+        });
+
     }
 
 
@@ -102,6 +119,8 @@ public class ProfileSettingLifestyle extends Fragment {
 
                 Log.e("vataf", "onResponse: " + model.getData().getAlcohol());
                 Log.e("vataf", "onResponse: " + model.getData().getSports_involvement());
+
+                edtSportInvolvement.setText(model.getData().getSports_involvement());
 
                 if (model.getData().getSmoking().equals("no")) {
                     spnSmoking.setSelection(1);
@@ -130,4 +149,30 @@ public class ProfileSettingLifestyle extends Fragment {
     }
 
 
+    public void updateProfileLifestyle(String token,
+                                       String user_id,
+                                       String smoking,
+                                       String alchol,
+                                       String workout_level,
+                                       String sports_involvement) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+        call.updateProfileLifestyle(token, user_id, smoking, alchol, workout_level, sports_involvement).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+
+                CommonModel model = response.body();
+                Toast.makeText(getContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
+                getProfileLifestyle(Glob.Token, Glob.user_id);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+
+            }
+        });
+    }
 }

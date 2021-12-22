@@ -5,6 +5,7 @@ import static com.in.patient.globle.Glob.user_id;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,12 +25,17 @@ import retrofit2.Response;
 
 public class BookAppointment extends AppCompatActivity {
 
-    TextView txtPayNow;
+    TextView txtPayNow, txtDoctorName, txtBookingId, txtSpeciality, txtDName, txtBookingFor,
+            txtBookingStatus, txtPatientName, txtLocation, txtServiceTime, txtClinicAddress,
+            texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport;
+
+    String BookingId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_book_appointment);
+        getSupportActionBar().hide();
 
         init();
         getConformationDetail(Token, "20", "1", "3");
@@ -38,6 +44,30 @@ public class BookAppointment extends AppCompatActivity {
     public void init() {
         Glob.progressDialog(this);
         txtPayNow = findViewById(R.id.txtpayNow);
+
+
+        txtDoctorName = findViewById(R.id.txtDoctorName);
+        txtBookingId = findViewById(R.id.txtBookingId);
+        txtSpeciality = findViewById(R.id.txtSpeciality);
+        txtDName = findViewById(R.id.txtDName);
+        txtBookingFor = findViewById(R.id.txtBookingFor);
+        txtBookingStatus = findViewById(R.id.txtBookingStatus);
+        txtPatientName = findViewById(R.id.txtPatientName);
+        txtLocation = findViewById(R.id.txtLocation);
+        txtServiceTime = findViewById(R.id.txtServiceTime);
+        txtClinicAddress = findViewById(R.id.txtClinicAddress);
+        texTotalAmount = findViewById(R.id.texTotalAmount);
+        txtAmountFees = findViewById(R.id.txtAmountFees);
+        txtAmountStatus = findViewById(R.id.txtAmountStatus);
+        extDocument = findViewById(R.id.extDocument);
+        txtReport = findViewById(R.id.txtReport);
+
+
+        Intent intent = getIntent();
+        BookingId = intent.getStringExtra("bookingId");
+
+        Log.e("bookingid", "init: " + BookingId);
+
 
         txtPayNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +99,19 @@ public class BookAppointment extends AppCompatActivity {
                 Log.e("dataaa", "onResponse: " + data.getPatientName());
                 Log.e("dataaa", "onResponse: " + data.getTotalAmount());
 
+
+                txtDoctorName.setText(data.getDoctorName());
+                txtBookingId.setText(data.getBookingId());
+                txtSpeciality.setText(data.getSpecialty());
+                txtDName.setText(data.getDoctorName());
+                txtBookingStatus.setText(data.getBookingStatus());
+                txtPatientName.setText(data.getPatientName());
+                txtLocation.setText(data.getPatientLocation());
+                txtServiceTime.setText(data.getBookedServiceTime());
+                txtClinicAddress.setText(data.getClinicLocation());
+                texTotalAmount.setText(data.getTotalAmount());
+                txtAmountStatus.setText(data.getAmountStatus());
+
                 Glob.dialog.dismiss();
 
 
@@ -84,7 +127,7 @@ public class BookAppointment extends AppCompatActivity {
 
     public void bookingConformation(String token, String user_id, String booking_id) {
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
-//        Glob.dialog.show();
+        Glob.dialog.show();
 
 
         call.bookingConformation(token, user_id, booking_id).enqueue(new Callback<CommonModel>() {
@@ -94,12 +137,13 @@ public class BookAppointment extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
 
-//                Glob.dialog.dismiss();
+                Glob.dialog.dismiss();
             }
 
             @Override
             public void onFailure(Call<CommonModel> call, Throwable t) {
 
+                Log.e("onDFailo", "onFailure: " + t.getMessage());
             }
         });
 

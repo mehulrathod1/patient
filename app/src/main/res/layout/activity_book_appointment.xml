@@ -40,6 +40,7 @@
                     android:src="@drawable/nev_back" />
 
                 <TextView
+                    android:id="@+id/txtDoctorName"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_52sdp"
                     android:layout_below="@id/ProfileImage"
@@ -121,6 +122,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtBookingId"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -154,6 +156,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtSpeciality"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -187,6 +190,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtDName"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -221,6 +225,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtBookingFor"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -254,6 +259,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtBookingStatus"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -330,6 +336,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtPatientName"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -363,6 +370,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtLocation"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -441,6 +449,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtServiceTime"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -474,6 +483,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtClinicAddress"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -507,6 +517,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/texTotalAmount"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -541,6 +552,7 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtAmountFees"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7.5"
@@ -581,6 +593,7 @@
                                     android:weightSum="5">
 
                                     <TextView
+                                        android:id="@+id/txtAmountStatus"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="2"
@@ -625,10 +638,12 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/extDocument"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
-                                    android:text="Lorem ipsum."
+                                    android:layout_weight="2.5"
+                                    android:drawableRight="@drawable/icon_feather_upload"
+                                    android:text="@string/Document"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
@@ -658,10 +673,12 @@
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    android:id="@+id/txtReport"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
-                                    android:text="Lorem ipsum."
+                                    android:layout_weight="2"
+                                    android:drawableRight="@drawable/icon_feather_download"
+                                    android:text="@string/Report"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 

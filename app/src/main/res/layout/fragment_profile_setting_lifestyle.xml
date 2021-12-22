@@ -144,16 +144,22 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btnSignIn"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_60sdp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_16sdp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="@dimen/_16sdp"
-        android:layout_marginRight="@dimen/_16sdp"
-        android:layout_marginBottom="@dimen/_16sdp"
-        android:text="@string/Submit"
-        android:textAllCaps="false"
-        android:textSize="@dimen/_20sdp" />
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60sdp"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:text="@string/Submit"
+            android:textAllCaps="false"
+            android:textSize="@dimen/_20sdp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
