@@ -46,6 +46,7 @@
                     android:layout_below="@id/ProfileImage"
                     android:layout_marginLeft="@dimen/_12sdp"
                     android:layout_marginRight="@dimen/_12sdp"
+                    android:fontFamily="@font/montserrat_semi_bold"
                     android:gravity="center_vertical"
                     android:text="Dr. Daksh Kumar"
                     android:textColor="@color/action_mode_color"
@@ -78,12 +79,11 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/m_semi_18"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_35sdp"
                                 android:gravity="center_vertical"
-                                android:text="@string/Details"
-                                android:textColor="@color/action_mode_color_edt"
-                                android:textSize="@dimen/_18sdp" />
+                                android:text="@string/Details" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -106,29 +106,30 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Speciality"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/Speciality" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/doctorSpeciality"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Lorem ipsum."
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
 
@@ -140,29 +141,29 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Education_Details"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/Education_Details" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight=".5"
+                                    android:layout_weight="0.5"
+                                    android:gravity="center"
                                     android:text="   -   "
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/txtDoctorEducation"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Lorem ipsum."
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
 
@@ -174,29 +175,29 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Language_Spoken"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/Language_Spoken" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/languageSpoken"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Lorem ipsum."
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
 
@@ -208,28 +209,28 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Experience"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/Experience" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/experience"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="7"
+                                    android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
 
@@ -241,29 +242,29 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/About_Me"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/About_Me" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/txtAbout"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et."
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
 
@@ -290,12 +291,11 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/m_semi_18"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_35sdp"
                                 android:gravity="center_vertical"
-                                android:text="@string/Clinic_Info"
-                                android:textColor="@color/action_mode_color_edt"
-                                android:textSize="@dimen/_18sdp" />
+                                android:text="@string/Clinic_Info" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -318,29 +318,30 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Clinic_Name"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+
+                                    android:text="@string/Clinic_Name" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/txtClinicName"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Lorem ipsum."
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
 
@@ -352,29 +353,29 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Location_of_clinic"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/Location_of_clinic" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/txtClinicLocation"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Lorem ipsum."
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
 
@@ -386,18 +387,18 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Uploaded_Images"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/Uploaded_Images" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
@@ -421,29 +422,29 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/From_to_To_days"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/From_to_To_days" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/txtFromDay"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Lorem ipsum."
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
 
@@ -455,29 +456,29 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/OpenClose_Time"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/OpenClose_Time" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/txtOpenCloseTime"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Lorem ipsum."
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
 
@@ -489,29 +490,29 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Offline_Consultancy_Fees"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/Offline_Consultancy_Fees" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/txtFees"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Lorem ipsum."
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
 
@@ -523,29 +524,29 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Doctor_availability_status"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/Doctor_availability_status" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
                                     android:id="@+id/edtStatus"
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Available"
-                                    android:textColor="@color/action_mode_color_orange"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_orange" />
 
                             </LinearLayout>
 
@@ -574,12 +575,11 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/m_semi_18"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_35sdp"
                                 android:gravity="center_vertical"
-                                android:text="@string/Rating"
-                                android:textColor="@color/action_mode_color_edt"
-                                android:textSize="@dimen/_18sdp" />
+                                android:text="@string/Rating" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -624,12 +624,11 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/m_semi_18"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_35sdp"
                                 android:gravity="center_vertical"
-                                android:text="@string/Schedule_video"
-                                android:textColor="@color/action_mode_color_edt"
-                                android:textSize="@dimen/_18sdp" />
+                                android:text="@string/Schedule_video" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -652,28 +651,28 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Doctor_availability_status"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/Doctor_availability_status" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5"
+                                    android:layout_weight="7"
                                     android:text="Available"
-                                    android:textColor="@color/action_mode_color_orange"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textColor="@color/action_mode_color_orange" />
 
                             </LinearLayout>
 
@@ -685,18 +684,18 @@
                                 android:weightSum="10">
 
                                 <TextView
+                                    style="@style/m_semi_14"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="2"
-                                    android:text="@string/Price_Per_slot"
-                                    android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:layout_weight="2.5"
+                                    android:text="@string/Price_Per_slot" />
 
                                 <TextView
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
-                                    android:text="   -   "
+                                    android:gravity="center"
+                                    android:text="-"
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
@@ -704,7 +703,7 @@
                                     android:id="@+id/timeRecycler"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="7.5" />
+                                    android:layout_weight="7" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -767,152 +766,161 @@
                                 android:background="@color/action_mode_color_edt" />
                         </LinearLayout>
 
-                        <TextView
+                        <androidx.recyclerview.widget.RecyclerView
+
+                            android:id="@+id/slotRecycler"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/Morning"
-                            android:textColor="@color/action_mode_color_edt"
-                            android:textSize="@dimen/_14sdp" />
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginBottom="@dimen/_8sdp" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="4">
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/_30sdp"
-                                android:layout_marginTop="@dimen/_8sdp"
-                                android:layout_marginRight="@dimen/_8sdp"
-                                android:layout_marginBottom="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:background="@drawable/time_bg"
-                                android:gravity="center"
-                                android:text="10:00 AM"
-                                android:textColor="@color/action_mode_color_300"
-                                android:textSize="@dimen/_12sdp" />
+                        <!--                        <TextView-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:text="@string/Morning"-->
+                        <!--                            android:textColor="@color/action_mode_color_edt"-->
+                        <!--                            android:textSize="@dimen/_14sdp" />-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/_30sdp"
-                                android:layout_margin="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:background="@drawable/time_bg"
-                                android:gravity="center"
-                                android:text="10:00 AM"
-                                android:textColor="@color/action_mode_color_300"
-                                android:textSize="@dimen/_12sdp" />
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:orientation="horizontal"-->
+                        <!--                            android:weightSum="4">-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/_30sdp"
-                                android:layout_margin="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:background="@drawable/time_bg"
-                                android:gravity="center"
-                                android:text="10:00 AM"
-                                android:textColor="@color/action_mode_color_300"
-                                android:textSize="@dimen/_12sdp" />
-                        </LinearLayout>
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="@dimen/_30sdp"-->
+                        <!--                                android:layout_marginTop="@dimen/_8sdp"-->
+                        <!--                                android:layout_marginRight="@dimen/_8sdp"-->
+                        <!--                                android:layout_marginBottom="@dimen/_8sdp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@drawable/time_bg"-->
+                        <!--                                android:gravity="center"-->
+                        <!--                                android:text="10:00 AM"-->
+                        <!--                                android:textColor="@color/action_mode_color_300"-->
+                        <!--                                android:textSize="@dimen/_12sdp" />-->
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/Afternoon"
-                            android:textColor="@color/action_mode_color_edt"
-                            android:textSize="@dimen/_14sdp" />
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="@dimen/_30sdp"-->
+                        <!--                                android:layout_margin="@dimen/_8sdp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@drawable/time_bg"-->
+                        <!--                                android:gravity="center"-->
+                        <!--                                android:text="10:00 AM"-->
+                        <!--                                android:textColor="@color/action_mode_color_300"-->
+                        <!--                                android:textSize="@dimen/_12sdp" />-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="4">
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="@dimen/_30sdp"-->
+                        <!--                                android:layout_margin="@dimen/_8sdp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@drawable/time_bg"-->
+                        <!--                                android:gravity="center"-->
+                        <!--                                android:text="10:00 AM"-->
+                        <!--                                android:textColor="@color/action_mode_color_300"-->
+                        <!--                                android:textSize="@dimen/_12sdp" />-->
+                        <!--                        </LinearLayout>-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/_30sdp"
-                                android:layout_marginTop="@dimen/_8sdp"
-                                android:layout_marginRight="@dimen/_8sdp"
-                                android:layout_marginBottom="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:background="@drawable/time_bg"
-                                android:gravity="center"
-                                android:text="10:00 AM"
-                                android:textColor="@color/action_mode_color_300"
-                                android:textSize="@dimen/_12sdp" />
+                        <!--                        <TextView-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:text="@string/Afternoon"-->
+                        <!--                            android:textColor="@color/action_mode_color_edt"-->
+                        <!--                            android:textSize="@dimen/_14sdp" />-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/_30sdp"
-                                android:layout_margin="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:background="@drawable/time_bg"
-                                android:gravity="center"
-                                android:text="10:00 AM"
-                                android:textColor="@color/action_mode_color_300"
-                                android:textSize="@dimen/_12sdp" />
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:orientation="horizontal"-->
+                        <!--                            android:weightSum="4">-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/_30sdp"
-                                android:layout_margin="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:background="@drawable/time_bg"
-                                android:gravity="center"
-                                android:text="10:00 AM"
-                                android:textColor="@color/action_mode_color_300"
-                                android:textSize="@dimen/_12sdp" />
-                        </LinearLayout>
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="@dimen/_30sdp"-->
+                        <!--                                android:layout_marginTop="@dimen/_8sdp"-->
+                        <!--                                android:layout_marginRight="@dimen/_8sdp"-->
+                        <!--                                android:layout_marginBottom="@dimen/_8sdp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@drawable/time_bg"-->
+                        <!--                                android:gravity="center"-->
+                        <!--                                android:text="10:00 AM"-->
+                        <!--                                android:textColor="@color/action_mode_color_300"-->
+                        <!--                                android:textSize="@dimen/_12sdp" />-->
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/Evening"
-                            android:textColor="@color/action_mode_color_edt"
-                            android:textSize="@dimen/_14sdp" />
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="@dimen/_30sdp"-->
+                        <!--                                android:layout_margin="@dimen/_8sdp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@drawable/time_bg"-->
+                        <!--                                android:gravity="center"-->
+                        <!--                                android:text="10:00 AM"-->
+                        <!--                                android:textColor="@color/action_mode_color_300"-->
+                        <!--                                android:textSize="@dimen/_12sdp" />-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:weightSum="4">
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="@dimen/_30sdp"-->
+                        <!--                                android:layout_margin="@dimen/_8sdp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@drawable/time_bg"-->
+                        <!--                                android:gravity="center"-->
+                        <!--                                android:text="10:00 AM"-->
+                        <!--                                android:textColor="@color/action_mode_color_300"-->
+                        <!--                                android:textSize="@dimen/_12sdp" />-->
+                        <!--                        </LinearLayout>-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/_30sdp"
-                                android:layout_marginTop="@dimen/_8sdp"
-                                android:layout_marginRight="@dimen/_8sdp"
-                                android:layout_marginBottom="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:background="@drawable/time_bg"
-                                android:gravity="center"
-                                android:text="10:00 AM"
-                                android:textColor="@color/action_mode_color_300"
-                                android:textSize="@dimen/_12sdp" />
+                        <!--                        <TextView-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:text="@string/Evening"-->
+                        <!--                            android:textColor="@color/action_mode_color_edt"-->
+                        <!--                            android:textSize="@dimen/_14sdp" />-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/_30sdp"
-                                android:layout_margin="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:background="@drawable/time_bg"
-                                android:gravity="center"
-                                android:text="10:00 AM"
-                                android:textColor="@color/action_mode_color_300"
-                                android:textSize="@dimen/_12sdp" />
+                        <!--                        <LinearLayout-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:orientation="horizontal"-->
+                        <!--                            android:weightSum="4">-->
 
-                            <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="@dimen/_30sdp"
-                                android:layout_margin="@dimen/_8sdp"
-                                android:layout_weight="1"
-                                android:background="@drawable/time_bg"
-                                android:gravity="center"
-                                android:text="10:00 AM"
-                                android:textColor="@color/action_mode_color_300"
-                                android:textSize="@dimen/_12sdp" />
-                        </LinearLayout>
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="@dimen/_30sdp"-->
+                        <!--                                android:layout_marginTop="@dimen/_8sdp"-->
+                        <!--                                android:layout_marginRight="@dimen/_8sdp"-->
+                        <!--                                android:layout_marginBottom="@dimen/_8sdp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@drawable/time_bg"-->
+                        <!--                                android:gravity="center"-->
+                        <!--                                android:text="10:00 AM"-->
+                        <!--                                android:textColor="@color/action_mode_color_300"-->
+                        <!--                                android:textSize="@dimen/_12sdp" />-->
+
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="@dimen/_30sdp"-->
+                        <!--                                android:layout_margin="@dimen/_8sdp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@drawable/time_bg"-->
+                        <!--                                android:gravity="center"-->
+                        <!--                                android:text="10:00 AM"-->
+                        <!--                                android:textColor="@color/action_mode_color_300"-->
+                        <!--                                android:textSize="@dimen/_12sdp" />-->
+
+                        <!--                            <TextView-->
+                        <!--                                android:layout_width="0dp"-->
+                        <!--                                android:layout_height="@dimen/_30sdp"-->
+                        <!--                                android:layout_margin="@dimen/_8sdp"-->
+                        <!--                                android:layout_weight="1"-->
+                        <!--                                android:background="@drawable/time_bg"-->
+                        <!--                                android:gravity="center"-->
+                        <!--                                android:text="10:00 AM"-->
+                        <!--                                android:textColor="@color/action_mode_color_300"-->
+                        <!--                                android:textSize="@dimen/_12sdp" />-->
+                        <!--                        </LinearLayout>-->
 
                         <TextView
                             android:layout_width="wrap_content"

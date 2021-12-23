@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         int index = getIntent().getIntExtra("s", 0);
         if (index == 1) {
-            fragment = new DoctorConsultant();
+            fragment = new DoctorConsultSecond();
             loadFragment(fragment);
         }
         if (index == 2) {

@@ -52,13 +52,14 @@
 
                         <AutoCompleteTextView
                             android:id="@+id/countryName"
-                            style="@style/sub_heading_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:backgroundTint="@color/white"
+                            android:fontFamily="@font/montserrat_semi_bold"
                             android:padding="@dimen/_10sdp"
                             android:text="Gujarat"
-                            android:textColor="@color/action_mode_color_300" />
+                            android:textColor="@color/action_mode_color_300"
+                            android:textSize="@dimen/_16sdp" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -92,9 +93,9 @@
                             android:src="@drawable/icon_ionic_search" />
 
                         <TextView
-                            style="@style/sub_heading_text"
                             android:layout_width="wrap_content"
                             android:layout_height="@dimen/_46sdp"
+                            android:fontFamily="@font/montserrat_semi_bold"
                             android:gravity="center"
                             android:text="Search"
                             android:textColor="@color/action_mode_color_edt" />
@@ -157,11 +158,11 @@
                                     android:src="@drawable/rectangle_1" />
 
                                 <TextView
+                                    style="@style/m_regular_12"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="@string/Doctor_Consultation"
-                                    android:textColor="@color/action_mode_color_edt" />
+                                    android:text="@string/Doctor_Consultation" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -179,11 +180,11 @@
                                     android:src="@drawable/rectangle_2" />
 
                                 <TextView
+                                    style="@style/m_regular_12"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="@string/Home_Care_Servicies"
-                                    android:textColor="@color/action_mode_color_edt" />
+                                    android:text="@string/Home_Care_Servicies" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -201,11 +202,11 @@
                                     android:src="@drawable/rectangle_3" />
 
                                 <TextView
+                                    style="@style/m_regular_12"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="@string/Lab_Tests"
-                                    android:textColor="@color/action_mode_color_edt" />
+                                    android:text="@string/Lab_Tests" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -223,11 +224,11 @@
                                     android:src="@drawable/rectangle_2" />
 
                                 <TextView
+                                    style="@style/m_regular_12"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="@string/Medicine"
-                                    android:textColor="@color/action_mode_color_edt" />
+                                    android:text="@string/Medicine" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -255,11 +256,11 @@
                                     android:src="@drawable/rectangle_4" />
 
                                 <TextView
+                                    style="@style/m_regular_12"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="@string/Health_care"
-                                    android:textColor="@color/action_mode_color_edt" />
+                                    android:text="@string/Health_care" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -277,11 +278,11 @@
                                     android:src="@drawable/rectangle5" />
 
                                 <TextView
+                                    style="@style/m_regular_12"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="@string/Stress_buster_zone"
-                                    android:textColor="@color/action_mode_color_edt" />
+                                    android:text="@string/Stress_buster_zone" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -298,11 +299,11 @@
                                     android:src="@drawable/rectangle_4" />
 
                                 <TextView
+                                    style="@style/m_regular_12"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="@string/Ask_Questions"
-                                    android:textColor="@color/action_mode_color_edt" />
+                                    android:text="@string/Ask_Questions" />
 
                             </LinearLayout>
 
@@ -320,11 +321,11 @@
                                     android:src="@drawable/rectangle_6" />
 
                                 <TextView
+                                    style="@style/m_regular_12"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:gravity="center"
-                                    android:text="@string/Knowledge_Forum"
-                                    android:textColor="@color/action_mode_color_edt" />
+                                    android:text="@string/Knowledge_Forum" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -353,21 +354,23 @@
 
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/Find_Your_Doctors"
                                     android:textColor="@color/action_mode_color"
-                                    android:textSize="@dimen/_20sdp"
-                                    android:textStyle="bold" />
+                                    android:textSize="@dimen/_20sdp" />
 
                                 <TextView
                                     android:id="@+id/viewAllDoctor"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
-                                    android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
                                     android:layout_centerInParent="true"
+                                    android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                                    android:fontFamily="@font/montserrat_semi_bold"
                                     android:gravity="right"
                                     android:text="@string/View_all"
-                                    android:textColor="@color/action_mode_color_300" />
+                                    android:textColor="@color/action_mode_color_300"
+                                    android:textSize="@dimen/_12sdp" />
 
                             </RelativeLayout>
                         </LinearLayout>
@@ -382,6 +385,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_8sdp"
+                                android:fontFamily="@font/montserrat_semi_bold"
                                 android:text="@string/Choose_from"
                                 android:textColor="@color/action_mode_color_300"
                                 android:textSize="@dimen/_14sdp" />
@@ -417,21 +421,23 @@
 
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/Health_Care_services"
                                     android:textColor="@color/action_mode_color"
-                                    android:textSize="@dimen/_20sdp"
-                                    android:textStyle="bold" />
+                                    android:textSize="@dimen/_20sdp" />
 
                                 <TextView
                                     android:id="@+id/viewAllServices"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
-                                    android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
                                     android:layout_centerInParent="true"
+                                    android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:gravity="right"
                                     android:text="@string/View_all"
-                                    android:textColor="@color/action_mode_color_300" />
+                                    android:textColor="@color/action_mode_color_300"
+                                    android:textSize="@dimen/_12sdp" />
 
                             </RelativeLayout>
                         </LinearLayout>
@@ -475,6 +481,7 @@
 
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/Health_Checkup_at_Home"
                                     android:textColor="@color/action_mode_color"
                                     android:textSize="@dimen/_20sdp"
@@ -485,11 +492,13 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentRight="true"
-                                    android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
                                     android:layout_centerInParent="true"
+                                    android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                                    android:fontFamily="@font/montserrat_semi_bold"
                                     android:gravity="right"
                                     android:text="@string/View_all"
-                                    android:textColor="@color/action_mode_color_300" />
+                                    android:textColor="@color/action_mode_color_300"
+                                    android:textSize="@dimen/_12sdp" />
 
                             </RelativeLayout>
                         </LinearLayout>

@@ -61,32 +61,30 @@
 
                         <TextView
                             android:id="@+id/DoctorName"
-                            style="@style/sub_heading_text"
+                            style="@style/m_semi_16"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Dr. Daksh Kumar"
-                            android:textColor="@color/action_mode_color_edt" />
+                            android:text="Dr. Daksh Kumar" />
+                        l
 
                         <TextView
                             android:id="@+id/speciality"
+                            style="@style/m_semi_12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:text="Hair Transplat Surgeon"
-                            android:textColor="@color/action_mode_color_edt"
-                            android:textSize="@dimen/_12sdp" />
+                            android:layout_marginTop="@dimen/_6sdp"
+                            android:text="Hair Transplat Surgeon" />
 
                         <TextView
                             android:id="@+id/exp"
+                            style="@style/m_regular_12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:drawableLeft="@drawable/group"
                             android:drawablePadding="@dimen/_8sdp"
                             android:gravity="center_vertical"
-                            android:text="17 yrs of exp. overall"
-                            android:textColor="@color/action_mode_color_edt"
-                            android:textSize="@dimen/_12sdp" />
+                            android:text="17 yrs of exp. overall" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -96,18 +94,18 @@
 
                             <TextView
                                 android:id="@+id/Location"
+                                style="@style/m_regular_12"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:drawableLeft="@drawable/location_on_24"
                                 android:drawablePadding="@dimen/_8sdp"
                                 android:gravity="center_vertical"
-                                android:text="Location"
-                                android:textColor="@color/action_mode_color_edt"
-                                android:textSize="@dimen/_12sdp" />
+                                android:text="Location" />
 
                             <TextView
                                 android:id="@+id/LikePercentage"
+                                style="@style/m_regular_12"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_16sdp"
@@ -115,9 +113,7 @@
                                 android:drawableLeft="@drawable/icon_awesom_thumbsup"
                                 android:drawablePadding="@dimen/_8sdp"
                                 android:gravity="center_vertical"
-                                android:text="95%"
-                                android:textColor="@color/action_mode_color_edt"
-                                android:textSize="@dimen/_12sdp" />
+                                android:text="95%" />
 
 
                         </LinearLayout>
@@ -130,6 +126,7 @@
 
                             <TextView
                                 android:id="@+id/available"
+                                style="@style/m_regular_12"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -137,11 +134,12 @@
                                 android:drawablePadding="@dimen/_8sdp"
                                 android:gravity="center_vertical"
                                 android:text="Available Today"
-                                android:textColor="@color/action_mode_color_edt"
-                                android:textSize="@dimen/_12sdp" />
+
+                                />
 
                             <TextView
                                 android:id="@+id/Rate"
+                                style="@style/m_regular_12"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/_16sdp"
@@ -150,8 +148,8 @@
                                 android:drawablePadding="@dimen/_8sdp"
                                 android:gravity="center_vertical"
                                 android:text="125"
-                                android:textColor="@color/action_mode_color_edt"
-                                android:textSize="@dimen/_12sdp" />
+
+                                />
                         </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>

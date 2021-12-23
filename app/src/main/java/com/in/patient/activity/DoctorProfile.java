@@ -6,6 +6,7 @@ import static com.in.patient.globle.Glob.dialog;
 import static com.in.patient.globle.Glob.user_id;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,12 +17,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.in.patient.R;
 import com.in.patient.adapter.DayAdapter;
 import com.in.patient.adapter.DoctorTimePriceAdapter;
 import com.in.patient.adapter.DoctorUploadedImageAdapter;
 import com.in.patient.adapter.MyReviewAdapter;
+import com.in.patient.adapter.SlotAdapter;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.AddBookingAppointmentModel;
 import com.in.patient.model.CareAndCheckupModel;
@@ -34,9 +37,11 @@ import com.in.patient.retrofit.RetrofitClient;
 import com.in.patient.retrofit.TimeSlotItem;
 import com.in.patient.retrofit.TimeSlotModel;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -49,7 +54,7 @@ public class DoctorProfile extends AppCompatActivity {
 
     TextView doctorName, txtDoctorEducation, doctorSpeciality, languageSpoken, experience, txtClinicName, txtClinicLocation, txtFromDay, txtOpenCloseTime, txtFees, txtStatus;
 
-    RecyclerView recyclerView, reviewRecycler, timeRecycler, dayRecycler;
+    RecyclerView recyclerView, reviewRecycler, timeRecycler, dayRecycler, slotRecycler;
     DoctorUploadedImageAdapter adapter;
     List<CareAndCheckupModel> list = new ArrayList<>();
 
@@ -59,11 +64,16 @@ public class DoctorProfile extends AppCompatActivity {
     DoctorTimePriceAdapter doctorTimePriceAdapter;
     List<DoctorTimePrice> timePriceList = new ArrayList<>();
 
+
+    SlotAdapter timeSlotAdapter;
+    List<TimeSlotItem> timeSlotItemList = new ArrayList<>();
+
     Button bookAppointment;
 
     ImageView backButton;
 
     String doctorId;
+    String appointmentTime, appointmentDate;
 
 
     DayAdapter dayAdapter;
@@ -77,7 +87,7 @@ public class DoctorProfile extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         for (int i = 0; i < 7; i++) {
             Calendar calendar = new GregorianCalendar();
             calendar.add(Calendar.DATE, i);
@@ -87,8 +97,6 @@ public class DoctorProfile extends AppCompatActivity {
             Log.e("datalisr", "onCreate: " + dateList.get(i));
 
         }
-
-
         SimpleDateFormat sddf = new SimpleDateFormat("EEEE");
         for (int i = 0; i < 7; i++) {
             Calendar calendar = new GregorianCalendar();
@@ -96,15 +104,19 @@ public class DoctorProfile extends AppCompatActivity {
             String day = sddf.format(calendar.getTime());
             Log.i("cmvhclv", day);
             dayList.add(day);
-            Log.e("datalisr", "onCreate: " + dayList.get(i));
+            Log.e("datalist", "onCreate: " + dayList.get(i));
 
 
         }
 
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        Date date = new Date();
+        appointmentDate = dateFormat.format(date);
+
+        Log.e("current", "onCreate: " + appointmentDate);
+
         Intent intent = getIntent();
         doctorId = intent.getStringExtra("doctorId");
-
-
         Log.e("id", "onCreate: " + doctorId);
 
         init();
@@ -114,8 +126,8 @@ public class DoctorProfile extends AppCompatActivity {
         dayData();
 
         getDoctorProfile(Token, user_id, doctorId);
+        getTimeSlot(Token, user_id, doctorId, appointmentDate);
 
-//        getTimeSlot(Token,user_id,id,"2021-12-13");
 
     }
 
@@ -124,6 +136,7 @@ public class DoctorProfile extends AppCompatActivity {
         reviewRecycler = findViewById(R.id.reviewRecycler);
         timeRecycler = findViewById(R.id.timeRecycler);
         dayRecycler = findViewById(R.id.dayRecycler);
+        slotRecycler = findViewById(R.id.slotRecycler);
 
         bookAppointment = findViewById(R.id.BookAppointment);
         backButton = findViewById(R.id.backButton);
@@ -148,7 +161,14 @@ public class DoctorProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                addBookingAppointment(Token, user_id, doctorId, "2021-12-13", "15:00:00");
+                if (appointmentTime == null) {
+                    Toast.makeText(getApplicationContext(), "Please Select Appointment Time ", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    Log.e("currentdata", "onClick: " + doctorId + appointmentDate + appointmentTime);
+
+                    addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime);
+                }
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -241,11 +261,11 @@ public class DoctorProfile extends AppCompatActivity {
             @Override
             public void itemClick(int position) {
 
-                String s = dateList.get(position);
+                appointmentDate = dateList.get(position);
 
-                Log.e("dfggf", "itemClick: " + s);
+                Log.e("appointmentDate", "itemClick: " + appointmentDate);
 
-                getTimeSlot(Token, user_id, "13", "2021-12-13");
+                getTimeSlot(Token, user_id, doctorId, appointmentDate);
 
             }
         });
@@ -311,6 +331,7 @@ public class DoctorProfile extends AppCompatActivity {
 //                Toast.makeText(getApplicationContext(), "" + s, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(getApplicationContext(), BookAppointment.class);
                 intent.putExtra("bookingId", booking_id);
+                intent.putExtra("doctorId", doctorId);
                 startActivity(intent);
 
 
@@ -318,13 +339,16 @@ public class DoctorProfile extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<AddBookingAppointmentModel> call, Throwable t) {
-
+                Toast.makeText(getApplicationContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("error", "onFailure: " + t.getMessage());
+                dialog.dismiss();
             }
         });
 
     }
 
     public void getTimeSlot(String token, String user_id, String doctor_id, String date) {
+
 
         Api call = RetrofitClient.getClient(Base_Url).create(Api.class);
         dialog.show();
@@ -349,8 +373,9 @@ public class DoctorProfile extends AppCompatActivity {
 
                     Log.e("time", "onResponse: " + timeData.getSlotTime());
 
+                    timeSlotItemList.add(timeData);
                 }
-
+                getTimeSlotData();
                 dialog.dismiss();
             }
 
@@ -361,4 +386,24 @@ public class DoctorProfile extends AppCompatActivity {
         });
 
     }
+
+    public void getTimeSlotData() {
+
+
+        timeSlotAdapter = new SlotAdapter(timeSlotItemList, getApplicationContext(), new SlotAdapter.Click() {
+            @Override
+            public void itemClick(int position) {
+
+                appointmentTime = timeSlotItemList.get(position).getSlotTime();
+
+                Log.e("appointmentTime", "itemClick: " + appointmentTime);
+
+            }
+        });
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 3, LinearLayoutManager.HORIZONTAL, false);
+        slotRecycler.setLayoutManager(mLayoutManager);
+        slotRecycler.setAdapter(timeSlotAdapter);
+    }
+
 }

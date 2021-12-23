@@ -49,5 +49,51 @@
         <item name="android:singleLine">true</item>
     </style>
 
+    <style name="m_regular_12">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+        <item name="android:textColor">@color/action_mode_color_edt</item>
 
+    </style>
+
+    <style name="m_semi_12">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textColor">@color/action_mode_color_edt</item>
+
+    </style>
+
+    <style name="m_semi_14">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+
+    </style>
+
+    <style name="m_semi_16">
+        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textColor">@color/action_mode_color_edt</item>
+
+    </style>
+
+    <style name="m_semi_18">
+        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+        <item name="android:textColor">@color/action_mode_color_edt</item>
+
+    </style>
+
+    <style name="l_bold_14">
+        <item name="android:textSize">@dimen/_14sdp</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+        <item name="android:textColor">@color/black_text_color</item>
+
+    </style>
+
+    <style name="l_bold_12">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/lato_bold</item>
+
+
+    </style>
 </resources>

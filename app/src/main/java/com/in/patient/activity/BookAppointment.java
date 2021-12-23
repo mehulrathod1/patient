@@ -29,7 +29,7 @@ public class BookAppointment extends AppCompatActivity {
             txtBookingStatus, txtPatientName, txtLocation, txtServiceTime, txtClinicAddress,
             texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport;
 
-    String BookingId;
+    String BookingId, doctorId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,19 @@ public class BookAppointment extends AppCompatActivity {
         setContentView(R.layout.activity_book_appointment);
         getSupportActionBar().hide();
 
+
+//        Intent intent = getIntent();
+//        BookingId = intent.getStringExtra("bookingId");
+//
+//        Log.e("bookingid", "init: " + BookingId);
+
+
+        Intent intent = getIntent();
+        BookingId = intent.getStringExtra("bookingId");
+        doctorId = intent.getStringExtra("doctorId");
+        Log.e("bookingId", "onCreate: " + doctorId + BookingId);
         init();
-        getConformationDetail(Token, "20", "1", "3");
+        getConformationDetail(Token, user_id, doctorId, BookingId);
     }
 
     public void init() {
@@ -63,16 +74,10 @@ public class BookAppointment extends AppCompatActivity {
         txtReport = findViewById(R.id.txtReport);
 
 
-        Intent intent = getIntent();
-        BookingId = intent.getStringExtra("bookingId");
-
-        Log.e("bookingid", "init: " + BookingId);
-
-
         txtPayNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                bookingConformation(Token, user_id, "3");
+                bookingConformation(Token, user_id, BookingId);
             }
         });
     }
@@ -144,6 +149,7 @@ public class BookAppointment extends AppCompatActivity {
             public void onFailure(Call<CommonModel> call, Throwable t) {
 
                 Log.e("onDFailo", "onFailure: " + t.getMessage());
+
             }
         });
 
