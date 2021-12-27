@@ -322,7 +322,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2.5"
-
                                     android:text="@string/Clinic_Name" />
 
                                 <TextView
@@ -748,7 +747,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+                                android:src="@drawable/nev_back" />
                         </LinearLayout>
 
 
@@ -923,30 +922,33 @@
                         <!--                        </LinearLayout>-->
 
                         <TextView
+                            style="@style/m_semi_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:text="@string/Enter_Comments"
-                            android:textColor="@color/action_mode_color_edt"
-                            android:textSize="@dimen/_14sdp" />
+                            android:textColor="@color/action_mode_color_edt" />
 
                         <EditText
+                            style="@style/m_semi_16"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:height="@dimen/_30sdp"
                             android:background="@drawable/edt_bg"
-                            android:hint="Enter Comments" />
+                            android:hint="Enter Comments"
+                            android:paddingLeft="@dimen/_4sdp" />
 
                         <TextView
+                            style="@style/m_semi_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:text="@string/Upload_Report_File"
-                            android:textColor="@color/action_mode_color_edt"
-                            android:textSize="@dimen/_14sdp" />
+                            android:textColor="@color/action_mode_color_edt" />
 
                         <TextView
+                            style="@style/m_semi_14"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_marginTop="@dimen/_8sdp"
@@ -959,6 +961,7 @@
 
                     </LinearLayout>
                 </LinearLayout>
+
             </LinearLayout>
 
         </RelativeLayout>
@@ -975,4 +978,5 @@
         android:text="@string/Book_am_Appointment"
         android:textAllCaps="false"
         android:textSize="@dimen/_20sdp" />
+
 </RelativeLayout>
