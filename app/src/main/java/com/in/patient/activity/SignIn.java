@@ -12,6 +12,7 @@ import android.annotation.TargetApi;
 import android.app.KeyguardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
@@ -24,6 +25,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.in.patient.R;
@@ -55,6 +57,7 @@ public class SignIn extends AppCompatActivity {
 
     Button btnSignIn;
     EditText edtEmail, edtPassword;
+    TextView txtSignUP;
 
 
     private KeyStore keyStore;
@@ -79,6 +82,7 @@ public class SignIn extends AppCompatActivity {
 
         Glob.progressDialog(this);
 
+        txtSignUP = findViewById(R.id.signUP);
         btnSignIn = findViewById(R.id.btnSignIn);
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
@@ -86,12 +90,23 @@ public class SignIn extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-//                signInUser(Token, edtEmail.getText().toString(), edtPassword.getText().toString());
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(intent);
+                signInUser(Token, edtEmail.getText().toString(), edtPassword.getText().toString());
             }
         });
+
+        txtSignUP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
+
 
     public void signInUser(String token, String email, String password) {
 
@@ -108,7 +123,15 @@ public class SignIn extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), model.getMessage(), Toast.LENGTH_SHORT).show();
                     Glob.dialog.dismiss();
                     Glob.user_id = model.getData().getId();
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+
+
+                    SharedPreferences.Editor editor = getSharedPreferences("MyPref", MODE_PRIVATE).edit();
+                    editor.putString("token", "123456789");
+                    editor.putString("id", "1");
+                    editor.apply();
+                    editor.commit();
+
+                    Intent intent = new Intent(getApplicationContext(), Authentication.class);
                     startActivity(intent);
                     Log.e("Signin", "onResponse: " + user_id);
                 } else {

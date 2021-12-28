@@ -162,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         moveNext(MyAppointments.class);
                         break;
-
                     case R.id.MyChats:
                         drawerLayout.closeDrawers();
                         moveNext(Chat.class);

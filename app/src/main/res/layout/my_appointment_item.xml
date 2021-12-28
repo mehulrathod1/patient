@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_14sdp"
         android:layout_marginTop="@dimen/_7sdp"
-        android:layout_marginBottom="@dimen/_7sdp"
         android:layout_marginRight="@dimen/_14sdp"
+        android:layout_marginBottom="@dimen/_7sdp"
         android:background="@color/white"
         app:cardCornerRadius="@dimen/_8sdp">
 
@@ -61,54 +61,49 @@
                         android:orientation="vertical">
 
                         <TextView
+                            style="@style/l_normal_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/Booking_Id"
-                            android:textColor="@color/black_text_color"
-                            android:textSize="@dimen/_10sdp" />
+                            android:text="@string/Booking_Id" />
 
                         <TextView
                             android:id="@+id/BookingId"
+                            style="@style/l_bold_12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="008979977"
-                            android:textStyle="bold"
-                            android:textColor="@color/black_text_color"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textColor="@color/black_text_color" />
+
 
                         <TextView
+                            style="@style/l_normal_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
-                            android:textColor="@color/black_text_color"
-                            android:text="@string/Doctor_Name"
-                            android:textSize="@dimen/_10sdp" />
+                            android:text="@string/Doctor_Name" />
 
                         <TextView
                             android:id="@+id/DoctorName"
+                            style="@style/l_bold_12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/black_text_color"
                             android:text="Name"
-                            android:textStyle="bold"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textColor="@color/black_text_color" />
 
                         <TextView
+                            style="@style/l_normal_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
-                            android:text="@string/Location"
-                            android:textColor="@color/black_text_color"
-                            android:textSize="@dimen/_10sdp" />
+                            android:text="@string/Location" />
 
                         <TextView
                             android:id="@+id/CityName"
+                            style="@style/l_bold_12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Gujarat"
-                            android:textStyle="bold"
-                            android:textColor="@color/black_text_color"
-                            android:textSize="@dimen/_12sdp" />
+                            android:textColor="@color/black_text_color" />
                     </LinearLayout>
                 </LinearLayout>
 
@@ -121,22 +116,21 @@
 
                     <TextView
                         android:id="@+id/Status"
+                        style="@style/l_normal_10"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Pending"
                         android:layout_marginBottom="@dimen/_24sdp"
-                        android:textColor="#D68100"
-                        android:textSize="@dimen/_12sdp" />
+                        android:text="@string/Pending"
+                        android:textColor="#D68100" />
 
                     <TextView
                         android:id="@+id/Price"
+                        style="@style/p_medium_16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_24sdp"
                         android:text="$199"
-                        android:textStyle="bold"
-                        android:textColor="@color/black_text_color"
-                        android:textSize="@dimen/_16sdp" />
+                        android:textColor="@color/black_text_color" />
                 </LinearLayout>
 
             </LinearLayout>
@@ -152,8 +146,7 @@
                     android:background="@color/action_mode_color"
                     android:gravity="center"
                     android:text="@string/View_Booking_Details"
-                    android:textColor="@color/white_button_color"
-                    />
+                    android:textColor="@color/white_button_color" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

@@ -68,54 +68,48 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    style="@style/l_normal_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/Booking_Id"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:text="@string/Booking_Id" />
 
                                 <TextView
                                     android:id="@+id/BookingId"
+                                    style="@style/l_bold_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="008979977"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:textStyle="bold" />
+                                    android:textColor="@color/black_text_color" />
 
                                 <TextView
+                                    style="@style/l_normal_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_8sdp"
-                                    android:text="@string/Date_of_Booking"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:text="@string/Date_of_Booking" />
 
                                 <TextView
                                     android:id="@+id/BookingDate"
+                                    style="@style/l_bold_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Name"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:textStyle="bold" />
+                                    android:textColor="@color/black_text_color" />
 
                                 <TextView
+                                    style="@style/l_normal_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_8sdp"
-                                    android:text="@string/Amount_paid"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:text="@string/Amount_paid" />
 
                                 <TextView
                                     android:id="@+id/AmountPaid"
+                                    style="@style/l_bold_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Gujarat"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:textStyle="bold" />
+                                    android:textColor="@color/black_text_color" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -125,46 +119,37 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    style="@style/l_normal_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/Refund_Status"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:text="@string/Refund_Status" />
 
                                 <TextView
                                     android:id="@+id/Refund"
+                                    style="@style/l_bold_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Gujarat"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:textStyle="bold" />
+                                    android:textColor="@color/black_text_color" />
 
 
                                 <TextView
+                                    style="@style/l_normal_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_8sdp"
-                                    android:text="@string/Amount"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:text="@string/Amount" />
 
                                 <TextView
                                     android:id="@+id/Amount"
+                                    style="@style/l_bold_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Gujarat"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:textStyle="bold" />
-
-
+                                    android:textColor="@color/black_text_color" />
                             </LinearLayout>
                         </LinearLayout>
-
-
                     </LinearLayout>
-
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -173,12 +158,11 @@
 
 
                         <TextView
+                            style="@style/l_normal_10"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
-                            android:text="@string/Invoice_Report"
-                            android:textColor="@color/black_text_color"
-                            android:textSize="@dimen/_10sdp" />
+                            android:text="@string/Invoice_Report" />
 
                         <ImageView
                             android:layout_width="wrap_content"

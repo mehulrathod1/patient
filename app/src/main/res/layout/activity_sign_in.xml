@@ -233,6 +233,7 @@
                         android:textColor="#515151" />
 
                     <TextView
+                        android:id="@+id/signUP"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/Sign_up"
