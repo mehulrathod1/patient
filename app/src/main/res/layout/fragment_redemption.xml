@@ -26,7 +26,7 @@
                 android:text="@string/Amount" />
 
             <EditText
-                style="@style/heading_text"
+                style="@style/sub_heading_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_8sdp"

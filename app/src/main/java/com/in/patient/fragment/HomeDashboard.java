@@ -343,7 +343,7 @@ public class HomeDashboard extends Fragment {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.firstFrame, fragment);
-        fragmentTransaction.addToBackStack(null);
+//        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
     }

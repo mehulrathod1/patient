@@ -80,7 +80,7 @@ public class Product extends Fragment {
                     ProductModel.DataItem model = DataList.get(i);
 
                     ProductModel.DataItem Data = new ProductModel.DataItem(
-                            "$ "+ model.getProductPrice(), model.getProductDetails(),
+                            "$ " + model.getProductPrice(), model.getProductDetails(),
                             model.getProductName()
                     );
 

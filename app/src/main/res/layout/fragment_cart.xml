@@ -335,14 +335,14 @@
 
 
                     <TextView
+                        style="@style/m_semi_18"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_16sdp"
                         android:layout_marginTop="@dimen/_16sdp"
                         android:layout_marginRight="@dimen/_16sdp"
                         android:text="Price Details"
-                        android:textColor="@color/black_text_color"
-                        android:textSize="@dimen/_18sdp" />
+                         />
 
                     <View
                         android:layout_width="match_parent"

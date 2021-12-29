@@ -65,14 +65,14 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Dr. Daksh Kumar" />
-                        l
+
 
                         <TextView
                             android:id="@+id/speciality"
                             style="@style/m_semi_12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_6sdp"
+                            android:layout_marginTop="@dimen/_4sdp"
                             android:text="Hair Transplat Surgeon" />
 
                         <TextView

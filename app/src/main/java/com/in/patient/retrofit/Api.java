@@ -7,6 +7,7 @@ import com.in.patient.model.CommonModel;
 import com.in.patient.model.DoctorConsultantSecondModel;
 import com.in.patient.model.DoctorProfileModel;
 import com.in.patient.model.FindDoctorModel;
+import com.in.patient.model.MedicineOrderListModel;
 import com.in.patient.model.MedicinesModel;
 import com.in.patient.model.MyAppointmentModel;
 import com.in.patient.model.ProductModel;
@@ -108,6 +109,7 @@ public interface Api {
 
     );
 
+
     @FormUrlEncoded
     @POST("add_to_cart_medicines.php")
     Call<CommonModel> addToCartMedicines(
@@ -116,6 +118,14 @@ public interface Api {
             @Field("medicine_id") String medicine_id,
             @Field("product_qty") String product_qty
     );
+
+    @FormUrlEncoded
+    @POST("get_medicine_order_list.php")
+    Call<MedicineOrderListModel> getMedicineOrderList(
+            @Field("token") String token,
+            @Field("user_id") String user_id
+    );
+
 
     @FormUrlEncoded
     @POST("my_appointment.php")
@@ -200,6 +210,17 @@ public interface Api {
             @Field("token") String token,
             @Field("user_id") String user_id
     );
+
+
+    @FormUrlEncoded
+    @POST("add_to_cart_products.php")
+    Call<CommonModel> addToCartProduct(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("product_id") String product_id,
+            @Field("product_qty") String product_qty
+    );
+
 
     @FormUrlEncoded
     @POST("account_setting.php")

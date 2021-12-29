@@ -40,11 +40,10 @@
 
                         <TextView
                             android:id="@+id/Question"
+                            style="@style/l_bold_14"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Lorem ipsum dolor sit amet, consetetur. ?"
-                            android:textColor="@color/black_text_color"
-                            android:textSize="@dimen/_14sdp" />
+                            android:text="Lorem ipsum dolor sit amet, consetetur. ?" />
 
 
                     </LinearLayout>
@@ -57,12 +56,12 @@
 
                         <TextView
                             android:id="@+id/Date"
+                            style="@style/l_normal_12"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="27/09/2021"
                             android:textAlignment="center"
-                            android:textColor="@color/action_mode_color_300"
-                            android:textSize="@dimen/_10sdp" />
+                            android:textColor="@color/action_mode_color_300" />
 
                     </LinearLayout>
 
@@ -81,6 +80,7 @@
 
                 <TextView
                     android:id="@+id/QuestionDescription"
+                    style="@style/l_bold_12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea." />

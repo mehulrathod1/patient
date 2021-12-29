@@ -34,7 +34,6 @@ public class MyPrescriptions extends AppCompatActivity {
         getSupportActionBar().hide();
         init();
         recyclerData();
-
     }
 
     public void init() {

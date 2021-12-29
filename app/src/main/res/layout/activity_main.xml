@@ -46,7 +46,7 @@
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:id="@+id/coordinator"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_100sdp"
+                android:layout_height="@dimen/_105sdp"
                 android:layout_alignParentBottom="true">
 
                 <com.google.android.material.bottomappbar.BottomAppBar
@@ -54,8 +54,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="63dp"
                     android:layout_gravity="bottom"
-                    app:fabCradleMargin="10dp"
                     android:backgroundTint="@color/white"
+                    app:fabCradleMargin="4dp"
                     app:fabCradleRoundedCornerRadius="10dp"
                     app:fabCradleVerticalOffset="10dp">
 

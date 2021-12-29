@@ -45,7 +45,7 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginLeft="@dimen/_12sdp"
                     android:layout_weight="2"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
@@ -59,33 +59,31 @@
 
                         <TextView
                             android:id="@+id/LabName"
-                            style="@style/sub_heading_text"
+                            style="@style/m_semi_16"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Service category"
-                            android:textColor="@color/action_mode_color_edt" />
+                            android:text="Service category" />
 
 
                         <TextView
                             android:id="@+id/description"
+                            style="@style/m_semi_12"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:maxLines="3"
-                            android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua."
-                            android:textColor="@color/black_text_color" />
+                            android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua." />
 
 
                         <TextView
                             android:id="@+id/Location"
+                            style="@style/m_regular_12"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:drawableLeft="@drawable/location_on_24"
                             android:drawablePadding="@dimen/_8sdp"
-                            android:text="Location"
-                            android:textColor="@color/action_mode_color_edt"
-                            android:textSize="@dimen/_12sdp" />
+                            android:text="Location" />
 
 
                         <TextView
@@ -95,11 +93,12 @@
                             android:layout_gravity="center_horizontal"
                             android:layout_margin="@dimen/_16sdp"
                             android:background="@drawable/semi_button_bg"
+                            android:fontFamily="@font/montserrat_semi_bold"
                             android:gravity="center"
                             android:text="View Lab"
                             android:textAllCaps="false"
-
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
 
 
                     </LinearLayout>

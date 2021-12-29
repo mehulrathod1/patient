@@ -9,6 +9,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -69,6 +70,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("ResourceAsColor")
     public void init() {
 
         coordinator = findViewById(R.id.coordinator);
@@ -78,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         search = findViewById(R.id.Search);
         bottomNavigationView.getMenu().findItem(R.id.home).setChecked(true);
+
+        bottomNavigationView.setBackgroundColor(android.R.color.white);
+        bottomNavigationView.getMenu().getItem(2).setEnabled(false);
+
 
         coordinator.setVisibility(View.VISIBLE);
 
@@ -219,8 +225,7 @@ public class MainActivity extends AppCompatActivity {
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.firstFrame, fragment);
-        transaction.addToBackStack(null);
+//        transaction.addToBackStack(null);
         transaction.commit();
     }
-
 }

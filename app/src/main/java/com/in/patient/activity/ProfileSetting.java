@@ -5,6 +5,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -12,6 +14,8 @@ import android.widget.TextView;
 import com.google.android.material.tabs.TabLayout;
 import com.in.patient.R;
 import com.in.patient.adapter.ProfileSettingAdapter;
+
+import java.io.File;
 
 public class ProfileSetting extends AppCompatActivity {
 

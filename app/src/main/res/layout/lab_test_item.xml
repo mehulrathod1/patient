@@ -33,7 +33,6 @@
                     android:layout_weight="1"
                     android:gravity="center">
 
-
                     <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profileImage"
                         android:layout_width="@dimen/_98sdp"
@@ -192,6 +191,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginBottom="@dimen/_8sdp"
+                    android:fontFamily="@font/lato_regular"
                     android:gravity="center"
                     android:text="@string/Need_Help"
                     android:textColor="@color/action_mode_color"

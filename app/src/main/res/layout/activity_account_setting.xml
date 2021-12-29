@@ -43,13 +43,11 @@
                 <!---->
                 <EditText
                     android:id="@+id/edtOldPassword"
-                    style="@style/heading_text"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Enter_Old_Password"
-                    android:padding="10dp" />
+                    android:hint="@string/Enter_Old_Password" />
                 <!---->
             </LinearLayout>
             <!---->
@@ -67,13 +65,11 @@
                 <!---->
                 <EditText
                     android:id="@+id/edtNewPassword"
-                    style="@style/heading_text"
+                    style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Enter_New_Password"
-                    android:padding="10dp" />
+                    android:hint="@string/Enter_New_Password" />
                 <!---->
             </LinearLayout>
             <!---->
@@ -87,6 +83,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/lato_bold"
                     android:text="@string/Deactivate_Account"
                     android:textColor="#FF2C2C"
                     android:textSize="@dimen/_16sdp" />
@@ -102,8 +99,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_16sdp"
         android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/_16sdp"
         android:orientation="vertical">
 
         <Button

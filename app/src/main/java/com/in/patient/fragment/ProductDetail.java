@@ -13,13 +13,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.in.patient.R;
 import com.in.patient.activity.DoctorProfile;
 import com.in.patient.adapter.ImageSliderPagerAdapter;
 import com.in.patient.adapter.SliderPagerAdapter;
+import com.in.patient.globle.Glob;
+import com.in.patient.model.CommonModel;
+import com.in.patient.retrofit.Api;
+import com.in.patient.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ProductDetail extends Fragment {
 
@@ -44,6 +53,7 @@ public class ProductDetail extends Fragment {
 
 
         init();
+//        addToCartProduct(Glob.Token, Glob.user_id, "1", "1");
         addBottomDots(0);
         return view;
     }
@@ -51,6 +61,9 @@ public class ProductDetail extends Fragment {
     public void init() {
         vp_slider = view.findViewById(R.id.vp_slider);
         ll_dots = view.findViewById(R.id.ll_dots);
+
+
+        Glob.progressDialog(getContext());
 
         slider_image_list = new ArrayList<>();
         slider_image_list.add("https://wallpaperaccess.com/full/297372.jpg");
@@ -101,4 +114,27 @@ public class ProductDetail extends Fragment {
             dots[currentPage].setTextColor(Color.parseColor("#233E8B"));
     }
 
+
+    public void addToCartProduct(String token, String user_id, String product_id, String product_qty) {
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+
+        call.addToCartProduct(token, user_id, product_id, product_qty).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+
+                CommonModel commonModel = response.body();
+
+                Glob.dialog.dismiss();
+                Toast.makeText(getContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+
+            }
+        });
+    }
 }

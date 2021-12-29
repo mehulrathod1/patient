@@ -63,12 +63,11 @@
 
                             <TextView
                                 android:id="@+id/ProductName"
+                                style="@style/l_bold_12"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Product Name"
-                                android:textColor="@color/black_text_color"
-                                android:textSize="@dimen/_12sdp"
-                                android:textStyle="bold" />
+                                android:textColor="@color/black_text_color" />
 
                         </LinearLayout>
 
@@ -85,37 +84,33 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    style="@style/l_normal_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/Order_Date"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:text="@string/Order_Date" />
 
                                 <TextView
                                     android:id="@+id/OrderDate"
+                                    style="@style/l_bold_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="008979977"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:textStyle="bold" />
+                                    android:textColor="@color/black_text_color" />
 
                                 <TextView
+                                    style="@style/l_normal_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_8sdp"
-                                    android:text="@string/Medicine_Order_Id"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:text="@string/Medicine_Order_Id" />
 
                                 <TextView
                                     android:id="@+id/OrderId"
+                                    style="@style/l_bold_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Name"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:textStyle="bold" />
+                                    android:textColor="@color/black_text_color" />
                             </LinearLayout>
 
                             <LinearLayout
@@ -130,37 +125,33 @@
                                     android:orientation="vertical">
 
                                     <TextView
+                                        style="@style/l_normal_10"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:text="@string/Amount_paid"
-                                        android:textColor="@color/black_text_color"
-                                        android:textSize="@dimen/_10sdp" />
+                                        android:text="@string/Amount_paid" />
 
                                     <TextView
                                         android:id="@+id/AmountPaid"
+                                        style="@style/l_bold_12"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="Gujarat"
-                                        android:textColor="@color/black_text_color"
-                                        android:textSize="@dimen/_12sdp"
-                                        android:textStyle="bold" />
+                                        android:textColor="@color/black_text_color" />
 
                                     <TextView
+                                        style="@style/l_normal_10"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginTop="@dimen/_8sdp"
-                                        android:text="@string/Order_Status"
-                                        android:textColor="@color/black_text_color"
-                                        android:textSize="@dimen/_10sdp" />
+                                        android:text="@string/Order_Status" />
 
                                     <TextView
                                         android:id="@+id/OrderStatus"
+                                        style="@style/l_bold_12"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="Name"
-                                        android:textColor="@color/black_text_color"
-                                        android:textSize="@dimen/_12sdp"
-                                        android:textStyle="bold" />
+                                        android:textColor="@color/black_text_color" />
 
                                 </LinearLayout>
 
@@ -175,21 +166,19 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/l_normal_10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_8sdp"
-                                android:text="@string/order_detail"
-                                android:textColor="@color/black_text_color"
-                                android:textSize="@dimen/_10sdp" />
+                                android:text="@string/order_detail" />
 
                             <TextView
                                 android:id="@+id/OrderDetail"
+                                style="@style/l_bold_12"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Gujarat"
-                                android:textColor="@color/black_text_color"
-                                android:textSize="@dimen/_12sdp"
-                                android:textStyle="bold" />
+                                android:textColor="@color/black_text_color" />
 
                         </LinearLayout>
 
@@ -205,21 +194,19 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    style="@style/l_normal_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_8sdp"
-                                    android:text="@string/Payment_Status"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:text="@string/Payment_Status" />
 
                                 <TextView
                                     android:id="@+id/PaymentStatus"
+                                    style="@style/l_bold_12"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="Gujarat"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_12sdp"
-                                    android:textStyle="bold" />
+                                    android:textColor="@color/black_text_color" />
 
                             </LinearLayout>
 
@@ -231,12 +218,11 @@
                                 android:orientation="horizontal">
 
                                 <TextView
+                                    style="@style/l_normal_10"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="@dimen/_8sdp"
-                                    android:text="@string/Invoice"
-                                    android:textColor="@color/black_text_color"
-                                    android:textSize="@dimen/_10sdp" />
+                                    android:text="@string/Invoice" />
 
                                 <ImageView
                                     android:layout_width="wrap_content"
@@ -263,21 +249,19 @@
                             android:orientation="vertical">
 
                             <TextView
+                                style="@style/l_normal_10"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_8sdp"
-                                android:text="@string/Delivery_address"
-                                android:textColor="@color/black_text_color"
-                                android:textSize="@dimen/_10sdp" />
+                                android:text="@string/Delivery_address" />
 
                             <TextView
                                 android:id="@+id/DeliveryAddress"
+                                style="@style/l_bold_12"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Gujarat"
-                                android:textColor="@color/black_text_color"
-                                android:textSize="@dimen/_12sdp"
-                                android:textStyle="bold" />
+                                android:textColor="@color/black_text_color" />
 
                         </LinearLayout>
 
@@ -298,6 +282,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginBottom="@dimen/_8sdp"
+                    android:fontFamily="@font/lato_regular"
                     android:gravity="center"
                     android:text="@string/Need_Help"
                     android:textColor="@color/action_mode_color"

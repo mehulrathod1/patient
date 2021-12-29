@@ -10,7 +10,9 @@
         <entry key="..\:/Project/Patient/app/src/main/res/drawable-v24/button_border.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable-v24/ic_filter_alt_24.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable-v24/nev_back.xml" value="0.2203125" />
+        <entry key="..\:/Project/Patient/app/src/main/res/drawable-v24/search_bg.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable-v24/time_bg.xml" value="0.2203125" />
+        <entry key="..\:/Project/Patient/app/src/main/res/drawable/add_cart_bg.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/buy_now_bg.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.2203125" />
@@ -23,7 +25,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_chat_dashboard2.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_doctor_profile.xml" value="0.2007168458781362" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_lab_test.xml" value="0.20416666666666666" />
-        <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_medicines_order.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_my_appointments.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_my_order.xml" value="0.20416666666666666" />
@@ -67,7 +69,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/lab_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/lab_test_item.xml" value="0.25" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/layout_slider.xml" value="0.20416666666666666" />
-        <entry key="..\:/Project/Patient/app/src/main/res/layout/medicine_order_item.xml" value="0.4850894632206759" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/medicine_order_item.xml" value="0.33" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/medicines_item.xml" value="0.22" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/my_appointment_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/my_order_item.xml" value="0.33" />
@@ -81,7 +83,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/slot_time_item.xml" value="0.67" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/spinner_textview.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/toolbar.xml" value="0.20416666666666666" />
-        <entry key="..\:/Project/Patient/app/src/main/res/layout/transaction_history_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/transaction_history_item.xml" value="0.67" />
         <entry key="..\:/Project/Patient/app/src/main/res/menu/bottom_menu.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/menu/menu.xml" value="0.20416666666666666" />
       </map>

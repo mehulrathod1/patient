@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.in.patient.R;
 import com.in.patient.activity.DoctorProfile;
@@ -22,6 +23,7 @@ import com.in.patient.activity.Search;
 import com.in.patient.adapter.DoctorConsultantAdapter;
 import com.in.patient.adapter.MedicinesAdapter;
 import com.in.patient.globle.Glob;
+import com.in.patient.model.CommonModel;
 import com.in.patient.model.DoctorConsultModel;
 import com.in.patient.model.MedicinesModel;
 import com.in.patient.retrofit.Api;
@@ -92,7 +94,7 @@ public class Medicines extends Fragment {
                     MedicinesModel.MedicinesData model = DataList.get(i);
 
                     MedicinesModel.MedicinesData data = new MedicinesModel.MedicinesData(
-                            model.getMedicines_name(), "$" + model.getPrice(), model.getDescription(),
+                            model.getMedicines_name(), model.getPrice(), model.getDescription(),
                             model.getMedicine_image()
                     );
                     list.add(data);
@@ -109,6 +111,27 @@ public class Medicines extends Fragment {
 
     }
 
+    public void addToCartMedicines(String token, String user_id, String medicine_id, String product_qty) {
+
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+        call.addToCartMedicines(token, user_id, medicine_id, product_qty).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+
+                CommonModel model = response.body();
+
+                Toast.makeText(getContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
     public void recyclerData() {
 
 
@@ -119,6 +142,7 @@ public class Medicines extends Fragment {
                 Fragment fragment = new Cart();
                 loadFragment(fragment);
 
+//                addToCartMedicines(Token, "6", "1", "1");
             }
         });
 
