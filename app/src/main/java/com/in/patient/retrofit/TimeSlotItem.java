@@ -4,10 +4,8 @@ import com.google.gson.annotations.SerializedName;
 
 public class TimeSlotItem{
 
-	@SerializedName("slot_time")
 	private String slotTime;
 
-	@SerializedName("status")
 	private String status;
 
 	public void setSlotTime(String slotTime){

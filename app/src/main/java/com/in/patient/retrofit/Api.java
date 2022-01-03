@@ -7,6 +7,7 @@ import com.in.patient.model.CommonModel;
 import com.in.patient.model.DoctorConsultantSecondModel;
 import com.in.patient.model.DoctorProfileModel;
 import com.in.patient.model.FindDoctorModel;
+import com.in.patient.model.GetFcmTokenModel;
 import com.in.patient.model.MedicineOrderListModel;
 import com.in.patient.model.MedicinesModel;
 import com.in.patient.model.MyAppointmentModel;
@@ -230,5 +231,22 @@ public interface Api {
             @Field("user_id") String user_id,
             @Field("old_password") String old_password,
             @Field("new_password") String new_password
+    );
+
+    @FormUrlEncoded
+    @POST("add_fcm_token.php")
+    Call<CommonModel> addFcmToken(
+
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("fcm_token") String fcm_token
+    );
+
+    @FormUrlEncoded
+    @POST("get_fcm_token.php")
+    Call<GetFcmTokenModel> getFcmToken(
+
+            @Field("token") String token,
+            @Field("user_id") String user_id
     );
 }

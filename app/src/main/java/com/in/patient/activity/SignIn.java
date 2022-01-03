@@ -3,6 +3,7 @@ package com.in.patient.activity;
 import static com.in.patient.globle.Glob.Token;
 import static com.in.patient.globle.Glob.user_id;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -28,8 +29,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 import com.in.patient.R;
 import com.in.patient.globle.Glob;
+import com.in.patient.model.CommonModel;
 import com.in.patient.model.SignInModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
@@ -49,6 +55,7 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,6 +65,7 @@ public class SignIn extends AppCompatActivity {
     Button btnSignIn;
     EditText edtEmail, edtPassword;
     TextView txtSignUP;
+    String FMCToken ;
 
 
     private KeyStore keyStore;
@@ -74,9 +82,9 @@ public class SignIn extends AppCompatActivity {
 
         init();
         accessFingerprint();
+        getFmcToken();
 
     }
-
 
     public void init() {
 
@@ -107,7 +115,6 @@ public class SignIn extends AppCompatActivity {
 
     }
 
-
     public void signInUser(String token, String email, String password) {
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
@@ -122,7 +129,7 @@ public class SignIn extends AppCompatActivity {
                 if (model.getStatus().equals("true")) {
                     Toast.makeText(getApplicationContext(), model.getMessage(), Toast.LENGTH_SHORT).show();
                     Glob.dialog.dismiss();
-                    Glob.user_id = model.getData().getId();
+//                    Glob.user_id = model.getData().getId();
 
 
                     SharedPreferences.Editor editor = getSharedPreferences("MyPref", MODE_PRIVATE).edit();
@@ -130,6 +137,8 @@ public class SignIn extends AppCompatActivity {
                     editor.putString("id", "1");
                     editor.apply();
                     editor.commit();
+
+                    addFcmToken(Token,user_id,FMCToken);
 
                     Intent intent = new Intent(getApplicationContext(), Authentication.class);
                     startActivity(intent);
@@ -151,6 +160,27 @@ public class SignIn extends AppCompatActivity {
 
     }
 
+    public void addFcmToken(String token, String user_id, String fcm_token) {
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+        call.addFcmToken(token, user_id, fcm_token).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+                CommonModel commonModel = response.body();
+
+                Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
+                Glob.dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+
+                Toast.makeText(getApplicationContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Glob.dialog.dismiss();
+            }
+        });
+    }
 
     @TargetApi(Build.VERSION_CODES.M)
     protected void generateKey() {
@@ -187,7 +217,6 @@ public class SignIn extends AppCompatActivity {
             throw new RuntimeException(e);
         }
     }
-
 
     @TargetApi(Build.VERSION_CODES.M)
     public boolean cipherInit() {
@@ -311,6 +340,29 @@ public class SignIn extends AppCompatActivity {
             } else
                 Toast.makeText(getApplicationContext(), "" + e, Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void getFmcToken() {
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            Log.w("TAG", "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        FMCToken = task.getResult();
+                        Log.e("TAG", "onComplete: " + FMCToken);
+
+                        // Log and toast
+//                        String msg = getString(R.string.msg_token_fmt, token);
+//                        Log.d(TAG, msg);
+//                        Toast.makeText(SignIn.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 
 }

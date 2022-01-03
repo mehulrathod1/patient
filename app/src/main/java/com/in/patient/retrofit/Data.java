@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 
 public class Data{
 
-	@SerializedName("Time Slot")
 	private List<TimeSlotItem> timeSlot;
 
 	public void setTimeSlot(List<TimeSlotItem> timeSlot){

@@ -1,5 +1,6 @@
 package com.in.patient.activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,6 +10,9 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.WindowManager;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
 import com.in.patient.R;
 
 public class Splash extends AppCompatActivity {
@@ -16,6 +20,7 @@ public class Splash extends AppCompatActivity {
     private static int SPLASH_SCREEN_TIME_OUT = 2000;
     SharedPreferences prefs;
     String TAG = "Splash";
+    String FMC;
 
 
     @Override
@@ -24,6 +29,8 @@ public class Splash extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         getSupportActionBar().hide();
+
+
 
 
         prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
@@ -50,8 +57,11 @@ public class Splash extends AppCompatActivity {
         if (auth.equals("yes")) {
             moveNext(Authentication.class);
 
+
         }
     }
+
+
 
     public void moveNext(Class c) {
         new Handler().postDelayed(new Runnable() {
@@ -64,4 +74,8 @@ public class Splash extends AppCompatActivity {
             }
         }, SPLASH_SCREEN_TIME_OUT);
     }
+
+
+
+
 }

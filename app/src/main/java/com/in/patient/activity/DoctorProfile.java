@@ -365,18 +365,20 @@ public class DoctorProfile extends AppCompatActivity {
 
                 List<TimeSlotItem> DataList = data.getTimeSlot();
 
-                for (int i = 0; i < DataList.size(); i++) {
+                if (DataList.size() != 0) {
+                    for (int i = 0; i < DataList.size(); i++) {
 
-                    TimeSlotItem model = DataList.get(i);
+                        TimeSlotItem model = DataList.get(i);
 
-                    TimeSlotItem timeData = new TimeSlotItem(model.getSlotTime(), model.getStatus());
+                        TimeSlotItem timeData = new TimeSlotItem(model.getSlotTime(), model.getStatus());
 
-                    Log.e("time", "onResponse: " + timeData.getSlotTime());
+                        Log.e("time", "onResponse: " + timeData.getSlotTime());
 
-                    timeSlotItemList.add(timeData);
+                        timeSlotItemList.add(timeData);
+                    }
+                    getTimeSlotData();
+                    dialog.dismiss();
                 }
-                getTimeSlotData();
-                dialog.dismiss();
             }
 
             @Override

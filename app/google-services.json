@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "77783429831",
+    "project_id": "ciam-344bf",
+    "storage_bucket": "ciam-344bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77783429831:android:04c4a5c15685d8a860c4e2",
+        "android_client_info": {
+          "package_name": "com.ciampt.patient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77783429831-6ok8p0a88m0vv5kdqdkb3059hbu85rjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2KlmujbSyoRb_k1Y3brZaQy2lcCS4FFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77783429831-6ok8p0a88m0vv5kdqdkb3059hbu85rjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77783429831:android:0c5434ee24603b2360c4e2",
+        "android_client_info": {
+          "package_name": "com.in.patient"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77783429831-6ok8p0a88m0vv5kdqdkb3059hbu85rjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2KlmujbSyoRb_k1Y3brZaQy2lcCS4FFQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77783429831-6ok8p0a88m0vv5kdqdkb3059hbu85rjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

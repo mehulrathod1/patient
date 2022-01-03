@@ -4,13 +4,10 @@ import com.google.gson.annotations.SerializedName;
 
 public class TimeSlotModel{
 
-	@SerializedName("data")
 	private Data data;
 
-	@SerializedName("message")
 	private String message;
 
-	@SerializedName("status")
 	private boolean status;
 
 	public void setData(Data data){

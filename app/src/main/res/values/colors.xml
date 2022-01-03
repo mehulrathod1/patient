@@ -5,10 +5,9 @@
     <color name="action_mode_color_edt">#161616</color>
     <color name="md_grey">#EFEFEF</color>
     <color name="action_mode_color_orange">#D68100</color>
-
+c
     <color name="black_text_color">#252525</color>
     <color name="white_button_color">#F6F6F6</color>
-
 
     <color name="colorPrimary">#0288D1</color>
     <color name="colorPrimaryDark">#4fC3F7</color>
@@ -22,7 +21,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="button_border">#5e728b</color>
     <color name="button_color">#FFE9F5</color>
-
     <color name="background">#F5F5F5</color>
 
     <!--reds-->

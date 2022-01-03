@@ -348,4 +348,8 @@ public class HomeDashboard extends Fragment {
 
     }
 
+
+    public void sendNotification() {
+    }
+
 }

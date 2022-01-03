@@ -13,6 +13,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -29,6 +30,14 @@ import com.in.patient.fragment.DoctorConsultant;
 import com.in.patient.fragment.HomeDashboard;
 import com.in.patient.fragment.Lab;
 import com.in.patient.fragment.Medicines;
+import com.in.patient.globle.Glob;
+import com.in.patient.model.GetFcmTokenModel;
+import com.in.patient.retrofit.Api;
+import com.in.patient.retrofit.RetrofitClient;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         init();
+        getFcmToken(Glob.Token, Glob.user_id);
         fragment = new HomeDashboard();
         loadFragment(fragment);
 
@@ -113,12 +123,14 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
         nevBackHeader.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 drawerLayout.closeDrawers();
             }
         });
+
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -127,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
 
             @Override
@@ -228,4 +239,25 @@ public class MainActivity extends AppCompatActivity {
 //        transaction.addToBackStack(null);
         transaction.commit();
     }
+
+    public void getFcmToken(String token, String user_id) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+        call.getFcmToken(token, user_id).enqueue(new Callback<GetFcmTokenModel>() {
+            @Override
+            public void onResponse(Call<GetFcmTokenModel> call, Response<GetFcmTokenModel> response) {
+                GetFcmTokenModel model = response.body();
+
+                Log.e("main", "onResponse: " + model.getData().getFcm_token());
+            }
+
+            @Override
+            public void onFailure(Call<GetFcmTokenModel> call, Throwable t) {
+
+            }
+        });
+
+    }
+
 }
