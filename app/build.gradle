@@ -73,4 +73,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-messaging'
 
+//    agora
+    implementation 'io.agora.rtc:full-sdk:3.5.0'
+
 }

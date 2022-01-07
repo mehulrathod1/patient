@@ -65,7 +65,7 @@ public class SignIn extends AppCompatActivity {
     Button btnSignIn;
     EditText edtEmail, edtPassword;
     TextView txtSignUP;
-    String FMCToken ;
+    String FMCToken;
 
 
     private KeyStore keyStore;
@@ -81,7 +81,7 @@ public class SignIn extends AppCompatActivity {
         getSupportActionBar().hide();
 
         init();
-        accessFingerprint();
+//        accessFingerprint();
         getFmcToken();
 
     }
@@ -131,14 +131,13 @@ public class SignIn extends AppCompatActivity {
                     Glob.dialog.dismiss();
 //                    Glob.user_id = model.getData().getId();
 
-
                     SharedPreferences.Editor editor = getSharedPreferences("MyPref", MODE_PRIVATE).edit();
                     editor.putString("token", "123456789");
                     editor.putString("id", "1");
                     editor.apply();
                     editor.commit();
 
-                    addFcmToken(Token,user_id,FMCToken);
+                    addFcmToken(Token, user_id, FMCToken);
 
                     Intent intent = new Intent(getApplicationContext(), Authentication.class);
                     startActivity(intent);

@@ -3,9 +3,11 @@ package com.in.patient.fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +25,18 @@ import androidx.viewpager.widget.ViewPager;
 import com.in.patient.R;
 import com.in.patient.activity.DoctorProfile;
 import com.in.patient.activity.LabTest;
+import com.in.patient.activity.VideoCallScreen;
 import com.in.patient.adapter.FindDoctorAdapter;
 import com.in.patient.adapter.HealthCareAdapter;
 import com.in.patient.adapter.SliderPagerAdapter;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.CareAndCheckupModel;
+import com.in.patient.model.CommonModel;
 import com.in.patient.model.FindDoctorModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
+
+import org.json.JSONObject;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -38,6 +44,10 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,6 +75,9 @@ public class HomeDashboard extends Fragment {
 
     LinearLayout doctorConsultant, homeCare, labTest, medicines, healthProduct;
 
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +94,7 @@ public class HomeDashboard extends Fragment {
         healthCheckupData();
         addBottomDots(0);
         getDoctorSpecialist(Glob.Token, Glob.user_id);
+
 
         return view;
     }
@@ -116,7 +130,11 @@ public class HomeDashboard extends Fragment {
         sliderPagerAdapter = new SliderPagerAdapter(getActivity(), slider_image_list, new SliderPagerAdapter.Click() {
             @Override
             public void itemClick(int position) {
-                Intent intent = new Intent(getActivity(), DoctorProfile.class);
+//                Intent intent = new Intent(getActivity(), DoctorProfile.class);
+//                startActivity(intent);
+//                sendNotification("eGMGXI7USQy0AUIVVwqoKj:APA91bHXuyjdBttPkKBlnSeXTnlzFXIQM0QTMs1TO0p6ZbeJ7tVp0Lo7M1-PgbFzM1keg72w6Dzw0X03uQz1CbTMPcdWyshgbth9ce8-2bYj7ayTaurrtQZ_gQOZ5U04nXXzuywFtgAW");
+
+                Intent intent = new Intent(getContext(), VideoCallScreen.class);
                 startActivity(intent);
             }
         });
@@ -345,11 +363,59 @@ public class HomeDashboard extends Fragment {
         fragmentTransaction.replace(R.id.firstFrame, fragment);
 //        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+    }
+
+    private void sendNotification(final String regToken) {
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... params) {
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    JSONObject json = new JSONObject();
+                    JSONObject dataJson = new JSONObject();
+                    dataJson.put("body", "");
+                    dataJson.put("title", "dummy notification");
+                    json.put("notification", dataJson);
+                    json.put("to", regToken);
+                    RequestBody body = RequestBody.create(JSON, json.toString());
+                    Request request = new Request.Builder()
+                            .header("Authorization", "key=" + "AAAAEhxA8sc:APA91bGzKFx7gAT8wnp2rCjvhz12SZ-nGhg6HF3dffOhfOBpKAxYWvRpfkoRmWSnZd2_W1-ez8gizm1di1BAjmA-HBvD5QnVoPTEPwNTmGBR1NSONAcLV36OOZ_hlhMYMBDqVCEesOOQ")
+                            .url("https://fcm.googleapis.com/fcm/send")
+                            .post(body)
+                            .build();
+                    okhttp3.Response response = client.newCall(request).execute();
+                    String finalResponse = response.body().string();
+                    Log.e("doInBackground", "doInBackground: " + finalResponse);
+                } catch (Exception e) {
+                    //Log.d(TAG,e+"");
+                }
+                return null;
+            }
+        }.execute();
 
     }
 
 
-    public void sendNotification() {
+    public void sendNotification(String token, String user_id, String message) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+
+        call.sendNotification(token, user_id, message).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+
+                CommonModel model = response.body();
+
+                Log.e("getMessage", "onResponse: " + model.getMessage());
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+
+            }
+        });
+
     }
 
 }

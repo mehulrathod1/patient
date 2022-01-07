@@ -245,8 +245,16 @@ public interface Api {
     @FormUrlEncoded
     @POST("get_fcm_token.php")
     Call<GetFcmTokenModel> getFcmToken(
+            @Field("token") String token,
+            @Field("user_id") String user_id);
+
+
+    @FormUrlEncoded
+    @POST("send_notification.php")
+    Call<CommonModel> sendNotification(
 
             @Field("token") String token,
-            @Field("user_id") String user_id
+            @Field("user_id") String user_id,
+            @Field("message") String message
     );
 }
