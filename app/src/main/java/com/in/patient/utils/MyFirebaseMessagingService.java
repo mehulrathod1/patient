@@ -1,11 +1,26 @@
 package com.in.patient.utils;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
+
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.in.patient.R;
+import com.in.patient.activity.MainActivity;
 import com.in.patient.activity.MyOrder;
+import com.in.patient.activity.VideoCallScreen;
 import com.in.patient.globle.Glob;
 
 import org.json.JSONException;
@@ -20,42 +35,77 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        super.onMessageReceived(remoteMessage);
 
-        Log.d(TAG, "From: " + remoteMessage.getFrom());
+        showNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody(),remoteMessage);
 
+        Log.d(TAG, "Fro00000m: " + remoteMessage.getData().get("chanel_name"));
 
         if (remoteMessage.getData().size() > 0) {
-            Log.d(TAG, "Message data payload: " + remoteMessage.getData());
-
-
-            JSONObject data = new JSONObject(remoteMessage.getData());
-            try {
-                String jsonMessage = data.getString("chanel_name");
-                Log.e(TAG, "onMessageReceived:" + jsonMessage);
-                Glob.Channel_name = jsonMessage;
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-        }
-
-
-        if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
-
-            String title = remoteMessage.getNotification().getTitle();
-            String message = remoteMessage.getNotification().getBody();
-            String click = remoteMessage.getNotification().getClickAction();
-
-
-            Log.d(TAG, "Message data payload: " + title);
-            Log.d(TAG, "Message data payload: " + message);
-            Log.d(TAG, "Message data payload: " + click);
+            Log.e(TAG, "Message data payload: " + remoteMessage.getData());
+//            JSONObject data = new JSONObject(remoteMessage.getData());
+//            try {
+//
+//                String jsonMessage = data.getString("chanel_name");
+//                Log.e(TAG, "onMessageReceived:" + jsonMessage);
+//                Glob.Channel_name = jsonMessage;
+//
+//                Log.e(TAG, "onMessageReceived:" + Glob.Channel_name);
+//
+//
+//            } catch (JSONException e) {
+//                e.printStackTrace();
+//            }
 
         }
 
-        // Also if you intend on generating your own notifications as a result of a received FCM
-        // message, here is where that should be initiated. See sendNotification method below.
+        String jsonMessage = remoteMessage.getData().get("chanel_name");
+        Log.e(TAG, "onMessageReceived:" + jsonMessage);
+        Glob.Channel_name = jsonMessage;
 
+
+
+
+        String title = remoteMessage.getNotification().getTitle();
+        String message = remoteMessage.getNotification().getBody();
+        String click = remoteMessage.getNotification().getClickAction();
+
+        Log.e("tittllrlrr", "title :" + title);
+        Log.e(TAG, "message:" + message);
+        Log.e(TAG, "click:" + click);
+
+
+    }
+
+    public void showNotification(String title, String message,RemoteMessage remoteMessage) {
+
+
+        String channel_name = remoteMessage.getData().get("chanel_name");
+
+
+        Intent intent = new Intent(this, VideoCallScreen.class);
+        intent.putExtra("channel",channel_name);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 1, intent, PendingIntent.FLAG_ONE_SHOT);
+
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "myNotification");
+        builder.setContentTitle(title)
+                .setSmallIcon(R.drawable.ic_baseline_arrow_forward_24)
+                .setAutoCancel(true)
+                .setSound(Settings.System.DEFAULT_NOTIFICATION_URI)
+                .setContentText(message)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+
+        Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        Ringtone r = RingtoneManager.getRingtone(getApplicationContext(), notification);
+        r.play();
+
+        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        manager.notify(0, builder.build());
     }
 
 

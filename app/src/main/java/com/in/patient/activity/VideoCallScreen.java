@@ -1,6 +1,7 @@
 package com.in.patient.activity;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -35,7 +36,7 @@ public class VideoCallScreen extends AppCompatActivity {
 
     private static final int PERMISSION_REQ_ID = 22;
 
-    public String app_id ="43c82f753e0545c78a8198ed60a804f3";
+    public String app_id = "43c82f753e0545c78a8198ed60a804f3";
 
     // Permission WRITE_EXTERNAL_STORAGE is not mandatory
     // for Agora RTC SDK, just in case if you wanna save
@@ -84,7 +85,7 @@ public class VideoCallScreen extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    Log.i(TAG, "run: "+"Join channel success, uid: " + (uid & 0xFFFFFFFFL));
+                    Log.i(TAG, "run: " + "Join channel success, uid: " + (uid & 0xFFFFFFFFL));
                 }
             });
         }
@@ -95,7 +96,7 @@ public class VideoCallScreen extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    Log.i(TAG, "run: "+ "First remote video decoded, uid: " + (uid & 0xFFFFFFFFL));
+                    Log.i(TAG, "run: " + "First remote video decoded, uid: " + (uid & 0xFFFFFFFFL));
                     setupRemoteVideo(uid);
                 }
             });
@@ -129,7 +130,7 @@ public class VideoCallScreen extends AppCompatActivity {
                 @Override
                 public void run() {
 
-                    Log.i(TAG, "run: "+"User offline, uid: " + (uid & 0xFFFFFFFFL));
+                    Log.i(TAG, "run: " + "User offline, uid: " + (uid & 0xFFFFFFFFL));
                     onRemoteUserLeft(uid);
                 }
             });
@@ -176,9 +177,13 @@ public class VideoCallScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_call_screen);
+        getSupportActionBar().hide();
         initUI();
 
-        channelName = Glob.Channel_name;
+//        channelName = Glob.Channel_name;
+
+        Intent intent = getIntent();
+        channelName = intent.getStringExtra("channel");
 
         // Ask for permissions at runtime.
         // This is just an example set of permissions. Other permissions
@@ -198,17 +203,16 @@ public class VideoCallScreen extends AppCompatActivity {
         mSwitchCameraBtn = findViewById(R.id.btn_switch_camera);
 
 
-
         // Sample logs are optional.
         showSampleLogs();
     }
 
     private void showSampleLogs() {
 
-        Log.i(TAG, "showSampleLogs: "+"Welcome to Agora 1v1 video call");
-        Log.w(TAG, "showSampleLogs: "+"You will see custom logs here");
-        Log.e(TAG, "showSampleLogs: "+"You will see custom logs here");
-        Log.w(TAG, "showSampleLogs: "+"You will see custom logs here");
+        Log.i(TAG, "showSampleLogs: " + "Welcome to Agora 1v1 video call");
+        Log.w(TAG, "showSampleLogs: " + "You will see custom logs here");
+        Log.e(TAG, "showSampleLogs: " + "You will see custom logs here");
+        Log.w(TAG, "showSampleLogs: " + "You will see custom logs here");
 
     }
 
@@ -311,7 +315,7 @@ public class VideoCallScreen extends AppCompatActivity {
             token = null; // default, no token
 
         }
-        Log.e("asdfghjhgfd", "joinChannel: "+channelName);
+        Log.e("asdfghjhgfd", "joinChannel: " + channelName);
         mRtcEngine.joinChannel("", channelName, "Extra Optional Data", 0);
     }
 
@@ -347,15 +351,20 @@ public class VideoCallScreen extends AppCompatActivity {
     }
 
     public void onCallClicked(View view) {
-        if (mCallEnd) {
-            startCall();
-            mCallEnd = false;
-            mCallBtn.setImageResource(R.drawable.btn_endcall_pressed);
-        } else {
-            endCall();
-            mCallEnd = true;
-            mCallBtn.setImageResource(R.drawable.btn_startcall_normal);
-        }
+
+        endCall();
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+
+//        if (mCallEnd) {
+//            startCall();
+//            mCallEnd = false;
+//            mCallBtn.setImageResource(R.drawable.btn_endcall_pressed);
+//        } else {
+//            endCall();
+//            mCallEnd = true;
+//            mCallBtn.setImageResource(R.drawable.btn_startcall_normal);
+//        }
 
         showButtons(!mCallEnd);
     }
