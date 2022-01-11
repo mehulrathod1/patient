@@ -130,12 +130,14 @@ public class HomeDashboard extends Fragment {
         sliderPagerAdapter = new SliderPagerAdapter(getActivity(), slider_image_list, new SliderPagerAdapter.Click() {
             @Override
             public void itemClick(int position) {
-//                Intent intent = new Intent(getActivity(), DoctorProfile.class);
-//                startActivity(intent);
-//                sendNotification("eGMGXI7USQy0AUIVVwqoKj:APA91bHXuyjdBttPkKBlnSeXTnlzFXIQM0QTMs1TO0p6ZbeJ7tVp0Lo7M1-PgbFzM1keg72w6Dzw0X03uQz1CbTMPcdWyshgbth9ce8-2bYj7ayTaurrtQZ_gQOZ5U04nXXzuywFtgAW");
 
-                Intent intent = new Intent(getContext(), VideoCallScreen.class);
+                Intent intent = new Intent(getActivity(), DoctorProfile.class);
                 startActivity(intent);
+
+//                sendNotification("eGMGXI7USQy0AUIVVwqoKj:APA91bHXuyjdBttPkKBlnSeXTnlzFXIQM0QTMs1TO0p6ZbeJ7tVp0Lo7M1-PgbFzM1keg72w6Dzw0X03uQz1CbTMPcdWyshgbth9ce8-2bYj7ayTaurrtQZ_gQOZ5U04nXXzuywFtgAW");
+//                Intent intent = new Intent(getContext(), VideoCallScreen.class);
+//                startActivity(intent);
+
             }
         });
         vp_slider.setAdapter(sliderPagerAdapter);
@@ -214,6 +216,7 @@ public class HomeDashboard extends Fragment {
                 loadFragment(fragment);
             }
         });
+
         viewAllDoctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -221,6 +224,7 @@ public class HomeDashboard extends Fragment {
                 loadFragment(fragment);
             }
         });
+
         viewAllServices.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -365,57 +369,57 @@ public class HomeDashboard extends Fragment {
         fragmentTransaction.commit();
     }
 
-    private void sendNotification(final String regToken) {
-        new AsyncTask<Void, Void, Void>() {
-            @Override
-            protected Void doInBackground(Void... params) {
-                try {
-                    OkHttpClient client = new OkHttpClient();
-                    JSONObject json = new JSONObject();
-                    JSONObject dataJson = new JSONObject();
-                    dataJson.put("body", "");
-                    dataJson.put("title", "dummy notification");
-                    json.put("notification", dataJson);
-                    json.put("to", regToken);
-                    RequestBody body = RequestBody.create(JSON, json.toString());
-                    Request request = new Request.Builder()
-                            .header("Authorization", "key=" + "AAAAEhxA8sc:APA91bGzKFx7gAT8wnp2rCjvhz12SZ-nGhg6HF3dffOhfOBpKAxYWvRpfkoRmWSnZd2_W1-ez8gizm1di1BAjmA-HBvD5QnVoPTEPwNTmGBR1NSONAcLV36OOZ_hlhMYMBDqVCEesOOQ")
-                            .url("https://fcm.googleapis.com/fcm/send")
-                            .post(body)
-                            .build();
-                    okhttp3.Response response = client.newCall(request).execute();
-                    String finalResponse = response.body().string();
-                    Log.e("doInBackground", "doInBackground: " + finalResponse);
-                } catch (Exception e) {
-                    //Log.d(TAG,e+"");
-                }
-                return null;
-            }
-        }.execute();
-
-    }
-
-
-    public void sendNotification(String token, String user_id, String message) {
-
-        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+//    private void sendNotification(final String regToken) {
+//        new AsyncTask<Void, Void, Void>() {
+//            @Override
+//            protected Void doInBackground(Void... params) {
+//                try {
+//                    OkHttpClient client = new OkHttpClient();
+//                    JSONObject json = new JSONObject();
+//                    JSONObject dataJson = new JSONObject();
+//                    dataJson.put("body", "");
+//                    dataJson.put("title", "dummy notification");
+//                    json.put("notification", dataJson);
+//                    json.put("to", regToken);
+//                    RequestBody body = RequestBody.create(JSON, json.toString());
+//                    Request request = new Request.Builder()
+//                            .header("Authorization", "key=" + "AAAAEhxA8sc:APA91bGzKFx7gAT8wnp2rCjvhz12SZ-nGhg6HF3dffOhfOBpKAxYWvRpfkoRmWSnZd2_W1-ez8gizm1di1BAjmA-HBvD5QnVoPTEPwNTmGBR1NSONAcLV36OOZ_hlhMYMBDqVCEesOOQ")
+//                            .url("https://fcm.googleapis.com/fcm/send")
+//                            .post(body)
+//                            .build();
+//                    okhttp3.Response response = client.newCall(request).execute();
+//                    String finalResponse = response.body().string();
+//                    Log.e("doInBackground", "doInBackground: " + finalResponse);
+//                } catch (Exception e) {
+//                    //Log.d(TAG,e+"");
+//                }
+//                return null;
+//            }
+//        }.execute();
+//
+//    }
 
 
-        call.sendNotification(token, user_id, message).enqueue(new Callback<CommonModel>() {
-            @Override
-            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
-
-                CommonModel model = response.body();
-
-                Log.e("getMessage", "onResponse: " + model.getMessage());
-            }
-
-            @Override
-            public void onFailure(Call<CommonModel> call, Throwable t) {
-
-            }
-        });
-
-    }
+//    public void sendNotification(String token, String user_id, String message) {
+//
+//        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+//
+//
+//        call.sendNotification(token, user_id, message).enqueue(new Callback<CommonModel>() {
+//            @Override
+//            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+//
+//                CommonModel model = response.body();
+//
+//                Log.e("getMessage", "onResponse: " + model.getMessage());
+//            }
+//
+//            @Override
+//            public void onFailure(Call<CommonModel> call, Throwable t) {
+//
+//            }
+//        });
+//
+//    }
 
 }

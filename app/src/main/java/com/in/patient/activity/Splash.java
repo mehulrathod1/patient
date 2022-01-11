@@ -17,6 +17,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
 import com.in.patient.R;
+import com.in.patient.globle.Glob;
 
 public class Splash extends AppCompatActivity {
 
@@ -41,7 +42,6 @@ public class Splash extends AppCompatActivity {
         }
 
 
-
         prefs = getSharedPreferences("MyPref", MODE_PRIVATE);
         String id = prefs.getString("id", "null");//"No name defined" is the default value.
         String token = prefs.getString("token", "null");
@@ -53,6 +53,12 @@ public class Splash extends AppCompatActivity {
         Log.e(TAG, "onCreate: " + id);
         Log.e(TAG, "onCreate: " + token);
         Log.e(TAG, "onCreate: " + auth);
+
+        if (!id.equals(null)) {
+            Glob.user_id = id;
+
+
+        }
 
         if (auth.equals("null")) {
             moveNext(SignIn.class);
@@ -71,7 +77,6 @@ public class Splash extends AppCompatActivity {
     }
 
 
-
     public void moveNext(Class c) {
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -83,8 +88,6 @@ public class Splash extends AppCompatActivity {
             }
         }, SPLASH_SCREEN_TIME_OUT);
     }
-
-
 
 
 }

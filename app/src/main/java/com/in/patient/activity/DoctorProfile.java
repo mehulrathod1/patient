@@ -166,9 +166,9 @@ public class DoctorProfile extends AppCompatActivity {
                 } else {
 
                     Log.e("currentdata", "onClick: " + doctorId + appointmentDate + appointmentTime);
-
                     addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime);
                 }
+
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {

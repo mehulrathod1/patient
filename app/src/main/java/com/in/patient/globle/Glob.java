@@ -8,7 +8,7 @@ public class Glob {
     public static ProgressDialog dialog;
     public static String Base_Url = "http://ciam.notionprojects.tech/api/patient/";
     public static String Token = "123456789";
-    public static String user_id = "1";
+    public static String user_id;
     public static String Channel_name ;
 
 

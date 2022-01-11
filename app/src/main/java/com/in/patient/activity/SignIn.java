@@ -107,7 +107,7 @@ public class SignIn extends AppCompatActivity {
         txtSignUP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SignUp.class);
                 startActivity(intent);
             }
         });
@@ -129,16 +129,15 @@ public class SignIn extends AppCompatActivity {
                 if (model.getStatus().equals("true")) {
                     Toast.makeText(getApplicationContext(), model.getMessage(), Toast.LENGTH_SHORT).show();
                     Glob.dialog.dismiss();
-//                    Glob.user_id = model.getData().getId();
+                    Glob.user_id = model.getData().getId();
 
                     SharedPreferences.Editor editor = getSharedPreferences("MyPref", MODE_PRIVATE).edit();
                     editor.putString("token", "123456789");
-                    editor.putString("id", "1");
+                    editor.putString("id", user_id);
                     editor.apply();
                     editor.commit();
 
                     addFcmToken(Token, user_id, FMCToken);
-
                     Intent intent = new Intent(getApplicationContext(), Authentication.class);
                     startActivity(intent);
                     Log.e("Signin", "onResponse: " + user_id);

@@ -1,13 +1,20 @@
 package com.in.patient.retrofit;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class TimeSlotModel{
 
+	@SerializedName("data")
+	@Expose
 	private Data data;
 
+	@SerializedName("message")
+	@Expose
 	private String message;
 
+	@SerializedName("status")
+	@Expose
 	private boolean status;
 
 	public void setData(Data data){

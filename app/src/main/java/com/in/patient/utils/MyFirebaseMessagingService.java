@@ -43,6 +43,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         if (remoteMessage.getData().size() > 0) {
             Log.e(TAG, "Message data payload: " + remoteMessage.getData());
+
 //            JSONObject data = new JSONObject(remoteMessage.getData());
 //            try {
 //
@@ -59,12 +60,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         }
 
+
         String jsonMessage = remoteMessage.getData().get("chanel_name");
         Log.e(TAG, "onMessageReceived:" + jsonMessage);
         Glob.Channel_name = jsonMessage;
-
-
-
 
         String title = remoteMessage.getNotification().getTitle();
         String message = remoteMessage.getNotification().getBody();

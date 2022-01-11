@@ -693,6 +693,7 @@
                                     android:gravity="center"
                                     android:text="@string/Start_Video"
                                     android:textColor="@color/white"
+                                    android:visibility="gone"
                                     android:fontFamily="@font/montserrat_semi_bold"
                                     android:textSize="@dimen/_20sdp" />
                             </LinearLayout>
