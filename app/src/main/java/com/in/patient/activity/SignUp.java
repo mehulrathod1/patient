@@ -89,8 +89,6 @@ public class SignUp extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(getApplicationContext(), SignIn.class);
-                startActivity(intent);
 
                 if (edtFirstName.getText().toString().equals("")) {
                     edtFirstName.setError("Please Enter FirstName");

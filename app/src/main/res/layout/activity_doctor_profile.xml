@@ -50,7 +50,7 @@
                     android:gravity="center_vertical"
                     android:text="Dr. Daksh Kumar"
                     android:textColor="@color/action_mode_color"
-                    android:textSize="@dimen/_20sdp" />
+                    android:textSize="@dimen/_18sdp" />
             </RelativeLayout>
 
             <LinearLayout
@@ -79,7 +79,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                style="@style/m_semi_18"
+                                style="@style/m_semi_16"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_35sdp"
                                 android:gravity="center_vertical"
@@ -291,7 +291,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                style="@style/m_semi_18"
+                                style="@style/m_semi_16"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_35sdp"
                                 android:gravity="center_vertical"
@@ -574,7 +574,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                style="@style/m_semi_18"
+                                style="@style/m_semi_16"
                                 android:layout_width="match_parent"
                                 android:layout_height="@dimen/_35sdp"
                                 android:gravity="center_vertical"
@@ -623,9 +623,9 @@
                             android:orientation="vertical">
 
                             <TextView
-                                style="@style/m_semi_18"
+                                style="@style/m_semi_16"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/_35sdp"
+                                android:layout_height="wrap_content"
                                 android:gravity="center_vertical"
                                 android:text="@string/Schedule_video" />
 

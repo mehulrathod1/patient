@@ -23,14 +23,14 @@
     </style>
 
     <style name="sub_heading_text">
-        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
         <item name="android:textColor">@color/action_mode_color_edt</item>
     </style>
 
 
     <style name="form_style">
-        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
         <item name="android:background">@drawable/edt_bg</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
         <item name="android:padding">@dimen/_10sdp</item>
@@ -40,7 +40,7 @@
     </style>
 
     <style name="Profile_setting_personal">
-        <item name="android:textSize">@dimen/_16sdp</item>
+        <item name="android:textSize">@dimen/_14sdp</item>
         <item name="android:background">@drawable/profile_edt_bg</item>
         <item name="android:fontFamily">@font/montserrat_semi_bold</item>
         <item name="android:padding">@dimen/_10sdp</item>
@@ -53,7 +53,6 @@
         <item name="android:textSize">@dimen/_12sdp</item>
         <item name="android:fontFamily">@font/montserrat_regular</item>
         <item name="android:textColor">@color/action_mode_color_edt</item>
-
     </style>
 
     <style name="m_semi_12">

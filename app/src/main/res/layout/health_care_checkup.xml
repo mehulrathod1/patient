@@ -33,7 +33,7 @@
                 android:text="Covid Care"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:textSize="@dimen/_18sdp" />
+                android:textSize="@dimen/_16sdp" />
         </RelativeLayout>
 
     </androidx.cardview.widget.CardView>

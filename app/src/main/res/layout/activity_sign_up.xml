@@ -45,7 +45,7 @@
                     android:fontFamily="@font/montserrat_semi_bold"
                     android:text="@string/Sign_up"
                     android:textColor="@color/action_mode_color"
-                    android:textSize="@dimen/_34sdp" />
+                    android:textSize="@dimen/_30sdp" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                     android:fontFamily="@font/montserrat_regular"
                     android:text="@string/new_dcp"
                     android:textColor="@color/action_mode_color_300"
-                    android:textSize="@dimen/_16sdp" />
+                    android:textSize="@dimen/_14sdp" />
             </LinearLayout>
 
             <LinearLayout

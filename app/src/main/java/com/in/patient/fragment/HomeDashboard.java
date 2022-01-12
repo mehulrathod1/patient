@@ -64,7 +64,6 @@ public class HomeDashboard extends Fragment {
     ArrayList<String> slider_image_list;
     private TextView[] dots;
     int page_position = 0;
-
     RecyclerView recyclerView, healthCheckupRecycler, healthCareRecycler;
     HealthCareAdapter healthCareAdapter;
     List<CareAndCheckupModel> careList = new ArrayList<>();

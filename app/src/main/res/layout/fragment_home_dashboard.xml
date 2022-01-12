@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -356,7 +355,7 @@
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/Find_Your_Doctors"
                                     android:textColor="@color/action_mode_color"
-                                    android:textSize="@dimen/_20sdp" />
+                                    android:textSize="@dimen/_18sdp" />
 
                                 <TextView
                                     android:id="@+id/viewAllDoctor"
@@ -423,7 +422,7 @@
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/Health_Care_services"
                                     android:textColor="@color/action_mode_color"
-                                    android:textSize="@dimen/_20sdp" />
+                                    android:textSize="@dimen/_18sdp" />
 
                                 <TextView
                                     android:id="@+id/viewAllServices"
@@ -483,8 +482,7 @@
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/Health_Checkup_at_Home"
                                     android:textColor="@color/action_mode_color"
-                                    android:textSize="@dimen/_20sdp"
-                                    android:textStyle="bold" />
+                                    android:textSize="@dimen/_18sdp" />
 
                                 <TextView
                                     android:id="@+id/viewAllCheckup"

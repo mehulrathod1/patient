@@ -98,6 +98,8 @@ public class ProfileSettingLifestyle extends Fragment {
                 updateProfileLifestyle(Glob.Token, Glob.user_id, spnSmoking.getSelectedItem().toString(),
                         spnAlcohol.getSelectedItem().toString(),
                         spnWorkoutLevel.getSelectedItem().toString(), edtSportInvolvement.getText().toString()
+
+
                 );
 
             }
@@ -118,24 +120,29 @@ public class ProfileSettingLifestyle extends Fragment {
 
 
                 Log.e("vataf", "onResponse: " + model.getData().getAlcohol());
-                Log.e("vataf", "onResponse: " + model.getData().getSports_involvement());
+                Log.e("vataf", "onResponse: " +Glob.user_id);
 
                 edtSportInvolvement.setText(model.getData().getSports_involvement());
 
-                if (model.getData().getSmoking().equals("no")) {
+
+                if (model.getData().getSmoking().equals("No")) {
                     spnSmoking.setSelection(1);
-                } else {
+                }
+                else {
                     spnSmoking.setSelection(0);
                 }
-                if (model.getData().getAlcohol().equals("no")) {
+
+                if (model.getData().getAlcohol().equals("No")) {
                     spnAlcohol.setSelection(1);
-                } else {
+                }
+                else {
                     spnAlcohol.setSelection(0);
                 }
 
-                if (model.getData().getWorkout_level().equals("high")) {
+                if (model.getData().getWorkout_level().equals("High")) {
                     spnWorkoutLevel.setSelection(0);
-                } else {
+                }
+                else {
                     spnWorkoutLevel.setSelection(1);
                 }
             }
@@ -145,16 +152,9 @@ public class ProfileSettingLifestyle extends Fragment {
 
             }
         });
-
     }
 
-
-    public void updateProfileLifestyle(String token,
-                                       String user_id,
-                                       String smoking,
-                                       String alchol,
-                                       String workout_level,
-                                       String sports_involvement) {
+    public void updateProfileLifestyle(String token, String user_id, String smoking, String alchol, String workout_level, String sports_involvement) {
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
 
@@ -164,6 +164,7 @@ public class ProfileSettingLifestyle extends Fragment {
 
                 CommonModel model = response.body();
                 Toast.makeText(getContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
+
                 getProfileLifestyle(Glob.Token, Glob.user_id);
 
 

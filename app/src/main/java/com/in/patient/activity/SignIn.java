@@ -144,10 +144,8 @@ public class SignIn extends AppCompatActivity {
                 } else {
                     Toast.makeText(getApplicationContext(), model.getMessage(), Toast.LENGTH_SHORT).show();
                     Glob.dialog.dismiss();
-
                 }
             }
-
             @Override
             public void onFailure(Call<SignInModel> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();

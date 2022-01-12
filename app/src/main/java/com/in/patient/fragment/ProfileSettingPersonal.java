@@ -48,6 +48,7 @@ public class ProfileSettingPersonal extends Fragment {
     EditText edtFirstName, edtLastName, edtEmail, edtNumber, edtAge, edtGender, edtDob, edtBloodGroup, edtMaritalStatus, edtHeight, edtWeight, edtEmergencyNumber, edtAddress;
 
     TextView choosePhoto;
+
     Button Submit;
     ImageView profileImage;
     File photoFile, img_file;
