@@ -15,8 +15,10 @@ import com.in.patient.model.ProductModel;
 import com.in.patient.model.ProfileLifestyleModel;
 import com.in.patient.model.ProfileMedicalModel;
 import com.in.patient.model.ProfilePersonalModel;
+import com.in.patient.model.SearchModel;
 import com.in.patient.model.SignInModel;
 import com.in.patient.model.SignUpModel;
+import com.in.patient.model.ViewBookingDetailModel;
 
 import retrofit2.Call;
 import retrofit2.http.Field;
@@ -137,6 +139,16 @@ public interface Api {
     );
 
     @FormUrlEncoded
+    @POST("search_page.php")
+    Call<SearchModel> getSearchItem(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("keyword") String keyword
+
+
+    );
+
+    @FormUrlEncoded
     @POST("get_doctor_specialisties.php")
     Call<FindDoctorModel> getDoctorSpecialist(
 
@@ -201,7 +213,12 @@ public interface Api {
             @Field("patient_id") String patient_id,
             @Field("doctor_id") String doctor_id,
             @Field("booking_date") String booking_date,
-            @Field("slot_time") String slot_time
+            @Field("slot_time") String slot_time,
+            @Field("booking_type") String booking_type,
+            @Field("comments") String comments,
+            @Field("fees") String fees,
+            @Field("reportfile") String reportfile
+
     );
 
 
@@ -257,4 +274,13 @@ public interface Api {
             @Field("user_id") String user_id,
             @Field("message") String message
     );
+
+    @FormUrlEncoded
+    @POST("get_view_booking_details.php")
+    Call<ViewBookingDetailModel> getViewBookingDetail(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("booking_id") String message
+    );
+
 }

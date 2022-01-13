@@ -15,10 +15,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.in.patient.R;
 import com.in.patient.adapter.DayAdapter;
 import com.in.patient.adapter.DoctorTimePriceAdapter;
@@ -28,6 +30,7 @@ import com.in.patient.adapter.SlotAdapter;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.AddBookingAppointmentModel;
 import com.in.patient.model.CareAndCheckupModel;
+import com.in.patient.model.ClinicImage;
 import com.in.patient.model.DoctorProfileModel;
 import com.in.patient.model.DoctorTimePrice;
 import com.in.patient.model.MyReviewModel;
@@ -52,11 +55,11 @@ import retrofit2.Response;
 public class DoctorProfile extends AppCompatActivity {
 
 
-    TextView doctorName, txtDoctorEducation, doctorSpeciality, languageSpoken, experience, txtClinicName, txtClinicLocation, txtFromDay, txtOpenCloseTime, txtFees, txtStatus;
-
+    TextView doctorName, txtDoctorEducation, doctorSpeciality, languageSpoken, experience, txtClinicName, txtClinicLocation, txtFromDay, txtOpenCloseTime, txtFees, txtStatus, txtAbout;
+    EditText comment;
     RecyclerView recyclerView, reviewRecycler, timeRecycler, dayRecycler, slotRecycler;
     DoctorUploadedImageAdapter adapter;
-    List<CareAndCheckupModel> list = new ArrayList<>();
+    List<ClinicImage> clinicList = new ArrayList<>();
 
     MyReviewAdapter reviewAdapter;
     List<MyReviewModel> reviewList = new ArrayList<>();
@@ -70,7 +73,7 @@ public class DoctorProfile extends AppCompatActivity {
 
     Button bookAppointment;
 
-    ImageView backButton;
+    ImageView backButton, ProfileImage;
 
     String doctorId;
     String appointmentTime, appointmentDate;
@@ -122,13 +125,10 @@ public class DoctorProfile extends AppCompatActivity {
         init();
         imageData();
         reviewData();
-        timePriceData();
+//        timePriceData();
         dayData();
-
         getDoctorProfile(Token, user_id, doctorId);
         getTimeSlot(Token, user_id, doctorId, appointmentDate);
-
-
     }
 
     public void init() {
@@ -140,7 +140,7 @@ public class DoctorProfile extends AppCompatActivity {
 
         bookAppointment = findViewById(R.id.BookAppointment);
         backButton = findViewById(R.id.backButton);
-
+        ProfileImage = findViewById(R.id.ProfileImage);
 
         doctorName = findViewById(R.id.doctorName);
         txtDoctorEducation = findViewById(R.id.txtDoctorEducation);
@@ -153,6 +153,9 @@ public class DoctorProfile extends AppCompatActivity {
         txtOpenCloseTime = findViewById(R.id.txtOpenCloseTime);
         txtStatus = findViewById(R.id.edtStatus);
         txtFees = findViewById(R.id.txtFees);
+        txtAbout = findViewById(R.id.txtAbout);
+
+        comment = findViewById(R.id.comment);
 
 
         Glob.progressDialog(this);
@@ -165,10 +168,9 @@ public class DoctorProfile extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please Select Appointment Time ", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Log.e("currentdata", "onClick: " + doctorId + appointmentDate + appointmentTime);
-                    addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime);
+                    Log.e("currentdata", "onClick: "+user_id + doctorId + appointmentDate + appointmentTime);
+                    addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime,"online",comment.getText().toString(),txtFees.getText().toString(),"");
                 }
-
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -184,17 +186,17 @@ public class DoctorProfile extends AppCompatActivity {
 
     public void imageData() {
 
-        CareAndCheckupModel model = new CareAndCheckupModel("", "");
-        CareAndCheckupModel model1 = new CareAndCheckupModel("", "");
-        CareAndCheckupModel model2 = new CareAndCheckupModel("", "");
-        CareAndCheckupModel model3 = new CareAndCheckupModel("", "");
-        list.add(model);
-        list.add(model1);
-        list.add(model2);
-        list.add(model3);
+//        CareAndCheckupModel model = new CareAndCheckupModel("", "");
+//        CareAndCheckupModel model1 = new CareAndCheckupModel("", "");
+//        CareAndCheckupModel model2 = new CareAndCheckupModel("", "");
+//        CareAndCheckupModel model3 = new CareAndCheckupModel("", "");
+//        list.add(model);
+//        list.add(model1);
+//        list.add(model2);
+//        list.add(model3);
 
 
-        adapter = new DoctorUploadedImageAdapter(list, getApplicationContext(), new DoctorUploadedImageAdapter.Click() {
+        adapter = new DoctorUploadedImageAdapter(clinicList, getApplicationContext(), new DoctorUploadedImageAdapter.Click() {
             @Override
             public void onClick(int position) {
 
@@ -202,6 +204,7 @@ public class DoctorProfile extends AppCompatActivity {
         });
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(mLayoutManager);
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
 
@@ -287,12 +290,27 @@ public class DoctorProfile extends AppCompatActivity {
                 DoctorProfileModel model = response.body();
 
 
+                List<ClinicImage> list = model.getData().getClinicImageList();
+
+                for (int i = 0; i < list.size(); i++) {
+
+                    ClinicImage clinicImage = list.get(i);
+
+                    clinicList.add(clinicImage);
+
+                }
+                imageData();
+
+
+                Glide.with(getApplicationContext())
+                        .load(model.getData().getDoctorDetails().getProfile_image())
+                        .into(ProfileImage);
                 doctorName.setText(model.getData().getDoctorDetails().getDoctor_name());
                 txtDoctorEducation.setText(model.getData().getDoctorDetails().getEducation());
                 doctorSpeciality.setText(model.getData().getDoctorDetails().getSpecialist());
                 languageSpoken.setText(model.getData().getDoctorDetails().getLanguage_spoken());
-                experience.setText(model.getData().getDoctorDetails().getExperience());
-
+                experience.setText(model.getData().getDoctorDetails().getExperience() + "  year");
+                txtAbout.setText(model.getData().getDoctorDetails().getAbout_me());
                 txtClinicName.setText(model.getData().getClinicDetails().getClinicName());
                 txtClinicLocation.setText(model.getData().getClinicDetails().getLocation());
                 txtFromDay.setText(model.getData().getClinicDetails().getFromToDays());
@@ -312,13 +330,15 @@ public class DoctorProfile extends AppCompatActivity {
 
     }
 
-    public void addBookingAppointment(String token, String patient_id, String doctor_id, String booking_date, String slot_time) {
+    public void addBookingAppointment(String token, String patient_id, String doctor_id, String booking_date, String slot_time,String booking_type,
+                                      String comments,String fees,String report) {
+
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
 
 
-        call.addBookingAppointment(token, patient_id, doctor_id, booking_date, slot_time).enqueue(new Callback<AddBookingAppointmentModel>() {
+        call.addBookingAppointment(token, patient_id, doctor_id, booking_date,booking_type,comments,fees, slot_time,report).enqueue(new Callback<AddBookingAppointmentModel>() {
             @Override
             public void onResponse(Call<AddBookingAppointmentModel> call, Response<AddBookingAppointmentModel> response) {
 
@@ -333,6 +353,7 @@ public class DoctorProfile extends AppCompatActivity {
                 intent.putExtra("bookingId", booking_id);
                 intent.putExtra("doctorId", doctorId);
                 startActivity(intent);
+                finish();
 
 
             }

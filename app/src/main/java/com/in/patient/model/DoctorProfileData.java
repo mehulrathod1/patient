@@ -3,6 +3,9 @@ package com.in.patient.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DoctorProfileData {
 
 
@@ -13,6 +16,18 @@ public class DoctorProfileData {
     @SerializedName("Clinic Details")
     @Expose
     public ClinicDetails clinicDetails;
+
+    @SerializedName("Clinic_images")
+    @Expose
+    public List<ClinicImage> clinicImageList = new ArrayList<>();
+
+    public List<ClinicImage> getClinicImageList() {
+        return clinicImageList;
+    }
+
+    public void setClinicImageList(List<ClinicImage> clinicImageList) {
+        this.clinicImageList = clinicImageList;
+    }
 
     public DoctorDetails getDoctorDetails() {
         return doctorDetails;
@@ -50,6 +65,31 @@ public class DoctorProfileData {
         @SerializedName("experience")
         @Expose
         private String experience;
+
+        @SerializedName("about_me")
+        @Expose
+        private String about_me;
+
+        @SerializedName("profile_image")
+        @Expose
+        private String profile_image;
+
+
+        public String getAbout_me() {
+            return about_me;
+        }
+
+        public void setAbout_me(String about_me) {
+            this.about_me = about_me;
+        }
+
+        public String getProfile_image() {
+            return profile_image;
+        }
+
+        public void setProfile_image(String profile_image) {
+            this.profile_image = profile_image;
+        }
 
         public String getDoctor_name() {
             return doctor_name;
@@ -118,6 +158,8 @@ public class DoctorProfileData {
         @SerializedName("doctor_availability_status")
         @Expose
         private String doctorAvailabilityStatus;
+
+
 
         public String getOflineConsultancyFees() {
             return oflineConsultancyFees;

@@ -3,7 +3,8 @@ package com.in.patient.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class BookingConformationModel {
+public class ViewBookingDetailModel {
+
     @SerializedName("status")
     @Expose
     String status;
@@ -15,7 +16,7 @@ public class BookingConformationModel {
 
     @SerializedName("data")
     @Expose
-    ConformationData data;
+    BookingData bookingData;
 
     public String getStatus() {
         return status;
@@ -33,54 +34,51 @@ public class BookingConformationModel {
         this.message = message;
     }
 
-    public ConformationData getData() {
-        return data;
+    public BookingData getBookingData() {
+        return bookingData;
     }
 
-    public void setData(ConformationData data) {
-        this.data = data;
+    public void setBookingData(BookingData bookingData) {
+        this.bookingData = bookingData;
     }
 
-    public class ConformationData {
+    public class BookingData {
 
         @SerializedName("Booking Id")
         @Expose
         String BookingId;
 
-        @SerializedName("Booking For")
-        @Expose
-        String BookingFor;
-
 
         @SerializedName("Specialty")
         @Expose
         String Specialty;
+
         @SerializedName("Doctor Name")
         @Expose
         String DoctorName;
-
 
         @SerializedName("Booking Status")
         @Expose
         String BookingStatus;
 
+
         @SerializedName("Patient Name")
         @Expose
         String PatientName;
+
 
         @SerializedName("patient Location")
         @Expose
         String patientLocation;
 
 
+        @SerializedName("Booked Date")
+        @Expose
+        String BookedDate;
+
         @SerializedName("Booked Service Time")
         @Expose
         String BookedServiceTime;
-
-
-        @SerializedName("Booking Date")
-        @Expose
-        String BookingDate;
 
         @SerializedName("Clinic Location")
         @Expose
@@ -94,13 +92,8 @@ public class BookingConformationModel {
         @Expose
         String AmountStatus;
 
-        public String getBookingFor() {
-            return BookingFor;
-        }
 
-        public void setBookingFor(String bookingFor) {
-            BookingFor = bookingFor;
-        }
+
 
         public String getBookingId() {
             return BookingId;
@@ -150,20 +143,20 @@ public class BookingConformationModel {
             this.patientLocation = patientLocation;
         }
 
+        public String getBookedDate() {
+            return BookedDate;
+        }
+
+        public void setBookedDate(String bookedDate) {
+            BookedDate = bookedDate;
+        }
+
         public String getBookedServiceTime() {
             return BookedServiceTime;
         }
 
         public void setBookedServiceTime(String bookedServiceTime) {
             BookedServiceTime = bookedServiceTime;
-        }
-
-        public String getBookingDate() {
-            return BookingDate;
-        }
-
-        public void setBookingDate(String bookingDate) {
-            BookingDate = bookingDate;
         }
 
         public String getClinicLocation() {
@@ -190,4 +183,6 @@ public class BookingConformationModel {
             AmountStatus = amountStatus;
         }
     }
+
+
 }

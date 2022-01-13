@@ -48,7 +48,7 @@ public class MyAppointmentAdapter extends RecyclerView.Adapter<MyAppointmentAdap
         holder.BookingId.setText(model.getBooingId());
         holder.DoctorName.setText(model.getDoctorName());
         holder.CityName.setText(model.getLocation());
-        holder.Price.setText(model.getFees());
+        holder.Price.setText(model.getFees() + " ₹");
         holder.Status.setText(model.getStatus());
 
         Glide.with(context)

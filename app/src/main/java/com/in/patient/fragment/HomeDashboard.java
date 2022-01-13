@@ -11,7 +11,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -25,6 +28,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.in.patient.R;
 import com.in.patient.activity.DoctorProfile;
 import com.in.patient.activity.LabTest;
+import com.in.patient.activity.Search;
 import com.in.patient.activity.VideoCallScreen;
 import com.in.patient.adapter.FindDoctorAdapter;
 import com.in.patient.adapter.HealthCareAdapter;
@@ -32,6 +36,7 @@ import com.in.patient.adapter.SliderPagerAdapter;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.CareAndCheckupModel;
 import com.in.patient.model.CommonModel;
+import com.in.patient.model.DoctorConsultantSecondModel;
 import com.in.patient.model.FindDoctorModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
@@ -57,9 +62,14 @@ public class HomeDashboard extends Fragment {
 
     View view;
     Fragment fragment;
-    TextView viewAllDoctor, viewAllServices, viewAllCheckup;
+    TextView viewAllDoctor, viewAllServices, viewAllCheckup, search;
+    ImageView search_icon;
     private ViewPager vp_slider;
     private LinearLayout ll_dots;
+    Spinner spn_state_name;
+    ArrayAdapter<String> cityNameAdapter;
+    List<String> cityNameList = new ArrayList<>();
+
     SliderPagerAdapter sliderPagerAdapter;
     ArrayList<String> slider_image_list;
     private TextView[] dots;
@@ -114,18 +124,31 @@ public class HomeDashboard extends Fragment {
         viewAllServices = view.findViewById(R.id.viewAllServices);
         viewAllCheckup = view.findViewById(R.id.viewAllCheckup);
 
+        search_icon = view.findViewById(R.id.search_icon);
+        search = view.findViewById(R.id.search);
+
+        spn_state_name = view.findViewById(R.id.state_name);
+
         vp_slider = view.findViewById(R.id.vp_slider);
         ll_dots = view.findViewById(R.id.ll_dots);
+
+
+        cityNameList.add("Gujarat");
+        cityNameList.add("Maharashtra");
+        cityNameList.add("Rajasthan");
+
+        cityNameAdapter = new ArrayAdapter<String>(getContext(), R.layout.profile_spinner_text, cityNameList);
+        cityNameAdapter.setDropDownViewResource(R.layout.dropdown_item);
+        spn_state_name.setAdapter(cityNameAdapter);
 
         viewAllDoctor.setText(Html.fromHtml("<u>View All</u>"));
         viewAllServices.setText(Html.fromHtml("<u>View All</u>"));
         viewAllCheckup.setText(Html.fromHtml("<u>View All</u>"));
-
         slider_image_list = new ArrayList<>();
-        slider_image_list.add("https://wallpaperaccess.com/full/297372.jpg");
-        slider_image_list.add("https://www.teahub.io/photos/full/68-683520_beautiful-girl-wallpapers-hd.jpg");
-        slider_image_list.add("https://wallpaperaccess.com/full/1198406.jpg");
-        slider_image_list.add("https://www.wallpaperuse.com/wallp/50-509102_m.jpg");
+        slider_image_list.add("http://ciam.notionprojects.tech/assets/image/userprofile/1642061177_appointment-img.png");
+        slider_image_list.add("http://ciam.notionprojects.tech/assets/image/userprofile/1642061177_appointment-img.png");
+        slider_image_list.add("http://ciam.notionprojects.tech/assets/image/userprofile/1642061177_appointment-img.png");
+        slider_image_list.add("http://ciam.notionprojects.tech/assets/image/userprofile/1642061177_appointment-img.png");
         sliderPagerAdapter = new SliderPagerAdapter(getActivity(), slider_image_list, new SliderPagerAdapter.Click() {
             @Override
             public void itemClick(int position) {
@@ -179,6 +202,21 @@ public class HomeDashboard extends Fragment {
 //            }
 //        }, 100, 5000);
 
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Search.class);
+                startActivity(intent);
+            }
+        });
+        search_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), Search.class);
+                startActivity(intent);
+            }
+        });
 
         doctorConsultant.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -420,5 +458,40 @@ public class HomeDashboard extends Fragment {
 //        });
 //
 //    }
+
+    public void getDoctor(String token, String user_id) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+
+        call.getDoctor(token, user_id).enqueue(new Callback<DoctorConsultantSecondModel>() {
+            @Override
+            public void onResponse(Call<DoctorConsultantSecondModel> call, Response<DoctorConsultantSecondModel> response) {
+
+                DoctorConsultantSecondModel doctorConsultantSecondModel = response.body();
+
+                List<DoctorConsultantSecondModel.ConsultantData> DataList = doctorConsultantSecondModel.getConsultantDataList();
+
+                for (int i = 0; i < DataList.size(); i++) {
+
+                    DoctorConsultantSecondModel.ConsultantData model = DataList.get(i);
+
+                    DoctorConsultantSecondModel.ConsultantData data = new DoctorConsultantSecondModel.ConsultantData(
+                            model.getUser_id(), model.getFirst_name(), model.getLast_name(),
+                            model.getSpecialist(), model.getExperience() + " yrs of exp overall", model.getLocation(),
+                            model.getProfile_image()
+                    );
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DoctorConsultantSecondModel> call, Throwable t) {
+
+            }
+        });
+
+    }
+
 
 }

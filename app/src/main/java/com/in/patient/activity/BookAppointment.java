@@ -115,6 +115,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
                 txtBookingId.setText(data.getBookingId());
                 txtSpeciality.setText(data.getSpecialty());
                 txtDName.setText(data.getDoctorName());
+                txtBookingFor.setText(data.getBookingFor());
                 txtBookingStatus.setText(data.getBookingStatus());
                 txtPatientName.setText(data.getPatientName());
                 txtLocation.setText(data.getPatientLocation());
@@ -122,9 +123,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
                 txtClinicAddress.setText(data.getClinicLocation());
                 texTotalAmount.setText(data.getTotalAmount());
                 txtAmountStatus.setText(data.getAmountStatus());
-
                 Glob.dialog.dismiss();
-
 
             }
 
@@ -146,7 +145,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
             public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
                 CommonModel commonModel = response.body();
 
-                Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
 
                 Glob.dialog.dismiss();
             }
@@ -214,6 +213,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
     public void onPaymentSuccess(String s) {
 
         Toast.makeText(getApplicationContext(), "Payment Successfull", Toast.LENGTH_SHORT).show();
+        txtPayNow.setVisibility(View.GONE);
 
     }
 

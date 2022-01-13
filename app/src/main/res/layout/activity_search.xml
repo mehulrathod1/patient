@@ -53,79 +53,26 @@
 
 
             <EditText
+                android:id="@+id/search_name"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_margin="@dimen/_12sdp"
                 android:background="@color/white"
-                android:text="Dr. "
+                android:hint="Dr. "
                 android:textColor="@color/action_mode_color_edt"
                 android:textSize="@dimen/_18sdp" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_1sdp"
-                android:background="@color/action_mode_color_edt"
+                android:background="@color/action_mode_color_edt" />
 
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/recycler"
                 />
-
-            <TextView
-                android:id="@+id/doctorName"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_margin="@dimen/_12sdp"
-                android:background="@color/white"
-                android:text="Dr.Daksh Kumar"
-                android:textColor="@color/action_mode_color_edt"
-                android:textSize="@dimen/_18sdp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:background="@color/action_mode_color_edt"
-
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_margin="@dimen/_12sdp"
-                android:background="@color/white"
-                android:text="Dr.Daksh Kumar"
-                android:textColor="@color/action_mode_color_edt"
-                android:textSize="@dimen/_18sdp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:background="@color/action_mode_color_edt"
-
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_margin="@dimen/_12sdp"
-                android:background="@color/white"
-                android:text="Dr.Daksh Kumar"
-                android:textColor="@color/action_mode_color_edt"
-                android:textSize="@dimen/_18sdp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:background="@color/action_mode_color_edt"
-
-                />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_margin="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:background="@color/white"
-                android:text="Dr.Daksh Kumar"
-                android:textColor="@color/action_mode_color_edt"
-                android:textSize="@dimen/_18sdp" />
 
         </LinearLayout>
     </LinearLayout>

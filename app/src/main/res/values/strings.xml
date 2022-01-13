@@ -72,8 +72,22 @@
     <string name="Alchol">Alchol</string>
     <string name="Workout_level">Workout level</string>
     <string name="Sports_involvement">Sports involvement</string>
-    <!--    manage_calendar-->
+
+
+
+<!--    view_booking_detail-->
+
     <string name="Booking_Id">Booking Id</string>
+    <string name="Booking_Date">Booking Date</string>
+    <string name="Booking_Status">Booking Status</string>
+    <string name="payment_Status">payment Status</string>
+    <string name="doctor_detail">Doctor Detail</string>
+    <string name="clinic_location">Clinic Location</string>
+
+
+
+    <!--    manage_calendar-->
+
     <string name="Doctor_Name">Doctor Name</string>
     <string name="Location">Location</string>
     <string name="Pending">Pending</string>
@@ -85,6 +99,7 @@
     <string name="Booking_Time">Booking Time</string>
     <string name="Accept">Accept</string>
     <string name="Cancel">Cancel</string>
+
 
 
     <!--    Completed Assignment-->

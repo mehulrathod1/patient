@@ -65,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-
-
         init();
         getFcmToken(Glob.Token, Glob.user_id);
         fragment = new HomeDashboard();

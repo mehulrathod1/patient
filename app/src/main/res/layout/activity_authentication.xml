@@ -35,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:fontFamily="@font/montserrat_semi_bold"
-            android:text="Use Your Screen lock"
+            android:text="Tap to Use Your Screen lock"
             android:textColor="@color/action_mode_color"
             android:textSize="@dimen/_18sdp" />
 

@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.in.patient.R;
 import com.in.patient.activity.DoctorProfile;
+import com.in.patient.activity.Search;
 import com.in.patient.adapter.DoctorConsultantSecondAdapter;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.DoctorConsultantSecondModel;
@@ -38,6 +40,7 @@ public class DoctorConsultSecond extends Fragment {
     List<DoctorConsultantSecondModel.ConsultantData> list = new ArrayList<>();
     View view;
     FloatingActionButton filter;
+    LinearLayout searchLayout;
 
 
     @Override
@@ -59,6 +62,7 @@ public class DoctorConsultSecond extends Fragment {
     public void init() {
         recyclerView = view.findViewById(R.id.recycler);
         filter = view.findViewById(R.id.Filter);
+        searchLayout = view.findViewById(R.id.searchLayout);
 
         final BottomSheetDialog dialog = new BottomSheetDialog(getContext());
         dialog.setContentView(R.layout.filter_dialog);
@@ -71,6 +75,16 @@ public class DoctorConsultSecond extends Fragment {
             public void onClick(View v) {
 
                 dialog.show();
+            }
+        });
+
+        searchLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getContext(), Search.class);
+                startActivity(intent);
+
             }
         });
     }

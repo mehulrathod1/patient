@@ -8,12 +8,11 @@
     tools:context=".activity.Splash">
 
 
-    <TextView
+    <ImageView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/_14sdp"
         android:layout_centerInParent="true"
-        android:fontFamily="@font/montserrat_semi_bold"
-        android:text="Splash Screen"
-        android:textSize="@dimen/_30sdp" />
+        android:src="@drawable/app_logo" />
 </RelativeLayout>

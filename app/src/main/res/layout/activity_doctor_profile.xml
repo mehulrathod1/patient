@@ -25,7 +25,7 @@
                     android:id="@+id/ProfileImage"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_250sdp"
-                    android:src="@color/action_mode_color" />
+                    android:scaleType="centerCrop"/>
 
                 <ImageView
                     android:id="@+id/backButton"
@@ -263,7 +263,7 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et."
+                                    android:text=""
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -504,15 +504,27 @@
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
-                                <TextView
-                                    android:id="@+id/txtFees"
-                                    style="@style/m_semi_14"
+                                <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
+                                    android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/txtFees"
+                                    style="@style/m_semi_14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
                                     android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
+                                    <TextView
+                                        style="@style/m_semi_14"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text=" ₹"
+                                        android:textColor="@color/action_mode_color_edt" />
+
+                                </LinearLayout>
                             </LinearLayout>
 
                             <LinearLayout
@@ -731,7 +743,7 @@
 
                             <ImageView
                                 android:layout_width="0dp"
-                                android:layout_height="wrap_content"
+                                android:layout_height="@dimen/_20sdp"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
                                 android:src="@drawable/ic_baseline_arrow_back_ios_24" />
@@ -747,7 +759,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
                                 android:layout_weight="1"
-                                android:src="@drawable/nev_back" />
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/ic_baseline_navigate_next_24" />
                         </LinearLayout>
 
 
@@ -930,6 +943,7 @@
                             android:textColor="@color/action_mode_color_edt" />
 
                         <EditText
+                            android:id="@+id/comment"
                             style="@style/m_semi_16"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
@@ -952,12 +966,22 @@
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
                             android:layout_marginTop="@dimen/_8sdp"
-                            android:layout_marginBottom="@dimen/_60sdp"
                             android:height="@dimen/_30sdp"
                             android:background="@color/md_grey_300"
                             android:gravity="center"
                             android:text="@string/Choose_report"
                             android:textColor="@color/action_mode_color_edt" />
+
+                        <Button
+                            android:id="@+id/BookAppointment"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_46sdp"
+                            android:layout_marginTop="@dimen/_14sdp"
+                            android:layout_alignParentBottom="true"
+                            android:background="@drawable/button_bg"
+                            android:text="@string/Book_am_Appointment"
+                            android:textAllCaps="false"
+                            android:textSize="@dimen/_20sdp" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -968,15 +992,5 @@
     </ScrollView>
 
 
-    <Button
-        android:id="@+id/BookAppointment"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_46sdp"
-        android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/_12sdp"
-        android:background="@drawable/button_bg"
-        android:text="@string/Book_am_Appointment"
-        android:textAllCaps="false"
-        android:textSize="@dimen/_20sdp" />
 
 </RelativeLayout>

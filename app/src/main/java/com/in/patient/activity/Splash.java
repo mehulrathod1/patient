@@ -56,8 +56,6 @@ public class Splash extends AppCompatActivity {
 
         if (!id.equals(null)) {
             Glob.user_id = id;
-
-
         }
 
         if (auth.equals("null")) {

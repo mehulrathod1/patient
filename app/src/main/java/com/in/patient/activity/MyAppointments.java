@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.ims.ImsMmTelManager;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -36,6 +37,8 @@ public class MyAppointments extends AppCompatActivity {
     MyAppointmentAdapter adapter;
     RecyclerView recyclerView;
     List<MyAppointmentModel.AppointmentData> list = new ArrayList<>();
+
+    String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,6 +119,11 @@ public class MyAppointments extends AppCompatActivity {
         adapter = new MyAppointmentAdapter(list, getApplicationContext(), new MyAppointmentAdapter.Click() {
             @Override
             public void onButtonClick(int position) {
+
+                id = list.get(position).getBooingId();
+                Intent intent = new Intent(getApplicationContext(),ViewBookingDetail.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
 
             }
         });
