@@ -78,7 +78,10 @@ public class MainActivity extends AppCompatActivity {
         }
         if (index == 2) {
 
-            fragment = new DoctorConsultSecond();
+            Fragment fragment = new DoctorConsultSecond();
+            Bundle spe_id = new Bundle();
+            spe_id.putString("specialist_id", "0");
+            fragment.setArguments(spe_id);
             loadFragment(fragment);
 
         }
@@ -97,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView.setBackgroundColor(android.R.color.white);
         bottomNavigationView.getMenu().getItem(2).setEnabled(false);
-
 
         coordinator.setVisibility(View.VISIBLE);
 
@@ -153,8 +155,14 @@ public class MainActivity extends AppCompatActivity {
                         loadFragment(new HomeDashboard());
                         break;
                     case R.id.Revenue:
-                        loadFragment(new DoctorConsultSecond());
+
+                        Fragment fragment = new DoctorConsultSecond();
+                        Bundle spe_id = new Bundle();
+                        spe_id.putString("specialist_id", "0");
+                        fragment.setArguments(spe_id);
+                        loadFragment(fragment);
                         break;
+
                     case R.id.Medicine:
                         loadFragment(new Medicines());
                         break;

@@ -53,8 +53,6 @@ public class Search extends AppCompatActivity {
         init();
         getSearchItem(Glob.Token, Glob.user_id, search_name.getText().toString());
 
-
-
     }
 
     public void init() {

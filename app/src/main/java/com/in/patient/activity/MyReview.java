@@ -25,13 +25,17 @@ public class MyReview extends AppCompatActivity {
     RecyclerView recyclerView;
     MyReviewAdapter adapter;
     List<MyReviewModel> list = new ArrayList<>();
-
+    String variable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_review);
         getSupportActionBar().hide();
+
+        Intent intent = getIntent();
+        variable= intent.getStringExtra("variable");
+
 
         init();
         recyclerData();
@@ -42,19 +46,26 @@ public class MyReview extends AppCompatActivity {
         headerTitle = findViewById(R.id.header_title);
         recyclerView = findViewById(R.id.recycler);
 
-        headerTitle.setText("My Booked Appointment");
+        headerTitle.setText("My Review");
 
         nevBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+
+                if (variable.equals("doctor_profile")){
+
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
+
     public void recyclerData() {
 
-        MyReviewModel model = new MyReviewModel("", "Lorem ipsum.", "27/09/2021","Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.");
+        MyReviewModel model = new MyReviewModel("", "Lorem ipsum.", "27/09/2021", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.");
         list.add(model);
         list.add(model);
         list.add(model);

@@ -28,7 +28,6 @@
         <item name="android:textColor">@color/action_mode_color_edt</item>
     </style>
 
-
     <style name="form_style">
         <item name="android:textSize">@dimen/_14sdp</item>
         <item name="android:background">@drawable/edt_bg</item>

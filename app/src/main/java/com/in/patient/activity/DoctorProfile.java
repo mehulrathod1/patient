@@ -11,7 +11,11 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.OpenableColumns;
+import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -40,6 +44,7 @@ import com.in.patient.retrofit.RetrofitClient;
 import com.in.patient.retrofit.TimeSlotItem;
 import com.in.patient.retrofit.TimeSlotModel;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -55,7 +60,7 @@ import retrofit2.Response;
 public class DoctorProfile extends AppCompatActivity {
 
 
-    TextView doctorName, txtDoctorEducation, doctorSpeciality, languageSpoken, experience, txtClinicName, txtClinicLocation, txtFromDay, txtOpenCloseTime, txtFees, txtStatus, txtAbout;
+    TextView doctorName, txtDoctorEducation, doctorSpeciality, languageSpoken, experience, txtClinicName, txtClinicLocation, txtFromDay, txtOpenCloseTime, txtFees, txtStatus, txtAbout, choose_file,view_all_review;
     EditText comment;
     RecyclerView recyclerView, reviewRecycler, timeRecycler, dayRecycler, slotRecycler;
     DoctorUploadedImageAdapter adapter;
@@ -154,8 +159,10 @@ public class DoctorProfile extends AppCompatActivity {
         txtStatus = findViewById(R.id.edtStatus);
         txtFees = findViewById(R.id.txtFees);
         txtAbout = findViewById(R.id.txtAbout);
-
+        choose_file = findViewById(R.id.choose_file);
         comment = findViewById(R.id.comment);
+        view_all_review = findViewById(R.id.view_all_review);
+        view_all_review.setText(Html.fromHtml("<u>View All</u>"));
 
 
         Glob.progressDialog(this);
@@ -166,10 +173,16 @@ public class DoctorProfile extends AppCompatActivity {
 
                 if (appointmentTime == null) {
                     Toast.makeText(getApplicationContext(), "Please Select Appointment Time ", Toast.LENGTH_SHORT).show();
+                } else if (comment.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(), "Please add comment", Toast.LENGTH_SHORT).show();
                 } else {
 
-                    Log.e("currentdata", "onClick: "+user_id + doctorId + appointmentDate + appointmentTime);
-                    addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime,"online",comment.getText().toString(),txtFees.getText().toString(),"");
+                    Log.e("currentdata", "onClick: " + user_id + doctorId + appointmentDate + appointmentTime);
+
+                    Log.e("geeeeee", "onClick: " + appointmentTime);
+                    Log.e("geeeeee", "onClick: " + appointmentTime);
+
+                    addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), "");
                 }
             }
         });
@@ -178,6 +191,27 @@ public class DoctorProfile extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("s", 1);
+                startActivity(intent);
+            }
+        });
+
+        choose_file.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_GET_CONTENT);
+//                intent.setType("application/pdf");
+//                startActivity(intent);
+
+            }
+        });
+
+        view_all_review.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),MyReview.class);
+                intent.putExtra("variable","doctor_profile");
                 startActivity(intent);
             }
         });
@@ -330,15 +364,15 @@ public class DoctorProfile extends AppCompatActivity {
 
     }
 
-    public void addBookingAppointment(String token, String patient_id, String doctor_id, String booking_date, String slot_time,String booking_type,
-                                      String comments,String fees,String report) {
+    public void addBookingAppointment(String token, String patient_id, String doctor_id, String booking_date, String slot_time, String booking_type,
+                                      String comments, String fees, String report) {
 
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
 
 
-        call.addBookingAppointment(token, patient_id, doctor_id, booking_date,booking_type,comments,fees, slot_time,report).enqueue(new Callback<AddBookingAppointmentModel>() {
+        call.addBookingAppointment(token, patient_id, doctor_id, booking_date, slot_time, booking_type, comments, fees, report).enqueue(new Callback<AddBookingAppointmentModel>() {
             @Override
             public void onResponse(Call<AddBookingAppointmentModel> call, Response<AddBookingAppointmentModel> response) {
 
@@ -353,14 +387,13 @@ public class DoctorProfile extends AppCompatActivity {
                 intent.putExtra("bookingId", booking_id);
                 intent.putExtra("doctorId", doctorId);
                 startActivity(intent);
-                finish();
 
 
             }
 
             @Override
             public void onFailure(Call<AddBookingAppointmentModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
                 Log.e("error", "onFailure: " + t.getMessage());
                 dialog.dismiss();
             }
@@ -407,18 +440,15 @@ public class DoctorProfile extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void getTimeSlotData() {
-
 
         timeSlotAdapter = new SlotAdapter(timeSlotItemList, getApplicationContext(), new SlotAdapter.Click() {
             @Override
             public void itemClick(int position) {
 
                 appointmentTime = timeSlotItemList.get(position).getSlotTime();
-
                 Log.e("appointmentTime", "itemClick: " + appointmentTime);
 
             }
@@ -428,5 +458,14 @@ public class DoctorProfile extends AppCompatActivity {
         slotRecycler.setLayoutManager(mLayoutManager);
         slotRecycler.setAdapter(timeSlotAdapter);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+//        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//        intent.putExtra("s", 1);
+//        startActivity(intent);
+    }
+
 
 }

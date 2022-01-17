@@ -222,4 +222,13 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
 
         Toast.makeText(getApplicationContext(), "Payment Failed", Toast.LENGTH_SHORT).show();
     }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(getApplicationContext(),DoctorProfile.class);
+        intent.putExtra("doctorId",doctorId);
+        startActivity(intent);
+    }
 }

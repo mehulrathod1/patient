@@ -126,7 +126,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -159,7 +158,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -192,7 +190,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -225,7 +222,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -258,7 +254,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -333,7 +328,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -366,7 +360,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -443,7 +436,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -476,7 +468,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -503,16 +494,25 @@
                                     android:textColor="@color/action_mode_color_edt"
                                     android:textSize="@dimen/_14sdp" />
 
-                                <TextView
-                                    android:id="@+id/texTotalAmount"
-                                    style="@style/m_semi_14"
+                                <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
+                                    android:orientation="horizontal">
 
-                                    android:textColor="@color/action_mode_color_edt" />
-
+                                    <TextView
+                                        android:id="@+id/texTotalAmount"
+                                        style="@style/m_semi_14"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/action_mode_color_edt" />
+                                    <TextView
+                                        style="@style/m_semi_14"
+                                        android:layout_height="wrap_content"
+                                        android:layout_width="wrap_content"
+                                        android:text=" ₹"
+                                        android:textColor="@color/action_mode_color_edt" />
+                                </LinearLayout>
                             </LinearLayout>
 
                             <LinearLayout
@@ -543,7 +543,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -579,12 +578,11 @@
 
                                     <TextView
                                         android:id="@+id/txtAmountStatus"
+                                        style="@style/m_semi_14"
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="2"
-                                        android:text="Lorem ipsum."
-                                        android:textColor="@color/action_mode_color_edt"
-                                        style="@style/m_semi_14" />
+                                        android:textColor="@color/action_mode_color_edt" />
 
                                     <TextView
                                         android:id="@+id/txtpayNow"
@@ -679,10 +677,10 @@
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_marginTop="@dimen/_18sdp"
                                     android:background="@drawable/time_bg"
+                                    android:fontFamily="@font/montserrat_semi_bold"
                                     android:gravity="center"
                                     android:text="@string/Chat"
                                     android:textColor="@color/action_mode_color_300"
-                                    android:fontFamily="@font/montserrat_semi_bold"
                                     android:textSize="@dimen/_20sdp" />
 
                                 <TextView
@@ -690,12 +688,12 @@
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_marginTop="@dimen/_18sdp"
                                     android:background="@color/action_mode_color"
+                                    android:fontFamily="@font/montserrat_semi_bold"
                                     android:gravity="center"
                                     android:text="@string/Start_Video"
                                     android:textColor="@color/white"
-                                    android:visibility="gone"
-                                    android:fontFamily="@font/montserrat_semi_bold"
-                                    android:textSize="@dimen/_20sdp" />
+                                    android:textSize="@dimen/_20sdp"
+                                    android:visibility="gone" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>

@@ -1,6 +1,7 @@
 package com.in.patient.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.AsyncTask;
@@ -101,10 +102,8 @@ public class HomeDashboard extends Fragment {
         init();
         healthCareData();
         healthCheckupData();
-        addBottomDots(0);
+//        addBottomDots(0);
         getDoctorSpecialist(Glob.Token, Glob.user_id);
-
-
         return view;
     }
 
@@ -171,7 +170,7 @@ public class HomeDashboard extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-                addBottomDots(position);
+//                addBottomDots(position);
             }
 
             @Override
@@ -180,27 +179,26 @@ public class HomeDashboard extends Fragment {
             }
         });
 
-//        final Handler handler = new Handler();
-//
-//        final Runnable update = new Runnable() {
-//            public void run() {
-//                if (page_position == slider_image_list.size()) {
-//                    page_position = 0;
-//                } else {
-//                    page_position = page_position + 1;
-//                }
-//                vp_slider.setCurrentItem(page_position, true);
-//            }
-//        };
-//
-//        new Timer().schedule(new TimerTask() {
-//
-//
-//            @Override
-//            public void run() {
-//                handler.post(update);
-//            }
-//        }, 100, 5000);
+        final Handler handler = new Handler();
+
+        final Runnable update = new Runnable() {
+            public void run() {
+                if (page_position == slider_image_list.size()) {
+                    page_position = 0;
+                } else {
+                    page_position = page_position + 1;
+                }
+                vp_slider.setCurrentItem(page_position, true);
+            }
+        };
+        new Timer().schedule(new TimerTask() {
+
+
+            @Override
+            public void run() {
+                handler.post(update);
+            }
+        }, 100, 3000);
 
 
         search.setOnClickListener(new View.OnClickListener() {
@@ -210,6 +208,7 @@ public class HomeDashboard extends Fragment {
                 startActivity(intent);
             }
         });
+
         search_icon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -222,6 +221,9 @@ public class HomeDashboard extends Fragment {
             @Override
             public void onClick(View v) {
                 Fragment fragment = new DoctorConsultSecond();
+                Bundle spe_id = new Bundle();
+                spe_id.putString("specialist_id", "0");
+                fragment.setArguments(spe_id);
                 loadFragment(fragment);
             }
         });
@@ -257,8 +259,13 @@ public class HomeDashboard extends Fragment {
         viewAllDoctor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Fragment fragment = new DoctorConsultant();
+
+                Fragment fragment = new DoctorConsultSecond();
+                Bundle spe_id = new Bundle();
+                spe_id.putString("specialist_id", "0");
+                fragment.setArguments(spe_id);
                 loadFragment(fragment);
+
             }
         });
 
@@ -316,6 +323,7 @@ public class HomeDashboard extends Fragment {
                             model.getSpecialistId(), model.getSpecialistName(),
                             model.getSpecialistImg()
                     );
+
                     list.add(data);
 
                 }
@@ -338,7 +346,13 @@ public class HomeDashboard extends Fragment {
             @Override
             public void onButtonClick(int position) {
 
+                String specialist_id = list.get(position).getSpecialistId();
+                Log.e("specialist_id", "onButtonClick: " + specialist_id);
+
                 Fragment fragment = new DoctorConsultSecond();
+                Bundle spe_id = new Bundle();
+                spe_id.putString("specialist_id", specialist_id);
+                fragment.setArguments(spe_id);
                 loadFragment(fragment);
             }
         });
@@ -459,37 +473,15 @@ public class HomeDashboard extends Fragment {
 //
 //    }
 
-    public void getDoctor(String token, String user_id) {
+    @Override
+    public void onDetach() {
+        super.onDetach();
 
-        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+    }
 
-
-        call.getDoctor(token, user_id).enqueue(new Callback<DoctorConsultantSecondModel>() {
-            @Override
-            public void onResponse(Call<DoctorConsultantSecondModel> call, Response<DoctorConsultantSecondModel> response) {
-
-                DoctorConsultantSecondModel doctorConsultantSecondModel = response.body();
-
-                List<DoctorConsultantSecondModel.ConsultantData> DataList = doctorConsultantSecondModel.getConsultantDataList();
-
-                for (int i = 0; i < DataList.size(); i++) {
-
-                    DoctorConsultantSecondModel.ConsultantData model = DataList.get(i);
-
-                    DoctorConsultantSecondModel.ConsultantData data = new DoctorConsultantSecondModel.ConsultantData(
-                            model.getUser_id(), model.getFirst_name(), model.getLast_name(),
-                            model.getSpecialist(), model.getExperience() + " yrs of exp overall", model.getLocation(),
-                            model.getProfile_image()
-                    );
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DoctorConsultantSecondModel> call, Throwable t) {
-
-            }
-        });
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
 
     }
 

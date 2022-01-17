@@ -18,6 +18,7 @@ import com.in.patient.model.ProfilePersonalModel;
 import com.in.patient.model.SearchModel;
 import com.in.patient.model.SignInModel;
 import com.in.patient.model.SignUpModel;
+import com.in.patient.model.SpecialistDoctorModel;
 import com.in.patient.model.ViewBookingDetailModel;
 
 import retrofit2.Call;
@@ -162,6 +163,15 @@ public interface Api {
     Call<DoctorConsultantSecondModel> getDoctor(
             @Field("token") String token,
             @Field("user_id") String user_id
+
+    );
+
+    @FormUrlEncoded
+    @POST("get_spcialists_doctors.php")
+    Call<SpecialistDoctorModel> getSpecialistDoctor(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("specialist_id") String specialist_id
 
     );
 

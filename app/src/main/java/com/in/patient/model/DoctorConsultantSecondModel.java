@@ -71,21 +71,33 @@ public class DoctorConsultantSecondModel {
         @Expose
         String location;
 
+        @SerializedName("available")
+        @Expose
+        String available;
+
         @SerializedName("profile_image")
         @Expose
         String profile_image;
 
 
-        public ConsultantData(String user_id, String first_name, String last_name, String specialist, String experience, String location, String profile_image) {
+        public ConsultantData(String user_id, String first_name, String last_name, String specialist, String experience, String location, String available, String profile_image) {
             this.user_id = user_id;
             this.first_name = first_name;
             this.last_name = last_name;
             this.specialist = specialist;
             this.experience = experience;
             this.location = location;
+            this.available = available;
             this.profile_image = profile_image;
         }
 
+        public String getAvailable() {
+            return available;
+        }
+
+        public void setAvailable(String available) {
+            this.available = available;
+        }
 
         public String getUser_id() {
             return user_id;

@@ -1,6 +1,5 @@
 package com.in.patient.adapter;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +10,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-
 import com.bumptech.glide.Glide;
 import com.in.patient.R;
-import com.in.patient.model.DoctorConsultantSecondModel;
+import com.in.patient.model.SpecialistDoctorModel;
 
 import java.util.List;
 
-public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorConsultantSecondAdapter.ViewHolder> {
-    List<DoctorConsultantSecondModel.ConsultantData> list;
+public class SpecialistDoctorAdapter extends RecyclerView.Adapter<SpecialistDoctorAdapter.ViewHolder> {
+    List<SpecialistDoctorModel.Specialist> list;
     Context context;
     Click click;
 
@@ -27,7 +25,7 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
         void onItemClick(int position);
     }
 
-    public DoctorConsultantSecondAdapter(List<DoctorConsultantSecondModel.ConsultantData> list, Context context, Click click) {
+    public SpecialistDoctorAdapter(List<SpecialistDoctorModel.Specialist> list, Context context, Click click) {
         this.list = list;
         this.context = context;
         this.click = click;
@@ -42,10 +40,11 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        DoctorConsultantSecondModel.ConsultantData model = list.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.DoctorName.setText(model.getFirst_name() + model.getLast_name());
+        SpecialistDoctorModel.Specialist model = list.get(position);
+
+        holder.DoctorName.setText(model.getDoctorName());
         holder.exp.setText(model.getExperience());
 //        holder.LikePercentage.setText(model.getLikePercentage());
 //        holder.Rate.setText(model.getRate());
@@ -55,7 +54,7 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
 
 
         Glide.with(context)
-                .load(model.getProfile_image())
+                .load(model.getProfile())
                 .into(holder.profileImage);
 
         holder.BookAppointment.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +75,7 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
         TextView speciality, exp, Location, LikePercentage, Rate, available, DoctorName, BookAppointment;
         ImageView profileImage;
 
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -88,7 +88,6 @@ public class DoctorConsultantSecondAdapter extends RecyclerView.Adapter<DoctorCo
             BookAppointment = itemView.findViewById(R.id.BookAppointment);
             available = itemView.findViewById(R.id.available);
             profileImage = itemView.findViewById(R.id.profileImage);
-
         }
     }
 }

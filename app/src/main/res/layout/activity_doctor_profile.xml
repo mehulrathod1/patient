@@ -25,7 +25,7 @@
                     android:id="@+id/ProfileImage"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_250sdp"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop" />
 
                 <ImageView
                     android:id="@+id/backButton"
@@ -128,7 +128,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -162,7 +161,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -196,7 +194,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -339,7 +336,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -373,7 +369,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -442,7 +437,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -476,7 +470,6 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
-                                    android:text="Lorem ipsum."
                                     android:textColor="@color/action_mode_color_edt" />
 
                             </LinearLayout>
@@ -509,13 +502,13 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="7"
                                     android:orientation="horizontal">
-                                <TextView
-                                    android:id="@+id/txtFees"
-                                    style="@style/m_semi_14"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:text="Lorem ipsum."
-                                    android:textColor="@color/action_mode_color_edt" />
+
+                                    <TextView
+                                        android:id="@+id/txtFees"
+                                        style="@style/m_semi_14"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/action_mode_color_edt" />
 
                                     <TextView
                                         style="@style/m_semi_14"
@@ -585,12 +578,33 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-                            <TextView
-                                style="@style/m_semi_16"
+                            <RelativeLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/_35sdp"
-                                android:gravity="center_vertical"
-                                android:text="@string/Rating" />
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    style="@style/m_semi_16"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_35sdp"
+                                    android:gravity="center_vertical"
+                                    android:text="@string/Rating" />
+
+                                <TextView
+                                    android:id="@+id/view_all_review"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerInParent="true"
+                                    android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:gravity="right"
+                                    android:text="@string/View_all"
+                                    android:textColor="@color/action_mode_color_300"
+                                    android:textSize="@dimen/_12sdp" />
+
+
+
+                            </RelativeLayout>
 
                             <View
                                 android:layout_width="match_parent"
@@ -962,6 +976,8 @@
                             android:textColor="@color/action_mode_color_edt" />
 
                         <TextView
+
+                            android:id="@+id/choose_file"
                             style="@style/m_semi_14"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_40sdp"
@@ -976,8 +992,8 @@
                             android:id="@+id/BookAppointment"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/_46sdp"
-                            android:layout_marginTop="@dimen/_14sdp"
                             android:layout_alignParentBottom="true"
+                            android:layout_marginTop="@dimen/_14sdp"
                             android:background="@drawable/button_bg"
                             android:text="@string/Book_am_Appointment"
                             android:textAllCaps="false"
@@ -990,7 +1006,6 @@
 
         </RelativeLayout>
     </ScrollView>
-
 
 
 </RelativeLayout>
