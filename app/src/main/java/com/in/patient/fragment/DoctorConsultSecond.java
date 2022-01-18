@@ -18,6 +18,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
+import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
+import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -50,13 +53,16 @@ public class DoctorConsultSecond extends Fragment {
     List<SpecialistDoctorModel.Specialist> specialistList = new ArrayList<>();
 
 
-    TextView doctor_not_found;
+    TextView doctor_not_found, maxvalue, minvalue;
     ImageView close_dialog;
-     BottomSheetDialog bottomSheetDialog;
+    BottomSheetDialog bottomSheetDialog;
 
     View view;
     FloatingActionButton filter;
     LinearLayout searchLayout;
+
+    CrystalRangeSeekbar seekbar;
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -80,8 +86,7 @@ public class DoctorConsultSecond extends Fragment {
         if (specialist_id.equals("0")) {
 
             getDoctor(Token, user_id);
-        }
-        else {
+        } else {
             getSpecialistDoctor(Token, user_id, specialist_id);
         }
 
@@ -105,7 +110,7 @@ public class DoctorConsultSecond extends Fragment {
 
                 @Override
                 public void onStateChanged(@NonNull View bottomSheet, int newState) {
-                    if (newState == BottomSheetBehavior.STATE_DRAGGING){
+                    if (newState == BottomSheetBehavior.STATE_DRAGGING) {
                         behavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                     }
                 }
@@ -122,6 +127,30 @@ public class DoctorConsultSecond extends Fragment {
 
 
         Glob.progressDialog(getContext());
+
+
+        seekbar = new CrystalRangeSeekbar(getContext());
+        seekbar = (CrystalRangeSeekbar) bottomSheetDialog.findViewById(R.id.fee_seekbar);
+        minvalue = bottomSheetDialog.findViewById(R.id.minvalue);
+        maxvalue = bottomSheetDialog.findViewById(R.id.maxvalue);
+
+        seekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
+            @Override
+            public void valueChanged(Number minValue, Number maxValue) {
+                Log.d("CRS=>", String.valueOf(minValue));
+                Log.d("CRS=>", String.valueOf(maxValue));
+                minvalue.setText(String.valueOf(minValue));
+                maxvalue.setText(String.valueOf(maxValue));
+
+            }
+        });
+
+        seekbar.setOnRangeSeekbarFinalValueListener(new OnRangeSeekbarFinalValueListener() {
+            @Override
+            public void finalValue(Number minValue, Number maxValue) {
+
+            }
+        });
 
 
         filter.setOnClickListener(new View.OnClickListener() {

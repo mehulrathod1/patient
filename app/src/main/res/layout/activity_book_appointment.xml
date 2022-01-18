@@ -506,10 +506,11 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:textColor="@color/action_mode_color_edt" />
+
                                     <TextView
                                         style="@style/m_semi_14"
-                                        android:layout_height="wrap_content"
                                         android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
                                         android:text=" ₹"
                                         android:textColor="@color/action_mode_color_edt" />
                                 </LinearLayout>
@@ -598,10 +599,12 @@
                             </LinearLayout>
 
                             <LinearLayout
+                                android:id="@+id/ll_upload_doc"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:orientation="horizontal"
+                                android:visibility="gone"
                                 android:weightSum="10">
 
                                 <TextView
@@ -632,10 +635,12 @@
                             </LinearLayout>
 
                             <LinearLayout
+                                android:id="@+id/ll_download_report"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:orientation="horizontal"
+                                android:visibility="gone"
                                 android:weightSum="10">
 
                                 <TextView
@@ -673,6 +678,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    android:id="@+id/chat"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_marginTop="@dimen/_18sdp"
@@ -681,7 +687,8 @@
                                     android:gravity="center"
                                     android:text="@string/Chat"
                                     android:textColor="@color/action_mode_color_300"
-                                    android:textSize="@dimen/_20sdp" />
+                                    android:textSize="@dimen/_20sdp"
+                                    android:visibility="gone" />
 
                                 <TextView
                                     android:layout_width="match_parent"

@@ -209,7 +209,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.MyReviewRating:
                         drawerLayout.closeDrawers();
-                        moveNext(MyReview.class);
+                        Intent intent = new Intent(getApplicationContext(), MyReview.class);
+                        intent.putExtra("variable","variable");
+                        startActivity(intent);
                         break;
 
                     case R.id.MYQuestion:

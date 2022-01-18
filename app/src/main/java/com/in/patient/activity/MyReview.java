@@ -37,6 +37,7 @@ public class MyReview extends AppCompatActivity {
         variable= intent.getStringExtra("variable");
 
 
+
         init();
         recyclerData();
     }
@@ -52,13 +53,18 @@ public class MyReview extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (variable.equals("doctor_profile")){
+                Intent intent;
+                if (variable.equals("variable")){
 
+                    intent = new Intent(getApplicationContext(), MainActivity.class);
                 }
                 else {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    startActivity(intent);
+
+                    intent = new Intent(getApplicationContext(), DoctorProfile.class);
+                    intent.putExtra("doctorId",variable);
+
                 }
+                startActivity(intent);
             }
         });
     }

@@ -56,7 +56,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -75,23 +76,17 @@
                     <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_12sdp"
                         android:layout_marginLeft="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="@string/Category_Name"
                         android:textColor="@color/action_mode_color_edt" />
 
                     <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Category_Name"
                         android:layout_marginLeft="@dimen/_14sdp"
-                        android:textColor="@color/action_mode_color_edt" />
-
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="@string/Category_Name"
-                        android:layout_marginLeft="@dimen/_14sdp"
                         android:textColor="@color/action_mode_color_edt"
 
                         />
@@ -99,15 +94,17 @@
                     <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Category_Name"
                         android:layout_marginLeft="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="@string/Category_Name"
                         android:textColor="@color/action_mode_color_edt" />
 
                     <CheckBox
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/Category_Name"
                         android:layout_marginLeft="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="@string/Category_Name"
                         android:textColor="@color/action_mode_color_edt" />
 
                 </LinearLayout>
@@ -133,17 +130,20 @@
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_12sdp"
-                            android:text="@string/Male"
                             android:layout_marginLeft="@dimen/_14sdp"
+                            android:layout_marginTop="@dimen/_12sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/Male"
                             android:textColor="@color/action_mode_color_edt" />
 
                         <RadioButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/Female"
                             android:layout_marginLeft="@dimen/_14sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/Female"
                             android:textColor="@color/action_mode_color_edt" />
+
                     </RadioGroup>
 
                 </LinearLayout>
@@ -163,15 +163,19 @@
                         android:textSize="@dimen/_18sdp" />
 
                     <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_14sdp"
                         android:layout_marginTop="@dimen/_12sdp"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="@string/Any_Day"
                         android:textColor="@color/action_mode_color_edt" />
 
                     <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="@string/Today"
                         android:textColor="@color/action_mode_color_edt"
 
@@ -179,8 +183,10 @@
                         />
 
                     <CheckBox
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_regular"
                         android:text="@string/Next_3_days"
                         android:textColor="@color/action_mode_color_edt"
 
@@ -196,7 +202,6 @@
                     android:orientation="vertical">
 
                     <TextView
-
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_semi_bold"
@@ -204,13 +209,62 @@
                         android:textColor="@color/action_mode_color_edt"
                         android:textSize="@dimen/_18sdp" />
 
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/minvalue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_7sdp"
+                                android:padding="@dimen/_5sdp"
+                                android:text="0"
+                                android:textColor="@color/action_mode_color_edt"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_7sdp"
+                                android:padding="@dimen/_5sdp"
+                                android:text="to"
+                                android:textColor="@color/action_mode_color_edt"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+
+                            <TextView
+                                android:id="@+id/maxvalue"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="@dimen/_7sdp"
+                                android:padding="@dimen/_5sdp"
+                                android:text="0"
+                                android:textColor="@color/action_mode_color_edt"
+                                android:textSize="@dimen/_14sdp"
+                                android:textStyle="bold"
+                                android:visibility="visible" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
                     <com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar
 
-                        android:id="@+id/seekbar"
+                        android:id="@+id/fee_seekbar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginTop="@dimen/_12sdp"
+                        android:layout_marginTop="@dimen/_14sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:maxWidth="@dimen/_1sdp"
                         app:bar_color="@color/action_mode_color_edt"
@@ -219,6 +273,7 @@
                         app:data_type="_integer"
                         app:left_thumb_color="@color/action_mode_color_300"
                         app:left_thumb_color_pressed="@color/action_mode_color_edt"
+                        app:max_value="1000"
                         app:right_thumb_color="@color/action_mode_color_300"
                         app:right_thumb_color_pressed="@color/action_mode_color_edt"
                         app:steps="1" />
@@ -239,7 +294,7 @@
                         android:textSize="@dimen/_18sdp" />
 
                     <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
-                        android:id="@+id/rangeSeekbar1"
+                        android:id="@+id/expSeekbar"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_10sdp"
@@ -257,6 +312,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
                     android:orientation="vertical">
 
                     <TextView
@@ -274,17 +330,35 @@
 
                         <RadioButton
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_14sdp"
                             android:layout_marginTop="@dimen/_12sdp"
+                            android:fontFamily="@font/montserrat_regular"
                             android:text="@string/Yes"
                             android:textColor="@color/action_mode_color_edt" />
 
                         <RadioButton
                             android:layout_width="match_parent"
-                            android:layout_height="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_14sdp"
+                            android:fontFamily="@font/montserrat_regular"
                             android:text="@string/No"
                             android:textColor="@color/action_mode_color_edt" />
+
                     </RadioGroup>
+
+                    <TextView
+                        android:id="@+id/choose_file"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_40sdp"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:height="@dimen/_30sdp"
+                        android:background="@drawable/time_bg"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:gravity="center"
+                        android:text="Apply"
+                        android:textColor="@color/action_mode_color_edt"
+                        android:textSize="@dimen/_18sdp" />
 
                 </LinearLayout>
 

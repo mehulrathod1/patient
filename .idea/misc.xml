@@ -16,6 +16,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/drawable-v24/time_bg.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/add_cart_bg.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/buy_now_bg.xml" value="0.2203125" />
+        <entry key="..\:/Project/Patient/app/src/main/res/drawable/file_provider.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/ic_baseline_arrow_back_ios_24.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/semi_button_bg.xml" value="0.2203125" />
@@ -50,6 +51,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/doctor_price_per_slot_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/doctot_uploaad_image_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/dropdown_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/file_provider.xml" value="0.1272644927536232" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/filter_dialog.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/find_doctor_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_care_services.xml" value="0.20416666666666666" />

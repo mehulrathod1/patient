@@ -68,7 +68,7 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("s", 1);
+                intent.putExtra("s", 2);
                 startActivity(intent);
             }
         });

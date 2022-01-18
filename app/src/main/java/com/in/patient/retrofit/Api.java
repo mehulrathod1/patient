@@ -21,10 +21,14 @@ import com.in.patient.model.SignUpModel;
 import com.in.patient.model.SpecialistDoctorModel;
 import com.in.patient.model.ViewBookingDetailModel;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 public interface Api {
 
@@ -231,6 +235,30 @@ public interface Api {
 
     );
 
+    @Multipart
+    @POST("add_booking_appointment.php")
+    Call<AddBookingAppointmentModel> addBookingAppointmentWithReport(
+
+            @Part("token") RequestBody token,
+            @Part("patient_id") RequestBody patient_id,
+            @Part("doctor_id") RequestBody doctor_id,
+            @Part("booking_date") RequestBody booking_date,
+            @Part("slot_time") RequestBody slot_time,
+            @Part("booking_type") RequestBody booking_type,
+            @Part("comments") RequestBody comments,
+            @Part("fees") RequestBody fees,
+            @Part MultipartBody.Part reportfile);
+
+    @Multipart
+    @POST("upload_patient_document.php")
+    Call<CommonModel> uploadDocument(
+
+            @Part("token") RequestBody token,
+            @Part("user_id") RequestBody user_id,
+            @Part("booking_id") RequestBody booking_id,
+            @Part MultipartBody.Part documentfile
+
+    );
 
     @FormUrlEncoded
     @POST("get_helthcare_and_product.php")
