@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -20,7 +21,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarFinalValueListener;
+import com.crystal.crystalrangeseekbar.interfaces.OnSeekbarChangeListener;
 import com.crystal.crystalrangeseekbar.widgets.CrystalRangeSeekbar;
+import com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -30,6 +33,7 @@ import com.in.patient.activity.Search;
 import com.in.patient.adapter.DoctorConsultantSecondAdapter;
 import com.in.patient.adapter.SpecialistDoctorAdapter;
 import com.in.patient.globle.Glob;
+import com.in.patient.model.CommonModel;
 import com.in.patient.model.DoctorConsultantSecondModel;
 import com.in.patient.model.SpecialistDoctorModel;
 import com.in.patient.retrofit.Api;
@@ -53,7 +57,7 @@ public class DoctorConsultSecond extends Fragment {
     List<SpecialistDoctorModel.Specialist> specialistList = new ArrayList<>();
 
 
-    TextView doctor_not_found, maxvalue, minvalue;
+    TextView doctor_not_found, maxvalue, minvalue, exp_value, apply_filter;
     ImageView close_dialog;
     BottomSheetDialog bottomSheetDialog;
 
@@ -62,7 +66,9 @@ public class DoctorConsultSecond extends Fragment {
     LinearLayout searchLayout;
 
     CrystalRangeSeekbar seekbar;
+    CrystalSeekbar expSeekbar;
 
+    List<String> category = new ArrayList<>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -130,9 +136,15 @@ public class DoctorConsultSecond extends Fragment {
 
 
         seekbar = new CrystalRangeSeekbar(getContext());
+        expSeekbar = new CrystalSeekbar(getContext());
         seekbar = (CrystalRangeSeekbar) bottomSheetDialog.findViewById(R.id.fee_seekbar);
+        expSeekbar = bottomSheetDialog.findViewById(R.id.expSeekbar);
         minvalue = bottomSheetDialog.findViewById(R.id.minvalue);
         maxvalue = bottomSheetDialog.findViewById(R.id.maxvalue);
+        exp_value = bottomSheetDialog.findViewById(R.id.exp_value);
+        apply_filter = bottomSheetDialog.findViewById(R.id.apply_filter);
+        close_dialog = bottomSheetDialog.findViewById(R.id.close_dialog);
+
 
         seekbar.setOnRangeSeekbarChangeListener(new OnRangeSeekbarChangeListener() {
             @Override
@@ -142,6 +154,15 @@ public class DoctorConsultSecond extends Fragment {
                 minvalue.setText(String.valueOf(minValue));
                 maxvalue.setText(String.valueOf(maxValue));
 
+            }
+        });
+        expSeekbar.setOnSeekbarChangeListener(new OnSeekbarChangeListener() {
+            @Override
+            public void valueChanged(Number value) {
+                Log.e("valueChanged", "valueChanged: " + value);
+
+                String str = String.valueOf(value);
+                exp_value.setText((str));
             }
         });
 
@@ -162,6 +183,13 @@ public class DoctorConsultSecond extends Fragment {
 
             }
         });
+        apply_filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                addFilter(Token, user_id, category, "today", "50", "200", "2", "n", "m");
+                bottomSheetDialog.dismiss();
+            }
+        });
 
         searchLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -172,10 +200,10 @@ public class DoctorConsultSecond extends Fragment {
             }
         });
 
-        close_dialog = bottomSheetDialog.findViewById(R.id.close_dialog);
         close_dialog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 bottomSheetDialog.dismiss();
             }
         });
@@ -256,6 +284,34 @@ public class DoctorConsultSecond extends Fragment {
 
             }
         });
+
+    }
+
+    public void addFilter(String token, String user_id, List<String> category, String day, String min_fees,
+                          String max_fees, String experience,
+                          String video_consult, String gender) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+
+        call.addFilter(token, user_id, category, day, min_fees, max_fees, experience, video_consult, gender).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+
+                CommonModel model = response.body();
+
+                Toast.makeText(getContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
+                Glob.dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+                Toast.makeText(getContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Glob.dialog.dismiss();
+            }
+        });
+
 
     }
 

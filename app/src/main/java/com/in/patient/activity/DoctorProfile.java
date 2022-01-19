@@ -224,7 +224,6 @@ public class DoctorProfile extends AppCompatActivity {
                         addBookingAppointmentWithReport(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), reportFile);
                         Log.e("getName", "onClick: " + "notnull");
                     }
-
                 }
             }
         });
@@ -368,6 +367,7 @@ public class DoctorProfile extends AppCompatActivity {
         dayRecycler.setLayoutManager(mLayoutManager);
         dayRecycler.setAdapter(dayAdapter);
     }
+
     public void getDoctorProfile(String token, String user_id, String doctor_id) {
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);

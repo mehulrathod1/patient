@@ -21,6 +21,8 @@ import com.in.patient.model.SignUpModel;
 import com.in.patient.model.SpecialistDoctorModel;
 import com.in.patient.model.ViewBookingDetailModel;
 
+import java.util.List;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -319,6 +321,20 @@ public interface Api {
             @Field("token") String token,
             @Field("user_id") String user_id,
             @Field("booking_id") String message
+    );
+
+    @FormUrlEncoded
+    @POST("add_filter.php")
+    Call<CommonModel> addFilter(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("category[]") List<String> category,
+            @Field("day") String day,
+            @Field("min_fees") String min_fees,
+            @Field("max_fees") String max_fees,
+            @Field("experience") String experience,
+            @Field("video_consult") String video_consult,
+            @Field("gender") String gender
     );
 
 }

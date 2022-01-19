@@ -74,37 +74,59 @@
                         android:textSize="@dimen/_18sdp" />
 
                     <CheckBox
+                        android:id="@+id/ch_general_physician"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_14sdp"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/Category_Name"
+                        android:text="General physician"
                         android:textColor="@color/action_mode_color_edt" />
 
                     <CheckBox
+                        android:id="@+id/ch_skin_and_hair"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_14sdp"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/Category_Name"
+                        android:text="Skin and Hair Specialist"
                         android:textColor="@color/action_mode_color_edt"
 
                         />
 
                     <CheckBox
+                        android:id="@+id/ch_Sexologist"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_14sdp"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/Category_Name"
+                        android:text="Sexologist"
                         android:textColor="@color/action_mode_color_edt" />
 
                     <CheckBox
+                        android:id="@+id/ch_gynaecologist"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_14sdp"
                         android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/Category_Name"
+                        android:text="Gynaecologist"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <CheckBox
+                        android:id="@+id/Bone_and_Joints"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="Bone and Joints Specialist"
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <CheckBox
+                        android:id="@+id/ch_throat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="Ear Nose throat"
                         android:textColor="@color/action_mode_color_edt" />
 
                 </LinearLayout>
@@ -128,6 +150,7 @@
                         android:layout_height="wrap_content">
 
                         <RadioButton
+                            android:id="@+id/rad_male"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_14sdp"
@@ -137,6 +160,7 @@
                             android:textColor="@color/action_mode_color_edt" />
 
                         <RadioButton
+                            android:id="@+id/rad_female"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_14sdp"
@@ -162,36 +186,43 @@
                         android:textColor="@color/action_mode_color_edt"
                         android:textSize="@dimen/_18sdp" />
 
-                    <CheckBox
+                    <RadioGroup
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_14sdp"
-                        android:layout_marginTop="@dimen/_12sdp"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/Any_Day"
-                        android:textColor="@color/action_mode_color_edt" />
+                        android:layout_height="wrap_content">
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_14sdp"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/Today"
-                        android:textColor="@color/action_mode_color_edt"
+                        <RadioButton
+                            android:id="@+id/ch_any_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_14sdp"
+                            android:layout_marginTop="@dimen/_12sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/Any_Day"
+                            android:textColor="@color/action_mode_color_edt" />
 
+                        <RadioButton
+                            android:id="@+id/ch_today"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_14sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/Today"
+                            android:textColor="@color/action_mode_color_edt"
 
-                        />
+                            />
 
-                    <CheckBox
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/_14sdp"
-                        android:fontFamily="@font/montserrat_regular"
-                        android:text="@string/Next_3_days"
-                        android:textColor="@color/action_mode_color_edt"
+                        <RadioButton
+                            android:id="@+id/ch_next_day"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_14sdp"
+                            android:fontFamily="@font/montserrat_regular"
+                            android:text="@string/Next_3_days"
+                            android:textColor="@color/action_mode_color_edt"
 
-                        />
+                            />
 
+                    </RadioGroup>
 
                 </LinearLayout>
 
@@ -293,6 +324,20 @@
                         android:textColor="@color/action_mode_color_edt"
                         android:textSize="@dimen/_18sdp" />
 
+
+                    <TextView
+                        android:id="@+id/exp_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginRight="@dimen/_7sdp"
+                        android:padding="@dimen/_5sdp"
+                        android:text="0"
+                        android:textColor="@color/action_mode_color_edt"
+                        android:textSize="@dimen/_14sdp"
+                        android:textStyle="bold"
+                        android:visibility="visible" />
+
                     <com.crystal.crystalrangeseekbar.widgets.CrystalSeekbar
                         android:id="@+id/expSeekbar"
                         android:layout_width="match_parent"
@@ -303,7 +348,9 @@
                         android:maxWidth="@dimen/_1sdp"
                         app:bar_color="@color/action_mode_color_edt"
                         app:bar_highlight_color="@color/action_mode_color_300"
-                        app:left_thumb_color="@color/action_mode_color_300" />
+                        app:data_type="_integer"
+                        app:left_thumb_color="@color/action_mode_color_300"
+                        app:max_value="10" />
 
 
                 </LinearLayout>
@@ -329,6 +376,7 @@
                         android:layout_height="wrap_content">
 
                         <RadioButton
+                            android:id="@+id/rad_yes"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_14sdp"
@@ -338,6 +386,7 @@
                             android:textColor="@color/action_mode_color_edt" />
 
                         <RadioButton
+                            android:id="@+id/rad_no"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/_14sdp"
@@ -348,7 +397,7 @@
                     </RadioGroup>
 
                     <TextView
-                        android:id="@+id/choose_file"
+                        android:id="@+id/apply_filter"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_marginTop="@dimen/_30sdp"

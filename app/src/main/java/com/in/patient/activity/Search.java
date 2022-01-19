@@ -147,12 +147,12 @@ public class Search extends AppCompatActivity {
 
     public void recyclerData() {
 
-
         adapter = new SearchItemAdapter(list, getApplicationContext(), new SearchItemAdapter.Click() {
             @Override
             public void itemClick(int position) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("s", 2);
+                String doctorId = list.get(position).getDoctor_id();
+                Intent intent = new Intent(getApplicationContext(), DoctorProfile.class);
+                intent.putExtra("doctorId", doctorId);
                 startActivity(intent);
             }
         });
@@ -161,6 +161,6 @@ public class Search extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
-    }
 
+    }
 }

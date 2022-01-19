@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -39,6 +40,7 @@ import com.in.patient.model.CareAndCheckupModel;
 import com.in.patient.model.CommonModel;
 import com.in.patient.model.DoctorConsultantSecondModel;
 import com.in.patient.model.FindDoctorModel;
+import com.in.patient.model.SliderModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
 
@@ -72,7 +74,7 @@ public class HomeDashboard extends Fragment {
     List<String> cityNameList = new ArrayList<>();
 
     SliderPagerAdapter sliderPagerAdapter;
-    ArrayList<String> slider_image_list;
+    ArrayList<SliderModel> slider_image_list;
     private TextView[] dots;
     int page_position = 0;
     RecyclerView recyclerView, healthCheckupRecycler, healthCareRecycler;
@@ -102,8 +104,9 @@ public class HomeDashboard extends Fragment {
         init();
         healthCareData();
         healthCheckupData();
-//        addBottomDots(0);
+        addBottomDots(0);
         getDoctorSpecialist(Glob.Token, Glob.user_id);
+
         return view;
     }
 
@@ -144,24 +147,25 @@ public class HomeDashboard extends Fragment {
         viewAllServices.setText(Html.fromHtml("<u>View All</u>"));
         viewAllCheckup.setText(Html.fromHtml("<u>View All</u>"));
         slider_image_list = new ArrayList<>();
-        slider_image_list.add("http://ciam.notionprojects.tech/assets/image/userprofile/1642061177_appointment-img.png");
-        slider_image_list.add("http://ciam.notionprojects.tech/assets/image/userprofile/1642061177_appointment-img.png");
-        slider_image_list.add("http://ciam.notionprojects.tech/assets/image/userprofile/1642061177_appointment-img.png");
-        slider_image_list.add("http://ciam.notionprojects.tech/assets/image/userprofile/1642061177_appointment-img.png");
-        sliderPagerAdapter = new SliderPagerAdapter(getActivity(), slider_image_list, new SliderPagerAdapter.Click() {
-            @Override
-            public void itemClick(int position) {
 
-                Intent intent = new Intent(getActivity(), DoctorProfile.class);
-                startActivity(intent);
 
-//                sendNotification("eGMGXI7USQy0AUIVVwqoKj:APA91bHXuyjdBttPkKBlnSeXTnlzFXIQM0QTMs1TO0p6ZbeJ7tVp0Lo7M1-PgbFzM1keg72w6Dzw0X03uQz1CbTMPcdWyshgbth9ce8-2bYj7ayTaurrtQZ_gQOZ5U04nXXzuywFtgAW");
-//                Intent intent = new Intent(getContext(), VideoCallScreen.class);
+        sliderData();
+
+//        sliderPagerAdapter = new SliderPagerAdapter(getActivity(), slider_image_list, new SliderPagerAdapter.Click() {
+//            @Override
+//            public void itemClick(int position) {
+//
+//                Intent intent = new Intent(getActivity(), DoctorProfile.class);
 //                startActivity(intent);
+//
+//                Toast.makeText(getContext(), ""+slider_image_list.get(position), Toast.LENGTH_SHORT).show();
+////                sendNotification("eGMGXI7USQy0AUIVVwqoKj:APA91bHXuyjdBttPkKBlnSeXTnlzFXIQM0QTMs1TO0p6ZbeJ7tVp0Lo7M1-PgbFzM1keg72w6Dzw0X03uQz1CbTMPcdWyshgbth9ce8-2bYj7ayTaurrtQZ_gQOZ5U04nXXzuywFtgAW");
+////                Intent intent = new Intent(getContext(), VideoCallScreen.class);
+////                startActivity(intent);
+//
+//            }
+//        });
 
-            }
-        });
-        vp_slider.setAdapter(sliderPagerAdapter);
         vp_slider.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -170,7 +174,9 @@ public class HomeDashboard extends Fragment {
 
             @Override
             public void onPageSelected(int position) {
-//                addBottomDots(position);
+
+                addBottomDots(position);
+
             }
 
             @Override
@@ -198,7 +204,7 @@ public class HomeDashboard extends Fragment {
             public void run() {
                 handler.post(update);
             }
-        }, 100, 3000);
+        }, 100, 5000);
 
 
         search.setOnClickListener(new View.OnClickListener() {
@@ -287,18 +293,20 @@ public class HomeDashboard extends Fragment {
 
     private void addBottomDots(int currentPage) {
         dots = new TextView[slider_image_list.size()];
-
         ll_dots.removeAllViews();
-        for (int i = 0; i < dots.length; i++) {
-            dots[i] = new TextView(getActivity());
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(35);
-            dots[i].setTextColor(Color.parseColor("#EFEFEF"));
-            ll_dots.addView(dots[i]);
-        }
+        if (getActivity() != null) {
+            for (int i = 0; i < dots.length; i++) {
+                dots[i] = new TextView(getActivity());
+                dots[i].setText(Html.fromHtml("&#8226;"));
+                dots[i].setTextSize(35);
+                dots[i].setTextColor(Color.parseColor("#EFEFEF"));
+                ll_dots.addView(dots[i]);
+            }
 
-        if (dots.length > 0)
-            dots[currentPage].setTextColor(Color.parseColor("#233E8B"));
+            if (dots.length > 0)
+                dots[currentPage].setTextColor(Color.parseColor("#233E8B"));
+
+        }
     }
 
 
@@ -405,11 +413,80 @@ public class HomeDashboard extends Fragment {
             public void onClick(int position) {
                 Fragment fragment = new CareServices();
                 loadFragment(fragment);
+
+
             }
         });
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false);
         healthCheckupRecycler.setLayoutManager(mLayoutManager);
         healthCheckupRecycler.setAdapter(healthCareAdapter);
+    }
+
+    public void sliderData() {
+
+        SliderModel model = new SliderModel("DoctorConsultant", "India's largest home health care company", "Consultation", R.drawable.rectangle_1);
+        SliderModel model1 = new SliderModel("Home Care Services", "India's largest home health care company", "Services", R.drawable.rectangle_2);
+        SliderModel model2 = new SliderModel("Lab Test", "India's largest home health care company", "Lab Test", R.drawable.rectangle_3);
+        SliderModel model3 = new SliderModel("Medicine", "India's largest home health care company", "Medicine", R.drawable.rectangle_2);
+        SliderModel model4 = new SliderModel("Care & Product", "India's largest home health care company", "Product", R.drawable.rectangle_4);
+        SliderModel model5 = new SliderModel("Stress buster zone", "India's largest home health care company", "Stress buster", R.drawable.rectangle5);
+        SliderModel model6 = new SliderModel("Ask Question", "India's largest home health care company", "Ask question", R.drawable.rectangle_4);
+        SliderModel model7 = new SliderModel("Knowledge Forum", "India's largest home health care company", "Knowledge Forum", R.drawable.rectangle_6);
+
+
+        slider_image_list.add(model);
+        slider_image_list.add(model1);
+        slider_image_list.add(model2);
+        slider_image_list.add(model3);
+        slider_image_list.add(model4);
+        slider_image_list.add(model5);
+        slider_image_list.add(model6);
+        slider_image_list.add(model7);
+
+
+        sliderPagerAdapter = new SliderPagerAdapter(getActivity(), slider_image_list, new SliderPagerAdapter.Click() {
+            @Override
+            public void itemClick(int position) {
+
+                //Toast.makeText(getContext(), "" + slider_image_list.get(position).getConsultNow(), Toast.LENGTH_SHORT).show();
+                String button_text = slider_image_list.get(position).getConsultNow();
+
+                if (button_text.equals("Consultation")) {
+
+                    Fragment fragment = new DoctorConsultSecond();
+                    Bundle spe_id = new Bundle();
+                    spe_id.putString("specialist_id", "0");
+                    fragment.setArguments(spe_id);
+                    loadFragment(fragment);
+                } else if (button_text.equals("Services")) {
+                    Fragment fragment = new CareServices();
+                    loadFragment(fragment);
+
+                } else if (button_text.equals("Lab Test")) {
+                    Fragment fragment = new Lab();
+                    loadFragment(fragment);
+
+                } else if (button_text.equals("Medicine")) {
+                    Fragment fragment = new Medicines();
+                    loadFragment(fragment);
+
+                } else if (button_text.equals("Product")) {
+                    Fragment fragment = new Product();
+                    loadFragment(fragment);
+
+                } else if (button_text.equals("Stress buster")) {
+
+                } else if (button_text.equals("Ask question")) {
+
+                } else if (button_text.equals("Knowledge Forum")) {
+
+                }
+
+
+            }
+        });
+        vp_slider.setAdapter(sliderPagerAdapter);
+
     }
 
     private void loadFragment(Fragment fragment) {

@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.in.patient.R;
+import com.in.patient.model.SliderModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 public class SliderPagerAdapter extends PagerAdapter {
     private LayoutInflater layoutInflater;
     Activity activity;
-    ArrayList<String> image_arraylist;
+    ArrayList<SliderModel> image_arraylist;
     Click click;
 
 
@@ -26,12 +27,11 @@ public class SliderPagerAdapter extends PagerAdapter {
         void itemClick(int position);
     }
 
-    public SliderPagerAdapter(Activity activity, ArrayList<String> image_arraylist, Click click) {
+    public SliderPagerAdapter(Activity activity, ArrayList<SliderModel> image_arraylist, Click click) {
         this.activity = activity;
         this.image_arraylist = image_arraylist;
         this.click = click;
     }
-
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
@@ -39,7 +39,17 @@ public class SliderPagerAdapter extends PagerAdapter {
 
         View view = layoutInflater.inflate(R.layout.layout_slider, container, false);
         ImageView im_slider = (ImageView) view.findViewById(R.id.im_slider);
+        TextView category_name = view.findViewById(R.id.category_name);
         TextView consultNow = view.findViewById(R.id.consultNow);
+        TextView short_description = view.findViewById(R.id.short_description);
+
+
+        SliderModel model = image_arraylist.get(position);
+
+        category_name.setText(model.getCategory_name());
+        consultNow.setText(model.getConsultNow());
+        short_description.setText(model.getShort_description());
+        im_slider.setImageResource(model.getIm_slider());
 
         consultNow.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,11 +57,7 @@ public class SliderPagerAdapter extends PagerAdapter {
                 click.itemClick(position);
             }
         });
-        Picasso.get()
-                .load(image_arraylist.get(position))
-                .placeholder(R.drawable.ic_review_star_24) // optional
-                .error(R.mipmap.ic_launcher)         // optional
-                .into(im_slider);
+
 
 
         container.addView(view);
