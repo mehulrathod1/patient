@@ -14,9 +14,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/_20sdp"
+            android:padding="@dimen/_6sdp"
             android:background="@drawable/back_button_bg"
-            android:padding="@dimen/_5sdp"
-            android:src="@drawable/nev_back" />
+            android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
 
     </RelativeLayout>
 
@@ -25,9 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
+        android:fontFamily="@font/montserrat_semi_bold"
         android:gravity="center"
         android:text="DCP"
-        android:fontFamily="@font/montserrat_semi_bold"
         android:textColor="@color/action_mode_color_300"
         android:textSize="@dimen/_20sdp" />
 

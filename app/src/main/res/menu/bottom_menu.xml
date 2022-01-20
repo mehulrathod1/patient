@@ -9,6 +9,7 @@
     <item
         android:id="@+id/Revenue"
         android:icon="@drawable/icon_material_person"
+        android:iconTint="@color/action_mode_color"
         android:title="Doctor" />
 
     <item
@@ -19,6 +20,7 @@
     <item
         android:id="@+id/Medicine"
         android:icon="@drawable/medicin"
+        android:iconTint="@color/action_mode_color"
         android:title="Medicine" />
 
     <item

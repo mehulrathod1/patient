@@ -11,6 +11,7 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -66,7 +67,7 @@ public class SignIn extends AppCompatActivity {
     EditText edtEmail, edtPassword;
     TextView txtSignUP;
     String FMCToken;
-
+    ProgressDialog progressDialog;
 
     private KeyStore keyStore;
     private static final String KEY_NAME = "androidHive";
@@ -94,13 +95,27 @@ public class SignIn extends AppCompatActivity {
         btnSignIn = findViewById(R.id.btnSignIn);
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
+
+
+
+        progressDialog = new ProgressDialog(SignIn.this);
+        progressDialog.setCancelable(false); // set cancelable to false
+        progressDialog.setMessage("Please Wait"); // set message
+
+
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//                startActivity(intent);
-                signInUser(Token, edtEmail.getText().toString(), edtPassword.getText().toString());
+
+                if (edtEmail.getText().toString().equals("")) {
+                    edtEmail.setError("Please Enter Email");
+                } else if (edtPassword.getText().toString().equals("")) {
+                    edtPassword.setError("Please Enter Password");
+                } else {
+
+                    signInUser(Token, edtEmail.getText().toString(), edtPassword.getText().toString());
+                }
             }
         });
 
@@ -118,7 +133,7 @@ public class SignIn extends AppCompatActivity {
     public void signInUser(String token, String email, String password) {
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
-        Glob.dialog.show();
+        progressDialog.show();
 
         call.signIn(token, email, password).enqueue(new Callback<SignInModel>() {
             @Override
@@ -128,7 +143,7 @@ public class SignIn extends AppCompatActivity {
 
                 if (model.getStatus().equals("true")) {
                     Toast.makeText(getApplicationContext(), model.getMessage(), Toast.LENGTH_SHORT).show();
-                    Glob.dialog.dismiss();
+                    progressDialog.dismiss();
                     Glob.user_id = model.getData().getId();
 
                     SharedPreferences.Editor editor = getSharedPreferences("MyPref", MODE_PRIVATE).edit();
@@ -143,15 +158,15 @@ public class SignIn extends AppCompatActivity {
                     Log.e("Signin", "onResponse: " + user_id);
                 } else {
                     Toast.makeText(getApplicationContext(), model.getMessage(), Toast.LENGTH_SHORT).show();
-                    Glob.dialog.dismiss();
+                    progressDialog.dismiss();
                 }
             }
 
             @Override
             public void onFailure(Call<SignInModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Username and password wrong.", Toast.LENGTH_SHORT).show();
                 Log.e("TAG", "onFailure: " + t.getMessage());
-                Glob.dialog.dismiss();
+                progressDialog.dismiss();
             }
         });
 
@@ -159,22 +174,19 @@ public class SignIn extends AppCompatActivity {
 
     public void addFcmToken(String token, String user_id, String fcm_token) {
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
-        Glob.dialog.show();
 
         call.addFcmToken(token, user_id, fcm_token).enqueue(new Callback<CommonModel>() {
             @Override
             public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
                 CommonModel commonModel = response.body();
 
-                Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
-                Glob.dialog.dismiss();
+                Log.e("signin", "onResponse: "+commonModel.getMessage() );
+
             }
 
             @Override
             public void onFailure(Call<CommonModel> call, Throwable t) {
 
-                Toast.makeText(getApplicationContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Glob.dialog.dismiss();
             }
         });
     }

@@ -36,7 +36,7 @@ public class VideoCallScreen extends AppCompatActivity {
 
     private static final int PERMISSION_REQ_ID = 22;
 
-    public String app_id = "43c82f753e0545c78a8198ed60a804f3";
+    public String app_id = "2f2e2f4242324913af39ee8236cc2299";
 
     // Permission WRITE_EXTERNAL_STORAGE is not mandatory
     // for Agora RTC SDK, just in case if you wanna save

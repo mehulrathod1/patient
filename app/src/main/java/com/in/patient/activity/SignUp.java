@@ -1,11 +1,14 @@
 package com.in.patient.activity;
 
 import static com.in.patient.globle.Glob.Token;
+import static com.in.patient.globle.Glob.dialog;
+import static com.in.patient.globle.Glob.user_id;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -22,6 +25,8 @@ import com.in.patient.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.security.auth.login.LoginException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -124,35 +129,31 @@ public class SignUp extends AppCompatActivity {
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
 
+
         call.signUp(token, first_name, last_name, email, country_code, mobile_no, password, confirm_password).enqueue(new Callback<SignUpModel>() {
             @Override
             public void onResponse(Call<SignUpModel> call, Response<SignUpModel> response) {
 
 
-                SignUpModel signUpModel = response.body();
-                if (signUpModel.getStatus().equals("true")) {
-                    Toast.makeText(getApplicationContext(), signUpModel.getMessage(), Toast.LENGTH_SHORT).show();
-                    List<SignUpModel.SignUP> dataList = signUpModel.getSignUPList();
-                    for (int i = 0; i < dataList.size(); i++) {
+                SignUpModel model = response.body();
+                Toast.makeText(getApplicationContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
 
-                        SignUpModel.SignUP model = new SignUpModel.SignUP();
-                        Glob.user_id = model.getUser_id();
-                        Toast.makeText(getApplicationContext(), model.getUser_id(), Toast.LENGTH_SHORT).show();
-                    }
-                    Glob.dialog.dismiss();
-                    Intent intent = new Intent(getApplicationContext(), SignIn.class);
-                    startActivity(intent);
-                } else {
-                    Glob.dialog.dismiss();
-                    Toast.makeText(getApplicationContext(), response.body().getMessage(), Toast.LENGTH_SHORT).show();
 
-                }
 
+                Glob.user_id = model.getData().getUser_id();
+
+                Log.e("iddddd", "onResponse: "+ user_id);
+
+                Intent intent = new Intent(getApplicationContext(), SignIn.class);
+                startActivity(intent);
+
+                dialog.dismiss();
             }
 
             @Override
             public void onFailure(Call<SignUpModel> call, Throwable t) {
-
+                Log.e("iddddd", "onResponse: "+ t.getMessage());
+                dialog.dismiss();
             }
         });
 
