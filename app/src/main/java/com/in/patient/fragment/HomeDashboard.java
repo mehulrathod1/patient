@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -85,7 +87,7 @@ public class HomeDashboard extends Fragment {
     FindDoctorAdapter adapter;
     List<FindDoctorModel.DoctorSpecialities> list = new ArrayList<>();
 
-    LinearLayout doctorConsultant, homeCare, labTest, medicines, healthProduct;
+    LinearLayout doctorConsultant, homeCare, labTest, medicines, healthProduct,search_layout;
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -125,6 +127,8 @@ public class HomeDashboard extends Fragment {
         viewAllDoctor = view.findViewById(R.id.viewAllDoctor);
         viewAllServices = view.findViewById(R.id.viewAllServices);
         viewAllCheckup = view.findViewById(R.id.viewAllCheckup);
+        search_layout = view.findViewById(R.id.search_layout);
+
 
         search_icon = view.findViewById(R.id.search_icon);
         search = view.findViewById(R.id.search);
@@ -207,22 +211,32 @@ public class HomeDashboard extends Fragment {
         }, 100, 5000);
 
 
-        search.setOnClickListener(new View.OnClickListener() {
+//        search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), Search.class);
+//                intent.putExtra("flag", "MainActivity");
+//                startActivity(intent);
+//            }
+//        });
+//
+//        search_icon.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getActivity(), Search.class);
+//                intent.putExtra("flag", "MainActivity");
+//                startActivity(intent);
+//            }
+//        });
+
+        search_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Search.class);
+                Intent intent = new Intent(getActivity(), Search.class);
+                intent.putExtra("Flag", "MainActivity");
                 startActivity(intent);
             }
         });
-
-        search_icon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), Search.class);
-                startActivity(intent);
-            }
-        });
-
         doctorConsultant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

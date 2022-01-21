@@ -43,6 +43,7 @@ public class Search extends AppCompatActivity {
     RecyclerView recyclerView;
     List<SearchModel.SearchData> list = new ArrayList<>();
 
+    String Flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,10 @@ public class Search extends AppCompatActivity {
         getSupportActionBar().hide();
         init();
         getSearchItem(Glob.Token, Glob.user_id, search_name.getText().toString());
+
+
+        Intent intent = getIntent();
+        Flag = intent.getStringExtra("Flag");
 
     }
 
@@ -68,35 +73,49 @@ public class Search extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("s", 2);
-                startActivity(intent);
-            }
-        });
-        search_name.addTextChangedListener(new TextWatcher() {
 
-            @Override
-            public void afterTextChanged(Editable s) {
-
-
-            }
-
-            @Override
-            public void beforeTextChanged(CharSequence s, int start,
-                                          int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start,
-                                      int before, int count) {
-                if (s.length() != 0) {
-
-                    Log.e("onTextChanged", "onTextChanged: " + search_name.getText().toString());
-                    getSearchItem(Glob.Token, Glob.user_id, search_name.getText().toString());
-
+                if (Flag.equals("DoctorConsultSecond")){
+                    intent.putExtra("s", 2);
+                    startActivity(intent);
+                    finish();
 
                 }
+                if (Flag.equals("MainActivity")){
+                    startActivity(intent);
+                    finish();
+
+                }
+
+
+
             }
         });
+
+        search_name.addTextChangedListener(new TextWatcher() {
+
+                                                       @Override
+                                                       public void afterTextChanged(Editable s) {
+
+
+                                                       }
+
+                                                       @Override
+                                                       public void beforeTextChanged(CharSequence s, int start,
+                                                                                     int count, int after) {
+                                                       }
+
+                                                       @Override
+                                                       public void onTextChanged(CharSequence s, int start,
+                                                                                 int before, int count) {
+                                                           if (s.length() != 0) {
+
+                                                               Log.e("onTextChanged", "onTextChanged: " + search_name.getText().toString());
+                                                               getSearchItem(Glob.Token, Glob.user_id, search_name.getText().toString());
+
+
+                                                           }
+                                                       }
+                                                   });
 
 
 //        doctorName.setOnClickListener(new View.OnClickListener() {
@@ -153,6 +172,7 @@ public class Search extends AppCompatActivity {
                 String doctorId = list.get(position).getDoctor_id();
                 Intent intent = new Intent(getApplicationContext(), DoctorProfile.class);
                 intent.putExtra("doctorId", doctorId);
+                intent.putExtra("FLag","Search");
                 startActivity(intent);
             }
         });
@@ -161,6 +181,11 @@ public class Search extends AppCompatActivity {
         recyclerView.setLayoutManager(mLayoutManager);
         adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
+    }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
     }
 }

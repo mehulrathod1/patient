@@ -16,6 +16,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -65,7 +68,7 @@ public class SignIn extends AppCompatActivity {
 
     Button btnSignIn;
     EditText edtEmail, edtPassword;
-    TextView txtSignUP;
+    private TextView txtSignUP, dcp_text, in;
     String FMCToken;
     ProgressDialog progressDialog;
 
@@ -95,8 +98,22 @@ public class SignIn extends AppCompatActivity {
         btnSignIn = findViewById(R.id.btnSignIn);
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
+        dcp_text = findViewById(R.id.dcp_text);
+        in = findViewById(R.id.in);
 
 
+        Shader textShader = new LinearGradient(0, 0, in.getPaint().measureText(in.getText().toString()), in.getTextSize(),
+                new int[]{Color.parseColor("#233E8B"), Color.parseColor("#1EAE98")},
+                new float[]{0, 1}, Shader.TileMode.CLAMP);
+
+        in.getPaint().setShader(textShader);
+
+
+        Shader textShadedr = new LinearGradient(0, 0, dcp_text.getPaint().measureText(dcp_text.getText().toString()), dcp_text.getTextSize(),
+                new int[]{Color.parseColor("#233E8B"), Color.parseColor("#1EAE98")},
+                new float[]{0, 1}, Shader.TileMode.CLAMP);
+
+        dcp_text.getPaint().setShader(textShadedr);
 
         progressDialog = new ProgressDialog(SignIn.this);
         progressDialog.setCancelable(false); // set cancelable to false
@@ -180,7 +197,7 @@ public class SignIn extends AppCompatActivity {
             public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
                 CommonModel commonModel = response.body();
 
-                Log.e("signin", "onResponse: "+commonModel.getMessage() );
+                Log.e("signin", "onResponse: " + commonModel.getMessage());
 
             }
 

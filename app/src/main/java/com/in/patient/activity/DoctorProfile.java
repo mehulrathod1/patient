@@ -110,7 +110,7 @@ public class DoctorProfile extends AppCompatActivity {
 
     ImageView backButton, ProfileImage;
 
-    String doctorId;
+    String doctorId, Flag;
     String appointmentTime, appointmentDate;
 
 
@@ -144,18 +144,18 @@ public class DoctorProfile extends AppCompatActivity {
             dayList.add(day);
             Log.e("datalist", "onCreate: " + dayList.get(i));
 
-
         }
 
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date date = new Date();
         appointmentDate = dateFormat.format(date);
-
         Log.e("current", "onCreate: " + appointmentDate);
 
         Intent intent = getIntent();
         doctorId = intent.getStringExtra("doctorId");
-        Log.e("id", "onCreate: " + doctorId);
+        Flag = intent.getStringExtra("FLag");
+
+        Log.e("id", "onCreate: " + Flag);
 
         init();
         imageData();
@@ -231,9 +231,21 @@ public class DoctorProfile extends AppCompatActivity {
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra("s", 2);
-                startActivity(intent);
+
+
+                if (Flag.matches("DoctorConsultSecond")) {
+                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                    intent.putExtra("s", 2);
+                    startActivity(intent);
+                    finish();
+                }
+                if (Flag.equals("Search")) {
+                    Intent intent = new Intent(getApplicationContext(), Search.class);
+                    intent.putExtra("Flag", "MainActivity");
+                    startActivity(intent);
+                    finish();
+                }
+
             }
         });
 
@@ -565,9 +577,7 @@ public class DoctorProfile extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-//        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-//        intent.putExtra("s", 1);
-//        startActivity(intent);
+        this.finish();
     }
 
 

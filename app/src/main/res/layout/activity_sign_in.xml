@@ -28,7 +28,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="@string/dcp"
-                    android:textColor="@color/action_mode_color"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:id="@+id/dcp_text"
+                    android:textColor="@color/action_mode_color_300"
                     android:textSize="@dimen/_26sdp" />
             </LinearLayout>
 
@@ -45,6 +47,7 @@
                     android:layout_marginBottom="@dimen/_8sdp"
                     android:fontFamily="@font/montserrat_semi_bold"
                     android:text="@string/sign_in"
+                    android:id="@+id/in"
                     android:textColor="@color/action_mode_color"
                     android:textSize="@dimen/_30sdp" />
 

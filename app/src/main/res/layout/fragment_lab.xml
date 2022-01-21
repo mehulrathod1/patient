@@ -27,7 +27,8 @@
                 android:drawableLeft="@drawable/icon_ionic_search"
                 android:drawablePadding="@dimen/_20sdp"
                 android:gravity="center"
-                android:text="Enter Doctor name, Clinic, hospitals, etc" />
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Enter LAB or LAB Test" />
         </LinearLayout>
 
         <LinearLayout

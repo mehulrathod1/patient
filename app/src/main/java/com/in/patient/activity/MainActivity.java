@@ -14,6 +14,9 @@ import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -67,8 +70,13 @@ public class MainActivity extends AppCompatActivity {
 
         init();
         getFcmToken(Glob.Token, Glob.user_id);
+
+
         fragment = new HomeDashboard();
-        loadFragment(fragment);
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.firstFrame, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
 
 
         int index = getIntent().getIntExtra("s", 0);
@@ -110,6 +118,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
+
+
         View headerLayout = Navigation.inflateHeaderView(R.layout.nev_header);
         nevBackHeader = headerLayout.findViewById(R.id.nevBackHeader);
 
@@ -141,7 +151,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                moveNext(Search.class);
+
+                Intent intent = new Intent(getApplicationContext(), Search.class);
+                intent.putExtra("Flag", "MainActivity");
+                startActivity(intent);
 
             }
         });
@@ -210,7 +223,7 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.MyReviewRating:
                         drawerLayout.closeDrawers();
                         Intent intent = new Intent(getApplicationContext(), MyReview.class);
-                        intent.putExtra("variable","variable");
+                        intent.putExtra("variable", "variable");
                         startActivity(intent);
                         break;
 
@@ -248,9 +261,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadFragment(Fragment fragment) {
 
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.firstFrame, fragment);
-//        transaction.addToBackStack(null);
+//        transaction.addToBackStack(a);
         transaction.commit();
     }
 
@@ -274,4 +288,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+    }
 }

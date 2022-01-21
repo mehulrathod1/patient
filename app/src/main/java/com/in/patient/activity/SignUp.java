@@ -7,6 +7,9 @@ import static com.in.patient.globle.Glob.user_id;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +18,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.in.patient.R;
@@ -22,6 +26,8 @@ import com.in.patient.globle.Glob;
 import com.in.patient.model.SignUpModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +46,7 @@ public class SignUp extends AppCompatActivity {
     ArrayAdapter<String> countryCodeAdapter;
     Spinner countryCode;
     List<String> countryCodeList;
-
+    TextView dcp_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,8 +69,17 @@ public class SignUp extends AppCompatActivity {
         edtMobileNumber = findViewById(R.id.edtMobileNumber);
         edtPassword = findViewById(R.id.edtPassword);
         edtConformPassword = findViewById(R.id.edtConformPassword);
-
+        dcp_text = findViewById(R.id.dcp_text);
         Glob.progressDialog(this);
+
+
+        Shader textShader = new LinearGradient(0, 0, dcp_text.getPaint().measureText(dcp_text.getText().toString()), dcp_text.getTextSize(),
+                new int[]{Color.parseColor("#233E8B"), Color.parseColor("#1EAE98")},
+                new float[]{0, 1}, Shader.TileMode.CLAMP);
+
+        dcp_text.getPaint().setShader(textShader);
+
+
 
 
         countryCodeList = new ArrayList<>();

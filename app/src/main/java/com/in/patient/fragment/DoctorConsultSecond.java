@@ -196,6 +196,7 @@ public class DoctorConsultSecond extends Fragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getContext(), Search.class);
+                intent.putExtra("Flag","DoctorConsultSecond");
                 startActivity(intent);
             }
         });
@@ -205,6 +206,7 @@ public class DoctorConsultSecond extends Fragment {
             public void onClick(View v) {
 
                 bottomSheetDialog.dismiss();
+
             }
         });
     }
@@ -326,6 +328,7 @@ public class DoctorConsultSecond extends Fragment {
 
                 Intent intent = new Intent(getContext(), DoctorProfile.class);
                 intent.putExtra("doctorId", doctorId);
+                intent.putExtra("FLag","DoctorConsultSecond");
                 startActivity(intent);
             }
         });
@@ -346,6 +349,7 @@ public class DoctorConsultSecond extends Fragment {
                 String doctorId = specialistList.get(position).getDoctorId();
                 Intent intent = new Intent(getContext(), DoctorProfile.class);
                 intent.putExtra("doctorId", doctorId);
+                intent.putExtra("Flag","DoctorConsultSecond");
                 startActivity(intent);
             }
         });
