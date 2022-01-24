@@ -202,29 +202,33 @@ public class DoctorProfile extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if (appointmentTime == null) {
-                    Toast.makeText(getApplicationContext(), "Please Select Appointment Time ", Toast.LENGTH_SHORT).show();
-                } else if (comment.getText().toString().equals("")) {
-                    Toast.makeText(getApplicationContext(), "Please add comment", Toast.LENGTH_SHORT).show();
-                } else {
+                Intent intent = new Intent(getApplicationContext(), BookAppointment.class);
+                intent.putExtra("bookingId", "183");
+                intent.putExtra("doctorId", doctorId);
+                startActivity(intent);
 
-                    Log.e("currentdata", "onClick: " + user_id + doctorId + appointmentDate + appointmentTime);
-
-                    Log.e("appointmentTime", "onClick: " + appointmentTime);
-
-
-                    String filename = String.valueOf(reportFile);
-                    Log.e("appointmentTime", "onClick: " + reportFile);
-
-
-                    if (filename.equals("null")) {
-                        addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), "");
-                        Log.e("getName", "onClick: " + "null");
-                    } else {
+//                if (appointmentTime == null) {
+//                    Toast.makeText(getApplicationContext(), "Please Select Appointment Time ", Toast.LENGTH_SHORT).show();
+//                } else if (comment.getText().toString().equals("")) {
+//                    Toast.makeText(getApplicationContext(), "Please add comment", Toast.LENGTH_SHORT).show();
+//                } else {
+//
+//                    Log.e("currentdata", "onClick: " + user_id + doctorId + appointmentDate + appointmentTime);
+//
+//                    Log.e("appointmentTime", "onClick: " + appointmentTime);
+//
+//
+//                    String filename = String.valueOf(reportFile);
+//                    Log.e("appointmentTime", "onClick: " + reportFile);
+//
+//                    if (filename.equals("null")) {
+//                        addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), "");
+//                        Log.e("getName", "onClick: " + "null");
+//                    } else {
                         addBookingAppointmentWithReport(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), reportFile);
-                        Log.e("getName", "onClick: " + "notnull");
-                    }
-                }
+//                        Log.e("getName", "onClick: " + "notnull");
+//                    }
+//                }
             }
         });
 
@@ -329,7 +333,7 @@ public class DoctorProfile extends AppCompatActivity {
             }
         });
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         reviewRecycler.setLayoutManager(mLayoutManager);
         reviewRecycler.setAdapter(reviewAdapter);
     }

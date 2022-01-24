@@ -74,8 +74,7 @@
     <string name="Sports_involvement">Sports involvement</string>
 
 
-
-<!--    view_booking_detail-->
+    <!--    view_booking_detail-->
 
     <string name="Booking_Id">Booking Id</string>
     <string name="Booking_Date">Booking Date</string>
@@ -85,11 +84,12 @@
     <string name="clinic_location">Clinic Location</string>
 
 
-
     <!--    manage_calendar-->
 
     <string name="Doctor_Name">Doctor Name</string>
     <string name="Location">Location</string>
+
+
     <string name="Pending">Pending</string>
     <string name="View_Booking_Details">View Booking Details</string>
 
@@ -99,7 +99,6 @@
     <string name="Booking_Time">Booking Time</string>
     <string name="Accept">Accept</string>
     <string name="Cancel">Cancel</string>
-
 
 
     <!--    Completed Assignment-->
@@ -177,6 +176,7 @@
     <string name="Upload_Report_File">Upload Report File</string>
     <string name="Choose_report">Choose report</string>
     <string name="Book_am_Appointment">Book an Appointment</string>
+    <string name="Proceed">Proceed</string>
     <string name="Speciality">Speciality</string>
     <string name="Language_Spoken">Language Spoken</string>
     <string name="Language_Spoken_Language_Spoken">Language Spoken, Language Spoken</string>
@@ -187,6 +187,8 @@
     <string name="Close_Time">Close Time</string>
     <string name="Offline_Consultancy_Fees">Offline Consultancy Fees</string>
     <string name="Doctor_availability_status">Doctor’s availability status</string>
+    <string name="Schedule_Video_Consultancy">Schedule Video Consultancy</string>
+    <string name="D_availability">Doctor’s Availability</string>
 
 
     <!--    bookAppointment-->

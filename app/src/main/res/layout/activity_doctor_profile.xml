@@ -603,7 +603,6 @@
                                     android:textSize="@dimen/_12sdp" />
 
 
-
                             </RelativeLayout>
 
                             <View
@@ -623,7 +622,7 @@
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/reviewRecycler"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/_300sdp" />
+                                android:layout_height="wrap_content"/>
 
                         </LinearLayout>
                     </LinearLayout>
@@ -653,7 +652,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:gravity="center_vertical"
-                                android:text="@string/Schedule_video" />
+                                android:text="@string/D_availability" />
 
                             <View
                                 android:layout_width="match_parent"
@@ -668,11 +667,11 @@
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
-
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
+                                android:visibility="gone"
                                 android:weightSum="10">
 
                                 <TextView
@@ -706,6 +705,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:orientation="horizontal"
+                                android:visibility="gone"
                                 android:weightSum="10">
 
                                 <TextView
@@ -737,7 +737,6 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_12sdp"
                     android:background="@color/white"
                     android:orientation="vertical">
 
@@ -954,6 +953,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:text="@string/Enter_Comments"
+                            android:visibility="gone"
                             android:textColor="@color/action_mode_color_edt" />
 
                         <EditText
@@ -965,6 +965,7 @@
                             android:height="@dimen/_30sdp"
                             android:background="@drawable/edt_bg"
                             android:hint="Enter Comments"
+                            android:visibility="gone"
                             android:paddingLeft="@dimen/_4sdp" />
 
                         <TextView
@@ -973,6 +974,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:text="@string/Upload_Report_File"
+                            android:visibility="gone"
                             android:textColor="@color/action_mode_color_edt" />
 
                         <TextView
@@ -986,6 +988,7 @@
                             android:background="@color/md_grey_300"
                             android:gravity="center"
                             android:text="@string/Choose_report"
+                            android:visibility="gone"
                             android:textColor="@color/action_mode_color_edt" />
 
                         <Button
@@ -995,7 +998,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_marginTop="@dimen/_14sdp"
                             android:background="@drawable/button_bg"
-                            android:text="@string/Book_am_Appointment"
+                            android:text="@string/Proceed"
                             android:textAllCaps="false"
                             android:textSize="@dimen/_20sdp" />
 
