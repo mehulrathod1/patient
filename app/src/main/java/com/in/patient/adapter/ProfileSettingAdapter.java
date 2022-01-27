@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import com.in.patient.fragment.ProfileSettingLifestyle;
 import com.in.patient.fragment.ProfileSettingMedical;
 import com.in.patient.fragment.ProfileSettingPersonal;
+import com.in.patient.fragment.ProfileSettingRelative;
 
 public class ProfileSettingAdapter extends FragmentPagerAdapter {
 
@@ -39,8 +40,10 @@ public class ProfileSettingAdapter extends FragmentPagerAdapter {
 
                 ProfileSettingLifestyle profileSettingLifestyle = new ProfileSettingLifestyle();
                 return profileSettingLifestyle;
+            case 3:
 
-
+                ProfileSettingRelative profileSettingRelative = new ProfileSettingRelative();
+                return profileSettingRelative;
             default:
                 return null;
         }

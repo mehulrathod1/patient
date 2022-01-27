@@ -50,6 +50,7 @@ public class ProfileSetting extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Personal"));
         tabLayout.addTab(tabLayout.newTab().setText("Medical"));
         tabLayout.addTab(tabLayout.newTab().setText("Lifestyle"));
+        tabLayout.addTab(tabLayout.newTab().setText("Relative"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
 

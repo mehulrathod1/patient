@@ -57,11 +57,11 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
             txtBookingStatus, txtPatientName, txtLocation, txtServiceTime, txtClinicAddress,
             texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport, chat;
 
-    String BookingId, doctorId;
+    String BookingId, doctorId, doctorFees;
 
     String TAG = "BookAppointment";
 
-    LinearLayout ll_download_report, ll_upload_doc;
+    LinearLayout ll_download_report, ll_upload_doc, ll_comment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +103,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
         txtReport = findViewById(R.id.txtReport);
         chat = findViewById(R.id.chat);
 
+        ll_comment = findViewById(R.id.ll_comment);
         ll_upload_doc = findViewById(R.id.ll_upload_doc);
         ll_download_report = findViewById(R.id.ll_download_report);
 
@@ -111,8 +112,13 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
             @Override
             public void onClick(View v) {
 
-                bookingConformation(Token, user_id, BookingId);
-                startPayment();
+//                  bookingConformation(Token, user_id, BookingId);
+//                startPayment();
+
+                Intent intent = new Intent(getApplicationContext(), PaymentScreen.class);
+                intent.putExtra("amount", doctorFees);
+                intent.putExtra("booking_id", BookingId);
+                startActivity(intent);
             }
         });
 
@@ -182,6 +188,8 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
                 txtClinicAddress.setText(data.getClinicLocation());
                 texTotalAmount.setText(data.getTotalAmount());
                 txtAmountStatus.setText(data.getAmountStatus());
+
+                doctorFees = data.getTotalAmount();
                 Glob.dialog.dismiss();
 
             }
@@ -312,6 +320,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
         txtAmountStatus.setText("complete");
 //        ll_download_report.setVisibility(View.VISIBLE);
         ll_upload_doc.setVisibility(View.VISIBLE);
+        ll_comment.setVisibility(View.VISIBLE);
         chat.setVisibility(View.VISIBLE);
 
     }
@@ -367,7 +376,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
                     }
 
 
-                    uploadDocument(Token, user_id,txtBookingId.getText().toString(),reportFile);
+                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile);
 
                     Uri uri = data.getData();
                     String uriString = uri.toString();

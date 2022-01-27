@@ -43,7 +43,7 @@ public class Search extends AppCompatActivity {
     RecyclerView recyclerView;
     List<SearchModel.SearchData> list = new ArrayList<>();
 
-    String Flag;
+//    String Flag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class Search extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        Flag = intent.getStringExtra("Flag");
+//        Flag = intent.getStringExtra("Flag");
 
     }
 
@@ -72,19 +72,21 @@ public class Search extends AppCompatActivity {
         nevBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
-                if (Flag.equals("DoctorConsultSecond")){
-                    intent.putExtra("s", 2);
-                    startActivity(intent);
-                    finish();
+                finish();
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
-                }
-                if (Flag.equals("MainActivity")){
-                    startActivity(intent);
-                    finish();
-
-                }
+//                if (Flag.equals("DoctorConsultSecond")){
+//                    intent.putExtra("s", 2);
+//                    startActivity(intent);
+//                    finish();
+//
+//                }
+//                if (Flag.equals("MainActivity")){
+//                    startActivity(intent);
+//                    finish();
+//
+//                }
 
 
 

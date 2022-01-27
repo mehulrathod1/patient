@@ -29,6 +29,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.in.patient.R;
 import com.in.patient.activity.DoctorProfile;
+import com.in.patient.activity.PaymentScreen;
 import com.in.patient.activity.Search;
 import com.in.patient.adapter.DoctorConsultantSecondAdapter;
 import com.in.patient.adapter.SpecialistDoctorAdapter;
@@ -196,7 +197,7 @@ public class DoctorConsultSecond extends Fragment {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getContext(), Search.class);
-                intent.putExtra("Flag","DoctorConsultSecond");
+//                intent.putExtra("Flag","DoctorConsultSecond");
                 startActivity(intent);
             }
         });
@@ -324,11 +325,12 @@ public class DoctorConsultSecond extends Fragment {
             public void onItemClick(int position) {
 
 
+//
                 String doctorId = list.get(position).getUser_id();
 
                 Intent intent = new Intent(getContext(), DoctorProfile.class);
                 intent.putExtra("doctorId", doctorId);
-                intent.putExtra("FLag","DoctorConsultSecond");
+//                intent.putExtra("FLag","DoctorConsultSecond");
                 startActivity(intent);
             }
         });
@@ -349,8 +351,9 @@ public class DoctorConsultSecond extends Fragment {
                 String doctorId = specialistList.get(position).getDoctorId();
                 Intent intent = new Intent(getContext(), DoctorProfile.class);
                 intent.putExtra("doctorId", doctorId);
-                intent.putExtra("Flag","DoctorConsultSecond");
                 startActivity(intent);
+
+
             }
         });
 

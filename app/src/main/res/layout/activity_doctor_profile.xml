@@ -37,7 +37,7 @@
                     android:layout_marginBottom="@dimen/_20sdp"
                     android:background="@drawable/back_button_bg"
                     android:padding="@dimen/_5sdp"
-                    android:src="@drawable/nev_back" />
+                    android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
 
                 <TextView
                     android:id="@+id/doctorName"
@@ -798,6 +798,44 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:layout_marginBottom="@dimen/_8sdp" />
+
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_16sdp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/sub_heading_text"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Booking For" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:background="@drawable/profile_edt_bg"
+                                android:layout_marginBottom="@dimen/_16sdp"
+                                android:gravity="center">
+
+                                <Spinner
+                                    android:id="@+id/spn_booking_for"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_marginLeft="@dimen/_8sdp"
+                                    android:dropDownVerticalOffset="40dp"
+                                    android:gravity="right"
+                                    android:popupBackground="@color/action_mode_color"
+                                    android:prompt="@string/app_name"
+                                    android:spinnerMode="dropdown" />
+
+
+                            </LinearLayout>
+                        </LinearLayout>
 
 
                         <!--                        <TextView-->

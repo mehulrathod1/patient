@@ -11,9 +11,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:background="@drawable/back_button_bg"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/backButton"
             android:orientation="vertical">
 
             <LinearLayout
@@ -49,11 +64,14 @@
                                 android:textSize="@dimen/_16sdp" />
 
                             <TextView
+                                android:id="@+id/total_fees"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:fontFamily="@font/montserrat_semi_bold"
                                 android:gravity="right"
-                                android:text="600 $"
+                                android:text="600 ₹"
+                                android:textColor="@color/action_mode_color_edt"
                                 android:textSize="@dimen/_16sdp" />
 
                         </LinearLayout>
@@ -64,6 +82,7 @@
                             android:layout_marginLeft="@dimen/_16sdp"
                             android:layout_marginTop="@dimen/_26sdp"
                             android:layout_marginRight="@dimen/_16sdp"
+                            android:layout_marginBottom="@dimen/_26sdp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -72,14 +91,18 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/montserrat_regular"
                                 android:text="To be paid"
+                                android:textColor="@color/action_mode_color_orange"
                                 android:textSize="@dimen/_16sdp" />
 
                             <TextView
+                                android:id="@+id/to_be_paid"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:fontFamily="@font/montserrat_semi_bold"
                                 android:gravity="right"
-                                android:text="600 $"
+                                android:text="600 ₹"
+                                android:textColor="@color/action_mode_color_orange"
                                 android:textSize="@dimen/_16sdp" />
 
                         </LinearLayout>
@@ -87,23 +110,23 @@
                 </androidx.cardview.widget.CardView>
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:layout_margin="@dimen/_16sdp"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_20sdp"
+                android:orientation="vertical">
 
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:lineSpacingExtra="@dimen/_4sdp"
-                    android:text="Certain Google Pay features were previously brandedWhile you may continue to see legacy references to Android Pay in stores or on apps and websites, those features are subject to these Terms.Certain Google Pay features were previously branded  While you may continue to see legacy references to Android Pay in stores or on apps and websites, those features are subject to these Terms.Certain Google Pay features were previously branded  While you may continue to see legacy references to Android Pay in stores or on apps and websites, those features are subject to these Terms."
-
-                    />
+                    android:fontFamily="@font/montserrat_regular"
+                    android:lineSpacingExtra="@dimen/_6sdp"
+                    android:text="Certain Google Pay features were previously brandedWhile you may continue to see legacy references to Android Pay in stores or on apps and websites, those features are subject to these Terms.Certain Google Pay features were previously branded  While you may continue to see legacy references to Android Pay in stores or on apps and websites, those features are subject to these Terms.Certain Google Pay features were previously branded  While you may continue to see legacy references to Android Pay in stores or on apps and websites, those features are subject to these Terms." />
 
                 <Button
-                    android:id="@+id/BookAppointment"
+                    android:id="@+id/pay_now"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_46sdp"
                     android:layout_alignParentBottom="true"

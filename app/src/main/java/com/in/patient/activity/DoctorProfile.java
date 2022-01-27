@@ -31,9 +31,11 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -110,8 +112,12 @@ public class DoctorProfile extends AppCompatActivity {
 
     ImageView backButton, ProfileImage;
 
-    String doctorId, Flag;
+    String doctorId;
+    //    String Flag;
     String appointmentTime, appointmentDate;
+    Spinner spn_booking_for;
+    ArrayAdapter<String> bookingForAdapter;
+    List<String> bookingForList;
 
 
     DayAdapter dayAdapter;
@@ -153,9 +159,10 @@ public class DoctorProfile extends AppCompatActivity {
 
         Intent intent = getIntent();
         doctorId = intent.getStringExtra("doctorId");
-        Flag = intent.getStringExtra("FLag");
 
-        Log.e("id", "onCreate: " + Flag);
+//        Flag = intent.getStringExtra("FLag");
+
+//        Log.e("id", "onCreate: " + Flag);
 
         init();
         imageData();
@@ -194,6 +201,18 @@ public class DoctorProfile extends AppCompatActivity {
         view_all_review = findViewById(R.id.view_all_review);
         view_all_review.setText(Html.fromHtml("<u>View All</u>"));
 
+        spn_booking_for = findViewById(R.id.spn_booking_for);
+
+
+        bookingForList = new ArrayList<>();
+        bookingForList.add("Me");
+        bookingForList.add("Brother");
+        bookingForList.add("Sister");
+
+        bookingForAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.profile_spinner_text, bookingForList);
+        bookingForAdapter.setDropDownViewResource(R.layout.dropdown_item);
+        spn_booking_for.setAdapter(bookingForAdapter);
+
 
         Glob.progressDialog(this);
 
@@ -202,16 +221,16 @@ public class DoctorProfile extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                Intent intent = new Intent(getApplicationContext(), BookAppointment.class);
-                intent.putExtra("bookingId", "183");
-                intent.putExtra("doctorId", doctorId);
-                startActivity(intent);
-
-//                if (appointmentTime == null) {
-//                    Toast.makeText(getApplicationContext(), "Please Select Appointment Time ", Toast.LENGTH_SHORT).show();
-//                } else if (comment.getText().toString().equals("")) {
+                if (appointmentTime == null) {
+                    Toast.makeText(getApplicationContext(), "Please Select Appointment Time ", Toast.LENGTH_SHORT).show();
+                }
+//                else if (comment.getText().toString().equals("")) {
 //                    Toast.makeText(getApplicationContext(), "Please add comment", Toast.LENGTH_SHORT).show();
-//                } else {
+//                }
+                else {
+                    addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), "");
+
+                }
 //
 //                    Log.e("currentdata", "onClick: " + user_id + doctorId + appointmentDate + appointmentTime);
 //
@@ -222,10 +241,9 @@ public class DoctorProfile extends AppCompatActivity {
 //                    Log.e("appointmentTime", "onClick: " + reportFile);
 //
 //                    if (filename.equals("null")) {
-//                        addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), "");
 //                        Log.e("getName", "onClick: " + "null");
 //                    } else {
-                        addBookingAppointmentWithReport(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), reportFile);
+//                addBookingAppointmentWithReport(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), reportFile);
 //                        Log.e("getName", "onClick: " + "notnull");
 //                    }
 //                }
@@ -237,18 +255,20 @@ public class DoctorProfile extends AppCompatActivity {
             public void onClick(View v) {
 
 
-                if (Flag.matches("DoctorConsultSecond")) {
-                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                    intent.putExtra("s", 2);
-                    startActivity(intent);
-                    finish();
-                }
-                if (Flag.equals("Search")) {
-                    Intent intent = new Intent(getApplicationContext(), Search.class);
-                    intent.putExtra("Flag", "MainActivity");
-                    startActivity(intent);
-                    finish();
-                }
+                finish();
+
+//                if (Flag.matches("DoctorConsultSecond")) {
+//                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                    intent.putExtra("s", 2);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//                if (Flag.equals("Search")) {
+//                    Intent intent = new Intent(getApplicationContext(), Search.class);
+//                    intent.putExtra("Flag", "MainActivity");
+//                    startActivity(intent);
+//                    finish();
+//                }
 
             }
         });

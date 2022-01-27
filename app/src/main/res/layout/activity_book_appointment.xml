@@ -415,6 +415,73 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal"
+                                android:visibility="gone"
+                                android:weightSum="10">
+
+                                <TextView
+                                    style="@style/m_semi_14"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.5"
+                                    android:text="Booking Date" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:id="@+id/booking_date"
+                                    style="@style/m_semi_14"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7"
+                                    android:textColor="@color/action_mode_color_edt" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
+                                android:visibility="gone"
+                                android:weightSum="10">
+
+                                <TextView
+                                    style="@style/m_semi_14"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="2.5"
+                                    android:text="Booking Time" />
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0.5"
+                                    android:text="   -   "
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:id="@+id/booking_time"
+                                    style="@style/m_semi_14"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="7"
+                                    android:textColor="@color/action_mode_color_edt" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:orientation="horizontal"
                                 android:weightSum="10">
 
                                 <TextView
@@ -564,8 +631,8 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="2.5"
-                                    android:visibility="gone"
-                                    android:text="@string/Amount_Status" />
+                                    android:text="@string/Amount_Status"
+                                    android:visibility="gone" />
 
 
                                 <TextView
@@ -573,14 +640,15 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0.5"
                                     android:text="   -   "
-                                    android:visibility="gone"
                                     android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_14sdp" />
+                                    android:textSize="@dimen/_14sdp"
+                                    android:visibility="gone" />
 
                                 <LinearLayout
                                     android:layout_width="0dp"
                                     android:layout_height="@dimen/_30sdp"
                                     android:layout_weight="7"
+                                    android:visibility="gone"
                                     android:weightSum="5">
 
                                     <TextView
@@ -589,19 +657,8 @@
                                         android:layout_width="0dp"
                                         android:layout_height="match_parent"
                                         android:layout_weight="2"
-                                        android:visibility="gone"
                                         android:textColor="@color/action_mode_color_edt" />
 
-                                    <TextView
-                                        android:id="@+id/txtpayNow"
-                                        style="@style/m_semi_14"
-                                        android:layout_width="0dp"
-                                        android:layout_height="@dimen/_30sdp"
-                                        android:layout_weight="2"
-                                        android:background="@color/action_mode_color"
-                                        android:gravity="center"
-                                        android:text="Pay Now"
-                                        android:textColor="@color/white" />
                                 </LinearLayout>
                             </LinearLayout>
 
@@ -638,6 +695,39 @@
                                     android:drawableRight="@drawable/icon_feather_upload"
                                     android:text="@string/Document"
                                     android:textColor="@color/action_mode_color_edt" />
+
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/ll_comment"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:visibility="gone"
+                                >
+
+                                <TextView
+                                    style="@style/m_semi_14"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:text="@string/Enter_Comments"
+                                     />
+
+                                <EditText
+                                    android:id="@+id/comment"
+                                    style="@style/m_semi_16"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_140sdp"
+                                    android:layout_marginTop="@dimen/_8sdp"
+                                    android:height="@dimen/_30sdp"
+                                    android:background="@drawable/edt_bg"
+                                    android:hint="Enter Comments"
+                                    android:gravity="top"
+                                    android:padding="@dimen/_5sdp"
+                                    android:paddingLeft="@dimen/_4sdp"
+                                     />
 
                             </LinearLayout>
 
@@ -708,6 +798,17 @@
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/_20sdp"
                                     android:visibility="gone" />
+
+                                <Button
+                                    android:id="@+id/txtpayNow"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_46sdp"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_marginTop="@dimen/_14sdp"
+                                    android:background="@drawable/button_bg"
+                                    android:text="@string/Proceed_to_pay"
+                                    android:textAllCaps="false"
+                                    android:textSize="@dimen/_20sdp" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>

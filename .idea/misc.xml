@@ -44,6 +44,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_splash.xml" value="0.12273550724637682" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_video_call_screen.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_view_booking_detail.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/add_relative_dialog.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/book_now_dialog.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/chat_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/day_item.xml" value="0.33" />
@@ -68,6 +69,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_profile_setting_lifestyle.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_profile_setting_medical.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_profile_setting_personal.xml" value="0.30246913580246915" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_profile_setting_relative.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_redemption.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_searvice_category.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_transaction_history.xml" value="0.20416666666666666" />

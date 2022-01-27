@@ -53,18 +53,19 @@ public class MyReview extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent;
-                if (variable.equals("variable")){
-
-                    intent = new Intent(getApplicationContext(), MainActivity.class);
-                }
-                else {
-
-                    intent = new Intent(getApplicationContext(), DoctorProfile.class);
-                    intent.putExtra("doctorId",variable);
-
-                }
-                startActivity(intent);
+//                Intent intent;
+//                if (variable.equals("variable")){
+//
+//                    intent = new Intent(getApplicationContext(), MainActivity.class);
+//                }
+//                else {
+//
+//                    intent = new Intent(getApplicationContext(), DoctorProfile.class);
+//                    intent.putExtra("doctorId",variable);
+//
+//                }
+//                startActivity(intent);
+                finish();
             }
         });
     }
