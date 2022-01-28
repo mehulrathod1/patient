@@ -15,6 +15,7 @@ import com.in.patient.model.ProductModel;
 import com.in.patient.model.ProfileLifestyleModel;
 import com.in.patient.model.ProfileMedicalModel;
 import com.in.patient.model.ProfilePersonalModel;
+import com.in.patient.model.RelativeModel;
 import com.in.patient.model.SearchModel;
 import com.in.patient.model.SignInModel;
 import com.in.patient.model.SignUpModel;
@@ -337,4 +338,25 @@ public interface Api {
             @Field("gender") String gender
     );
 
+    @FormUrlEncoded
+    @POST("get_relative.php")
+    Call<RelativeModel> getRelative(
+            @Field("token") String token,
+            @Field("user_id") String user_id
+    );
+
+
+    @FormUrlEncoded
+    @POST("add_relative.php")
+    Call<CommonModel> addRelative(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("relation") String relation,
+            @Field("relative_name") String relative_name,
+            @Field("age") String age,
+            @Field("gender") String gender,
+            @Field("blood_group") String blood_group,
+            @Field("marital_status") String marital_status
+
+    );
 }

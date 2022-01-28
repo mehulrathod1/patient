@@ -61,38 +61,16 @@
                     style="@style/sub_heading_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/first_name" />
+                    android:text="@string/Name" />
 
                 <EditText
+                    android:id="@+id/edt_name"
                     style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/first_name"
-                    android:padding="10dp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/sub_heading_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/last_name" />
-
-                <EditText
-                    style="@style/Profile_setting_personal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/last_name"
+                    android:hint="@string/Name"
                     android:padding="10dp" />
 
             </LinearLayout>
@@ -111,6 +89,7 @@
                     android:text="@string/Age" />
 
                 <EditText
+                    android:id="@+id/edt_age"
                     style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -134,6 +113,7 @@
                     android:text="@string/Gender" />
 
                 <EditText
+                    android:id="@+id/edt_gender"
                     style="@style/Profile_setting_personal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -158,6 +138,7 @@
 
                 <EditText
                     style="@style/Profile_setting_personal"
+                    android:id="@+id/edt_blood_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -166,6 +147,7 @@
                     android:padding="10dp" />
 
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -180,6 +162,7 @@
 
                 <EditText
                     style="@style/Profile_setting_personal"
+                    android:id="@+id/edt_marital_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -203,6 +186,7 @@
 
                 <EditText
                     style="@style/Profile_setting_personal"
+                    android:id="@+id/edt_relation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -222,6 +206,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/txt_add"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:background="@drawable/button_bg"

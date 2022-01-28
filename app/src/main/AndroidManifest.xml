@@ -27,6 +27,9 @@
         android:theme="@style/Theme.Patient"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.AfterPaymentScreen"
+            android:exported="true" />
+        <activity
             android:name=".activity.PaymentScreen"
             android:exported="true" />
 

@@ -53,6 +53,7 @@ import com.in.patient.model.ClinicImage;
 import com.in.patient.model.DoctorProfileModel;
 import com.in.patient.model.DoctorTimePrice;
 import com.in.patient.model.MyReviewModel;
+import com.in.patient.model.RelativeModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.Data;
 import com.in.patient.retrofit.RetrofitClient;
@@ -117,7 +118,7 @@ public class DoctorProfile extends AppCompatActivity {
     String appointmentTime, appointmentDate;
     Spinner spn_booking_for;
     ArrayAdapter<String> bookingForAdapter;
-    List<String> bookingForList;
+    List<String> bookingForList = new ArrayList<>();
 
 
     DayAdapter dayAdapter;
@@ -171,6 +172,7 @@ public class DoctorProfile extends AppCompatActivity {
         dayData();
         getDoctorProfile(Token, user_id, doctorId);
         getTimeSlot(Token, user_id, doctorId, appointmentDate);
+        getRelative(Token, user_id);
     }
 
     public void init() {
@@ -204,10 +206,7 @@ public class DoctorProfile extends AppCompatActivity {
         spn_booking_for = findViewById(R.id.spn_booking_for);
 
 
-        bookingForList = new ArrayList<>();
-        bookingForList.add("Me");
-        bookingForList.add("Brother");
-        bookingForList.add("Sister");
+        bookingForList.add(0, "Me");
 
         bookingForAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.profile_spinner_text, bookingForList);
         bookingForAdapter.setDropDownViewResource(R.layout.dropdown_item);
@@ -228,6 +227,7 @@ public class DoctorProfile extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(), "Please add comment", Toast.LENGTH_SHORT).show();
 //                }
                 else {
+
                     addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), "");
 
                 }
@@ -281,8 +281,6 @@ public class DoctorProfile extends AppCompatActivity {
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 
                     Log.e("premitionnotgranted ", "onClick: " + "granted");
-
-
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_GET_CONTENT);
                     intent.setType("application/pdf");
@@ -290,12 +288,10 @@ public class DoctorProfile extends AppCompatActivity {
 
 
                 } else {
-                    ActivityCompat.requestPermissions(DoctorProfile.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
 
+                    ActivityCompat.requestPermissions(DoctorProfile.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
                     Log.e("premitionnotgranted ", "onClick: " + "premitionnotgranted");
                 }
-
-
             }
         });
 
@@ -461,6 +457,7 @@ public class DoctorProfile extends AppCompatActivity {
                                       String comments, String fees, String report) {
 
 
+
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
 
@@ -480,6 +477,7 @@ public class DoctorProfile extends AppCompatActivity {
                 intent.putExtra("bookingId", booking_id);
                 intent.putExtra("doctorId", doctorId);
                 startActivity(intent);
+                finish();
 
 
             }
@@ -597,6 +595,45 @@ public class DoctorProfile extends AppCompatActivity {
         slotRecycler.setLayoutManager(mLayoutManager);
         slotRecycler.setAdapter(timeSlotAdapter);
     }
+
+    public void getRelative(String token, String user_id) {
+
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+        call.getRelative(token, user_id).enqueue(new Callback<RelativeModel>() {
+            @Override
+            public void onResponse(Call<RelativeModel> call, Response<RelativeModel> response) {
+
+                RelativeModel relativeModel = response.body();
+
+                List<RelativeModel.RelativeData> dataList = relativeModel.getRelativeDataList();
+
+                for (int i = 0; i < dataList.size(); i++) {
+
+                    RelativeModel.RelativeData model = dataList.get(i);
+
+                    RelativeModel.RelativeData data = new RelativeModel.RelativeData(model.getRelative_name(),
+                            model.getRelation(), model.getAge(), model.getBlood_group(), model.getMarital_status(),
+                            model.getGender());
+
+
+                    bookingForList.add(1, model.getRelative_name());
+
+                    Log.e("bookingForList", "onResponse: " + model.getRelative_name());
+
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<RelativeModel> call, Throwable t) {
+
+            }
+        });
+    }
+
 
     @Override
     public void onBackPressed() {

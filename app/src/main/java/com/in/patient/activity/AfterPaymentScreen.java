@@ -9,7 +9,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -18,7 +17,6 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,9 +28,6 @@ import com.in.patient.model.CommonModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
 import com.razorpay.Checkout;
-import com.razorpay.PaymentResultListener;
-
-import org.json.JSONObject;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -48,25 +43,27 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class BookAppointment extends AppCompatActivity implements PaymentResultListener {
-
+public class AfterPaymentScreen extends AppCompatActivity {
 
     private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 10;
     File reportFile;
-    ImageView backButton;
+
     TextView txtPayNow, txtDoctorName, txtBookingId, txtSpeciality, txtDName, txtBookingFor,
             txtBookingStatus, txtPatientName, txtLocation, txtServiceTime, txtClinicAddress,
             texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport, chat;
 
     String BookingId, doctorId, doctorFees;
+
     String TAG = "BookAppointment";
 
     LinearLayout ll_download_report, ll_upload_doc, ll_comment;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_book_appointment);
+        setContentView(R.layout.activity_after_paymentscreen);
+
         getSupportActionBar().hide();
 
         Checkout.preload(getApplicationContext());
@@ -85,7 +82,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
         Glob.progressDialog(this);
         txtPayNow = findViewById(R.id.txtpayNow);
 
-        backButton = findViewById(R.id.backButton);
+
         txtDoctorName = findViewById(R.id.txtDoctorName);
         txtBookingId = findViewById(R.id.txtBookingId);
         txtSpeciality = findViewById(R.id.txtSpeciality);
@@ -108,25 +105,11 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
         ll_download_report = findViewById(R.id.ll_download_report);
 
 
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
         txtPayNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-//                  bookingConformation(Token, user_id, BookingId);
-//                startPayment();
-
-                Intent intent = new Intent(getApplicationContext(), PaymentScreen.class);
-                intent.putExtra("amount", doctorFees);
-                intent.putExtra("booking_id", BookingId);
-                intent.putExtra("doctor_id", doctorId);
-                startActivity(intent);
+                finish();
             }
         });
 
@@ -153,7 +136,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
 
 
                 } else {
-                    ActivityCompat.requestPermissions(BookAppointment.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+                    ActivityCompat.requestPermissions(AfterPaymentScreen.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
 
                     Log.e("premitionnotgranted ", "onClick: " + "premitionnotgranted");
                 }
@@ -195,7 +178,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
                 txtServiceTime.setText(data.getBookedServiceTime());
                 txtClinicAddress.setText(data.getClinicLocation());
                 texTotalAmount.setText(data.getTotalAmount());
-                txtAmountStatus.setText(data.getAmountStatus());
+
 
                 doctorFees = data.getTotalAmount();
                 Glob.dialog.dismiss();
@@ -205,31 +188,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
             @Override
             public void onFailure(Call<BookingConformationModel> call, Throwable t) {
 
-            }
-        });
-
-    }
-
-    public void bookingConformation(String token, String user_id, String booking_id) {
-        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
-        Glob.dialog.show();
-
-
-        call.bookingConformation(token, user_id, booking_id).enqueue(new Callback<CommonModel>() {
-            @Override
-            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
-                CommonModel commonModel = response.body();
-
-//                Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
-
                 Glob.dialog.dismiss();
-            }
-
-            @Override
-            public void onFailure(Call<CommonModel> call, Throwable t) {
-
-                Log.e("onDFailo", "onFailure: " + t.getMessage());
-
             }
         });
 
@@ -269,75 +228,6 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
 
             }
         });
-    }
-
-    public void startPayment() {
-
-        Checkout checkout = new Checkout();
-        checkout.setKeyID("rzp_test_Wx4Pz8r5BYpqqQ");
-        /**
-         * Instantiate Checkout
-         */
-
-        /**
-         * Set your logo here
-         */
-        checkout.setImage(R.drawable.rectangle_1);
-
-        /**
-         * Reference to current activity
-         */
-        final Activity activity = this;
-
-        /**
-         * Pass your payment options to the Razorpay Checkout as a JSONObject
-         */
-        try {
-            JSONObject options = new JSONObject();
-
-            options.put("name", "Merchant Name");
-            options.put("description", "Reference No. #123456");
-            options.put("image", "https://s3.amazonaws.com/rzp-mobile/images/rzp.png");
-//            options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
-            options.put("theme.color", "#3399cc");
-            options.put("currency", "INR");
-            options.put("amount", "100"); //300 * 100
-
-//            options.put("prefill.email", "gaurav.kumar@example.com");
-//            options.put("prefill.contact","9988776655");
-
-            JSONObject retryObj = new JSONObject();
-            retryObj.put("enabled", true);
-            retryObj.put("max_count", 4);
-            options.put("retry", retryObj);
-
-            checkout.open(activity, options);
-
-        } catch (Exception e) {
-            Log.e(TAG, "Error in starting Razorpay Checkout", e);
-        }
-    }
-
-
-    @Override
-    public void onPaymentSuccess(String s) {
-
-        Toast.makeText(getApplicationContext(), "Payment Successfull", Toast.LENGTH_SHORT).show();
-        txtPayNow.setVisibility(View.GONE);
-        txtBookingStatus.setText("complete");
-        txtAmountStatus.setText("complete");
-//        ll_download_report.setVisibility(View.VISIBLE);
-        ll_upload_doc.setVisibility(View.VISIBLE);
-        ll_comment.setVisibility(View.VISIBLE);
-        chat.setVisibility(View.VISIBLE);
-
-    }
-
-    @Override
-    public void onPaymentError(int i, String s) {
-
-        Toast.makeText(getApplicationContext(), "Payment Failed", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override

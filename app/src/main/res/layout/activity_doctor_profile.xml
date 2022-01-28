@@ -809,7 +809,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                style="@style/sub_heading_text"
+                                style="@style/m_semi_16"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="Booking For" />
@@ -817,9 +817,10 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="@dimen/_8sdp"
-                                android:background="@drawable/profile_edt_bg"
+                                android:layout_marginTop="@dimen/_14sdp"
                                 android:layout_marginBottom="@dimen/_16sdp"
+                                android:background="@drawable/profile_edt_bg"
+                                android:backgroundTint="@color/md_grey"
                                 android:gravity="center">
 
                                 <Spinner
@@ -832,7 +833,6 @@
                                     android:popupBackground="@color/action_mode_color"
                                     android:prompt="@string/app_name"
                                     android:spinnerMode="dropdown" />
-
 
                             </LinearLayout>
                         </LinearLayout>

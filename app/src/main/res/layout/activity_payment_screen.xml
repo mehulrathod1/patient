@@ -21,6 +21,7 @@
             android:layout_marginEnd="@dimen/_20sdp"
             android:layout_marginBottom="@dimen/_20sdp"
             android:background="@drawable/back_button_bg"
+            android:backgroundTint="@color/md_grey"
             android:padding="@dimen/_5sdp"
             android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
 

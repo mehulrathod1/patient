@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -33,7 +34,8 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
     Button pay_now;
     TextView total_fees, to_be_paid;
 
-    String booking_id, total_amount;
+    ImageView backButton;
+    String booking_id,doctor_id, total_amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +53,12 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
         total_fees = findViewById(R.id.total_fees);
         to_be_paid = findViewById(R.id.to_be_paid);
         pay_now = findViewById(R.id.pay_now);
-
+        backButton = findViewById(R.id.backButton);
 
         Intent intent = getIntent();
         total_amount = intent.getStringExtra("amount");
         booking_id = intent.getStringExtra("booking_id");
+        doctor_id = intent.getStringExtra("doctor_id");
 
         total_fees.setText(total_amount + " ₹");
         to_be_paid.setText(total_amount + " ₹");
@@ -66,6 +69,12 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
             public void onClick(View v) {
 
                 startPayment();
+            }
+        });
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
     }
@@ -121,6 +130,11 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
     public void onPaymentSuccess(String s) {
 
         Toast.makeText(getApplicationContext(), "Payment Successfull", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getApplicationContext(), AfterPaymentScreen.class);
+        intent.putExtra("bookingId",booking_id);
+        intent.putExtra("doctorId",doctor_id);
+        startActivity(intent);
+        finish();
 //        bookingConformation(Token, user_id, booking_id);
     }
 
