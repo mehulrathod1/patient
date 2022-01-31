@@ -1,11 +1,18 @@
 package com.in.patient.fragment;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Shader;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
@@ -21,6 +28,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -48,9 +57,11 @@ import com.in.patient.retrofit.RetrofitClient;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -62,7 +73,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class HomeDashboard extends Fragment {
+public class HomeDashboard extends Fragment implements LocationListener {
 
 
     View view;
@@ -89,6 +100,11 @@ public class HomeDashboard extends Fragment {
 
     LinearLayout doctorConsultant, homeCare, labTest, medicines, healthProduct,search_layout;
 
+    protected LocationManager locationManager;
+    protected LocationListener locationListener;
+    protected Context context;
+    double latitude, longitude;
+
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
 
@@ -108,6 +124,16 @@ public class HomeDashboard extends Fragment {
         healthCheckupData();
         addBottomDots(0);
         getDoctorSpecialist(Glob.Token, Glob.user_id);
+
+
+
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+        }
+        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+
 
         return view;
     }
@@ -576,5 +602,54 @@ public class HomeDashboard extends Fragment {
 
     }
 
+
+    @Override
+    public void onLocationChanged(@NonNull Location location) {
+
+//            txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
+
+        longitude = location.getLongitude();
+        latitude = location.getLatitude();
+
+        Log.e("Location", "onLocationChanged: " + "Latitude:" + latitude + ", Longitude:" + longitude);
+
+        String cityName = null;
+        Geocoder gcd = new Geocoder(getContext(),
+                Locale.getDefault());
+        List<Address> addresses;
+        String ss;
+        try {
+            addresses = gcd.getFromLocation(location.getLatitude(), location
+                    .getLongitude(), 1);
+            if (addresses.size() > 0)
+                System.out.println(addresses.get(0).getLocality());
+            cityName = addresses.get(0).getLocality();
+            ss = addresses.get(0).getLocality();
+            Log.e("sasdfghjk", "onLocationChanged: " + ss);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String s = cityName;
+//        edt_city_name.setText(s);
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        Log.d("Latitude", "status");
+    }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+
+        Log.d("Latitude", "enable");
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+
+        Log.d("Latitude", "disable");
+    }
 
 }
