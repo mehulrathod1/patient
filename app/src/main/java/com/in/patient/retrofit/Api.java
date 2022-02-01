@@ -358,5 +358,19 @@ public interface Api {
             @Field("blood_group") String blood_group,
             @Field("marital_status") String marital_status
 
+
     );
+
+
+    @FormUrlEncoded
+    @POST("add_review.php")
+    Call<CommonModel> addReview(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("doctor_id") String doctor_id,
+            @Field("message") String message,
+            @Field("rating") String rating
+    );
+
+
 }

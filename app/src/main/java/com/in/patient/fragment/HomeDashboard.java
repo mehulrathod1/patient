@@ -98,7 +98,7 @@ public class HomeDashboard extends Fragment implements LocationListener {
     FindDoctorAdapter adapter;
     List<FindDoctorModel.DoctorSpecialities> list = new ArrayList<>();
 
-    LinearLayout doctorConsultant, homeCare, labTest, medicines, healthProduct,search_layout;
+    LinearLayout doctorConsultant, homeCare, labTest, medicines, healthProduct, search_layout;
 
     protected LocationManager locationManager;
     protected LocationListener locationListener;
@@ -124,7 +124,6 @@ public class HomeDashboard extends Fragment implements LocationListener {
         healthCheckupData();
         addBottomDots(0);
         getDoctorSpecialist(Glob.Token, Glob.user_id);
-
 
 
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -605,32 +604,6 @@ public class HomeDashboard extends Fragment implements LocationListener {
 
     @Override
     public void onLocationChanged(@NonNull Location location) {
-
-//            txtLat.setText("Latitude:" + location.getLatitude() + ", Longitude:" + location.getLongitude());
-
-        longitude = location.getLongitude();
-        latitude = location.getLatitude();
-
-        Log.e("Location", "onLocationChanged: " + "Latitude:" + latitude + ", Longitude:" + longitude);
-
-        String cityName = null;
-        Geocoder gcd = new Geocoder(getContext(),
-                Locale.getDefault());
-        List<Address> addresses;
-        String ss;
-        try {
-            addresses = gcd.getFromLocation(location.getLatitude(), location
-                    .getLongitude(), 1);
-            if (addresses.size() > 0)
-                System.out.println(addresses.get(0).getLocality());
-            cityName = addresses.get(0).getLocality();
-            ss = addresses.get(0).getLocality();
-            Log.e("sasdfghjk", "onLocationChanged: " + ss);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String s = cityName;
-//        edt_city_name.setText(s);
 
     }
 

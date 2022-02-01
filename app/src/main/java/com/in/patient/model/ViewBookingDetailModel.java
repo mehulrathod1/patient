@@ -44,6 +44,11 @@ public class ViewBookingDetailModel {
 
     public class BookingData {
 
+
+        @SerializedName("Doctor Id")
+        @Expose
+        String DoctorId;
+
         @SerializedName("Booking Id")
         @Expose
         String BookingId;
@@ -91,8 +96,6 @@ public class ViewBookingDetailModel {
         @SerializedName("Amount Status")
         @Expose
         String AmountStatus;
-
-
 
 
         public String getBookingId() {
@@ -182,7 +185,16 @@ public class ViewBookingDetailModel {
         public void setAmountStatus(String amountStatus) {
             AmountStatus = amountStatus;
         }
+
+        public String getDoctorId() {
+            return DoctorId;
+        }
+
+        public void setDoctorId(String doctorId) {
+            DoctorId = doctorId;
+        }
     }
+
 
 
 }

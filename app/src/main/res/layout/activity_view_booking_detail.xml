@@ -431,7 +431,47 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
+                        android:layout_marginTop="@dimen/_14sdp"
                         android:orientation="vertical">
+
+
+
+                        <LinearLayout
+                            android:id="@+id/ll_download_report"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_12sdp"
+                            android:layout_marginRight="@dimen/_12sdp"
+                            android:orientation="horizontal"
+                            android:weightSum="10">
+
+                            <TextView
+                                style="@style/m_semi_14"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.5"
+                                android:text="@string/Download_Report_File" />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.5"
+                                android:text="   -   "
+                                android:textColor="@color/action_mode_color_edt"
+                                android:textSize="@dimen/_14sdp" />
+
+                            <TextView
+                                android:id="@+id/txtReport"
+                                style="@style/m_semi_14"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="2.3"
+                                android:drawableRight="@drawable/icon_feather_download"
+                                android:text="@string/Report"
+                                android:textColor="@color/action_mode_color_edt" />
+
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -447,6 +487,18 @@
                                 android:orientation="vertical">
 
                                 <TextView
+                                    android:id="@+id/add_review"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:layout_marginTop="@dimen/_18sdp"
+                                    android:background="@drawable/time_bg"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:gravity="center"
+                                    android:text="Add Review"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_16sdp" />
+
+                                <TextView
                                     android:id="@+id/chat"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_40sdp"
@@ -456,7 +508,7 @@
                                     android:gravity="center"
                                     android:text="@string/Chat"
                                     android:textColor="@color/action_mode_color_edt"
-                                    android:textSize="@dimen/_20sdp" />
+                                    android:textSize="@dimen/_16sdp" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -467,7 +519,7 @@
                                     android:gravity="center"
                                     android:text="@string/Start_Video"
                                     android:textColor="@color/white"
-                                    android:textSize="@dimen/_20sdp" />
+                                    android:textSize="@dimen/_16sdp" />
 
                             </LinearLayout>
 

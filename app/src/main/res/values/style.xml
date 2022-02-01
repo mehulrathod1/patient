@@ -128,4 +128,9 @@
 
     </style>
 
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/action_mode_color_300</item>
+        <item name="colorControlActivated">@color/action_mode_color_300</item>
+    </style>
 </resources>
