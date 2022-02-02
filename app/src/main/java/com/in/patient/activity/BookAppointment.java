@@ -56,7 +56,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
     ImageView backButton;
     TextView txtPayNow, txtDoctorName, txtBookingId, txtSpeciality, txtDName, txtBookingFor,
             txtBookingStatus, txtPatientName, txtLocation, txtServiceTime, txtClinicAddress,
-            texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport, chat;
+            texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport, chat,txtAge;
 
     String BookingId, doctorId, doctorFees;
     String TAG = "BookAppointment";
@@ -93,7 +93,6 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
         txtBookingFor = findViewById(R.id.txtBookingFor);
         txtBookingStatus = findViewById(R.id.txtBookingStatus);
         txtPatientName = findViewById(R.id.txtPatientName);
-        txtLocation = findViewById(R.id.txtLocation);
         txtServiceTime = findViewById(R.id.txtServiceTime);
         txtClinicAddress = findViewById(R.id.txtClinicAddress);
         texTotalAmount = findViewById(R.id.texTotalAmount);
@@ -102,6 +101,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
         extDocument = findViewById(R.id.extDocument);
         txtReport = findViewById(R.id.txtReport);
         chat = findViewById(R.id.chat);
+        txtAge = findViewById(R.id.txtAge);
 
         ll_comment = findViewById(R.id.ll_comment);
         ll_upload_doc = findViewById(R.id.ll_upload_doc);
@@ -167,7 +167,6 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
 
-
         call.getConformationDetail(token, user_id, doctor_id, booking_id).enqueue(new Callback<BookingConformationModel>() {
             @Override
             public void onResponse(Call<BookingConformationModel> call, Response<BookingConformationModel> response) {
@@ -180,7 +179,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
                 Log.e("dataaa", "onResponse: " + data.getBookedServiceTime());
                 Log.e("dataaa", "onResponse: " + data.getAmountStatus());
                 Log.e("dataaa", "onResponse: " + data.getClinicLocation());
-                Log.e("dataaa", "onResponse: " + data.getPatientName());
+                Log.e("dataaa", "onResponse: " + data.getPatientDetails().getPatientAge());
                 Log.e("dataaa", "onResponse: " + data.getTotalAmount());
 
 
@@ -190,13 +189,12 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
                 txtDName.setText(data.getDoctorName());
                 txtBookingFor.setText(data.getBookingFor());
                 txtBookingStatus.setText(data.getBookingStatus());
-                txtPatientName.setText(data.getPatientName());
-                txtLocation.setText(data.getPatientLocation());
+                txtPatientName.setText(data.getPatientDetails().getPatientName());
+                txtAge.setText(data.getPatientDetails().getPatientAge() + "  year");
                 txtServiceTime.setText(data.getBookedServiceTime());
                 txtClinicAddress.setText(data.getClinicLocation());
                 texTotalAmount.setText(data.getTotalAmount());
                 txtAmountStatus.setText(data.getAmountStatus());
-
                 doctorFees = data.getTotalAmount();
                 Glob.dialog.dismiss();
 
@@ -317,6 +315,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
             Log.e(TAG, "Error in starting Razorpay Checkout", e);
         }
     }
+
 
 
     @Override

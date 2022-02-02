@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,8 @@ public class ProfileSettingMedical extends Fragment {
         view = inflater.inflate(R.layout.fragment_profile_setting_medical, container, false);
         init();
         getProfileMedical(Glob.Token, Glob.user_id);
+
+
         return view;
     }
 
@@ -85,6 +88,7 @@ public class ProfileSettingMedical extends Fragment {
                 edtPast.setText(model.getData().getPast_surgery_injury());
                 edtAny.setText(model.getData().getChronic_disease());
 
+
             }
 
             @Override
@@ -109,10 +113,13 @@ public class ProfileSettingMedical extends Fragment {
                 getProfileMedical(Glob.Token, Glob.user_id);
 
                 Toast.makeText(getContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
+                Log.e("founf", "onResponse: " + model.getMessage());
             }
 
             @Override
             public void onFailure(Call<CommonModel> call, Throwable t) {
+
+                Toast.makeText(getContext(), "" + "Please fill all fields", Toast.LENGTH_SHORT).show();
 
             }
         });

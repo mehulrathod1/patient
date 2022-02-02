@@ -49,7 +49,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
     File reportFile;
 
     TextView txtPayNow, txtDoctorName, txtBookingId, txtSpeciality, txtDName, txtBookingFor,
-            txtBookingStatus, txtPatientName, txtLocation, txtServiceTime, txtClinicAddress,
+            txtBookingStatus, txtPatientName, txtAge, txtServiceTime, txtClinicAddress,
             texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport, chat;
 
     String BookingId, doctorId, doctorFees;
@@ -90,7 +90,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
         txtBookingFor = findViewById(R.id.txtBookingFor);
         txtBookingStatus = findViewById(R.id.txtBookingStatus);
         txtPatientName = findViewById(R.id.txtPatientName);
-        txtLocation = findViewById(R.id.txtLocation);
+        txtAge = findViewById(R.id.txtAge);
         txtServiceTime = findViewById(R.id.txtServiceTime);
         txtClinicAddress = findViewById(R.id.txtClinicAddress);
         texTotalAmount = findViewById(R.id.texTotalAmount);
@@ -163,7 +163,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
                 Log.e("dataaa", "onResponse: " + data.getBookedServiceTime());
                 Log.e("dataaa", "onResponse: " + data.getAmountStatus());
                 Log.e("dataaa", "onResponse: " + data.getClinicLocation());
-                Log.e("dataaa", "onResponse: " + data.getPatientName());
+                Log.e("dataaa", "onResponse: " + data.getPatientDetails().getPatientName());
                 Log.e("dataaa", "onResponse: " + data.getTotalAmount());
 
 
@@ -173,8 +173,8 @@ public class AfterPaymentScreen extends AppCompatActivity {
                 txtDName.setText(data.getDoctorName());
                 txtBookingFor.setText(data.getBookingFor());
                 txtBookingStatus.setText(data.getBookingStatus());
-                txtPatientName.setText(data.getPatientName());
-                txtLocation.setText(data.getPatientLocation());
+                txtPatientName.setText(data.getPatientDetails().getPatientName());
+                txtAge.setText(data.getPatientDetails().getPatientAge() +"  year");
                 txtServiceTime.setText(data.getBookedServiceTime());
                 txtClinicAddress.setText(data.getClinicLocation());
                 texTotalAmount.setText(data.getTotalAmount());

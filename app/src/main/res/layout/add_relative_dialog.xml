@@ -8,214 +8,227 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_12sdp">
 
         <RelativeLayout
-            android:id="@+id/layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/homeCare"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Relative Profile"
-                android:textColor="@color/action_mode_color"
-                android:textSize="@dimen/_20sdp" />
-
-            <ImageView
-
-                android:id="@+id/dialogClose"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/ic_close_24" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_1sdp"
-                android:layout_below="@id/homeCare"
-                android:layout_marginTop="@dimen/_8sdp"
-                android:layout_marginBottom="@dimen/_8sdp"
-                android:background="@color/black" />
-
-
-        </RelativeLayout>
-
-        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/layout"
-            android:orientation="vertical">
+            android:layout_margin="@dimen/_12sdp">
 
-            <LinearLayout
+            <RelativeLayout
+                android:id="@+id/layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:orientation="vertical">
+                android:layout_height="wrap_content">
 
                 <TextView
-                    style="@style/sub_heading_text"
+                    android:id="@+id/homeCare"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Name" />
+                    android:text="Relative Profile"
+                    android:fontFamily="@font/montserrat_semi_bold"
+                    android:textColor="@color/action_mode_color"
+                    android:textSize="@dimen/_20sdp" />
 
-                <EditText
-                    android:id="@+id/edt_name"
-                    style="@style/Profile_setting_personal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Name"
-                    android:padding="10dp" />
+                <ImageView
 
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/sub_heading_text"
+                    android:id="@+id/dialogClose"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/Age" />
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/ic_close_24" />
 
-                <EditText
-                    android:id="@+id/edt_age"
-                    style="@style/Profile_setting_personal"
+                <View
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_1sdp"
+                    android:layout_below="@id/homeCare"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Age"
-                    android:padding="10dp" />
+                    android:layout_marginBottom="@dimen/_8sdp"
+                    android:background="@color/black" />
 
-            </LinearLayout>
+
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
+                android:layout_below="@+id/layout"
                 android:orientation="vertical">
 
-                <TextView
-                    style="@style/sub_heading_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Gender" />
-
-                <EditText
-                    android:id="@+id/edt_gender"
-                    style="@style/Profile_setting_personal"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Gender"
-                    android:padding="10dp" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <TextView
+                        style="@style/sub_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Name" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/edt_name"
+                        style="@style/Profile_setting_personal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@drawable/profile_edt_bg"
+                        android:hint="@string/Name"
+                        android:padding="10dp" />
 
-                <TextView
-                    style="@style/sub_heading_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Blood_Group" />
+                </LinearLayout>
 
-                <EditText
-                    style="@style/Profile_setting_personal"
-                    android:id="@+id/edt_blood_group"
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Blood_Group"
-                    android:padding="10dp" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <TextView
+                        style="@style/sub_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Age" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/edt_age"
+                        style="@style/Profile_setting_personal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@drawable/profile_edt_bg"
+                        android:hint="@string/Age"
+                        android:padding="10dp" />
 
-                <TextView
-                    style="@style/sub_heading_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/Marital_status" />
+                </LinearLayout>
 
-                <EditText
-                    style="@style/Profile_setting_personal"
-                    android:id="@+id/edt_marital_status"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="@string/Marital_status"
-                    android:padding="10dp" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <TextView
+                        style="@style/sub_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Gender" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_16sdp"
-                android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/edt_gender"
+                        style="@style/Profile_setting_personal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@drawable/profile_edt_bg"
+                        android:hint="@string/Gender"
+                        android:padding="10dp" />
 
-                <TextView
-                    style="@style/sub_heading_text"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Relation" />
+                </LinearLayout>
 
-                <EditText
-                    style="@style/Profile_setting_personal"
-                    android:id="@+id/edt_relation"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:background="@drawable/profile_edt_bg"
-                    android:hint="Relation"
-                    android:padding="10dp" />
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
 
-            </LinearLayout>
+                    <TextView
+                        style="@style/sub_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Blood_Group" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_24sdp"
-                android:layout_marginBottom="@dimen/_18sdp"
-                android:gravity="center"
-                android:orientation="vertical">
+                    <EditText
+                        android:id="@+id/edt_blood_group"
+                        style="@style/Profile_setting_personal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@drawable/profile_edt_bg"
+                        android:hint="@string/Blood_Group"
+                        android:padding="10dp" />
 
-                <TextView
-                    android:id="@+id/txt_add"
-                    android:layout_width="@dimen/_100sdp"
-                    android:layout_height="@dimen/_30sdp"
-                    android:background="@drawable/button_bg"
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/sub_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Marital_status" />
+
+                    <EditText
+                        android:id="@+id/edt_marital_status"
+                        style="@style/Profile_setting_personal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@drawable/profile_edt_bg"
+                        android:hint="@string/Marital_status"
+                        android:padding="10dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        style="@style/sub_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Relation" />
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:background="@drawable/profile_edt_bg"
+                        android:gravity="center">
+
+                        <Spinner
+                            android:id="@+id/spn_relation"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_40sdp"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:dropDownVerticalOffset="40dp"
+                            android:gravity="right"
+                            android:popupBackground="@color/action_mode_color"
+                            android:prompt="@string/app_name"
+                            android:spinnerMode="dropdown" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_marginBottom="@dimen/_18sdp"
                     android:gravity="center"
-                    android:text="Add"
-                    android:textColor="@color/white" />
+                    android:orientation="vertical">
 
+                    <TextView
+                        android:id="@+id/txt_add"
+                        android:layout_width="@dimen/_100sdp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:background="@drawable/button_bg"
+                        android:gravity="center"
+                        android:text="Add"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </RelativeLayout>
+        </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

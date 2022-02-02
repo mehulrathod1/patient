@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.in.patient.R;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.CommonModel;
+import com.in.patient.model.SendNotificationModel;
 import com.in.patient.model.ViewBookingDetailModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
@@ -40,7 +41,7 @@ public class ViewBookingDetail extends AppCompatActivity {
     ImageView nevBack;
     TextView headerTitle;
 
-    TextView review_submit, add_review, chat, booking_idd, booking_date, booking_time, booking_status, payment_status, payment_amount, doctor_name, doctor_speciality, clinic_address;
+    TextView review_submit, add_review, chat, booking_idd, booking_date, booking_time, booking_status, payment_status, payment_amount, doctor_name, doctor_speciality, clinic_address, start_Video;
 
 
     EditText review_text;
@@ -84,6 +85,7 @@ public class ViewBookingDetail extends AppCompatActivity {
         clinic_address = findViewById(R.id.clinic_address);
         chat = findViewById(R.id.chat);
         add_review = findViewById(R.id.add_review);
+        start_Video = findViewById(R.id.start_Video);
 
 
         alertDialog = new AlertDialog.Builder(this);
@@ -126,8 +128,16 @@ public class ViewBookingDetail extends AppCompatActivity {
                 addReview(Glob.Token, Glob.user_id, doctor_id, review_text.getText().toString(), rate);
                 alert.dismiss();
 
+                Log.e("lengho", "onClick: " + Glob.user_id + "aaaaa" + doctor_id + "vvv" + rate);
+            }
+        });
 
-                Log.e("lengho", "onClick: "+Glob.user_id+"aaaaa"+doctor_id +"vvv"+ rate);
+
+        start_Video.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                sendNotification(Glob.Token, doctor_id, "test");
             }
         });
     }
@@ -195,6 +205,40 @@ public class ViewBookingDetail extends AppCompatActivity {
         });
 
     }
+
+    public void sendNotification(String token, String user_id, String message) {
+
+
+        Api call = RetrofitClient.getClient("").create(Api.class);
+
+
+        call.sendNotification(token, user_id, message).enqueue(new Callback<SendNotificationModel>() {
+            @Override
+            public void onResponse(Call<SendNotificationModel> call, Response<SendNotificationModel> response) {
+
+                SendNotificationModel model = response.body();
+                SendNotificationModel.SendNotification data = model.getData();
+
+                Log.e("id", "onResdfghjponse:" + data.getChannelName());
+                String channel = data.getChannelName();
+
+
+                Intent intent = new Intent(getApplicationContext(), VideoCallScreen.class);
+                intent.putExtra("channel_name", channel);
+                startActivity(intent);
+
+
+                Log.e("asdfghjkjhgfdsa", "onResponse: " + Glob.Channel_name);
+                Log.e("id", "onResponse:" + data.getUser_id());
+            }
+
+            @Override
+            public void onFailure(Call<SendNotificationModel> call, Throwable t) {
+
+            }
+        });
+    }
+
 }
 
 

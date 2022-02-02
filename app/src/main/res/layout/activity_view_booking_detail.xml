@@ -511,6 +511,7 @@
                                     android:textSize="@dimen/_16sdp" />
 
                                 <TextView
+                                    android:id="@+id/start_Video"
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_40sdp"
                                     android:layout_marginTop="@dimen/_18sdp"

@@ -61,17 +61,17 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
 
-        String jsonMessage = remoteMessage.getData().get("chanel_name");
-        Log.e(TAG, "onMessageReceived:" + jsonMessage);
-        Glob.Channel_name = jsonMessage;
+            String jsonMessage = remoteMessage.getData().get("chanel_name");
+            Log.e(TAG, "onMessageReceived:" + jsonMessage);
+            Glob.Channel_name = jsonMessage;
 
-        String title = remoteMessage.getNotification().getTitle();
-        String message = remoteMessage.getNotification().getBody();
-        String click = remoteMessage.getNotification().getClickAction();
+            String title = remoteMessage.getNotification().getTitle();
+            String message = remoteMessage.getNotification().getBody();
+            String click = remoteMessage.getNotification().getClickAction();
 
-        Log.e("tittllrlrr", "title :" + title);
-        Log.e(TAG, "message:" + message);
-        Log.e(TAG, "click:" + click);
+            Log.e("tittllrlrr", "title :" + title);
+            Log.e(TAG, "message:" + message);
+            Log.e(TAG, "click:" + click);
 
 
     }

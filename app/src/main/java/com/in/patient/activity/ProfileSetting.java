@@ -53,7 +53,6 @@ public class ProfileSetting extends AppCompatActivity {
         tabLayout.addTab(tabLayout.newTab().setText("Relative"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-
         ProfileSettingAdapter profileSettingAdapter = new ProfileSettingAdapter(getSupportFragmentManager(), this, tabLayout.getTabCount());
         viewPager.setAdapter(profileSettingAdapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

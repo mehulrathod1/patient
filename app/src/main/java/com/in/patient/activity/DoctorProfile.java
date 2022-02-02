@@ -31,6 +31,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +51,7 @@ import com.in.patient.globle.Glob;
 import com.in.patient.model.AddBookingAppointmentModel;
 import com.in.patient.model.CareAndCheckupModel;
 import com.in.patient.model.ClinicImage;
+import com.in.patient.model.CommonModel;
 import com.in.patient.model.DoctorProfileModel;
 import com.in.patient.model.DoctorTimePrice;
 import com.in.patient.model.MyReviewModel;
@@ -100,7 +102,7 @@ public class DoctorProfile extends AppCompatActivity {
     List<ClinicImage> clinicList = new ArrayList<>();
 
     MyReviewAdapter reviewAdapter;
-    List<MyReviewModel> reviewList = new ArrayList<>();
+    List<MyReviewModel.ReviewData> reviewList = new ArrayList<>();
 
     DoctorTimePriceAdapter doctorTimePriceAdapter;
     List<DoctorTimePrice> timePriceList = new ArrayList<>();
@@ -113,12 +115,13 @@ public class DoctorProfile extends AppCompatActivity {
 
     ImageView backButton, ProfileImage;
 
-    String doctorId;
+    String doctorId, relative_id;
     //    String Flag;
     String appointmentTime, appointmentDate;
     Spinner spn_booking_for;
     ArrayAdapter<String> bookingForAdapter;
     List<String> bookingForList = new ArrayList<>();
+    List<String> relative_id_list = new ArrayList<>();
 
 
     DayAdapter dayAdapter;
@@ -173,9 +176,13 @@ public class DoctorProfile extends AppCompatActivity {
         getDoctorProfile(Token, user_id, doctorId);
         getTimeSlot(Token, user_id, doctorId, appointmentDate);
         getRelative(Token, user_id);
+        getReview(Token, user_id,doctorId);
     }
 
     public void init() {
+
+        Glob.progressDialog(this);
+
         recyclerView = findViewById(R.id.recycler);
         reviewRecycler = findViewById(R.id.reviewRecycler);
         timeRecycler = findViewById(R.id.timeRecycler);
@@ -207,13 +214,31 @@ public class DoctorProfile extends AppCompatActivity {
 
 
         bookingForList.add(0, "Me");
+        relative_id_list.add(0, "0");
 
         bookingForAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.profile_spinner_text, bookingForList);
         bookingForAdapter.setDropDownViewResource(R.layout.dropdown_item);
         spn_booking_for.setAdapter(bookingForAdapter);
 
 
-        Glob.progressDialog(this);
+        spn_booking_for.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+//                Log.e("idddd", "onItemSelected: spn"+bookingForList.get(position) );
+
+                relative_id = relative_id_list.get(position);
+
+                Log.e("relative_id", "onItemSelected: spn" + relative_id);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
 
         bookAppointment.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -228,7 +253,9 @@ public class DoctorProfile extends AppCompatActivity {
 //                }
                 else {
 
-                    addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), "");
+
+                    Log.e("nullsat", "onClick: " + user_id + "---" + doctorId + "---" + appointmentDate + "---" + appointmentTime + "---" + txtFees.getText().toString() + "---" + relative_id);
+                    addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime, txtFees.getText().toString(), relative_id);
 
                 }
 //
@@ -332,15 +359,6 @@ public class DoctorProfile extends AppCompatActivity {
 
     public void reviewData() {
 
-        MyReviewModel model = new MyReviewModel("", "Lorem ipsum.", "27/09/2021", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.");
-        reviewList.add(model);
-        reviewList.add(model);
-        reviewList.add(model);
-        reviewList.add(model);
-        reviewList.add(model);
-        reviewList.add(model);
-        reviewList.add(model);
-
 
         reviewAdapter = new MyReviewAdapter(reviewList, this, new MyReviewAdapter.Click() {
             @Override
@@ -400,6 +418,41 @@ public class DoctorProfile extends AppCompatActivity {
         dayRecycler.setAdapter(dayAdapter);
     }
 
+
+    public void getReview(String token, String user_id, String doctor_id) {
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+        call.getReview(token, user_id, doctor_id).enqueue(new Callback<MyReviewModel>() {
+            @Override
+            public void onResponse(Call<MyReviewModel> call, Response<MyReviewModel> response) {
+
+                MyReviewModel myReviewModel = response.body();
+
+                List<MyReviewModel.ReviewData> dataList = myReviewModel.getReviewDataList();
+
+                for (int i = 0; i < dataList.size(); i++) {
+
+                    MyReviewModel.ReviewData model = dataList.get(i);
+
+                    MyReviewModel.ReviewData data = new MyReviewModel.ReviewData(model.getUserDetail(), model.getMessage(), model.getRating(), model.getDate());
+
+                    reviewList.add(data);
+
+                    Glob.dialog.dismiss();
+                }
+                reviewData();
+
+            }
+
+            @Override
+            public void onFailure(Call<MyReviewModel> call, Throwable t) {
+
+            }
+        });
+    }
+
+
     public void getDoctorProfile(String token, String user_id, String doctor_id) {
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
@@ -453,20 +506,37 @@ public class DoctorProfile extends AppCompatActivity {
 
     }
 
-    public void addBookingAppointment(String token, String patient_id, String doctor_id, String booking_date, String slot_time, String booking_type,
-                                      String comments, String fees, String report) {
-
+    public void addBookingAppointment(String token, String patient_id, String doctor_id, String booking_date, String slot_time, String fees, String booking_for) {
 
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
 
 
-        call.addBookingAppointment(token, patient_id, doctor_id, booking_date, slot_time, booking_type, comments, fees, report).enqueue(new Callback<AddBookingAppointmentModel>() {
+//        call.addBookingAppointment(token,patient_id,doctor_id,booking_date,slot_time,fees,booking_for).enqueue(new Callback<CommonModel>() {
+//            @Override
+//            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+//
+//                CommonModel commonModel = response.body();
+//
+//                Toast.makeText(getApplicationContext(), ""+commonModel.getMessage(), Toast.LENGTH_SHORT).show();
+//
+//                Glob.dialog.dismiss();
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<CommonModel> call, Throwable t) {
+//
+//            }
+//        });
+        call.addBookingAppointment(token, patient_id, doctor_id, booking_date, slot_time, fees, booking_for).enqueue(new Callback<AddBookingAppointmentModel>() {
             @Override
             public void onResponse(Call<AddBookingAppointmentModel> call, Response<AddBookingAppointmentModel> response) {
 
+
                 AddBookingAppointmentModel model = response.body();
+
 
                 Log.e("booking id", "onResponse: " + model.getData().getBookingID());
 
@@ -478,18 +548,15 @@ public class DoctorProfile extends AppCompatActivity {
                 intent.putExtra("doctorId", doctorId);
                 startActivity(intent);
                 finish();
-
-
             }
 
             @Override
             public void onFailure(Call<AddBookingAppointmentModel> call, Throwable t) {
-//                Toast.makeText(getApplicationContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
-                Log.e("error", "onFailure: " + t.getMessage());
                 dialog.dismiss();
+
             }
         });
-
+//
     }
 
 
@@ -598,9 +665,7 @@ public class DoctorProfile extends AppCompatActivity {
 
     public void getRelative(String token, String user_id) {
 
-
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
-
         call.getRelative(token, user_id).enqueue(new Callback<RelativeModel>() {
             @Override
             public void onResponse(Call<RelativeModel> call, Response<RelativeModel> response) {
@@ -613,12 +678,15 @@ public class DoctorProfile extends AppCompatActivity {
 
                     RelativeModel.RelativeData model = dataList.get(i);
 
-                    RelativeModel.RelativeData data = new RelativeModel.RelativeData(model.getRelative_name(),
+                    RelativeModel.RelativeData data = new RelativeModel.RelativeData(model.getRelative_id(), model.getRelative_name(),
                             model.getRelation(), model.getAge(), model.getBlood_group(), model.getMarital_status(),
                             model.getGender());
 
 
                     bookingForList.add(1, model.getRelative_name());
+
+
+                    relative_id_list.add(1, model.getRelative_id());
 
                     Log.e("bookingForList", "onResponse: " + model.getRelative_name());
 

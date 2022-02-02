@@ -43,6 +43,20 @@ public class BookingConformationModel {
 
     public class ConformationData {
 
+
+        public PatientData getPatientDetails() {
+            return PatientDetails;
+        }
+
+        public void setPatientDetails(PatientData patientDetails) {
+            PatientDetails = patientDetails;
+        }
+
+        @SerializedName("Patient Details")
+        @Expose
+        PatientData PatientDetails;
+
+
         @SerializedName("Booking Id")
         @Expose
         String BookingId;
@@ -64,9 +78,6 @@ public class BookingConformationModel {
         @Expose
         String BookingStatus;
 
-        @SerializedName("Patient Name")
-        @Expose
-        String PatientName;
 
         @SerializedName("patient Location")
         @Expose
@@ -134,13 +145,6 @@ public class BookingConformationModel {
             BookingStatus = bookingStatus;
         }
 
-        public String getPatientName() {
-            return PatientName;
-        }
-
-        public void setPatientName(String patientName) {
-            PatientName = patientName;
-        }
 
         public String getPatientLocation() {
             return patientLocation;
@@ -187,7 +191,41 @@ public class BookingConformationModel {
         }
 
         public void setAmountStatus(String amountStatus) {
+
+
             AmountStatus = amountStatus;
         }
+
+
+        public class PatientData {
+
+
+            @SerializedName("Patient Name")
+            @Expose
+            String PatientName;
+
+
+            @SerializedName("Patient Age")
+            @Expose
+            String PatientAge;
+
+
+            public String getPatientName() {
+                return PatientName;
+            }
+
+            public void setPatientName(String patientName) {
+                PatientName = patientName;
+            }
+
+            public String getPatientAge() {
+                return PatientAge;
+            }
+
+            public void setPatientAge(String patientAge) {
+                PatientAge = patientAge;
+            }
+        }
+
     }
 }

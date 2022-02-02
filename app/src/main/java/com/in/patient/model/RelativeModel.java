@@ -47,6 +47,9 @@ public class RelativeModel {
 
     public static class RelativeData {
 
+        @SerializedName("relative_id")
+        @Expose
+        String relative_id;
 
         @SerializedName("relative_name")
         @Expose
@@ -77,13 +80,22 @@ public class RelativeModel {
         @Expose
         String gender;
 
-        public RelativeData(String relative_name, String relation, String age, String blood_group, String marital_status, String gender) {
+        public RelativeData(String relative_id, String relative_name, String relation, String age, String blood_group, String marital_status, String gender) {
+            this.relative_id = relative_id;
             this.relative_name = relative_name;
             this.relation = relation;
             this.age = age;
             this.blood_group = blood_group;
             this.marital_status = marital_status;
             this.gender = gender;
+        }
+
+        public String getRelative_id() {
+            return relative_id;
+        }
+
+        public void setRelative_id(String relative_id) {
+            this.relative_id = relative_id;
         }
 
         public String getRelative_name() {

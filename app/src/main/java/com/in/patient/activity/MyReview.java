@@ -12,10 +12,17 @@ import android.widget.TextView;
 
 import com.in.patient.R;
 import com.in.patient.adapter.MyReviewAdapter;
+import com.in.patient.globle.Glob;
 import com.in.patient.model.MyReviewModel;
+import com.in.patient.retrofit.Api;
+import com.in.patient.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MyReview extends AppCompatActivity {
 
@@ -24,7 +31,7 @@ public class MyReview extends AppCompatActivity {
     TextView headerTitle;
     RecyclerView recyclerView;
     MyReviewAdapter adapter;
-    List<MyReviewModel> list = new ArrayList<>();
+    List<MyReviewModel.ReviewData> list = new ArrayList<>();
     String variable;
 
     @Override
@@ -34,12 +41,11 @@ public class MyReview extends AppCompatActivity {
         getSupportActionBar().hide();
 
         Intent intent = getIntent();
-        variable= intent.getStringExtra("variable");
-
-
+        variable = intent.getStringExtra("variable");
 
         init();
         recyclerData();
+        getReview(Glob.Token,Glob.user_id,"25");
     }
 
     public void init() {
@@ -49,6 +55,7 @@ public class MyReview extends AppCompatActivity {
 
         headerTitle.setText("My Review");
 
+        Glob.progressDialog(this);
         nevBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,16 +77,40 @@ public class MyReview extends AppCompatActivity {
         });
     }
 
-    public void recyclerData() {
+    public void getReview(String token, String user_id, String doctor_id) {
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
 
-        MyReviewModel model = new MyReviewModel("", "Lorem ipsum.", "27/09/2021", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea.");
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
+        call.getReview(token, user_id, doctor_id).enqueue(new Callback<MyReviewModel>() {
+            @Override
+            public void onResponse(Call<MyReviewModel> call, Response<MyReviewModel> response) {
+
+                MyReviewModel myReviewModel = response.body();
+
+                List<MyReviewModel.ReviewData> dataList = myReviewModel.getReviewDataList();
+
+                for (int i = 0; i < dataList.size(); i++) {
+
+                    MyReviewModel.ReviewData model = dataList.get(i);
+
+                    MyReviewModel.ReviewData data = new MyReviewModel.ReviewData(model.getUserDetail(), model.getMessage(), model.getRating(), model.getDate());
+
+                    list.add(data);
+
+                    Glob.dialog.dismiss();
+                }
+                recyclerData();
+
+            }
+
+            @Override
+            public void onFailure(Call<MyReviewModel> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void recyclerData() {
 
 
         adapter = new MyReviewAdapter(list, this, new MyReviewAdapter.Click() {

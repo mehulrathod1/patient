@@ -11,12 +11,14 @@ import com.in.patient.model.GetFcmTokenModel;
 import com.in.patient.model.MedicineOrderListModel;
 import com.in.patient.model.MedicinesModel;
 import com.in.patient.model.MyAppointmentModel;
+import com.in.patient.model.MyReviewModel;
 import com.in.patient.model.ProductModel;
 import com.in.patient.model.ProfileLifestyleModel;
 import com.in.patient.model.ProfileMedicalModel;
 import com.in.patient.model.ProfilePersonalModel;
 import com.in.patient.model.RelativeModel;
 import com.in.patient.model.SearchModel;
+import com.in.patient.model.SendNotificationModel;
 import com.in.patient.model.SignInModel;
 import com.in.patient.model.SignUpModel;
 import com.in.patient.model.SpecialistDoctorModel;
@@ -231,10 +233,8 @@ public interface Api {
             @Field("doctor_id") String doctor_id,
             @Field("booking_date") String booking_date,
             @Field("slot_time") String slot_time,
-            @Field("booking_type") String booking_type,
-            @Field("comments") String comments,
             @Field("fees") String fees,
-            @Field("reportfile") String reportfile
+            @Field("booking_for") String booking_for
 
     );
 
@@ -309,7 +309,7 @@ public interface Api {
 
     @FormUrlEncoded
     @POST("send_notification.php")
-    Call<CommonModel> sendNotification(
+    Call<SendNotificationModel> sendNotification(
 
             @Field("token") String token,
             @Field("user_id") String user_id,
@@ -370,6 +370,15 @@ public interface Api {
             @Field("doctor_id") String doctor_id,
             @Field("message") String message,
             @Field("rating") String rating
+    );
+
+
+    @FormUrlEncoded
+    @POST("get_doctor_review.php")
+    Call<MyReviewModel> getReview(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("doctor_id") String doctor_id
     );
 
 

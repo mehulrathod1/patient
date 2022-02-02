@@ -183,7 +183,7 @@ public class VideoCallScreen extends AppCompatActivity {
 //        channelName = Glob.Channel_name;
 
         Intent intent = getIntent();
-        channelName = intent.getStringExtra("channel");
+        channelName = intent.getStringExtra("channel_name");
 
         // Ask for permissions at runtime.
         // This is just an example set of permissions. Other permissions
@@ -313,7 +313,6 @@ public class VideoCallScreen extends AppCompatActivity {
         String token = "agora_access_token";
         if (TextUtils.isEmpty(token) || TextUtils.equals(token, "#YOUR ACCESS TOKEN#")) {
             token = null; // default, no token
-
         }
         Log.e("asdfghjhgfd", "joinChannel: " + channelName);
         mRtcEngine.joinChannel("", channelName, "Extra Optional Data", 0);

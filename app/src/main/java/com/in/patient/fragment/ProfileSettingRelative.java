@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,11 +48,15 @@ public class ProfileSettingRelative extends Fragment {
     ImageView dialogClose;
     Button Add_relative;
     TextView txt_add;
-    EditText edt_name, edt_age, edt_gender, edt_blood_group, edt_marital_status, edt_relation;
+    EditText edt_name, edt_age, edt_gender, edt_blood_group, edt_marital_status;
 
     RecyclerView relative_recycler;
     RelativeAdapter relativeAdapter;
     List<RelativeModel.RelativeData> relativeDataList = new ArrayList<>();
+
+    Spinner spn_relation;
+    ArrayAdapter<String> relation_adapter;
+    List<String> relation_list;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -86,8 +92,29 @@ public class ProfileSettingRelative extends Fragment {
         edt_gender = dialogLayout.findViewById(R.id.edt_gender);
         edt_blood_group = dialogLayout.findViewById(R.id.edt_blood_group);
         edt_marital_status = dialogLayout.findViewById(R.id.edt_marital_status);
-        edt_relation = dialogLayout.findViewById(R.id.edt_relation);
 
+        spn_relation = dialogLayout.findViewById(R.id.spn_relation);
+
+
+        relation_list = new ArrayList<>();
+        relation_list.add("Father");
+        relation_list.add("Mother");
+        relation_list.add("Brother");
+        relation_list.add("Brother-In-Law");
+        relation_list.add("Sister");
+        relation_list.add("Sister-In-Law");
+        relation_list.add("Cousin");
+        relation_list.add("Daughter");
+        relation_list.add("Daughter-In-Law");
+        relation_list.add("Son");
+        relation_list.add("Son-In-Law");
+        relation_list.add("Uncle");
+        relation_list.add("Aunt");
+
+
+        relation_adapter = new ArrayAdapter<String>(getContext(), R.layout.profile_spinner_text, relation_list);
+        relation_adapter.setDropDownViewResource(R.layout.dropdown_item);
+        spn_relation.setAdapter(relation_adapter);
 
         Add_relative.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,9 +134,8 @@ public class ProfileSettingRelative extends Fragment {
             public void onClick(View v) {
                 alert.dismiss();
 
-
-                addRelative(Glob.Token,Glob.user_id,edt_relation.getText().toString(),
-                        edt_name.getText().toString(),edt_age.getText().toString(),edt_gender.getText().toString(),
+                addRelative(Glob.Token, Glob.user_id, spn_relation.getSelectedItem().toString(),
+                        edt_name.getText().toString(), edt_age.getText().toString(), edt_gender.getText().toString(),
                         edt_blood_group.getText().toString(),
                         edt_marital_status.getText().toString());
 
@@ -135,7 +161,7 @@ public class ProfileSettingRelative extends Fragment {
 
                     RelativeModel.RelativeData model = dataList.get(i);
 
-                    RelativeModel.RelativeData data = new RelativeModel.RelativeData(model.getRelative_name(),
+                    RelativeModel.RelativeData data = new RelativeModel.RelativeData(model.getRelative_id(),model.getRelative_name(),
                             model.getRelation(), model.getAge(), model.getBlood_group(), model.getMarital_status(),
                             model.getGender());
 
