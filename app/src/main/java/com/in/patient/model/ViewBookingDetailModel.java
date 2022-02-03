@@ -97,6 +97,17 @@ public class ViewBookingDetailModel {
         @Expose
         String AmountStatus;
 
+        @SerializedName("doctor report")
+        @Expose
+        String doctor_report;
+
+        public String getDoctor_report() {
+            return doctor_report;
+        }
+
+        public void setDoctor_report(String doctor_report) {
+            this.doctor_report = doctor_report;
+        }
 
         public String getBookingId() {
             return BookingId;

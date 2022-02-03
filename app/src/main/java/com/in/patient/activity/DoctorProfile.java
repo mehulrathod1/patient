@@ -21,6 +21,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
+import android.graphics.ColorSpace;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -70,10 +71,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
@@ -97,7 +101,7 @@ public class DoctorProfile extends AppCompatActivity {
 
     TextView doctorName, txtDoctorEducation, doctorSpeciality, languageSpoken, experience, txtClinicName, txtClinicLocation, txtFromDay, txtOpenCloseTime, txtFees, txtStatus, txtAbout, choose_file, view_all_review;
     EditText comment;
-    RecyclerView recyclerView, reviewRecycler, timeRecycler, dayRecycler, slotRecycler;
+    RecyclerView recyclerView, reviewRecycler, timeRecycler, dayRecycler, slotRecycler, afternoon_recycler, evening_recycler;
     DoctorUploadedImageAdapter adapter;
     List<ClinicImage> clinicList = new ArrayList<>();
 
@@ -110,6 +114,8 @@ public class DoctorProfile extends AppCompatActivity {
 
     SlotAdapter timeSlotAdapter;
     List<TimeSlotItem> timeSlotItemList = new ArrayList<>();
+
+    List<String> dummy_list = new ArrayList<>();
 
     Button bookAppointment;
 
@@ -170,13 +176,14 @@ public class DoctorProfile extends AppCompatActivity {
 
         init();
         imageData();
-        reviewData();
 //        timePriceData();
         dayData();
         getDoctorProfile(Token, user_id, doctorId);
         getTimeSlot(Token, user_id, doctorId, appointmentDate);
         getRelative(Token, user_id);
-        getReview(Token, user_id,doctorId);
+        getReview(Token, user_id, doctorId);
+
+
     }
 
     public void init() {
@@ -188,6 +195,8 @@ public class DoctorProfile extends AppCompatActivity {
         timeRecycler = findViewById(R.id.timeRecycler);
         dayRecycler = findViewById(R.id.dayRecycler);
         slotRecycler = findViewById(R.id.slotRecycler);
+        afternoon_recycler = findViewById(R.id.afternoon_recycler);
+        evening_recycler = findViewById(R.id.evening_recycler);
 
         bookAppointment = findViewById(R.id.BookAppointment);
         backButton = findViewById(R.id.backButton);
@@ -369,6 +378,7 @@ public class DoctorProfile extends AppCompatActivity {
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         reviewRecycler.setLayoutManager(mLayoutManager);
+        reviewAdapter.notifyDataSetChanged();
         reviewRecycler.setAdapter(reviewAdapter);
     }
 
@@ -418,7 +428,6 @@ public class DoctorProfile extends AppCompatActivity {
         dayRecycler.setAdapter(dayAdapter);
     }
 
-
     public void getReview(String token, String user_id, String doctor_id) {
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
@@ -437,7 +446,14 @@ public class DoctorProfile extends AppCompatActivity {
 
                     MyReviewModel.ReviewData data = new MyReviewModel.ReviewData(model.getUserDetail(), model.getMessage(), model.getRating(), model.getDate());
 
+
                     reviewList.add(data);
+                    Collections.sort(reviewList, new Comparator<MyReviewModel.ReviewData>() {
+                        @Override
+                        public int compare(MyReviewModel.ReviewData o1, MyReviewModel.ReviewData o2) {
+                            return o2.getRating().compareTo(o1.getRating());
+                        }
+                    });
 
                     Glob.dialog.dismiss();
                 }
@@ -559,7 +575,6 @@ public class DoctorProfile extends AppCompatActivity {
 //
     }
 
-
     public void addBookingAppointmentWithReport(String token, String patient_id, String doctor_id, String booking_date, String slot_time, String booking_type,
                                                 String comments, String fees, File report) {
 
@@ -633,8 +648,17 @@ public class DoctorProfile extends AppCompatActivity {
                         TimeSlotItem timeData = new TimeSlotItem(model.getSlotTime(), model.getStatus());
                         Log.e("time", "onResponse: " + timeData.getSlotTime());
                         timeSlotItemList.add(timeData);
+
+
+                        String dummy_string = timeData.getSlotTime();
+                        Log.e("doub", "onResponse: " + dummy_string.substring(0, 2));
+
+//                        dummy_list.add(dummy_string);
                     }
+
                     getTimeSlotData();
+                    afternoonSlot();
+                    eveningSlot();
                     dialog.dismiss();
                 }
             }
@@ -648,6 +672,23 @@ public class DoctorProfile extends AppCompatActivity {
 
     public void getTimeSlotData() {
 
+
+        timeSlotAdapter = new SlotAdapter(timeSlotItemList, getApplicationContext(), new SlotAdapter.Click() {
+            @Override
+            public void itemClick(int position) {
+
+                appointmentTime = timeSlotItemList.get(position).getSlotTime();
+                Log.e("appointmentTime", "itemClick: " + appointmentTime);
+            }
+        });
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        slotRecycler.setLayoutManager(mLayoutManager);
+        slotRecycler.setAdapter(timeSlotAdapter);
+    }
+
+    public void afternoonSlot() {
+
         timeSlotAdapter = new SlotAdapter(timeSlotItemList, getApplicationContext(), new SlotAdapter.Click() {
             @Override
             public void itemClick(int position) {
@@ -658,9 +699,27 @@ public class DoctorProfile extends AppCompatActivity {
             }
         });
 
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(), 3, LinearLayoutManager.HORIZONTAL, false);
-        slotRecycler.setLayoutManager(mLayoutManager);
-        slotRecycler.setAdapter(timeSlotAdapter);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        afternoon_recycler.setLayoutManager(mLayoutManager);
+        afternoon_recycler.setAdapter(timeSlotAdapter);
+    }
+
+    public void eveningSlot() {
+
+
+        timeSlotAdapter = new SlotAdapter(timeSlotItemList, getApplicationContext(), new SlotAdapter.Click() {
+            @Override
+            public void itemClick(int position) {
+
+                appointmentTime = timeSlotItemList.get(position).getSlotTime();
+                Log.e("appointmentTime", "itemClick: " + appointmentTime);
+
+            }
+        });
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        evening_recycler.setLayoutManager(mLayoutManager);
+        evening_recycler.setAdapter(timeSlotAdapter);
     }
 
     public void getRelative(String token, String user_id) {
@@ -828,4 +887,8 @@ public class DoctorProfile extends AppCompatActivity {
     }
 
 
+    public void compareSlot(int start_time, int end_time) {
+
+
+    }
 }

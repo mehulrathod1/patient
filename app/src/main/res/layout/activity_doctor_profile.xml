@@ -622,7 +622,7 @@
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/reviewRecycler"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"/>
+                                android:layout_height="wrap_content" />
 
                         </LinearLayout>
                     </LinearLayout>
@@ -791,16 +791,61 @@
                                 android:background="@color/action_mode_color_edt" />
                         </LinearLayout>
 
-                        <androidx.recyclerview.widget.RecyclerView
-
-                            android:id="@+id/slotRecycler"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_8sdp"
-                            android:layout_marginBottom="@dimen/_8sdp" />
+                            android:orientation="vertical">
 
 
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_semi_bold"
+                                android:text="@string/Morning"
+                                android:textColor="@color/action_mode_color_300"
+                                android:textSize="@dimen/_16sdp" />
 
+                            <androidx.recyclerview.widget.RecyclerView
+
+                                android:id="@+id/slotRecycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:layout_marginBottom="@dimen/_8sdp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_semi_bold"
+                                android:text="@string/Afternoon"
+                                android:textColor="@color/action_mode_color_300"
+                                android:textSize="@dimen/_16sdp" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+
+                                android:id="@+id/afternoon_recycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:layout_marginBottom="@dimen/_8sdp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_semi_bold"
+                                android:text="@string/Evening"
+                                android:textColor="@color/action_mode_color_300"
+                                android:textSize="@dimen/_16sdp" />
+
+                            <androidx.recyclerview.widget.RecyclerView
+
+                                android:id="@+id/evening_recycler"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                android:layout_marginBottom="@dimen/_8sdp" />
+
+                        </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -991,8 +1036,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:text="@string/Enter_Comments"
-                            android:visibility="gone"
-                            android:textColor="@color/action_mode_color_edt" />
+                            android:textColor="@color/action_mode_color_edt"
+                            android:visibility="gone" />
 
                         <EditText
                             android:id="@+id/comment"
@@ -1003,8 +1048,8 @@
                             android:height="@dimen/_30sdp"
                             android:background="@drawable/edt_bg"
                             android:hint="Enter Comments"
-                            android:visibility="gone"
-                            android:paddingLeft="@dimen/_4sdp" />
+                            android:paddingLeft="@dimen/_4sdp"
+                            android:visibility="gone" />
 
                         <TextView
                             style="@style/m_semi_14"
@@ -1012,8 +1057,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_8sdp"
                             android:text="@string/Upload_Report_File"
-                            android:visibility="gone"
-                            android:textColor="@color/action_mode_color_edt" />
+                            android:textColor="@color/action_mode_color_edt"
+                            android:visibility="gone" />
 
                         <TextView
 
@@ -1026,8 +1071,8 @@
                             android:background="@color/md_grey_300"
                             android:gravity="center"
                             android:text="@string/Choose_report"
-                            android:visibility="gone"
-                            android:textColor="@color/action_mode_color_edt" />
+                            android:textColor="@color/action_mode_color_edt"
+                            android:visibility="gone" />
 
                         <Button
                             android:id="@+id/BookAppointment"

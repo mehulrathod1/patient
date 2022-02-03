@@ -315,7 +315,7 @@ public class VideoCallScreen extends AppCompatActivity {
             token = null; // default, no token
         }
         Log.e("asdfghjhgfd", "joinChannel: " + channelName);
-        mRtcEngine.joinChannel("", channelName, "Extra Optional Data", 0);
+        mRtcEngine.joinChannel("", Glob.Channel_name, "Extra Optional Data", 0);
     }
 
     @Override

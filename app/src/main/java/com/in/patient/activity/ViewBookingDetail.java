@@ -2,14 +2,24 @@ package com.in.patient.activity;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.app.AlertDialog;
+import android.app.DownloadManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.webkit.CookieManager;
+import android.webkit.URLUtil;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -41,12 +51,13 @@ public class ViewBookingDetail extends AppCompatActivity {
     ImageView nevBack;
     TextView headerTitle;
 
-    TextView review_submit, add_review, chat, booking_idd, booking_date, booking_time, booking_status, payment_status, payment_amount, doctor_name, doctor_speciality, clinic_address, start_Video;
+    TextView txtReport, review_submit, add_review, chat, booking_idd, booking_date, booking_time, booking_status, payment_status, payment_amount, doctor_name, doctor_speciality, clinic_address, start_Video;
 
 
     EditText review_text;
     RatingBar ratting;
-    String date_and_time, doctor_id;
+    String date_and_time, doctor_id, report_download;
+    private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 10;
 
     AlertDialog alert;
     AlertDialog.Builder alertDialog;
@@ -68,6 +79,27 @@ public class ViewBookingDetail extends AppCompatActivity {
         getViewBookingDetail(Glob.Token, Glob.user_id, id);
 
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.add(Calendar.MINUTE, -15);
+
+
+//        Calendar c = Calendar.getInstance();
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+//        String getCurrentDateTime = sdf.format(c.getTime());
+//        String getMyTime = "05/19/2016 09:45";
+//        Log.e("getCurrentDateTime", getCurrentDateTime);
+//
+//        if (getCurrentDateTime.compareTo(getMyTime) < 0) {
+//
+//        } else {
+//            Log.e("Return", "getMyTime older than getCurrentDateTime ");
+//        }
+
+        Log.e("Tiemeeee", "onCreate: " + " " + date_and_time);
+
+
+
+
     }
 
     public void init() {
@@ -86,7 +118,7 @@ public class ViewBookingDetail extends AppCompatActivity {
         chat = findViewById(R.id.chat);
         add_review = findViewById(R.id.add_review);
         start_Video = findViewById(R.id.start_Video);
-
+        txtReport = findViewById(R.id.txtReport);
 
         alertDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -137,7 +169,54 @@ public class ViewBookingDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                sendNotification(Glob.Token, doctor_id, "test");
+                sendNotification(Glob.Token, "25", "test");
+
+            }
+        });
+
+        txtReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
+                    Log.e("premitionnotgranted ", "onClick: " + "granted");
+
+                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(report_download));
+
+                    String title = URLUtil.guessFileName(report_download, null, null);
+                    request.setTitle(title);
+                    request.setDescription("Downloading file please wail.....");
+                    String cookie = CookieManager.getInstance().getCookie(report_download);
+                    request.addRequestHeader("cookie", cookie);
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, title);
+
+                    DownloadManager downloadManager = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
+                    downloadManager.enqueue(request);
+
+                    Toast.makeText(getApplicationContext(), "Downloading Started", Toast.LENGTH_SHORT).show();
+
+
+                } else {
+                    ActivityCompat.requestPermissions(ViewBookingDetail.this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+
+                    Log.e("premitionnotgranted ", "onClick: " + "premitionnotgranted");
+                }
+
+
+
+
+
+
+
+//                manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
+//                Uri uri = Uri.parse(report_download);
+//                DownloadManager.Request request = new DownloadManager.Request(uri);
+//                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+//                long reference = manager.enqueue(request);
+
             }
         });
     }
@@ -149,6 +228,7 @@ public class ViewBookingDetail extends AppCompatActivity {
         call.getViewBookingDetail(token, user_id, booking_id).enqueue(new Callback<ViewBookingDetailModel>() {
             @Override
             public void onResponse(Call<ViewBookingDetailModel> call, Response<ViewBookingDetailModel> response) {
+
 
                 ViewBookingDetailModel viewBookingDetailModel = response.body();
 
@@ -164,9 +244,43 @@ public class ViewBookingDetail extends AppCompatActivity {
                 doctor_speciality.setText(data.getSpecialty());
                 clinic_address.setText(data.getClinicLocation());
                 doctor_id = data.getDoctorId();
-                date_and_time = data.getBookedDate() + data.getBookedServiceTime();
-                Log.e("button", "onCreate: " + date_and_time);
+                date_and_time = data.getBookedDate() + " " + data.getBookedServiceTime();
+                report_download = data.getDoctor_report();
+
+                Log.e("button", "onCreate: " + " " + date_and_time);
                 Glob.dialog.dismiss();
+
+
+                Calendar compDate = Calendar.getInstance();
+                compDate.add(Calendar.MINUTE, -5);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+                String getCurrentDateTime = sdf.format(compDate.getTime());
+                String temp = "2022/02/03 12:10:00";// date_and_time
+
+//                Log.e("demo", "onResponse: "+getCurrentDateTime.(temp)+ "---"+getCurrentDateTime +"-----" +temp);
+
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+                //Parsing the given String to Date object
+                Date date1 = null;
+                try {
+                    date1 = formatter.parse(getCurrentDateTime);
+                    Date date2 = formatter.parse(temp);
+                    Boolean bool1 = date1.after(date2);
+                    Boolean bool2 = date1.before(date2);
+                    Boolean bool3 = date1.equals(date2);
+                    if (bool1) {
+                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is after " + temp));
+                    } else if (bool2) {
+                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is before " + temp));
+                    } else if (bool3) {
+                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is equals to " + temp));
+                    }
+
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+
             }
 
             @Override
@@ -175,7 +289,6 @@ public class ViewBookingDetail extends AppCompatActivity {
             }
         });
     }
-
 
     public void addReview(String token, String user_id, String doctor_id, String message, String ratting) {
 
@@ -209,11 +322,12 @@ public class ViewBookingDetail extends AppCompatActivity {
     public void sendNotification(String token, String user_id, String message) {
 
 
-        Api call = RetrofitClient.getClient("").create(Api.class);
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
 
 
         call.sendNotification(token, user_id, message).enqueue(new Callback<SendNotificationModel>() {
             @Override
+
             public void onResponse(Call<SendNotificationModel> call, Response<SendNotificationModel> response) {
 
                 SendNotificationModel model = response.body();
@@ -227,9 +341,9 @@ public class ViewBookingDetail extends AppCompatActivity {
                 intent.putExtra("channel_name", channel);
                 startActivity(intent);
 
-
                 Log.e("asdfghjkjhgfdsa", "onResponse: " + Glob.Channel_name);
                 Log.e("id", "onResponse:" + data.getUser_id());
+
             }
 
             @Override
@@ -241,31 +355,3 @@ public class ViewBookingDetail extends AppCompatActivity {
 
 }
 
-
-//        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
-//        LocalDateTime noww = LocalDateTime.now();
-//        System.out.println(dtf.format(noww));
-//        Log.e("oriooo", "onCreate: " + dtf.format(noww));
-//
-//        try {
-//
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//            Date parsed = sdf.parse("2022-02-01 10:36:20");
-//
-//            Date now = new Date(System.currentTimeMillis()); // 2016-03-10 22:06:10
-//            Log.e("timetadf", "onCreate: " + parsed.compareTo(now));
-//
-//            if (parsed.before(now)) {
-//                Log.e("button", "onCreate: " + "Gone");
-//                chat.setVisibility(View.GONE);
-//            }
-//            if (parsed.after(now)) {
-//                Log.e("button", "onCreate: " + "Visible");
-//                chat.setVisibility(View.VISIBLE);
-//            }
-//            if (parsed.equals(now)) {
-//                Log.e("button", "onCreate: " + "same");
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }

@@ -37,7 +37,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         super.onMessageReceived(remoteMessage);
 
-        showNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody(),remoteMessage);
+        showNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody(), remoteMessage);
 
         Log.d(TAG, "Fro00000m: " + remoteMessage.getData().get("chanel_name"));
 
@@ -61,29 +61,29 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         }
 
 
-            String jsonMessage = remoteMessage.getData().get("chanel_name");
-            Log.e(TAG, "onMessageReceived:" + jsonMessage);
-            Glob.Channel_name = jsonMessage;
+        String jsonMessage = remoteMessage.getData().get("chanel_name");
+        Log.e(TAG, "onMessageReceived:" + jsonMessage);
+        Glob.Channel_name = jsonMessage;
 
-            String title = remoteMessage.getNotification().getTitle();
-            String message = remoteMessage.getNotification().getBody();
-            String click = remoteMessage.getNotification().getClickAction();
+        String title = remoteMessage.getNotification().getTitle();
+        String message = remoteMessage.getNotification().getBody();
+        String click = remoteMessage.getNotification().getClickAction();
 
-            Log.e("tittllrlrr", "title :" + title);
-            Log.e(TAG, "message:" + message);
-            Log.e(TAG, "click:" + click);
+        Log.e("tittllrlrr", "title :" + title);
+        Log.e(TAG, "message:" + message);
+        Log.e(TAG, "click:" + click);
 
 
     }
 
-    public void showNotification(String title, String message,RemoteMessage remoteMessage) {
+    public void showNotification(String title, String message, RemoteMessage remoteMessage) {
 
 
         String channel_name = remoteMessage.getData().get("chanel_name");
 
 
         Intent intent = new Intent(this, VideoCallScreen.class);
-        intent.putExtra("channel",channel_name);
+        intent.putExtra("channel", channel_name);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
 

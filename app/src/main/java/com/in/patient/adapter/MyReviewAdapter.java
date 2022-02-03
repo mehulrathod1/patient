@@ -70,6 +70,15 @@ public class MyReviewAdapter extends RecyclerView.Adapter<MyReviewAdapter.ViewHo
         } else if (model.getRating().equals("4")) {
             holder.rate5.setVisibility(View.GONE);
         }
+        else if (model.getRating().equals("5")){
+
+            holder.rate1.setVisibility(View.VISIBLE);
+            holder.rate2.setVisibility(View.VISIBLE);
+            holder.rate3.setVisibility(View.VISIBLE);
+            holder.rate4.setVisibility(View.VISIBLE);
+            holder.rate5.setVisibility(View.VISIBLE);
+
+        }
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
