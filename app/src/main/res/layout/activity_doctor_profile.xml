@@ -794,6 +794,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_8sdp"
                             android:orientation="vertical">
 
 
@@ -802,7 +803,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/montserrat_semi_bold"
                                 android:text="@string/Morning"
-                                android:textColor="@color/action_mode_color_300"
+                                android:textColor="@color/action_mode_color_edt"
                                 android:textSize="@dimen/_16sdp" />
 
                             <androidx.recyclerview.widget.RecyclerView
@@ -818,7 +819,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/montserrat_semi_bold"
                                 android:text="@string/Afternoon"
-                                android:textColor="@color/action_mode_color_300"
+                                android:textColor="@color/action_mode_color_edt"
                                 android:textSize="@dimen/_16sdp" />
 
                             <androidx.recyclerview.widget.RecyclerView
@@ -834,7 +835,7 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/montserrat_semi_bold"
                                 android:text="@string/Evening"
-                                android:textColor="@color/action_mode_color_300"
+                                android:textColor="@color/action_mode_color_edt"
                                 android:textSize="@dimen/_16sdp" />
 
                             <androidx.recyclerview.widget.RecyclerView

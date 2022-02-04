@@ -13,6 +13,16 @@ public class TimeSlotItem {
     @Expose
     private String status;
 
+    public Boolean getSelected() {
+        return isSelected;
+    }
+
+    public void setSelected(Boolean selected) {
+        isSelected = selected;
+    }
+
+    private Boolean isSelected = false;
+
     public void setSlotTime(String slotTime) {
         this.slotTime = slotTime;
     }

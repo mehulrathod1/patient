@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -54,13 +55,14 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
     private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 10;
     File reportFile;
     ImageView backButton;
-    TextView txtPayNow, txtDoctorName, txtBookingId, txtSpeciality, txtDName, txtBookingFor,
+    TextView  txtDoctorName, txtBookingId, txtSpeciality, txtDName, txtBookingFor,
             txtBookingStatus, txtPatientName, txtLocation, txtServiceTime, txtClinicAddress,
             texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport, chat,txtAge;
 
     String BookingId, doctorId, doctorFees;
     String TAG = "BookAppointment";
 
+    Button txtPayNow;
     LinearLayout ll_download_report, ll_upload_doc, ll_comment;
 
     @Override
@@ -127,6 +129,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
                 intent.putExtra("booking_id", BookingId);
                 intent.putExtra("doctor_id", doctorId);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -233,7 +236,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
 
     }
 
-    public void uploadDocument(String token, String user_id, String booking_id, File documentfile) {
+    public void uploadDocument(String token, String user_id, String booking_id, File documentfile,String comment) {
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
@@ -241,13 +244,14 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
         RequestBody requestBody_token = RequestBody.create(MediaType.parse("multipart/form-data"), token);
         RequestBody requestBody_user_id = RequestBody.create(MediaType.parse("multipart/form-data"), user_id);
         RequestBody requestBody_booking_id = RequestBody.create(MediaType.parse("multipart/form-data"), booking_id);
+        RequestBody requestBody_comment = RequestBody.create(MediaType.parse("multipart/form-data"), comment);
 
         MultipartBody.Part requestBody_report = null;
         RequestBody requestBody_req_report = RequestBody.create(MediaType.parse("multipart/form-data"), documentfile);
         requestBody_report = MultipartBody.Part.createFormData("documentfile", reportFile.getName(), requestBody_req_report);
 
 
-        call.uploadDocument(requestBody_token, requestBody_user_id, requestBody_booking_id, requestBody_report).enqueue(new Callback<CommonModel>() {
+        call.uploadDocument(requestBody_token, requestBody_user_id, requestBody_booking_id, requestBody_report,requestBody_comment).enqueue(new Callback<CommonModel>() {
             @Override
             public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
 
@@ -373,7 +377,7 @@ public class BookAppointment extends AppCompatActivity implements PaymentResultL
                     }
 
 
-                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile);
+                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile,"null");
 
                     Uri uri = data.getData();
                     String uriString = uri.toString();

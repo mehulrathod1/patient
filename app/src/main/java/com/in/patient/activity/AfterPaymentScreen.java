@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
             texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport, chat;
 
     String BookingId, doctorId, doctorFees;
+    EditText comment;
 
     String TAG = "BookAppointment";
 
@@ -99,6 +101,8 @@ public class AfterPaymentScreen extends AppCompatActivity {
         extDocument = findViewById(R.id.extDocument);
         txtReport = findViewById(R.id.txtReport);
         chat = findViewById(R.id.chat);
+        comment = findViewById(R.id.comment);
+
 
         ll_comment = findViewById(R.id.ll_comment);
         ll_upload_doc = findViewById(R.id.ll_upload_doc);
@@ -109,7 +113,13 @@ public class AfterPaymentScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                finish();
+                if (reportFile == null) {
+
+                    Toast.makeText(getApplicationContext(), "Please Select File", Toast.LENGTH_SHORT).show();
+                } else {
+                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile, comment.getText().toString());
+                }
+//                finish();
             }
         });
 
@@ -174,7 +184,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
                 txtBookingFor.setText(data.getBookingFor());
                 txtBookingStatus.setText(data.getBookingStatus());
                 txtPatientName.setText(data.getPatientDetails().getPatientName());
-                txtAge.setText(data.getPatientDetails().getPatientAge() +"  year");
+                txtAge.setText(data.getPatientDetails().getPatientAge() + "  year");
                 txtServiceTime.setText(data.getBookedServiceTime());
                 txtClinicAddress.setText(data.getClinicLocation());
                 texTotalAmount.setText(data.getTotalAmount());
@@ -194,7 +204,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
 
     }
 
-    public void uploadDocument(String token, String user_id, String booking_id, File documentfile) {
+    public void uploadDocument(String token, String user_id, String booking_id, File documentfile, String comment) {
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
@@ -202,21 +212,22 @@ public class AfterPaymentScreen extends AppCompatActivity {
         RequestBody requestBody_token = RequestBody.create(MediaType.parse("multipart/form-data"), token);
         RequestBody requestBody_user_id = RequestBody.create(MediaType.parse("multipart/form-data"), user_id);
         RequestBody requestBody_booking_id = RequestBody.create(MediaType.parse("multipart/form-data"), booking_id);
+        RequestBody requestBody_comment = RequestBody.create(MediaType.parse("multipart/form-data"), comment);
+
 
         MultipartBody.Part requestBody_report = null;
         RequestBody requestBody_req_report = RequestBody.create(MediaType.parse("multipart/form-data"), documentfile);
         requestBody_report = MultipartBody.Part.createFormData("documentfile", reportFile.getName(), requestBody_req_report);
 
 
-        call.uploadDocument(requestBody_token, requestBody_user_id, requestBody_booking_id, requestBody_report).enqueue(new Callback<CommonModel>() {
+        call.uploadDocument(requestBody_token, requestBody_user_id, requestBody_booking_id, requestBody_report, requestBody_comment).enqueue(new Callback<CommonModel>() {
             @Override
             public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
 
                 CommonModel model = response.body();
-
-                Toast.makeText(getApplicationContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
-
+//                Toast.makeText(getApplicationContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
+                finish();
             }
 
             @Override
@@ -244,7 +255,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
 
                     String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new
                             Date());
-                    reportFile = new File(getCacheDir(), "IMG_" + timeStamp + ".pdf");
+                    reportFile = new File(getCacheDir(), "DOC_" + timeStamp + ".pdf");
 
                     FileOutputStream fos = null;
                     try {
@@ -264,7 +275,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
                     }
 
 
-                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile);
+//                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile,"comment");
 
                     Uri uri = data.getData();
                     String uriString = uri.toString();

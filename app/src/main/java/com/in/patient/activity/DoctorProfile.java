@@ -112,10 +112,12 @@ public class DoctorProfile extends AppCompatActivity {
     List<DoctorTimePrice> timePriceList = new ArrayList<>();
 
 
-    SlotAdapter timeSlotAdapter;
+    SlotAdapter morningAdapter, afternoonAdapter, eveningAdapter;
     List<TimeSlotItem> timeSlotItemList = new ArrayList<>();
+    List<TimeSlotItem> morningList = new ArrayList<>();
+    List<TimeSlotItem> afternoonList = new ArrayList<>();
+    List<TimeSlotItem> eveningList = new ArrayList<>();
 
-    List<String> dummy_list = new ArrayList<>();
 
     Button bookAppointment;
 
@@ -261,7 +263,6 @@ public class DoctorProfile extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(), "Please add comment", Toast.LENGTH_SHORT).show();
 //                }
                 else {
-
 
                     Log.e("nullsat", "onClick: " + user_id + "---" + doctorId + "---" + appointmentDate + "---" + appointmentTime + "---" + txtFees.getText().toString() + "---" + relative_id);
                     addBookingAppointment(Token, user_id, doctorId, appointmentDate, appointmentTime, txtFees.getText().toString(), relative_id);
@@ -568,6 +569,9 @@ public class DoctorProfile extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<AddBookingAppointmentModel> call, Throwable t) {
+                Log.e("message", "onFailure: " + t.getMessage());
+
+                Toast.makeText(getApplicationContext(), "Slot not available time has passed", Toast.LENGTH_SHORT).show();
                 dialog.dismiss();
 
             }
@@ -642,18 +646,31 @@ public class DoctorProfile extends AppCompatActivity {
                 Data data = timeSlotModel.getData();
                 List<TimeSlotItem> DataList = data.getTimeSlot();
 
+                morningList.clear();
+                afternoonList.clear();
+                eveningList.clear();
+
                 if (DataList.size() != 0) {
                     for (int i = 0; i < DataList.size(); i++) {
                         TimeSlotItem model = DataList.get(i);
                         TimeSlotItem timeData = new TimeSlotItem(model.getSlotTime(), model.getStatus());
                         Log.e("time", "onResponse: " + timeData.getSlotTime());
-                        timeSlotItemList.add(timeData);
 
+//                        timeSlotItemList.add(timeData);
 
-                        String dummy_string = timeData.getSlotTime();
-                        Log.e("doub", "onResponse: " + dummy_string.substring(0, 2));
-
+//                        String dummy_string = timeData.getSlotTime();
+//                        Log.e("dummy", "onResponse: " + dummy_string.substring(0, 2) +"------"+dummy_string.split(":")[0]);
 //                        dummy_list.add(dummy_string);
+
+                        int time = Integer.parseInt(timeData.getSlotTime().split(":")[0]);
+
+                        if (time >= 6 && time < 12) {
+                            morningList.add(timeData);
+                        } else if (time >= 12 && time < 17) {
+                            afternoonList.add(timeData);
+                        } else if (time >= 12 && time <= 24) {
+                            eveningList.add(timeData);
+                        }
                     }
 
                     getTimeSlotData();
@@ -673,27 +690,34 @@ public class DoctorProfile extends AppCompatActivity {
     public void getTimeSlotData() {
 
 
-        timeSlotAdapter = new SlotAdapter(timeSlotItemList, getApplicationContext(), new SlotAdapter.Click() {
+        morningAdapter = new SlotAdapter(morningList, getApplicationContext(), new SlotAdapter.Click() {
             @Override
             public void itemClick(int position) {
 
-                appointmentTime = timeSlotItemList.get(position).getSlotTime();
+
+                changeSlotSelected();
+                morningList.get(position).setSelected(true);
+                morningAdapter.notifyDataSetChanged();
+                appointmentTime = morningList.get(position).getSlotTime();
                 Log.e("appointmentTime", "itemClick: " + appointmentTime);
             }
         });
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         slotRecycler.setLayoutManager(mLayoutManager);
-        slotRecycler.setAdapter(timeSlotAdapter);
+        slotRecycler.setAdapter(morningAdapter);
     }
 
     public void afternoonSlot() {
 
-        timeSlotAdapter = new SlotAdapter(timeSlotItemList, getApplicationContext(), new SlotAdapter.Click() {
+        afternoonAdapter = new SlotAdapter(afternoonList, getApplicationContext(), new SlotAdapter.Click() {
             @Override
             public void itemClick(int position) {
 
-                appointmentTime = timeSlotItemList.get(position).getSlotTime();
+                changeSlotSelected();
+                afternoonList.get(position).setSelected(true);
+                afternoonAdapter.notifyDataSetChanged();
+                appointmentTime = afternoonList.get(position).getSlotTime();
                 Log.e("appointmentTime", "itemClick: " + appointmentTime);
 
             }
@@ -701,17 +725,20 @@ public class DoctorProfile extends AppCompatActivity {
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         afternoon_recycler.setLayoutManager(mLayoutManager);
-        afternoon_recycler.setAdapter(timeSlotAdapter);
+        afternoon_recycler.setAdapter(afternoonAdapter);
     }
 
     public void eveningSlot() {
 
 
-        timeSlotAdapter = new SlotAdapter(timeSlotItemList, getApplicationContext(), new SlotAdapter.Click() {
+        eveningAdapter = new SlotAdapter(eveningList, getApplicationContext(), new SlotAdapter.Click() {
             @Override
             public void itemClick(int position) {
 
-                appointmentTime = timeSlotItemList.get(position).getSlotTime();
+                changeSlotSelected();
+                eveningList.get(position).setSelected(true);
+                eveningAdapter.notifyDataSetChanged();
+                appointmentTime = eveningList.get(position).getSlotTime();
                 Log.e("appointmentTime", "itemClick: " + appointmentTime);
 
             }
@@ -719,7 +746,7 @@ public class DoctorProfile extends AppCompatActivity {
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         evening_recycler.setLayoutManager(mLayoutManager);
-        evening_recycler.setAdapter(timeSlotAdapter);
+        evening_recycler.setAdapter(eveningAdapter);
     }
 
     public void getRelative(String token, String user_id) {
@@ -743,8 +770,6 @@ public class DoctorProfile extends AppCompatActivity {
 
 
                     bookingForList.add(1, model.getRelative_name());
-
-
                     relative_id_list.add(1, model.getRelative_id());
 
                     Log.e("bookingForList", "onResponse: " + model.getRelative_name());
@@ -886,9 +911,21 @@ public class DoctorProfile extends AppCompatActivity {
         return file;
     }
 
+    public void changeSlotSelected() {
+        for (int i = 0; i < morningList.size(); i++) {
+            morningList.get(i).setSelected(false);
+        }
+        for (int i = 0; i < afternoonList.size(); i++) {
+            afternoonList.get(i).setSelected(false);
+        }
+        for (int i = 0; i < eveningList.size(); i++) {
+            eveningList.get(i).setSelected(false);
+        }
 
-    public void compareSlot(int start_time, int end_time) {
 
-
+        morningAdapter.notifyDataSetChanged();
+        afternoonAdapter.notifyDataSetChanged();
+        eveningAdapter.notifyDataSetChanged();
     }
+
 }

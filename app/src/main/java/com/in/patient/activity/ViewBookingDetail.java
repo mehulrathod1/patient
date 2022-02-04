@@ -22,6 +22,7 @@ import android.webkit.CookieManager;
 import android.webkit.URLUtil;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,6 +54,7 @@ public class ViewBookingDetail extends AppCompatActivity {
 
     TextView txtReport, review_submit, add_review, chat, booking_idd, booking_date, booking_time, booking_status, payment_status, payment_amount, doctor_name, doctor_speciality, clinic_address, start_Video;
 
+    LinearLayout ll_download_report;
 
     EditText review_text;
     RatingBar ratting;
@@ -98,8 +100,6 @@ public class ViewBookingDetail extends AppCompatActivity {
         Log.e("Tiemeeee", "onCreate: " + " " + date_and_time);
 
 
-
-
     }
 
     public void init() {
@@ -119,6 +119,8 @@ public class ViewBookingDetail extends AppCompatActivity {
         add_review = findViewById(R.id.add_review);
         start_Video = findViewById(R.id.start_Video);
         txtReport = findViewById(R.id.txtReport);
+
+        ll_download_report = findViewById(R.id.ll_download_report);
 
         alertDialog = new AlertDialog.Builder(this);
         LayoutInflater inflater = getLayoutInflater();
@@ -206,11 +208,6 @@ public class ViewBookingDetail extends AppCompatActivity {
                 }
 
 
-
-
-
-
-
 //                manager = (DownloadManager) getSystemService(Context.DOWNLOAD_SERVICE);
 //                Uri uri = Uri.parse(report_download);
 //                DownloadManager.Request request = new DownloadManager.Request(uri);
@@ -247,37 +244,47 @@ public class ViewBookingDetail extends AppCompatActivity {
                 date_and_time = data.getBookedDate() + " " + data.getBookedServiceTime();
                 report_download = data.getDoctor_report();
 
-                Log.e("button", "onCreate: " + " " + date_and_time);
+                Log.e("button", "onCreate: " + " " + report_download);
+                if (report_download.equals("")) {
+
+                    ll_download_report.setVisibility(View.GONE);
+                }
                 Glob.dialog.dismiss();
 
 
                 Calendar compDate = Calendar.getInstance();
-                compDate.add(Calendar.MINUTE, -5);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+                compDate.add(Calendar.MINUTE, 5);
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 String getCurrentDateTime = sdf.format(compDate.getTime());
-                String temp = "2022/02/03 12:10:00";// date_and_time
+                String temp = "2022-02-03 12:10:00";// date_and_time
 
+                Log.e("boosdfghjl", "onResponse: " + (date_and_time));
 //                Log.e("demo", "onResponse: "+getCurrentDateTime.(temp)+ "---"+getCurrentDateTime +"-----" +temp);
 
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 //Parsing the given String to Date object
                 Date date1 = null;
                 try {
                     date1 = formatter.parse(getCurrentDateTime);
-                    Date date2 = formatter.parse(temp);
+                    Date date2 = formatter.parse(date_and_time);
                     Boolean bool1 = date1.after(date2);
                     Boolean bool2 = date1.before(date2);
                     Boolean bool3 = date1.equals(date2);
+
                     if (bool1) {
-                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is after " + temp));
+                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is after " + date_and_time));
+                        chat.setVisibility(View.VISIBLE);
+                        add_review.setVisibility(View.VISIBLE);
                     } else if (bool2) {
-                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is before " + temp));
+                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is before " + date_and_time));
                     } else if (bool3) {
-                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is equals to " + temp));
+                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is equals to " + date_and_time));
                     }
 
                 } catch (ParseException e) {
                     e.printStackTrace();
+
+
                 }
 
 

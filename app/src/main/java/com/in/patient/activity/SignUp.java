@@ -84,21 +84,22 @@ public class SignUp extends AppCompatActivity {
 
         countryCodeList = new ArrayList<>();
         countryCodeList.add("+91");
-        countryCodeList.add("+92");
-        countryCodeList.add("+93");
-        countryCodeList.add("+94");
-        countryCodeList.add("+91");
-        countryCodeList.add("+92");
-        countryCodeList.add("+93");
-        countryCodeList.add("+94");
-        countryCodeList.add("+91");
-        countryCodeList.add("+92");
-        countryCodeList.add("+930");
-        countryCodeList.add("+94");
-        countryCodeList.add("+91");
-        countryCodeList.add("+92");
-        countryCodeList.add("+93");
-        countryCodeList.add("+94");
+
+//        countryCodeList.add("+92");
+//        countryCodeList.add("+93");
+//        countryCodeList.add("+94");
+//        countryCodeList.add("+91");
+//        countryCodeList.add("+92");
+//        countryCodeList.add("+93");
+//        countryCodeList.add("+94");
+//        countryCodeList.add("+91");
+//        countryCodeList.add("+92");
+//        countryCodeList.add("+930");
+//        countryCodeList.add("+94");
+//        countryCodeList.add("+91");
+//        countryCodeList.add("+92");
+//        countryCodeList.add("+93");
+//        countryCodeList.add("+94");
 
         countryCodeAdapter = new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_textview, countryCodeList);
         countryCodeAdapter.setDropDownViewResource(R.layout.dropdown_item);

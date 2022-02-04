@@ -17,14 +17,13 @@
 
             <TextView
                 android:id="@+id/slot_time"
-                android:layout_width="wrap_content"
+                android:layout_width="@dimen/_80sdp"
                 android:layout_height="@dimen/_30sdp"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="10:00 AM"
-                android:layout_marginLeft="@dimen/_16sdp"
-                android:layout_marginRight="@dimen/_16sdp"
-                android:textColor="@color/action_mode_color_300"
+                android:layout_margin="@dimen/_2sdp"
+                android:textColor="@color/action_mode_color_edt"
                 android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>

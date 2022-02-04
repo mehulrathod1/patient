@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -46,26 +47,48 @@ public class SlotAdapter extends RecyclerView.Adapter<SlotAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        if (selectedPosition == position) {
-            holder.slot_time.setTextColor(Color.parseColor("#161616"));
+        if (list.get(position).getSelected() == true) {
+//            holder.slot_time.setTextColor(Color.parseColor("#161616"));
+            holder.slot_time.setBackgroundColor(Color.parseColor("#1EAE98"));
 
         } else {
 
-            holder.slot_time.setTextColor(Color.parseColor("#1EAE98"));
+//            holder.slot_time.setTextColor(Color.parseColor("#1EAE98"));
+            holder.slot_time.setBackgroundColor(Color.parseColor("#FFFFFF"));
         }
+
 
         TimeSlotItem model = list.get(position);
 
         holder.slot_time.setText(model.getSlotTime());
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//        holder.itemView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                click.itemClick(position);
+////                selectedPosition = position;
+////                notifyDataSetChanged();
+//            }
+//        });
+
+        holder.slot_time.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 click.itemClick(position);
-                selectedPosition = position;
-                notifyDataSetChanged();
+//                notifyDataSetChanged();
+
             }
         });
+        if (list.get(position).getStatus().equals("booked")) {
+            holder.slot_time.setClickable(false);
+            holder.slot_time.setTextColor(Color.parseColor("#90A4AE"));
+//            holder.slot_time.setBackgroundColor(Color.parseColor("#161616"));
+
+        }
+        if (list.get(position).getStatus().equals("availiable")) {
+            holder.slot_time.setTextColor(Color.parseColor("#161616"));
+
+        }
 
     }
 

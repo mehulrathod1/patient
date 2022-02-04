@@ -35,14 +35,13 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
     TextView total_fees, to_be_paid;
 
     ImageView backButton;
-    String booking_id,doctor_id, total_amount;
+    String booking_id, doctor_id, total_amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payment_screen);
         getSupportActionBar().hide();
-
 
         init();
     }
@@ -129,20 +128,24 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
     @Override
     public void onPaymentSuccess(String s) {
 
-        Toast.makeText(getApplicationContext(), "Payment Successfull", Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getApplicationContext(), AfterPaymentScreen.class);
-        intent.putExtra("bookingId",booking_id);
-        intent.putExtra("doctorId",doctor_id);
-        startActivity(intent);
-        finish();
-//        bookingConformation(Token, user_id, booking_id);
+        try {
+
+            Toast.makeText(getApplicationContext(), "Payment Successfull", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), AfterPaymentScreen.class);
+            intent.putExtra("bookingId", booking_id);
+            intent.putExtra("doctorId", doctor_id);
+            startActivity(intent);
+            finish();
+            bookingConformation(Token, user_id, booking_id);
+        } catch (Exception e) {
+            Log.e("TAG", "Error in starting Razorpay Checkout", e);
+        }
     }
 
     @Override
     public void onPaymentError(int i, String s) {
 
         Toast.makeText(getApplicationContext(), "Payment Failed", Toast.LENGTH_SHORT).show();
-
     }
 
     public void bookingConformation(String token, String user_id, String booking_id) {
@@ -155,7 +158,7 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
             public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
                 CommonModel commonModel = response.body();
 
-//                Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
 
                 Glob.dialog.dismiss();
             }

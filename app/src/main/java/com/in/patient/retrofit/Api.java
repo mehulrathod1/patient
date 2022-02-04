@@ -68,6 +68,47 @@ public interface Api {
 
     );
 
+    @FormUrlEncoded
+    @POST("update_patient_details.php")
+    Call<CommonModel> updateProfilePersonal(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("first_name") String first_name,
+            @Field("last_name") String last_name,
+            @Field("email") String email,
+            @Field("mobile_no") String mobile_no,
+            @Field("gender") String gender,
+            @Field("dob") String dob,
+            @Field("blood_group") String blood_group,
+            @Field("marital_status") String marital_status,
+            @Field("height") String height,
+            @Field("weight") String weight,
+            @Field("emergency_contact") String emergency_contact,
+            @Field("address") String address
+
+    );
+
+    @Multipart
+    @POST("update_patient_details.php")
+    Call<CommonModel> updatePatientPersonalWithImage(
+
+            @Part("token") RequestBody token,
+            @Part("user_id") RequestBody user_id,
+            @Part("first_name") RequestBody first_name,
+            @Part("last_name") RequestBody last_name,
+            @Part("email") RequestBody email,
+            @Part("mobile_no") RequestBody mobile_no,
+            @Part("gender") RequestBody gender,
+            @Part("dob") RequestBody dob,
+            @Part("blood_group") RequestBody blood_group,
+            @Part("marital_status") RequestBody marital_status,
+            @Part("height") RequestBody height,
+            @Part("weight") RequestBody weight,
+            @Part("emergency_contact") RequestBody emergency_contact,
+            @Part("address") RequestBody address,
+            @Part MultipartBody.Part image
+
+    );
 
     @FormUrlEncoded
     @POST("get_patient_medical.php")
@@ -259,9 +300,10 @@ public interface Api {
             @Part("token") RequestBody token,
             @Part("user_id") RequestBody user_id,
             @Part("booking_id") RequestBody booking_id,
-            @Part MultipartBody.Part documentfile
+            @Part MultipartBody.Part documentfile,
+            @Part("comments") RequestBody comments
 
-    );
+            );
 
     @FormUrlEncoded
     @POST("get_helthcare_and_product.php")
