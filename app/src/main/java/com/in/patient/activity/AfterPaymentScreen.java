@@ -18,10 +18,12 @@ import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.in.patient.R;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.BookingConformationModel;
@@ -55,6 +57,8 @@ public class AfterPaymentScreen extends AppCompatActivity {
 
     String BookingId, doctorId, doctorFees;
     EditText comment;
+    ImageView ProfileImage;
+
 
     String TAG = "BookAppointment";
 
@@ -102,7 +106,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
         txtReport = findViewById(R.id.txtReport);
         chat = findViewById(R.id.chat);
         comment = findViewById(R.id.comment);
-
+        ProfileImage = findViewById(R.id.ProfileImage);
 
         ll_comment = findViewById(R.id.ll_comment);
         ll_upload_doc = findViewById(R.id.ll_upload_doc);
@@ -175,6 +179,11 @@ public class AfterPaymentScreen extends AppCompatActivity {
                 Log.e("dataaa", "onResponse: " + data.getClinicLocation());
                 Log.e("dataaa", "onResponse: " + data.getPatientDetails().getPatientName());
                 Log.e("dataaa", "onResponse: " + data.getTotalAmount());
+
+
+                Glide.with(getApplicationContext())
+                        .load(data.getDoctorProfileImage())
+                        .into(ProfileImage);
 
 
                 txtDoctorName.setText(data.getDoctorName());

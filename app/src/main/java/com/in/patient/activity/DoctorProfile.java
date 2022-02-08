@@ -664,7 +664,7 @@ public class DoctorProfile extends AppCompatActivity {
 
                         int time = Integer.parseInt(timeData.getSlotTime().split(":")[0]);
 
-                        if (time >= 6 && time < 12) {
+                        if (time >= 6 && time < 12 ) {
                             morningList.add(timeData);
                         } else if (time >= 12 && time < 17) {
                             afternoonList.add(timeData);

@@ -68,6 +68,8 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
             public void onClick(View v) {
 
                 startPayment();
+//                bookingConformation(Token, user_id, booking_id);
+
             }
         });
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -128,17 +130,19 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
     @Override
     public void onPaymentSuccess(String s) {
 
+
         try {
 
+            bookingConformation(Token, user_id, booking_id);
             Toast.makeText(getApplicationContext(), "Payment Successfull", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), AfterPaymentScreen.class);
             intent.putExtra("bookingId", booking_id);
             intent.putExtra("doctorId", doctor_id);
             startActivity(intent);
             finish();
-            bookingConformation(Token, user_id, booking_id);
+
         } catch (Exception e) {
-            Log.e("TAG", "Error in starting Razorpay Checkout", e);
+            Log.e("TAGasdfghjk", "Error in starting Razorpay Checkout", e);
         }
     }
 
@@ -150,7 +154,6 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
 
     public void bookingConformation(String token, String user_id, String booking_id) {
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
-        Glob.dialog.show();
 
 
         call.bookingConformation(token, user_id, booking_id).enqueue(new Callback<CommonModel>() {
@@ -158,9 +161,15 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
             public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
                 CommonModel commonModel = response.body();
 
-                Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
+//                Log.e("onDFailo", "onFailure: " + commonModel.getMessage());
 
-                Glob.dialog.dismiss();
+
+//                Intent intent = new Intent(getApplicationContext(), AfterPaymentScreen.class);
+//                intent.putExtra("bookingId", booking_id);
+//                intent.putExtra("doctorId", doctor_id);
+//                startActivity(intent);
+//                finish();
             }
 
             @Override

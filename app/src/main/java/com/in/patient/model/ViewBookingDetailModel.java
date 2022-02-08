@@ -77,9 +77,22 @@ public class ViewBookingDetailModel {
         String patientLocation;
 
 
-        @SerializedName("Booked Date")
+        @SerializedName("Booking Date")
         @Expose
         String BookedDate;
+
+        @SerializedName("Booking Time")
+        @Expose
+        String BookingTime;
+
+        @SerializedName("Appointment Time")
+        @Expose
+        String AppointmentTime;
+
+        @SerializedName("Appointment Date")
+        @Expose
+        String AppointmentDate;
+
 
         @SerializedName("Booked Service Time")
         @Expose
@@ -204,8 +217,31 @@ public class ViewBookingDetailModel {
         public void setDoctorId(String doctorId) {
             DoctorId = doctorId;
         }
-    }
 
+        public String getBookingTime() {
+            return BookingTime;
+        }
+
+        public void setBookingTime(String bookingTime) {
+            BookingTime = bookingTime;
+        }
+
+        public String getAppointmentTime() {
+            return AppointmentTime;
+        }
+
+        public void setAppointmentTime(String appointmentTime) {
+            AppointmentTime = appointmentTime;
+        }
+
+        public String getAppointmentDate() {
+            return AppointmentDate;
+        }
+
+        public void setAppointmentDate(String appointmentDate) {
+            AppointmentDate = appointmentDate;
+        }
+    }
 
 
 }

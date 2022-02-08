@@ -254,6 +254,7 @@ public class HomeDashboard extends Fragment implements LocationListener {
 //            }
 //        });
 
+
         search_layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -262,16 +263,22 @@ public class HomeDashboard extends Fragment implements LocationListener {
                 startActivity(intent);
             }
         });
+
         doctorConsultant.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Fragment fragment = new DoctorConsultSecond();
                 Bundle spe_id = new Bundle();
                 spe_id.putString("specialist_id", "0");
                 fragment.setArguments(spe_id);
                 loadFragment(fragment);
+
+//                Fragment fragment = new Consultation();
+//                loadFragment(fragment);
             }
         });
+
         homeCare.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -279,6 +286,7 @@ public class HomeDashboard extends Fragment implements LocationListener {
                 loadFragment(fragment);
             }
         });
+
         labTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

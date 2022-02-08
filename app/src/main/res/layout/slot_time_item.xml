@@ -22,7 +22,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="10:00 AM"
-                android:layout_margin="@dimen/_2sdp"
+                android:layout_margin="@dimen/_1sdp"
                 android:textColor="@color/action_mode_color_edt"
                 android:textSize="@dimen/_12sdp" />
 

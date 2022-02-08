@@ -52,7 +52,9 @@ public class ViewBookingDetail extends AppCompatActivity {
     ImageView nevBack;
     TextView headerTitle;
 
-    TextView txtReport, review_submit, add_review, chat, booking_idd, booking_date, booking_time, booking_status, payment_status, payment_amount, doctor_name, doctor_speciality, clinic_address, start_Video;
+    TextView txtReport, review_submit, add_review, chat, booking_idd, booking_date, booking_time,
+            booking_status, payment_status, payment_amount, doctor_name,
+            doctor_speciality, clinic_address, start_Video, appointment_time, appointment_date;
 
     LinearLayout ll_download_report;
 
@@ -119,6 +121,8 @@ public class ViewBookingDetail extends AppCompatActivity {
         add_review = findViewById(R.id.add_review);
         start_Video = findViewById(R.id.start_Video);
         txtReport = findViewById(R.id.txtReport);
+        appointment_time = findViewById(R.id.appointment_time);
+        appointment_date = findViewById(R.id.appointment_date);
 
         ll_download_report = findViewById(R.id.ll_download_report);
 
@@ -171,7 +175,7 @@ public class ViewBookingDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                sendNotification(Glob.Token, "25", "test");
+                sendNotification(Glob.Token, doctor_id, "test");
 
             }
         });
@@ -233,7 +237,9 @@ public class ViewBookingDetail extends AppCompatActivity {
 
                 booking_idd.setText(data.getBookingId());
                 booking_date.setText(data.getBookedDate());
-                booking_time.setText(data.getBookedServiceTime());
+                booking_time.setText(data.getBookingTime());
+                appointment_date.setText(data.getAppointmentDate());
+                appointment_time.setText(data.getAppointmentTime());
                 booking_status.setText(data.getBookingStatus());
                 payment_status.setText(data.getAmountStatus());
                 payment_amount.setText(data.getTotalAmount() + "₹");
@@ -241,7 +247,7 @@ public class ViewBookingDetail extends AppCompatActivity {
                 doctor_speciality.setText(data.getSpecialty());
                 clinic_address.setText(data.getClinicLocation());
                 doctor_id = data.getDoctorId();
-                date_and_time = data.getBookedDate() + " " + data.getBookedServiceTime();
+                date_and_time = data.getAppointmentDate() + " " + data.getAppointmentTime();
                 report_download = data.getDoctor_report();
 
                 Log.e("button", "onCreate: " + " " + report_download);
@@ -254,14 +260,14 @@ public class ViewBookingDetail extends AppCompatActivity {
 
                 Calendar compDate = Calendar.getInstance();
                 compDate.add(Calendar.MINUTE, 5);
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
                 String getCurrentDateTime = sdf.format(compDate.getTime());
                 String temp = "2022-02-03 12:10:00";// date_and_time
 
                 Log.e("boosdfghjl", "onResponse: " + (date_and_time));
 //                Log.e("demo", "onResponse: "+getCurrentDateTime.(temp)+ "---"+getCurrentDateTime +"-----" +temp);
 
-                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
                 //Parsing the given String to Date object
                 Date date1 = null;
                 try {
@@ -275,6 +281,7 @@ public class ViewBookingDetail extends AppCompatActivity {
                         Log.e("bool", "onResponse: " + (getCurrentDateTime + " is after " + date_and_time));
                         chat.setVisibility(View.VISIBLE);
                         add_review.setVisibility(View.VISIBLE);
+                        start_Video.setClickable(false);
                     } else if (bool2) {
                         Log.e("bool", "onResponse: " + (getCurrentDateTime + " is before " + date_and_time));
                     } else if (bool3) {
@@ -343,12 +350,14 @@ public class ViewBookingDetail extends AppCompatActivity {
                 Log.e("id", "onResdfghjponse:" + data.getChannelName());
                 String channel = data.getChannelName();
 
+                Glob.Channel_name = channel;
 
                 Intent intent = new Intent(getApplicationContext(), VideoCallScreen.class);
                 intent.putExtra("channel_name", channel);
                 startActivity(intent);
 
-                Log.e("asdfghjkjhgfdsa", "onResponse: " + Glob.Channel_name);
+
+                Log.e("asdfghjkjhgfdsa", "onResponse: " + channel);
                 Log.e("id", "onResponse:" + data.getUser_id());
 
             }

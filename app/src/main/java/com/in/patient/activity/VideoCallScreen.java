@@ -352,9 +352,9 @@ public class VideoCallScreen extends AppCompatActivity {
     public void onCallClicked(View view) {
 
         endCall();
+        finish();
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
-
 //        if (mCallEnd) {
 //            startCall();
 //            mCallEnd = false;
@@ -364,6 +364,7 @@ public class VideoCallScreen extends AppCompatActivity {
 //            mCallEnd = true;
 //            mCallBtn.setImageResource(R.drawable.btn_startcall_normal);
 //        }
+
 
         showButtons(!mCallEnd);
     }

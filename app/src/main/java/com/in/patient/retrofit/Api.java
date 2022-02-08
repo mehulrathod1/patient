@@ -186,7 +186,6 @@ public interface Api {
     Call<MyAppointmentModel> getMyAppointment(
             @Field("token") String token,
             @Field("user_id") String user_id
-
     );
 
     @FormUrlEncoded
@@ -194,10 +193,7 @@ public interface Api {
     Call<SearchModel> getSearchItem(
             @Field("token") String token,
             @Field("user_id") String user_id,
-            @Field("keyword") String keyword
-
-
-    );
+            @Field("keyword") String keyword);
 
     @FormUrlEncoded
     @POST("get_doctor_specialisties.php")
@@ -303,7 +299,7 @@ public interface Api {
             @Part MultipartBody.Part documentfile,
             @Part("comments") RequestBody comments
 
-            );
+    );
 
     @FormUrlEncoded
     @POST("get_helthcare_and_product.php")

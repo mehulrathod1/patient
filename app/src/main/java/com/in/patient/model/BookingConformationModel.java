@@ -105,6 +105,21 @@ public class BookingConformationModel {
         @Expose
         String AmountStatus;
 
+
+
+
+        @SerializedName("Doctor Profile")
+        @Expose
+        String DoctorProfileImage;
+
+        public String getDoctorProfileImage() {
+            return DoctorProfileImage;
+        }
+
+        public void setDoctorProfileImage(String doctorProfileImage) {
+            DoctorProfileImage = doctorProfileImage;
+        }
+
         public String getBookingFor() {
             return BookingFor;
         }
