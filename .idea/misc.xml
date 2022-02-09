@@ -79,7 +79,10 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/image_slider_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/lab_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/lab_test_item.xml" value="0.25" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/layout_review_slider.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/layout_slider.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/list_group.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/list_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/medicine_order_item.xml" value="0.33" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/medicines_item.xml" value="0.22" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/my_appointment_item.xml" value="0.20416666666666666" />
@@ -90,6 +93,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/nev_toolbar.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/product_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/profile_spinner_text.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/question_group.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/relative_list_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/review_popup.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/search_item.xml" value="0.20416666666666666" />

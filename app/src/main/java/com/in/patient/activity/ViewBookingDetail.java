@@ -281,7 +281,7 @@ public class ViewBookingDetail extends AppCompatActivity {
                         Log.e("bool", "onResponse: " + (getCurrentDateTime + " is after " + date_and_time));
                         chat.setVisibility(View.VISIBLE);
                         add_review.setVisibility(View.VISIBLE);
-                        start_Video.setClickable(false);
+//                        start_Video.setClickable(false);
                     } else if (bool2) {
                         Log.e("bool", "onResponse: " + (getCurrentDateTime + " is before " + date_and_time));
                     } else if (bool3) {

@@ -8,26 +8,27 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.in.patient.R;
+import com.in.patient.model.ReviewSliderModel;
 import com.in.patient.model.SliderModel;
-import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class SliderPagerAdapter extends PagerAdapter {
+public class ReviewSliderAdapter extends PagerAdapter {
+
     private LayoutInflater layoutInflater;
     Activity activity;
-    ArrayList<SliderModel> image_arraylist;
+    ArrayList<ReviewSliderModel> image_arraylist;
     Click click;
-
 
     public interface Click {
         void itemClick(int position);
     }
 
-    public SliderPagerAdapter(Activity activity, ArrayList<SliderModel> image_arraylist, Click click) {
+    public ReviewSliderAdapter(Activity activity, ArrayList<ReviewSliderModel> image_arraylist, Click click) {
         this.activity = activity;
         this.image_arraylist = image_arraylist;
         this.click = click;
@@ -37,46 +38,38 @@ public class SliderPagerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         layoutInflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
-        View view = layoutInflater.inflate(R.layout.layout_slider, container, false);
-        ImageView im_slider = (ImageView) view.findViewById(R.id.im_slider);
-        TextView category_name = view.findViewById(R.id.category_name);
-        TextView consultNow = view.findViewById(R.id.consultNow);
-        TextView short_description = view.findViewById(R.id.short_description);
+        View view = layoutInflater.inflate(R.layout.my_reviw_item, container, false);
 
 
-        SliderModel model = image_arraylist.get(position);
+        ImageView im_slider = (ImageView) view.findViewById(R.id.profileImage);
+        TextView user_name = view.findViewById(R.id.Name);
+        TextView review_date = view.findViewById(R.id.Date);
+        TextView review_text = view.findViewById(R.id.ReviewText);
 
-        category_name.setText(model.getCategory_name());
-        consultNow.setText(model.getConsultNow());
-        short_description.setText(model.getShort_description());
+
+        ReviewSliderModel model = image_arraylist.get(position);
+
+
+        user_name.setText(model.getUser_name());
+        review_text.setText(model.getReview_text());
+        review_date.setText(model.getReview_date());
         im_slider.setImageResource(model.getIm_slider());
-
-        consultNow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                click.itemClick(position);
-            }
-        });
-
-
 
         container.addView(view);
 
         return view;
     }
 
+
     @Override
     public int getCount() {
         return image_arraylist.size();
     }
 
-
     @Override
-    public boolean isViewFromObject(View view, Object obj) {
-        return view == obj;
-
+    public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {
+        return view == object;
     }
-
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {

@@ -268,15 +268,16 @@ public class HomeDashboard extends Fragment implements LocationListener {
             @Override
             public void onClick(View v) {
 
-                Fragment fragment = new DoctorConsultSecond();
-                Bundle spe_id = new Bundle();
-                spe_id.putString("specialist_id", "0");
-                fragment.setArguments(spe_id);
-                loadFragment(fragment);
-
-//                Fragment fragment = new Consultation();
+//                Fragment fragment = new DoctorConsultSecond();
+//                Bundle spe_id = new Bundle();
+//                spe_id.putString("specialist_id", "0");
+//                fragment.setArguments(spe_id);
 //                loadFragment(fragment);
+
+                Fragment fragment = new Consultation();
+                loadFragment(fragment);
             }
+
         });
 
         homeCare.setOnClickListener(new View.OnClickListener() {

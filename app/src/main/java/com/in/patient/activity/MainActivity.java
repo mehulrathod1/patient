@@ -118,8 +118,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-
-
         View headerLayout = Navigation.inflateHeaderView(R.layout.nev_header);
         nevBackHeader = headerLayout.findViewById(R.id.nevBackHeader);
 
@@ -285,7 +283,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
 

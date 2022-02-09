@@ -7,18 +7,17 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/_100sdp">
+        android:layout_height="wrap_content">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/md_grey"
+                android:layout_marginTop="@dimen/_14sdp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -26,7 +25,6 @@
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:orientation="vertical">
-
 
                     <androidx.viewpager.widget.ViewPager
                         android:id="@+id/vp_slider"
@@ -74,7 +72,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_14sdp"
-                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_14sdp"
                         android:layout_marginRight="@dimen/_14sdp"
                         android:layout_marginBottom="@dimen/_8sdp"
                         android:orientation="horizontal">
@@ -89,7 +87,7 @@
                                 android:layout_width="@dimen/_60sdp"
                                 android:layout_height="@dimen/_60sdp"
                                 android:layout_gravity="center"
-                                android:background="@color/action_mode_color_edt" />
+                                android:src="@drawable/icon_material_person" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -114,7 +112,7 @@
                                 android:layout_width="@dimen/_60sdp"
                                 android:layout_height="@dimen/_60sdp"
                                 android:layout_gravity="center"
-                                android:background="@color/action_mode_color_edt" />
+                                android:src="@drawable/icon_material_person" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -140,7 +138,7 @@
                                 android:layout_width="@dimen/_60sdp"
                                 android:layout_height="@dimen/_60sdp"
                                 android:layout_gravity="center"
-                                android:background="@color/action_mode_color_edt" />
+                                android:src="@drawable/icon_material_person" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -164,6 +162,7 @@
                         android:layout_margin="@dimen/_14sdp">
 
                         <Button
+                            android:id="@+id/ConsultantNow"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_semi_bold"
@@ -174,6 +173,233 @@
                     </LinearLayout>
 
                 </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_14sdp"
+                        android:layout_marginBottom="@dimen/_14sdp">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="Why consultant on aur App ?"
+                                android:textColor="@color/action_mode_color"
+                                android:textSize="@dimen/_18sdp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:backgroundTint="@color/white"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_12sdp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.6">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_100sdp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/rectangle_1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_weight="1.5"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:text="250 +"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:text="Quality Doctors"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_12sdp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.6">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_100sdp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/rectangle_1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_weight="1.5"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:text="500 +"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:text="Satisfied Customer"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_12sdp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.6">
+
+
+                                <ImageView
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_100sdp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/rectangle_1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_weight="1.5"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:text="200 +"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:text="Super Specialist"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/_12sdp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0.6">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_100sdp"
+                                    android:layout_height="@dimen/_100sdp"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/rectangle_1" />
+
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="bottom"
+                                android:layout_weight="1.5"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:text="250 +"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_14sdp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="@dimen/_14sdp"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:text="Secure and Private"
+                                    android:textSize="@dimen/_12sdp" />
+
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -227,7 +453,8 @@
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recycler"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/_14sdp">
 
                         </androidx.recyclerview.widget.RecyclerView>
                     </LinearLayout>
@@ -255,23 +482,10 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/montserrat_bold"
-                                android:text="See our user expe"
+                                android:text="See our user experience"
                                 android:textColor="@color/action_mode_color"
                                 android:textSize="@dimen/_18sdp" />
 
-                            <TextView
-                                android:id="@+id/viewAllDocto"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerInParent="true"
-                                android:layout_marginRight="@dimen/_8sdp"
-                                android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
-                                android:fontFamily="@font/montserrat_semi_bold"
-                                android:gravity="right"
-                                android:text="@string/View_all"
-                                android:textColor="@color/action_mode_color_300"
-                                android:textSize="@dimen/_12sdp" />
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -282,12 +496,77 @@
                         android:background="@color/white"
                         android:backgroundTint="@color/white">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycleer"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@color/white"
+                            android:orientation="vertical">
+
+                            <androidx.viewpager.widget.ViewPager
+                                android:id="@+id/app_review_slider"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_160sdp"
+                                android:layout_marginTop="@dimen/_8sdp"
+                                />
+
+                            <LinearLayout
+                                android:id="@+id/ll_dots_review"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_30sdp"
+                                android:layout_alignParentBottom="true"
+                                android:background="@color/white"
+                                android:gravity="center"
+                                android:orientation="horizontal" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:background="@color/white"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_8sdp"
+                        android:layout_marginTop="@dimen/_14sdp"
+                        android:layout_marginBottom="@dimen/_14sdp">
+
+                        <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
 
-                        </androidx.recyclerview.widget.RecyclerView>
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/montserrat_bold"
+                                android:text="Frequently asked question"
+                                android:textColor="@color/action_mode_color"
+                                android:textSize="@dimen/_18sdp" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_12sdp"
+                        android:layout_marginRight="@dimen/_12sdp"
+                        android:layout_marginBottom="@dimen/_100sdp"
+                        android:orientation="vertical">
+
+                        <ExpandableListView
+                            android:id="@+id/expandableListView"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_200sdp"
+                            android:divider="@android:color/darker_gray"
+                            android:dividerHeight="0.5dp"
+                            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>

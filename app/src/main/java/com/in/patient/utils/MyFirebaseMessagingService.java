@@ -82,7 +82,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
         String channel_name = remoteMessage.getData().get("chanel_name");
 
-
         Intent intent = new Intent(this, VideoCallScreen.class);
         intent.putExtra("channel", channel_name);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -105,6 +104,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         r.play();
 
         NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
         manager.notify(0, builder.build());
     }
 
