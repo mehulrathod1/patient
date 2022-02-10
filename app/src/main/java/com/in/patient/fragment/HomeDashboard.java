@@ -277,7 +277,6 @@ public class HomeDashboard extends Fragment implements LocationListener {
                 Fragment fragment = new Consultation();
                 loadFragment(fragment);
             }
-
         });
 
         homeCare.setOnClickListener(new View.OnClickListener() {
@@ -541,7 +540,7 @@ public class HomeDashboard extends Fragment implements LocationListener {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.firstFrame, fragment);
-//        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
     }
 

@@ -1,5 +1,9 @@
 package com.in.patient.activity;
 
+import static com.in.patient.globle.Glob.Token;
+import static com.in.patient.globle.Glob.dialog;
+import static com.in.patient.globle.Glob.user_id;
+
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -11,10 +15,12 @@ import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +41,10 @@ import com.in.patient.model.ViewBookingDetailModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -43,6 +53,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,7 +65,7 @@ public class ViewBookingDetail extends AppCompatActivity {
     ImageView nevBack;
     TextView headerTitle;
 
-    TextView txtReport, review_submit, add_review, chat, booking_idd, booking_date, booking_time,
+    TextView txtUploadReport, txtReport, review_submit, add_review, chat, booking_idd, booking_date, booking_time,
             booking_status, payment_status, payment_amount, doctor_name,
             doctor_speciality, clinic_address, start_Video, appointment_time, appointment_date;
 
@@ -62,6 +75,8 @@ public class ViewBookingDetail extends AppCompatActivity {
     RatingBar ratting;
     String date_and_time, doctor_id, report_download;
     private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 10;
+    private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAG = 11;
+    File reportFile;
 
     AlertDialog alert;
     AlertDialog.Builder alertDialog;
@@ -80,7 +95,7 @@ public class ViewBookingDetail extends AppCompatActivity {
         String id = intent.getStringExtra("id");
 
         init();
-        getViewBookingDetail(Glob.Token, Glob.user_id, id);
+        getViewBookingDetail(Token, user_id, id);
 
 
         Calendar calendar = Calendar.getInstance();
@@ -123,7 +138,7 @@ public class ViewBookingDetail extends AppCompatActivity {
         txtReport = findViewById(R.id.txtReport);
         appointment_time = findViewById(R.id.appointment_time);
         appointment_date = findViewById(R.id.appointment_date);
-
+        txtUploadReport = findViewById(R.id.txtUpload);
         ll_download_report = findViewById(R.id.ll_download_report);
 
         alertDialog = new AlertDialog.Builder(this);
@@ -163,10 +178,10 @@ public class ViewBookingDetail extends AppCompatActivity {
                 Log.e("rate", "init: " + ratting.getRating());
 
                 String rate = String.valueOf(ratting.getRating());
-                addReview(Glob.Token, Glob.user_id, doctor_id, review_text.getText().toString(), rate);
+                addReview(Token, user_id, doctor_id, review_text.getText().toString(), rate);
                 alert.dismiss();
 
-                Log.e("lengho", "onClick: " + Glob.user_id + "aaaaa" + doctor_id + "vvv" + rate);
+                Log.e("lengho", "onClick: " + user_id + "aaaaa" + doctor_id + "vvv" + rate);
             }
         });
 
@@ -175,7 +190,7 @@ public class ViewBookingDetail extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                sendNotification(Glob.Token, doctor_id, "test");
+                sendNotification(Token, doctor_id, "test");
 
             }
         });
@@ -217,6 +232,32 @@ public class ViewBookingDetail extends AppCompatActivity {
 //                DownloadManager.Request request = new DownloadManager.Request(uri);
 //                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
 //                long reference = manager.enqueue(request);
+
+            }
+        });
+
+
+        txtUploadReport.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+
+                    Log.e("premitionnotgranted ", "onClick: " + "granted");
+
+
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    intent.setType("application/pdf");
+                    startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+
+
+                } else {
+                    ActivityCompat.requestPermissions(ViewBookingDetail.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+
+                    Log.e("premitionnotgranted ", "onClick: " + "premitionnotgranted");
+                }
 
             }
         });
@@ -367,6 +408,127 @@ public class ViewBookingDetail extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void uploadDocument(String token, String user_id, String booking_id, File documentfile, String comment) {
+
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+        RequestBody requestBody_token = RequestBody.create(MediaType.parse("multipart/form-data"), token);
+        RequestBody requestBody_user_id = RequestBody.create(MediaType.parse("multipart/form-data"), user_id);
+        RequestBody requestBody_booking_id = RequestBody.create(MediaType.parse("multipart/form-data"), booking_id);
+        RequestBody requestBody_comment = RequestBody.create(MediaType.parse("multipart/form-data"), comment);
+
+
+        MultipartBody.Part requestBody_report = null;
+        RequestBody requestBody_req_report = RequestBody.create(MediaType.parse("multipart/form-data"), documentfile);
+        requestBody_report = MultipartBody.Part.createFormData("reportfile", reportFile.getName(), requestBody_req_report);
+
+
+        call.uploadDocument(requestBody_token, requestBody_user_id, requestBody_booking_id, requestBody_report, requestBody_comment).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+
+                CommonModel model = response.body();
+                Toast.makeText(getApplicationContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+
+
+                Toast.makeText(getApplicationContext(), "" + t.getMessage(), Toast.LENGTH_SHORT).show();
+                dialog.dismiss();
+
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode) {
+
+
+            case 10:
+
+                if (resultCode == RESULT_OK) {
+                    // Get the Uri of the selected file
+
+
+                    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new
+                            Date());
+                    reportFile = new File(getCacheDir(), "DOC_" + timeStamp + ".pdf");
+
+                    FileOutputStream fos = null;
+                    try {
+                        fos = new FileOutputStream(reportFile);
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        fos.flush();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        fos.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+
+                    Log.e("TAG", "onActivityResult: "+booking_idd.getText().toString() );
+
+                    uploadDocument(Token, user_id, booking_idd.getText().toString(), reportFile, "");
+                    Uri uri = data.getData();
+                    String uriString = uri.toString();
+                    if (uriString.startsWith("content://")) {
+                        Cursor cursor = null;
+                        try {
+                            cursor = getContentResolver().query(uri, null, null, null, null);
+                            if (cursor != null && cursor.moveToFirst()) {
+                                String displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                                Log.e("displayName", "onActivivvtyResult: " + displayName);
+                                txtUploadReport.setText(displayName);
+                            }
+                        } finally {
+                            cursor.close();
+                        }
+                    }
+                }
+                break;
+        }
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[],
+                                           int[] grantResults) {
+
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode) {
+            case MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE:
+                if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    //Granted.
+                    Log.e("premitionnotgranted ", "onClick: " + "ggggg");
+
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                    intent.setType("application/pdf");
+//                    startActivity(intent);
+                    startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+
+                } else {
+                    Log.e("premitionnotgranted ", "onClick: " + "ddd");
+                }
+                break;
+        }
     }
 
 }

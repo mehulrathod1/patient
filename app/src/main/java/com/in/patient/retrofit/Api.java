@@ -420,4 +420,16 @@ public interface Api {
     );
 
 
+    @FormUrlEncoded
+    @POST("add_home_care_requirements.php")
+    Call<CommonModel> addCare(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("name") String name,
+            @Field("email") String email,
+            @Field("phone") String phone,
+            @Field("care_requirement") String care_requirement,
+            @Field("address") String address
+
+    );
 }

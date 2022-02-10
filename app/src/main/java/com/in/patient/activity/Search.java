@@ -87,37 +87,31 @@ public class Search extends AppCompatActivity {
 //                    finish();
 //
 //                }
-
-
-
             }
         });
 
         search_name.addTextChangedListener(new TextWatcher() {
 
-                                                       @Override
-                                                       public void afterTextChanged(Editable s) {
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
 
+            @Override
+            public void beforeTextChanged(CharSequence s, int start,
+                                          int count, int after) {
+            }
 
-                                                       }
+            @Override
+            public void onTextChanged(CharSequence s, int start,
+                                      int before, int count) {
+                if (s.length() != 0) {
 
-                                                       @Override
-                                                       public void beforeTextChanged(CharSequence s, int start,
-                                                                                     int count, int after) {
-                                                       }
+                    Log.e("onTextChanged", "onTextChanged: " + search_name.getText().toString());
+                    getSearchItem(Glob.Token, Glob.user_id, search_name.getText().toString());
 
-                                                       @Override
-                                                       public void onTextChanged(CharSequence s, int start,
-                                                                                 int before, int count) {
-                                                           if (s.length() != 0) {
-
-                                                               Log.e("onTextChanged", "onTextChanged: " + search_name.getText().toString());
-                                                               getSearchItem(Glob.Token, Glob.user_id, search_name.getText().toString());
-
-
-                                                           }
-                                                       }
-                                                   });
+                }
+            }
+        });
 
 
 //        doctorName.setOnClickListener(new View.OnClickListener() {
@@ -174,7 +168,7 @@ public class Search extends AppCompatActivity {
                 String doctorId = list.get(position).getDoctor_id();
                 Intent intent = new Intent(getApplicationContext(), DoctorProfile.class);
                 intent.putExtra("doctorId", doctorId);
-                intent.putExtra("FLag","Search");
+                intent.putExtra("FLag", "Search");
                 startActivity(intent);
             }
         });

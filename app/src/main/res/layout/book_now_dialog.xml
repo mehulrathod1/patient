@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_12sdp">
+        android:layout_margin="@dimen/_16sdp">
 
         <RelativeLayout
             android:id="@+id/layout"
@@ -19,9 +19,10 @@
                 android:id="@+id/homeCare"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/Find_InHome_Care"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Home Care"
                 android:textColor="@color/action_mode_color"
-                android:textSize="@dimen/_20sdp" />
+                android:textSize="@dimen/_18sdp" />
 
             <ImageView
 
@@ -61,7 +62,8 @@
                     android:text="@string/Where_is_car_needed" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/Care"
+                    style="@style/form_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -84,7 +86,8 @@
                     android:text="@string/Name" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/CareName"
+                    style="@style/form_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -108,7 +111,8 @@
                     android:text="@string/email" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/CareEmail"
+                    style="@style/form_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
@@ -131,12 +135,40 @@
                     android:text="@string/Phone_Number" />
 
                 <EditText
-                    style="@style/heading_text"
+                    android:id="@+id/careNumber"
+                    style="@style/form_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
                     android:background="@drawable/profile_edt_bg"
                     android:hint="@string/Enter_Phone_Number"
+                    android:inputType="number"
+                    android:maxLength="10"
+                    android:padding="10dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_16sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/sub_heading_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Address" />
+
+                <EditText
+                    android:id="@+id/CareAddress"
+                    style="@style/form_style"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_100sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="@drawable/profile_edt_bg"
+                    android:gravity="top"
+                    android:hint="Enter Address"
                     android:padding="10dp" />
 
             </LinearLayout>
@@ -151,12 +183,12 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/CareSubmit"
                     android:layout_width="@dimen/_100sdp"
                     android:layout_height="@dimen/_30sdp"
                     android:background="@drawable/know_more_button_bg"
                     android:gravity="center"
-                    android:text="@string/Find_Care"
-
+                    android:text="Submit"
                     android:textColor="@color/white" />
 
             </LinearLayout>

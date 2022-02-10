@@ -70,7 +70,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_vertical"
-                                android:layout_marginRight="@dimen/_6sdp"
+                                android:layout_marginLeft="@dimen/_14sdp"
                                 android:src="@drawable/ic_location_on_24" />
 
                             <com.google.android.material.textfield.TextInputLayout

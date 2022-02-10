@@ -119,7 +119,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
 
                 if (reportFile == null) {
 
-                    Toast.makeText(getApplicationContext(), "Please Select File", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Please Upload Report File", Toast.LENGTH_SHORT).show();
                 } else {
                     uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile, comment.getText().toString());
                 }
@@ -215,6 +215,8 @@ public class AfterPaymentScreen extends AppCompatActivity {
 
     public void uploadDocument(String token, String user_id, String booking_id, File documentfile, String comment) {
 
+
+
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
 
@@ -226,7 +228,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
 
         MultipartBody.Part requestBody_report = null;
         RequestBody requestBody_req_report = RequestBody.create(MediaType.parse("multipart/form-data"), documentfile);
-        requestBody_report = MultipartBody.Part.createFormData("documentfile", reportFile.getName(), requestBody_req_report);
+        requestBody_report = MultipartBody.Part.createFormData("reportfile", reportFile.getName(), requestBody_req_report);
 
 
         call.uploadDocument(requestBody_token, requestBody_user_id, requestBody_booking_id, requestBody_report, requestBody_comment).enqueue(new Callback<CommonModel>() {
