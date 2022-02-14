@@ -10,6 +10,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.AssetFileDescriptor;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -22,6 +23,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
+import androidx.loader.content.CursorLoader;
 
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -375,6 +377,7 @@ public class ProfileSettingPersonal extends Fragment {
 //        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false);
         intent.putExtra(MediaStore.EXTRA_VIDEO_QUALITY, 1);
         photoFile = getPhotoFileUri(photoFileName);
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             Uri tempFileUri = FileProvider.getUriForFile(getContext(),
                     "com.in.doctor.provider", // As defined in Manifest
@@ -469,6 +472,7 @@ public class ProfileSettingPersonal extends Fragment {
 //                                    edtLastName.getText().toString(), "1",
 //                                    edtEducation.getText().toString(), edtLanguageSpoken.getText().toString(),
 //                                    edtExperience.getText().toString(), edtAddress.getText().toString(), img_file);
+
                             Uri temporary_Image = Uri.fromFile(new File(String.valueOf(img_file)));
                             profileImage.setImageURI(temporary_Image);
                         }
@@ -526,6 +530,9 @@ public class ProfileSettingPersonal extends Fragment {
         }
 
     }
+
+
+
 
 
 }

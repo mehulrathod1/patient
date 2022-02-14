@@ -125,12 +125,14 @@
 
                     <TextView
                         android:id="@+id/Price"
-                        style="@style/p_medium_16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_24sdp"
+                        android:fontFamily="@font/montserrat_semi_bold"
                         android:text="$199"
-                        android:textColor="@color/black_text_color" />
+                        android:textColor="@color/black_text_color"
+                        android:textSize="@dimen/_16sdp"/>
+
                 </LinearLayout>
 
             </LinearLayout>

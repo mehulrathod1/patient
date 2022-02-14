@@ -80,4 +80,6 @@ dependencies {
 //    razorpay
     implementation 'com.razorpay:checkout:1.6.12'
 
+    def uploadServiceVersion = "4.7.0"
+    implementation "net.gotev:uploadservice:$uploadServiceVersion"
 }

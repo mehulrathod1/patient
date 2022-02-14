@@ -17,6 +17,7 @@ import com.in.patient.model.ProfileLifestyleModel;
 import com.in.patient.model.ProfileMedicalModel;
 import com.in.patient.model.ProfilePersonalModel;
 import com.in.patient.model.RelativeModel;
+import com.in.patient.model.ReportModel;
 import com.in.patient.model.SearchModel;
 import com.in.patient.model.SendNotificationModel;
 import com.in.patient.model.SignInModel;
@@ -432,4 +433,24 @@ public interface Api {
             @Field("address") String address
 
     );
+
+    @FormUrlEncoded
+    @POST("add_payment_transaction.php")
+    Call<CommonModel> addPaymentTransaction(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("booking_id") String booking_id,
+            @Field("amount") String amount,
+            @Field("payment_status") String payment_status
+    );
+
+    @FormUrlEncoded
+    @POST("get_doctor_reports.php")
+    Call<ReportModel> getPatientReport(
+
+            @Field("token") String token,
+            @Field("booking_id") String booking_id,
+            @Field("user_id") String user_id
+    );
 }
+

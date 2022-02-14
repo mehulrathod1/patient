@@ -133,6 +133,7 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
 
         try {
 
+            addPaymentTransaction(Token, user_id, booking_id, total_amount, "success");
             bookingConformation(Token, user_id, booking_id);
             Toast.makeText(getApplicationContext(), "Payment Successfull", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(getApplicationContext(), AfterPaymentScreen.class);
@@ -180,5 +181,25 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
             }
         });
 
+    }
+
+    public void addPaymentTransaction(String token, String user_id, String booking_id, String amount, String payment_status) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+        call.addPaymentTransaction(token, user_id, booking_id, amount, payment_status).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+
+                CommonModel model = response.body();
+                Toast.makeText(getApplicationContext(), "" + model.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+
+            }
+        });
     }
 }

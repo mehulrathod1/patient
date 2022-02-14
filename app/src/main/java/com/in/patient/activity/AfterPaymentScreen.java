@@ -9,10 +9,14 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.OpenableColumns;
 import android.util.Log;
@@ -24,6 +28,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+
 import com.in.patient.R;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.BookingConformationModel;
@@ -31,6 +36,10 @@ import com.in.patient.model.CommonModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
 import com.razorpay.Checkout;
+
+import net.gotev.uploadservice.BuildConfig;
+import net.gotev.uploadservice.UploadServiceConfig;
+import net.gotev.uploadservice.protocols.multipart.MultipartUploadRequest;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -59,6 +68,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
     EditText comment;
     ImageView ProfileImage;
 
+    Uri uri;
 
     String TAG = "BookAppointment";
 
@@ -117,11 +127,16 @@ public class AfterPaymentScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (reportFile == null) {
+                if (uri == null) {
 
                     Toast.makeText(getApplicationContext(), "Please Upload Report File", Toast.LENGTH_SHORT).show();
                 } else {
-                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile, comment.getText().toString());
+//                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile, comment.getText().toString());
+
+
+                    Log.e("uriii", "onClick: " + uri.toString());
+                    uploadFile();
+                    finish();
                 }
 //                finish();
             }
@@ -140,14 +155,24 @@ public class AfterPaymentScreen extends AppCompatActivity {
             public void onClick(View v) {
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 
-                    Log.e("premitionnotgranted ", "onClick: " + "granted");
-
-
+//                    Log.e("premitionnotgranted ", "onClick: " + "granted");
+//
+//
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_GET_CONTENT);
                     intent.setType("application/pdf");
                     startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
 
+
+//                    try {
+//                        Intent intent = new Intent();
+//                        intent.setType("application/pdf");
+//                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+//                        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+//                        startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+//                    } catch (Exception e) {
+//
+//                    }
 
                 } else {
                     ActivityCompat.requestPermissions(AfterPaymentScreen.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
@@ -216,7 +241,6 @@ public class AfterPaymentScreen extends AppCompatActivity {
     public void uploadDocument(String token, String user_id, String booking_id, File documentfile, String comment) {
 
 
-
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
 
@@ -252,6 +276,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
         });
     }
 
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -261,72 +286,25 @@ public class AfterPaymentScreen extends AppCompatActivity {
             case 10:
 
                 if (resultCode == RESULT_OK) {
-                    // Get the Uri of the selected file
+                    uri = data.getData();
+                    if (data.getClipData() != null) {
+                        int count = data.getClipData().getItemCount();
+                        int currentItem = 0;
+                        while (currentItem < count) {
+                            Uri imageUri = data.getClipData().getItemAt(currentItem).getUri();
+                            //do something with the image (save it to some directory or whatever you need to do with it here)
+                            currentItem = currentItem + 1;
 
-
-                    String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new
-                            Date());
-                    reportFile = new File(getCacheDir(), "DOC_" + timeStamp + ".pdf");
-
-                    FileOutputStream fos = null;
-                    try {
-                        fos = new FileOutputStream(reportFile);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        fos.flush();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                    try {
-                        fos.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-
-//                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile,"comment");
-
-                    Uri uri = data.getData();
-                    String uriString = uri.toString();
-                    if (uriString.startsWith("content://")) {
-                        Cursor cursor = null;
-                        try {
-                            cursor = getContentResolver().query(uri, null, null, null, null);
-                            if (cursor != null && cursor.moveToFirst()) {
-                                String displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-                                Log.e("displayName", "onActivivvtyResult: " + displayName);
-                                extDocument.setText(displayName);
-                            }
-                        } finally {
-                            cursor.close();
+                            uri = imageUri;
+                            Log.e("onActivityResult", "onActivityResult: " + uri);
+//                            uploadFile();
                         }
-//                    addBookingAppointmentWithReport(Token, user_id, doctorId, appointmentDate, appointmentTime, "online", comment.getText().toString(), txtFees.getText().toString(), reportFile);
-//                    Uri uri = data.getData();
-//                    String uriString = uri.toString();
-//                    reportFile = new File(uriString);
-//                    String path = reportFile.getAbsolutePath();
-//                    String displayName = null;
+                    } else if (data.getData() != null) {
 
-//                    Log.e("path", "onActivityResult: " + reportFile);
-//
-//
-//                    if (uriString.startsWith("content://")) {
-//                        Cursor cursor = null;
-//                        try {
-//                            cursor = getContentResolver().query(uri, null, null, null, null);
-//                            if (cursor != null && cursor.moveToFirst()) {
-//                                displayName = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-//                                Log.e("displayName", "onActivivvtyResult: " + displayName);
-//                                choose_file.setText(displayName);
-//                            }
-//                        } finally {
-//                            cursor.close();
-//                        }
-//                    } else if (uriString.startsWith("file://")) {
-//                        displayName = reportFile.getName();
-//                        Log.e("displayName", "onActivityResult: " + displayName);
+                        uri = data.getData();
+                        //do something with the image (save it to some directory or whatever you need to do with it here)
+                        Log.e("onActivityResoult", "onActivityResult: " + uri);
+//                        uploadFile();
                     }
                 }
                 break;
@@ -358,6 +336,30 @@ public class AfterPaymentScreen extends AppCompatActivity {
                     Log.e("premitionnotgranted ", "onClick: " + "ddd");
                 }
                 break;
+        }
+    }
+
+    public void uploadFile() {
+
+        try {
+            if (Build.VERSION.SDK_INT >= 26) {
+
+                NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+                NotificationChannel channel = new NotificationChannel("TestChannel", "TestApp Channel", NotificationManager.IMPORTANCE_LOW);
+                manager.createNotificationChannel(channel);
+            }
+            UploadServiceConfig.initialize(getApplication(), "TestChannel", BuildConfig.DEBUG);
+            MultipartUploadRequest uploadRequest = new MultipartUploadRequest(this, "http://ciam.notionprojects.tech/api/patient/upload_patient_document.php")
+                    .setMethod("POST")
+                    .addFileToUpload(uri.toString(), "reportfile")
+                    .addParameter("user_id", user_id)
+                    .addParameter("booking_id", txtBookingId.getText().toString())
+                    .addParameter("comments", comment.getText().toString())
+                    .addParameter("token", Token);
+            uploadRequest.startUpload();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
