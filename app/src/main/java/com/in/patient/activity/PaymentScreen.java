@@ -142,6 +142,7 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
             startActivity(intent);
             finish();
 
+
         } catch (Exception e) {
             Log.e("TAGasdfghjk", "Error in starting Razorpay Checkout", e);
         }

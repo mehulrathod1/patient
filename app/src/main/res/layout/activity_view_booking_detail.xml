@@ -624,6 +624,7 @@
                                     android:fontFamily="@font/montserrat_semi_bold"
                                     android:gravity="center"
                                     android:text="@string/Start_Video"
+                                    android:visibility="gone"
                                     android:textColor="@color/white"
                                     android:textSize="@dimen/_16sdp" />
 

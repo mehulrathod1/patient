@@ -101,7 +101,7 @@ public class ViewBookingDetail extends AppCompatActivity {
     LinearLayout ll_download_report;
     EditText review_text;
     RatingBar ratting;
-    String date_and_time, doctor_id;
+    String date_and_time, doctor_id, onlyTime;
     private static final int MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE = 10;
     File reportFile;
     File photoFile, img_file;
@@ -317,22 +317,24 @@ public class ViewBookingDetail extends AppCompatActivity {
                 doctor_speciality.setText(data.getSpecialty());
                 clinic_address.setText(data.getClinicLocation());
                 doctor_id = data.getDoctorId();
-                date_and_time = data.getAppointmentDate() + " " + data.getAppointmentTime();
-
+//                date_and_time = data.getAppointmentDate() + " " + data.getAppointmentTime();
+                date_and_time = data.getAppointmentDate();
+                onlyTime = data.getBookedServiceTime();
                 Glob.dialog.dismiss();
 
 
                 Calendar compDate = Calendar.getInstance();
-                compDate.add(Calendar.MINUTE, 5);
-                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+//                compDate.add(Calendar.MINUTE, 5);
+//                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                 String getCurrentDateTime = sdf.format(compDate.getTime());
                 String temp = "2022-02-03 12:10:00";// date_and_time
 
-                Log.e("boosdfghjl", "onResponse: " + (date_and_time));
-//                Log.e("demo", "onResponse: "+getCurrentDateTime.(temp)+ "---"+getCurrentDateTime +"-----" +temp);
+                Log.e("boosdfghjl", "onResponse: " + getCurrentDateTime + "-------" + date_and_time);
 
-                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
-                //Parsing the given String to Date object
+//                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+
                 Date date1 = null;
                 try {
                     date1 = formatter.parse(getCurrentDateTime);
@@ -343,22 +345,83 @@ public class ViewBookingDetail extends AppCompatActivity {
 
                     if (bool1) {
                         Log.e("bool", "onResponse: " + (getCurrentDateTime + " is after " + date_and_time));
-                        chat.setVisibility(View.VISIBLE);
-                        add_review.setVisibility(View.VISIBLE);
-//                        start_Video.setClickable(false);
+
                     } else if (bool2) {
                         Log.e("bool", "onResponse: " + (getCurrentDateTime + " is before " + date_and_time));
+
                     } else if (bool3) {
                         Log.e("bool", "onResponse: " + (getCurrentDateTime + " is equals to " + date_and_time));
+
+                        Calendar compTime = Calendar.getInstance();
+                        SimpleDateFormat sdfTime = new SimpleDateFormat("HH:mm");
+                        String Time = sdfTime.format(compTime.getTime());
+                        Log.e("checkTime", "onResponse: " + Time + "---------" + onlyTime);
+
+                        int api_time = Integer.parseInt(onlyTime.split(":")[0]);
+                        int api_time2 = Integer.parseInt(onlyTime.split(":")[1]);
+
+                        int cur_time = Integer.parseInt(Time.split(":")[0]);
+                        int cur_time2 = Integer.parseInt(Time.split(":")[1]);
+
+
+                        int ap = api_time * 60 + api_time2;
+                        int ct = cur_time * 60 + cur_time2;
+
+                        Log.e("checkTime", "onResponse: " + ct + "----" + ap);
+
+                        int def = ct - ap;
+
+                        if (def >= -5 && def <= 20) {
+                            Log.e("checkTime", "Visible: " + "Visible" + def);
+                            start_Video.setVisibility(View.VISIBLE);
+                        }
+                        if (def>20){
+
+                            Log.e("checkTime", "Visible: " + "Visible" + def);
+                            chat.setVisibility(View.VISIBLE);
+                            add_review.setVisibility(View.VISIBLE);
+                        }
                     }
 
                 } catch (ParseException e) {
                     e.printStackTrace();
 
-
                 }
-
-
+//                Calendar compDate = Calendar.getInstance();
+//                compDate.add(Calendar.MINUTE, 5);
+//                SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+//                String getCurrentDateTime = sdf.format(compDate.getTime());
+//                String temp = "2022-02-03 12:10:00";// date_and_time
+//
+//                Log.e("boosdfghjl", "onResponse: " + (date_and_time));
+////                Log.e("demo", "onResponse: "+getCurrentDateTime.(temp)+ "---"+getCurrentDateTime +"-----" +temp);
+//
+//                SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+//                //Parsing the given String to Date object
+//                Date date1 = null;
+//                try {
+//                    date1 = formatter.parse(getCurrentDateTime);
+//                    Date date2 = formatter.parse(date_and_time);
+//                    Boolean bool1 = date1.after(date2);
+//                    Boolean bool2 = date1.before(date2);
+//                    Boolean bool3 = date1.equals(date2);
+//
+//                    if (bool1) {
+//                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is after " + date_and_time));
+//                        chat.setVisibility(View.VISIBLE);
+//                        add_review.setVisibility(View.VISIBLE);
+////                        start_Video.setClickable(false);
+//                    } else if (bool2) {
+//                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is before " + date_and_time));
+//                    } else if (bool3) {
+//                        Log.e("bool", "onResponse: " + (getCurrentDateTime + " is equals to " + date_and_time));
+//                    }
+//
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//
+//
+//                }
             }
 
             @Override
@@ -716,5 +779,8 @@ public class ViewBookingDetail extends AppCompatActivity {
 
     }
 
+    public String timeConvert(int time) {
+        return time / 24 / 60 + ":" + time / 60 % 24 + ':' + time % 60;
+    }
 }
 

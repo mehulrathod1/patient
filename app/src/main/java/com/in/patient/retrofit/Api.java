@@ -452,5 +452,18 @@ public interface Api {
             @Field("booking_id") String booking_id,
             @Field("user_id") String user_id
     );
+
+    @FormUrlEncoded
+    @POST("upload_patient_document.php")
+    Call<CommonModel> uploadComment(
+
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("booking_id") String booking_id,
+            @Field("reportfile") String reportFile,
+            @Field("comments") String comments
+
+
+    );
 }
 

@@ -127,18 +127,20 @@ public class AfterPaymentScreen extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if (uri == null) {
 
-                    Toast.makeText(getApplicationContext(), "Please Upload Report File", Toast.LENGTH_SHORT).show();
-                } else {
-//                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile, comment.getText().toString());
-
-
-                    Log.e("uriii", "onClick: " + uri.toString());
-                    uploadFile();
-                    finish();
-                }
-//                finish();
+                uploadComment(Token, user_id, txtBookingId.getText().toString(), "", comment.getText().toString());
+//                if (uri == null) {
+//
+//                    Toast.makeText(getApplicationContext(), "Please Upload Report File", Toast.LENGTH_SHORT).show();
+//                } else {
+////                    uploadDocument(Token, user_id, txtBookingId.getText().toString(), reportFile, comment.getText().toString());
+//
+//
+//                    Log.e("uriii", "onClick: " + uri.toString());
+////                    uploadFile();
+//                    finish();
+//                }
+////                finish();
             }
         });
 
@@ -158,21 +160,21 @@ public class AfterPaymentScreen extends AppCompatActivity {
 //                    Log.e("premitionnotgranted ", "onClick: " + "granted");
 //
 //
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    intent.setType("application/pdf");
-                    startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+//                    Intent intent = new Intent();
+//                    intent.setAction(Intent.ACTION_GET_CONTENT);
+//                    intent.setType("application/pdf");
+//                    startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
 
 
-//                    try {
-//                        Intent intent = new Intent();
-//                        intent.setType("application/pdf");
-//                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-//                        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
-//                        startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
-//                    } catch (Exception e) {
-//
-//                    }
+                    try {
+                        Intent intent = new Intent();
+                        intent.setType("application/pdf");
+                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+                        startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+                    } catch (Exception e) {
+
+                    }
 
                 } else {
                     ActivityCompat.requestPermissions(AfterPaymentScreen.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
@@ -276,6 +278,28 @@ public class AfterPaymentScreen extends AppCompatActivity {
         });
     }
 
+    public void uploadComment(String token, String user_id, String booking_id, String documentfile, String comment) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+        call.uploadComment(token, user_id, booking_id, documentfile, comment).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+
+                CommonModel model = response.body();
+                dialog.dismiss();
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+
+                Log.e(TAG, "onFailure: " + t.getMessage());
+                dialog.dismiss();
+            }
+        });
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -297,14 +321,14 @@ public class AfterPaymentScreen extends AppCompatActivity {
 
                             uri = imageUri;
                             Log.e("onActivityResult", "onActivityResult: " + uri);
-//                            uploadFile();
+                            uploadFile();
                         }
                     } else if (data.getData() != null) {
 
                         uri = data.getData();
                         //do something with the image (save it to some directory or whatever you need to do with it here)
                         Log.e("onActivityResoult", "onActivityResult: " + uri);
-//                        uploadFile();
+                        uploadFile();
                     }
                 }
                 break;
@@ -316,7 +340,7 @@ public class AfterPaymentScreen extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[],
-                                           int[] grantResults) {
+                                            int[] grantResults) {
 
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -324,14 +348,15 @@ public class AfterPaymentScreen extends AppCompatActivity {
             case MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE:
                 if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     //Granted.
-                    Log.e("premitionnotgranted ", "onClick: " + "ggggg");
+                    try {
+                        Intent intent = new Intent();
+                        intent.setType("application/pdf");
+                        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+                        intent.setAction(Intent.ACTION_OPEN_DOCUMENT);
+                        startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
+                    } catch (Exception e) {
 
-                    Intent intent = new Intent();
-                    intent.setAction(Intent.ACTION_GET_CONTENT);
-                    intent.setType("application/pdf");
-//                    startActivity(intent);
-                    startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
-
+                    }
                 } else {
                     Log.e("premitionnotgranted ", "onClick: " + "ddd");
                 }

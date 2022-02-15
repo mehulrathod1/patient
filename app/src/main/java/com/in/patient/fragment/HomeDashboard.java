@@ -78,7 +78,7 @@ public class HomeDashboard extends Fragment implements LocationListener {
 
     View view;
     Fragment fragment;
-    TextView viewAllDoctor, viewAllServices, viewAllCheckup, search;
+    TextView viewAllDoctor, viewAllServices, viewAllCheckup, search, city_name;
     ImageView search_icon;
     private ViewPager vp_slider;
     private LinearLayout ll_dots;
@@ -101,9 +101,13 @@ public class HomeDashboard extends Fragment implements LocationListener {
     LinearLayout doctorConsultant, homeCare, labTest, medicines, healthProduct, search_layout;
 
     protected LocationManager locationManager;
-    protected LocationListener locationListener;
+
     protected Context context;
+
+
     double latitude, longitude;
+    protected LocationListener locationListener;
+
 
     public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
@@ -125,6 +129,15 @@ public class HomeDashboard extends Fragment implements LocationListener {
         addBottomDots(0);
         getDoctorSpecialist(Glob.Token, Glob.user_id);
 
+
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+
+            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
+
+        } else {
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
+        }
 
 //        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 //        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -157,6 +170,7 @@ public class HomeDashboard extends Fragment implements LocationListener {
 
         search_icon = view.findViewById(R.id.search_icon);
         search = view.findViewById(R.id.search);
+        city_name = view.findViewById(R.id.city_name);
 
         spn_state_name = view.findViewById(R.id.state_name);
 
@@ -164,9 +178,9 @@ public class HomeDashboard extends Fragment implements LocationListener {
         ll_dots = view.findViewById(R.id.ll_dots);
 
 
-        cityNameList.add("Gujarat");
-        cityNameList.add("Maharashtra");
-        cityNameList.add("Rajasthan");
+//        cityNameList.add("Gujarat");
+//        cityNameList.add("Maharashtra");
+//        cityNameList.add("Rajasthan");
 
         cityNameAdapter = new ArrayAdapter<String>(getContext(), R.layout.profile_spinner_text, cityNameList);
         cityNameAdapter.setDropDownViewResource(R.layout.dropdown_item);
@@ -613,6 +627,37 @@ public class HomeDashboard extends Fragment implements LocationListener {
     @Override
     public void onLocationChanged(@NonNull Location location) {
 
+        if (getActivity() != null) {
+            longitude = location.getLongitude();
+            latitude = location.getLatitude();
+
+            Log.e("Location", "onLocationChanged: " + "Latitude:" + latitude + ", Longitude:" + longitude);
+
+            String cityName = null;
+            Geocoder gcd = new Geocoder(getContext(),
+                    Locale.getDefault());
+            List<Address> addresses;
+            String ss;
+            try {
+                addresses = gcd.getFromLocation(location.getLatitude(), location
+                        .getLongitude(), 1);
+                if (addresses.size() > 0)
+                    System.out.println(addresses.get(0).getLocality());
+                cityName = addresses.get(0).getLocality();
+                ss = addresses.get(0).getLocality();
+                Log.e("s", "onLocationChanged: " + ss);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            String s = cityName;
+
+
+            Log.e("cityName", "onLocationChanged: " + s);
+//        edt_city_name.setText(s);
+//        cityNameList.add(s);
+
+            city_name.setText(s);
+        }
     }
 
     @Override

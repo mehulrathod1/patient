@@ -10,7 +10,6 @@
         android:layout_height="wrap_content">
 
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -38,7 +37,20 @@
                         android:layout_marginRight="@dimen/_6sdp"
                         android:src="@drawable/ic_location_on_24" />
 
-                     <Spinner
+
+                    <TextView
+                        android:id="@+id/city_name"
+                        style="@style/sub_heading_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="@dimen/_46sdp"
+                        android:layout_marginTop="@dimen/_1sdp"
+                        android:layout_marginBottom="@dimen/_1sdp"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:gravity="center"
+                        android:text="Your City"
+                        android:textColor="@color/action_mode_color" />
+
+                    <Spinner
                         android:id="@+id/state_name"
                         style="@style/sub_heading_text"
                         android:layout_width="wrap_content"
@@ -50,8 +62,9 @@
                         android:popupBackground="@color/action_mode_color"
                         android:prompt="@string/app_name"
                         android:spinnerMode="dropdown"
-                        android:textColor="@color/action_mode_color_300" />
-            -
+                        android:textColor="@color/action_mode_color_300"
+                        android:visibility="gone" />
+
                 </LinearLayout>
 
 
