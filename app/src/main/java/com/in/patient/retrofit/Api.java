@@ -3,6 +3,8 @@ package com.in.patient.retrofit;
 
 import com.in.patient.model.AddBookingAppointmentModel;
 import com.in.patient.model.BookingConformationModel;
+import com.in.patient.model.ChatDashboardModel;
+import com.in.patient.model.ChatModel;
 import com.in.patient.model.CommonModel;
 import com.in.patient.model.DoctorConsultantSecondModel;
 import com.in.patient.model.DoctorProfileModel;
@@ -464,6 +466,36 @@ public interface Api {
             @Field("comments") String comments
 
 
+    );
+
+    @FormUrlEncoded
+    @POST("get_chat_doctor_list.php")
+    Call<ChatModel> getChatList(
+
+            @Field("token") String token,
+            @Field("user_id") String user_id
+
+    );
+
+
+    @FormUrlEncoded
+    @POST("get_chat_messages.php")
+    Call<ChatDashboardModel> getChatMessage(
+
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("doctor_id") String doctor_id
+    );
+
+    @FormUrlEncoded
+    @POST("add_patient_chat.php")
+    Call<CommonModel> sendMessage(
+
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("doctor_id") String doctor_id,
+            @Field("msg_type") String msg_type,
+            @Field("message") String message
     );
 }
 

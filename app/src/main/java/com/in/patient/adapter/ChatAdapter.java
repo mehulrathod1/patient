@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.in.patient.R;
 import com.in.patient.model.ChatModel;
 
@@ -18,12 +19,12 @@ import java.util.List;
 
 public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
-    List<ChatModel> list;
+    List<ChatModel.ChatDoctorList> list;
     Context context;
     Click click;
 
 
-    public ChatAdapter(List<ChatModel> list, Context context, Click click) {
+    public ChatAdapter(List<ChatModel.ChatDoctorList> list, Context context, Click click) {
         this.list = list;
         this.context = context;
         this.click = click;
@@ -46,10 +47,13 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
-        ChatModel model = list.get(position);
+        ChatModel.ChatDoctorList model = list.get(position);
 
-        holder.name.setText(model.getName());
+
+        holder.name.setText(model.getUser_name());
         holder.message.setText(model.getMessage());
+
+        Glide.with(context).load(model.getProfile_image()).into(holder.itemImage);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,7 +76,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             super(itemView);
 
 
-            itemImage = itemView.findViewById(R.id.itemImage);
+            itemImage = itemView.findViewById(R.id.userImage);
             name = itemView.findViewById(R.id.name);
             message = itemView.findViewById(R.id.message);
         }

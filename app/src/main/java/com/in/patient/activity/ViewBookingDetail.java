@@ -724,6 +724,8 @@ public class ViewBookingDetail extends AppCompatActivity {
                     .addParameter("token", Token);
 
             uploadRequest.startUpload();
+
+            Toast.makeText(getApplicationContext(), ""+"Start Uploading...", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
