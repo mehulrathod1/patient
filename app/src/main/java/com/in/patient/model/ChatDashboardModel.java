@@ -72,13 +72,27 @@ public class ChatDashboardModel {
         @Expose
         String time;
 
-        public DashboardMessage(String doctor_id, String patient_id, String send_by, String message, String date, String time) {
+        @SerializedName("chat_image")
+        @Expose
+        String chat_image;
+
+
+        public DashboardMessage(String doctor_id, String patient_id, String send_by, String message, String date, String time, String chat_image) {
             this.doctor_id = doctor_id;
             this.patient_id = patient_id;
             this.send_by = send_by;
             this.message = message;
             this.date = date;
             this.time = time;
+            this.chat_image = chat_image;
+        }
+
+        public String getChat_image() {
+            return chat_image;
+        }
+
+        public void setChat_image(String chat_image) {
+            this.chat_image = chat_image;
         }
 
         public String getDoctor_id() {

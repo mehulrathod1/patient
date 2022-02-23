@@ -50,6 +50,16 @@
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12sdp" />
 
+                    <ImageView
+                        android:id="@+id/receivedImage"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="@dimen/_150sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:visibility="gone"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img1" />
+
+
                     <TextView
                         android:id="@+id/receivedMessageTime"
                         android:layout_width="wrap_content"
@@ -97,6 +107,15 @@
                         android:text="hellooooo"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_12sdp" />
+
+                    <ImageView
+                        android:id="@+id/sendImage"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="@dimen/_150sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:visibility="gone"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img1" />
 
                     <TextView
                         android:id="@+id/sendMessageTime"

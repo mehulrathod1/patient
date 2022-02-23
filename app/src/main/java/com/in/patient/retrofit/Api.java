@@ -497,5 +497,17 @@ public interface Api {
             @Field("msg_type") String msg_type,
             @Field("message") String message
     );
+
+    @Multipart
+    @POST("add_patient_chat.php")
+    Call<CommonModel> sendImageInChat(
+
+            @Part("token") RequestBody token,
+            @Part("user_id") RequestBody user_id,
+            @Part("doctor_id") RequestBody doctor_id,
+            @Part("msg_type") RequestBody msg_type,
+            @Part MultipartBody.Part image
+    );
+
 }
 
