@@ -15,8 +15,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
-
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <uses-feature
         android:name="android.hardware.camera"
@@ -30,7 +29,6 @@
         </intent>
     </queries>
 
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_white"
@@ -41,11 +39,15 @@
         android:theme="@style/Theme.Patient"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.VideoPlayer"
+            android:exported="true" />
+        <activity
             android:name=".activity.AfterPaymentScreen"
             android:exported="true" />
         <activity
             android:name=".activity.PaymentScreen"
             android:exported="true" />
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -59,14 +61,14 @@
         <activity
             android:name=".activity.ViewBookingDetail"
             android:exported="true" /> <!-- <meta-data -->
-          <activity
+        <activity
             android:name=".activity.VideoCallScreen"
             android:exported="true" />
 
         <service
             android:name=".utils.MyFirebaseMessagingService"
-            android:exported="false"
-            android:directBootAware="true">
+            android:directBootAware="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>

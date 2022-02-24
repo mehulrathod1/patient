@@ -24,6 +24,8 @@
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.2203125" />
+        <entry key="..\:/Project/Patient/app/src/main/res/drawable/ic_baseline_play_circle_filled_24.xml" value="0.2203125" />
+        <entry key="..\:/Project/Patient/app/src/main/res/drawable/ic_video.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/my_chat_msg_bg.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/drawable/semi_button_bg.xml" value="0.2203125" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_account_setting.xml" value="0.22" />
@@ -50,6 +52,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_sign_up.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_splash.xml" value="0.12273550724637682" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_video_call_screen.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_video_player.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_view_booking_detail.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/add_relative_dialog.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/book_now_dialog.xml" value="0.33" />

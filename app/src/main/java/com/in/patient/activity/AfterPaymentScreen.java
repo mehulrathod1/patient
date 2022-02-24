@@ -157,14 +157,6 @@ public class AfterPaymentScreen extends AppCompatActivity {
             public void onClick(View v) {
                 if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 
-//                    Log.e("premitionnotgranted ", "onClick: " + "granted");
-//
-//
-//                    Intent intent = new Intent();
-//                    intent.setAction(Intent.ACTION_GET_CONTENT);
-//                    intent.setType("application/pdf");
-//                    startActivityForResult(intent, MY_PERMISSIONS_WRITE_EXTERNAL_STORAGE);
-
 
                     try {
                         Intent intent = new Intent();

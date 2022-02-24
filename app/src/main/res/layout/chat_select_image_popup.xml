@@ -34,7 +34,32 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/_30sdp"
                 android:fontFamily="@font/montserrat_regular"
-                android:text="Gallery"
+                android:text="Image"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/video"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_12sdp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:src="@drawable/ic_video" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:fontFamily="@font/montserrat_regular"
+                android:text="Video"
                 android:textColor="@color/black" />
 
         </LinearLayout>
@@ -65,6 +90,7 @@
                 android:text="Camera"
                 android:textColor="@color/black" />
         </LinearLayout>
+
 
     </LinearLayout>
 </RelativeLayout>

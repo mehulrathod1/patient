@@ -55,9 +55,19 @@
                         android:layout_width="@dimen/_150sdp"
                         android:layout_height="@dimen/_150sdp"
                         android:layout_marginLeft="@dimen/_20sdp"
-                        android:visibility="gone"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/img1" />
+                        android:src="@drawable/img1"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/receivedVideo"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="@dimen/_150sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:background="#9B9B9B"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_baseline_play_circle_filled_24"
+                        android:visibility="gone" />
 
 
                     <TextView
@@ -113,9 +123,19 @@
                         android:layout_width="@dimen/_150sdp"
                         android:layout_height="@dimen/_150sdp"
                         android:layout_marginLeft="@dimen/_20sdp"
-                        android:visibility="gone"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/img1" />
+                        android:src="@drawable/img1"
+                        android:visibility="gone" />
+
+                    <ImageView
+                        android:id="@+id/sendVideo"
+                        android:layout_width="@dimen/_150sdp"
+                        android:layout_height="@dimen/_150sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:background="#150050"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_baseline_play_circle_filled_24"
+                        android:visibility="gone" />
 
                     <TextView
                         android:id="@+id/sendMessageTime"

@@ -412,8 +412,6 @@ public interface Api {
             @Field("message") String message,
             @Field("rating") String rating
     );
-
-
     @FormUrlEncoded
     @POST("get_doctor_review.php")
     Call<MyReviewModel> getReview(
@@ -421,7 +419,6 @@ public interface Api {
             @Field("user_id") String user_id,
             @Field("doctor_id") String doctor_id
     );
-
 
     @FormUrlEncoded
     @POST("add_home_care_requirements.php")

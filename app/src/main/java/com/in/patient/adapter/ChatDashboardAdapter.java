@@ -1,5 +1,6 @@
 package com.in.patient.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,6 +31,10 @@ public class ChatDashboardAdapter extends RecyclerView.Adapter<ChatDashboardAdap
 
     public interface Click {
         void onItemClick(int position);
+
+        void onVideoSendView(int position);
+
+        void onVideoReceivedView(int position);
     }
 
     public ChatDashboardAdapter(List<ChatDashboardModel.DashboardMessage> list, Context context, Click click) {
@@ -47,11 +52,13 @@ public class ChatDashboardAdapter extends RecyclerView.Adapter<ChatDashboardAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
 
         ChatDashboardModel.DashboardMessage model = list.get(position);
 
         String message = model.getMessage();
+        String image = model.getChat_image();
+        String video = model.getChat_video();
 
 
         if (model.getSend_by().equals("doctor")) {
@@ -64,7 +71,8 @@ public class ChatDashboardAdapter extends RecyclerView.Adapter<ChatDashboardAdap
             holder.send_message.setText(StringEscapeUtils.unescapeJava(model.getMessage()));
             holder.sendMessageTime.setText(model.getTime());
         }
-        if (message.equals("") && model.getSend_by().equals("patient")) {
+
+        if (message.equals("") && video.equals("")&& model.getSend_by().equals("patient")) {
 
             holder.send_message.setVisibility(View.GONE);
             holder.sendImage.setVisibility(View.VISIBLE);
@@ -72,13 +80,44 @@ public class ChatDashboardAdapter extends RecyclerView.Adapter<ChatDashboardAdap
 
         }
 
-        if (message.equals("") && model.getSend_by().equals("doctor")) {
+        if (message.equals("") && video.equals("") && model.getSend_by().equals("doctor")) {
 
             holder.receivedMessage.setVisibility(View.GONE);
             holder.receivedImage.setVisibility(View.VISIBLE);
             Glide.with(context).load(model.getChat_image()).into(holder.receivedImage);
 
         }
+
+        if (message.equals("") && image.equals("") && model.getSend_by().equals("doctor")) {
+
+            holder.receivedMessage.setVisibility(View.GONE);
+            holder.receivedImage.setVisibility(View.GONE);
+            holder.receivedVideo.setVisibility(View.VISIBLE);
+
+
+        }
+        if (message.equals("") && image.equals("") && model.getSend_by().equals("patient")) {
+
+            holder.send_message.setVisibility(View.GONE);
+            holder.sendImage.setVisibility(View.GONE);
+            holder.sendVideo.setVisibility(View.VISIBLE);
+
+
+        }
+
+        holder.sendVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                click.onVideoSendView(position);
+            }
+        });
+
+        holder.receivedVideo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                click.onVideoReceivedView(position);
+            }
+        });
 
     }
 
@@ -90,7 +129,7 @@ public class ChatDashboardAdapter extends RecyclerView.Adapter<ChatDashboardAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView receivedMessage, receivedMessageTime, send_message, sendMessageTime;
-        ImageView receivedImage, sendImage;
+        ImageView receivedImage, sendImage, receivedVideo, sendVideo;
         RelativeLayout first_chat, second_chat;
 
 
@@ -107,7 +146,8 @@ public class ChatDashboardAdapter extends RecyclerView.Adapter<ChatDashboardAdap
             second_chat = itemView.findViewById(R.id.second_chat);
             receivedImage = itemView.findViewById(R.id.receivedImage);
             sendImage = itemView.findViewById(R.id.sendImage);
-
+            receivedVideo = itemView.findViewById(R.id.receivedVideo);
+            sendVideo = itemView.findViewById(R.id.sendVideo);
         }
     }
 
