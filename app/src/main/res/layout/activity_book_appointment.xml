@@ -787,6 +787,20 @@
                                     android:textSize="@dimen/_20sdp"
                                     android:visibility="gone" />
 
+
+                                <TextView
+                                    android:id="@+id/termsCondition"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/_30sdp"
+                                    android:layout_marginTop="@dimen/_18sdp"
+                                    android:background="@drawable/time_bg"
+                                    android:fontFamily="@font/montserrat_semi_bold"
+                                    android:gravity="center"
+                                    android:text="Terms And Condition"
+                                    android:textColor="@color/action_mode_color_edt"
+                                    android:textSize="@dimen/_12sdp"
+                                     />
+
                                 <Button
                                     android:id="@+id/txtpayNow"
                                     android:layout_width="match_parent"
@@ -794,7 +808,7 @@
                                     android:layout_alignParentBottom="true"
                                     android:layout_marginTop="@dimen/_14sdp"
                                     android:background="@drawable/button_bg"
-                                    android:text="@string/Proceed_to_pay"
+                                    android:text="@string/Proceed"
                                     android:textAllCaps="false"
                                     android:textSize="@dimen/_20sdp" />
                             </LinearLayout>

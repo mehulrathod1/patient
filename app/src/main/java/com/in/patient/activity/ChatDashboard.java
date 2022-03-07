@@ -84,7 +84,6 @@ public class ChatDashboard extends AppCompatActivity {
     RecyclerView chatRecycler;
     ChatDashboardAdapter chatDashboardAdapter;
     List<ChatDashboardModel.DashboardMessage> chatList = new ArrayList<>();
-    List<ChatDashboardModel.DashboardMessage> dummyChatList = new ArrayList<>();
 
     ImageView profileImage, addImage;
     TextView profileName;
@@ -363,7 +362,6 @@ public class ChatDashboard extends AppCompatActivity {
 
 
                 String videoUrl = chatList.get(position).getChat_video();
-
                 Intent intent = new Intent(getApplicationContext(), VideoPlayer.class);
                 intent.putExtra("videoUrl", videoUrl);
                 startActivity(intent);
@@ -372,8 +370,8 @@ public class ChatDashboard extends AppCompatActivity {
             @Override
             public void onVideoReceivedView(int position) {
 
-                String videoUrl = chatList.get(position).getChat_video();
 
+                String videoUrl = chatList.get(position).getChat_video();
                 Intent intent = new Intent(getApplicationContext(), VideoPlayer.class);
                 intent.putExtra("videoUrl", videoUrl);
                 startActivity(intent);
@@ -401,10 +399,10 @@ public class ChatDashboard extends AppCompatActivity {
                 int s = chatList.size();
                 if (chatListSize == 0) {
                     getChatMessage(Glob.Token, Glob.user_id, doctor_id);
-                        chatListSize = chatList.size() + 1;
-                        Log.e(TAG, "run: " + chatListSize + "orr" + chatList.size());
+                    chatListSize = chatList.size() + 1;
+                    Log.e(TAG, "run: " + chatListSize + "orr" + chatList.size());
                 }
-                if (chatListSize == s){
+                if (chatListSize == s) {
 
                     getChatMessage(Glob.Token, Glob.user_id, doctor_id);
                     chatListSize = chatList.size() + 1;
@@ -682,5 +680,6 @@ public class ChatDashboard extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
 
 }

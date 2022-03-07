@@ -515,11 +515,10 @@ public class DoctorProfile extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<DoctorProfileModel> call, Throwable t) {
-                dialog.dismiss();
 
+                dialog.dismiss();
             }
         });
-
 
     }
 
@@ -703,9 +702,11 @@ public class DoctorProfile extends AppCompatActivity {
             }
         });
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(),3);
         slotRecycler.setLayoutManager(mLayoutManager);
+        slotRecycler.setNestedScrollingEnabled(false);
         slotRecycler.setAdapter(morningAdapter);
+
     }
 
     public void afternoonSlot() {
@@ -723,8 +724,9 @@ public class DoctorProfile extends AppCompatActivity {
             }
         });
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(),3);
         afternoon_recycler.setLayoutManager(mLayoutManager);
+        afternoon_recycler.setNestedScrollingEnabled(false);
         afternoon_recycler.setAdapter(afternoonAdapter);
     }
 
@@ -744,8 +746,9 @@ public class DoctorProfile extends AppCompatActivity {
             }
         });
 
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getApplicationContext(),3);
         evening_recycler.setLayoutManager(mLayoutManager);
+        evening_recycler.setNestedScrollingEnabled(false);
         evening_recycler.setAdapter(eveningAdapter);
     }
 

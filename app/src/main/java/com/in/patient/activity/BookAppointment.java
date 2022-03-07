@@ -58,7 +58,7 @@ public class BookAppointment extends AppCompatActivity {
     ImageView backButton;
     TextView txtDoctorName, txtBookingId, txtSpeciality, txtDName, txtBookingFor,
             txtBookingStatus, txtPatientName, txtLocation, txtServiceTime, txtClinicAddress,
-            texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport, chat, txtAge;
+            texTotalAmount, txtAmountFees, txtAmountStatus, extDocument, txtReport, chat, txtAge, termsCondition;
 
     ImageView ProfileImage;
     String BookingId, doctorId, doctorFees;
@@ -106,6 +106,7 @@ public class BookAppointment extends AppCompatActivity {
         txtReport = findViewById(R.id.txtReport);
         chat = findViewById(R.id.chat);
         txtAge = findViewById(R.id.txtAge);
+        termsCondition = findViewById(R.id.termsCondition);
 
         ProfileImage = findViewById(R.id.ProfileImage);
 
@@ -165,6 +166,19 @@ public class BookAppointment extends AppCompatActivity {
                 }
 
 
+            }
+        });
+
+        termsCondition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), TermsAndCondition.class);
+                intent.putExtra("amount", doctorFees);
+                intent.putExtra("booking_id", BookingId);
+                intent.putExtra("doctor_id", doctorId);
+                startActivity(intent);
+                finish();
             }
         });
     }

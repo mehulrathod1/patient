@@ -39,6 +39,9 @@
         android:theme="@style/Theme.Patient"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.TermsAndCondition"
+            android:exported="true" />
+        <activity
             android:name=".activity.VideoPlayer"
             android:exported="true" />
         <activity

@@ -102,7 +102,7 @@ public class ViewBookingDetailModel {
         @Expose
         String ClinicLocation;
 
-        @SerializedName("Total Amount")
+        @SerializedName("to_be_paid")
         @Expose
         String TotalAmount;
 

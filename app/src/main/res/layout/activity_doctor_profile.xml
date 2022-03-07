@@ -812,7 +812,7 @@
 
                                 android:id="@+id/slotRecycler"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/_50sdp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:layout_marginBottom="@dimen/_8sdp" />
 
@@ -828,7 +828,7 @@
 
                                 android:id="@+id/afternoon_recycler"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/_50sdp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:layout_marginBottom="@dimen/_8sdp" />
 
@@ -844,7 +844,7 @@
 
                                 android:id="@+id/evening_recycler"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/_50sdp"
+                                android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/_8sdp"
                                 android:layout_marginBottom="@dimen/_8sdp" />
 
@@ -1076,6 +1076,9 @@
                             android:text="@string/Choose_report"
                             android:textColor="@color/action_mode_color_edt"
                             android:visibility="gone" />
+
+
+
 
                         <Button
                             android:id="@+id/BookAppointment"

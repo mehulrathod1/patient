@@ -115,6 +115,7 @@ public class ViewBookingDetail extends AppCompatActivity {
     List<ReportModel.ReportData> reportDataList = new ArrayList<>();
     ReportAdapter reportAdapter;
 
+    String Doctor_id;
 
     public static final String inputFormat = "HH:mm";
 
@@ -240,6 +241,7 @@ public class ViewBookingDetail extends AppCompatActivity {
 
 
                 getDoctorReport(Token, booking_idd.getText().toString(), user_id);
+
 //                reportAlert.show();
 //                if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
 //
@@ -290,6 +292,18 @@ public class ViewBookingDetail extends AppCompatActivity {
                 }
             }
         });
+
+        chat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), ChatDashboard.class);
+                intent.putExtra("doctor_id", doctor_id);
+                intent.putExtra("doctor_name", doctor_name.getText().toString());
+                intent.putExtra("doctor_image", "");
+                startActivity(intent);
+            }
+        });
     }
 
     public void getViewBookingDetail(String token, String user_id, String booking_id) {
@@ -305,6 +319,7 @@ public class ViewBookingDetail extends AppCompatActivity {
 
                 ViewBookingDetailModel.BookingData data = viewBookingDetailModel.getBookingData();
 
+                Doctor_id = data.getDoctorId();
                 booking_idd.setText(data.getBookingId());
                 booking_date.setText(data.getBookedDate());
                 booking_time.setText(data.getBookingTime());
@@ -345,6 +360,9 @@ public class ViewBookingDetail extends AppCompatActivity {
 
                     if (bool1) {
                         Log.e("bool", "onResponse: " + (getCurrentDateTime + " is after " + date_and_time));
+                        chat.setVisibility(View.VISIBLE);
+                        add_review.setVisibility(View.VISIBLE);
+
 
                     } else if (bool2) {
                         Log.e("bool", "onResponse: " + (getCurrentDateTime + " is before " + date_and_time));
@@ -370,16 +388,17 @@ public class ViewBookingDetail extends AppCompatActivity {
                         Log.e("checkTime", "onResponse: " + ct + "----" + ap);
 
                         int def = ct - ap;
+                        Log.e("checkTime", "onResponse: " +def);
 
                         if (def >= -5 && def <= 20) {
                             Log.e("checkTime", "Visible: " + "Visible" + def);
                             start_Video.setVisibility(View.VISIBLE);
                         }
-                        if (def>20){
+                        if (def > 20) {
 
                             Log.e("checkTime", "Visible: " + "Visible" + def);
-                            chat.setVisibility(View.VISIBLE);
-                            add_review.setVisibility(View.VISIBLE);
+//                            chat.setVisibility(View.VISIBLE);
+//                            add_review.setVisibility(View.VISIBLE);
                         }
                     }
 
@@ -725,7 +744,7 @@ public class ViewBookingDetail extends AppCompatActivity {
 
             uploadRequest.startUpload();
 
-            Toast.makeText(getApplicationContext(), ""+"Start Uploading...", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "" + "Start Uploading...", Toast.LENGTH_SHORT).show();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

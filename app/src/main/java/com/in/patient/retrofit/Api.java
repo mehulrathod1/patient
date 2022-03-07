@@ -2,10 +2,12 @@ package com.in.patient.retrofit;
 
 
 import com.in.patient.model.AddBookingAppointmentModel;
+import com.in.patient.model.BillSummaryModel;
 import com.in.patient.model.BookingConformationModel;
 import com.in.patient.model.ChatDashboardModel;
 import com.in.patient.model.ChatModel;
 import com.in.patient.model.CommonModel;
+import com.in.patient.model.CouponModel;
 import com.in.patient.model.DoctorConsultantSecondModel;
 import com.in.patient.model.DoctorProfileModel;
 import com.in.patient.model.FindDoctorModel;
@@ -506,5 +508,24 @@ public interface Api {
             @Part MultipartBody.Part image
     );
 
+
+    @FormUrlEncoded
+    @POST("bill_summary.php")
+    Call<BillSummaryModel> getBillSummary(
+
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("booking_id") String booking_id,
+            @Field("coupen_id") String coupen_id
+    );
+
+
+    @FormUrlEncoded
+    @POST("get_coupon_list.php")
+    Call<CouponModel> getCouponList(
+
+            @Field("token") String token,
+            @Field("user_id") String user_id
+    );
 }
 

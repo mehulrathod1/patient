@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/md_grey"
     tools:context=".activity.PaymentScreen">
 
 
     <RelativeLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_above="@+id/bottomLayout"
+        android:layout_height="match_parent">
 
 
         <ImageView
@@ -19,31 +22,190 @@
             android:layout_marginStart="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_20sdp"
-            android:visibility="gone"
             android:layout_marginBottom="@dimen/_20sdp"
             android:background="@drawable/back_button_bg"
             android:backgroundTint="@color/md_grey"
             android:padding="@dimen/_5sdp"
-            android:src="@drawable/ic_baseline_arrow_back_ios_new_24" />
+            android:src="@drawable/ic_baseline_arrow_back_ios_new_24"
+            android:visibility="gone" />
 
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/backButton"
+            android:background="@color/md_grey"
             android:orientation="vertical">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_26sdp"
+                android:background="@color/white"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="@dimen/_16sdp"
-                    app:cardCornerRadius="@dimen/_5sdp">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="@string/Patient_Name"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:id="@+id/txtPatientName"
+                        style="@style/m_semi_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/Patient_Name" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_14sdp"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:text="@string/mobile_Number"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:id="@+id/txtPatientMobile"
+                        style="@style/m_semi_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_4sdp"
+                        android:text="@string/Patient_Name" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_26sdp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/couponSelectedLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:gravity="left"
+                        android:text="%"
+                        android:textColor="@color/action_mode_color_300"
+                        android:textSize="@dimen/_16sdp" />
+
+                    <TextView
+
+                        android:id="@+id/couponName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:gravity="center"
+                        android:text="ASDASSS"
+                        android:textColor="@color/action_mode_color_300"
+                        android:textSize="@dimen/_16sdp" />
+
+                    <TextView
+
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3"
+                        android:fontFamily="@font/montserrat_regular"
+                        android:gravity="center"
+                        android:text="coupon applied"
+                        android:textColor="@color/black_text_color"
+                        android:textSize="@dimen/_14sdp" />
+
+
+                    <ImageView
+                        android:id="@+id/cancelCoupon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:src="@drawable/ic_close_24" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/SelectCouponLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:orientation="horizontal"
+                    android:weightSum="8">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:gravity="left"
+                        android:text="%"
+                        android:textColor="@color/action_mode_color_300"
+                        android:textSize="@dimen/_16sdp" />
+
+                    <TextView
+                        android:id="@+id/selectCoupon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="7"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:text="Select Coupon"
+                        android:textColor="@color/action_mode_color"
+                        android:textSize="@dimen/_16sdp" />
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_26sdp"
+                android:background="@color/white"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_16sdp"
+                    android:layout_marginTop="@dimen/_16sdp"
+                    android:layout_marginRight="@dimen/_16sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -52,10 +214,20 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <TextView
+                                style="@style/m_semi_16"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Bill Summery" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_16sdp"
                             android:layout_marginTop="@dimen/_26sdp"
-                            android:layout_marginRight="@dimen/_16sdp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -64,6 +236,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/montserrat_regular"
                                 android:text="Total Frees"
+                                android:textColor="@color/action_mode_color_edt"
                                 android:textSize="@dimen/_16sdp" />
 
                             <TextView
@@ -71,7 +244,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:fontFamily="@font/montserrat_semi_bold"
+                                android:fontFamily="@font/montserrat_regular"
                                 android:gravity="right"
                                 android:text="600 ₹"
                                 android:textColor="@color/action_mode_color_edt"
@@ -82,10 +255,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="@dimen/_16sdp"
                             android:layout_marginTop="@dimen/_26sdp"
-                            android:layout_marginRight="@dimen/_16sdp"
-                            android:layout_marginBottom="@dimen/_26sdp"
                             android:orientation="horizontal">
 
                             <TextView
@@ -93,6 +263,46 @@
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
                                 android:fontFamily="@font/montserrat_regular"
+                                android:text="Total Discount"
+                                android:textColor="@color/action_mode_color_300"
+                                android:textSize="@dimen/_16sdp" />
+
+                            <TextView
+                                android:id="@+id/total_discount"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/montserrat_regular"
+                                android:gravity="right"
+                                android:text="600 ₹"
+                                android:textColor="@color/action_mode_color_300"
+                                android:textSize="@dimen/_16sdp" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_26sdp"
+                            android:orientation="horizontal">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_1sdp"
+                                android:background="@color/md_grey" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_26sdp"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/montserrat_semi_bold"
                                 android:text="To be paid"
                                 android:textColor="@color/action_mode_color_orange"
                                 android:textSize="@dimen/_16sdp" />
@@ -110,35 +320,74 @@
 
                         </LinearLayout>
                     </LinearLayout>
-                </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:id="@+id/bottomLayout"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_16sdp"
+            android:layout_marginTop="@dimen/_16sdp"
+            android:layout_marginRight="@dimen/_16sdp"
+            android:layout_marginBottom="@dimen/_16sdp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_46sdp"
+                android:layout_margin="@dimen/_8sdp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/m_semi_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:text="Total Amount" />
+
+                <TextView
+                    android:id="@+id/grandTotal"
+                    style="@style/m_semi_14"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="bottom"
+                    android:text="100.00"
+                    android:textColor="@color/action_mode_color_edt" />
 
             </LinearLayout>
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/_20sdp"
+                android:layout_margin="@dimen/_8sdp"
+                android:layout_weight="1"
                 android:orientation="vertical">
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat_regular"
-                    android:lineSpacingExtra="@dimen/_6sdp"
-                    android:text="Certain Google Pay features were previously brandedWhile you may continue to see legacy references to Android Pay in stores or on apps and websites, those features are subject to these Terms.Certain Google Pay features were previously branded  While you may continue to see legacy references to Android Pay in stores or on apps and websites, those features are subject to these Terms.Certain Google Pay features were previously branded  While you may continue to see legacy references to Android Pay in stores or on apps and websites, those features are subject to these Terms." />
 
                 <Button
                     android:id="@+id/pay_now"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_46sdp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginTop="@dimen/_46sdp"
                     android:background="@drawable/button_bg"
+                    android:fontFamily="@font/montserrat_bold"
                     android:text="Pay Now"
                     android:textAllCaps="false"
-                    android:textSize="@dimen/_20sdp" />
+                    android:textSize="@dimen/_18sdp" />
             </LinearLayout>
         </LinearLayout>
+
+
     </RelativeLayout>
 </RelativeLayout>

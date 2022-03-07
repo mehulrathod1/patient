@@ -97,7 +97,7 @@ public class BookingConformationModel {
         @Expose
         String ClinicLocation;
 
-        @SerializedName("Total Amount")
+        @SerializedName("Fees")
         @Expose
         String TotalAmount;
 
