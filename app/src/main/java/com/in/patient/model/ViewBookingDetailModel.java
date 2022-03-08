@@ -114,12 +114,37 @@ public class ViewBookingDetailModel {
         @Expose
         String doctor_report;
 
-        public String getDoctor_report() {
-            return doctor_report;
+
+        @SerializedName("video_consultancy_complete")
+        @Expose
+        String video_consultancy_complete;
+
+        public BookingData(String doctorId, String bookingId, String specialty, String doctorName, String bookingStatus, String patientName, String patientLocation, String bookedDate, String bookingTime, String appointmentTime, String appointmentDate, String bookedServiceTime, String clinicLocation, String totalAmount, String amountStatus, String doctor_report, String video_consultancy_complete) {
+            DoctorId = doctorId;
+            BookingId = bookingId;
+            Specialty = specialty;
+            DoctorName = doctorName;
+            BookingStatus = bookingStatus;
+            PatientName = patientName;
+            this.patientLocation = patientLocation;
+            BookedDate = bookedDate;
+            BookingTime = bookingTime;
+            AppointmentTime = appointmentTime;
+            AppointmentDate = appointmentDate;
+            BookedServiceTime = bookedServiceTime;
+            ClinicLocation = clinicLocation;
+            TotalAmount = totalAmount;
+            AmountStatus = amountStatus;
+            this.doctor_report = doctor_report;
+            this.video_consultancy_complete = video_consultancy_complete;
         }
 
-        public void setDoctor_report(String doctor_report) {
-            this.doctor_report = doctor_report;
+        public String getDoctorId() {
+            return DoctorId;
+        }
+
+        public void setDoctorId(String doctorId) {
+            DoctorId = doctorId;
         }
 
         public String getBookingId() {
@@ -178,6 +203,30 @@ public class ViewBookingDetailModel {
             BookedDate = bookedDate;
         }
 
+        public String getBookingTime() {
+            return BookingTime;
+        }
+
+        public void setBookingTime(String bookingTime) {
+            BookingTime = bookingTime;
+        }
+
+        public String getAppointmentTime() {
+            return AppointmentTime;
+        }
+
+        public void setAppointmentTime(String appointmentTime) {
+            AppointmentTime = appointmentTime;
+        }
+
+        public String getAppointmentDate() {
+            return AppointmentDate;
+        }
+
+        public void setAppointmentDate(String appointmentDate) {
+            AppointmentDate = appointmentDate;
+        }
+
         public String getBookedServiceTime() {
             return BookedServiceTime;
         }
@@ -210,36 +259,20 @@ public class ViewBookingDetailModel {
             AmountStatus = amountStatus;
         }
 
-        public String getDoctorId() {
-            return DoctorId;
+        public String getDoctor_report() {
+            return doctor_report;
         }
 
-        public void setDoctorId(String doctorId) {
-            DoctorId = doctorId;
+        public void setDoctor_report(String doctor_report) {
+            this.doctor_report = doctor_report;
         }
 
-        public String getBookingTime() {
-            return BookingTime;
+        public String getVideo_consultancy_complete() {
+            return video_consultancy_complete;
         }
 
-        public void setBookingTime(String bookingTime) {
-            BookingTime = bookingTime;
-        }
-
-        public String getAppointmentTime() {
-            return AppointmentTime;
-        }
-
-        public void setAppointmentTime(String appointmentTime) {
-            AppointmentTime = appointmentTime;
-        }
-
-        public String getAppointmentDate() {
-            return AppointmentDate;
-        }
-
-        public void setAppointmentDate(String appointmentDate) {
-            AppointmentDate = appointmentDate;
+        public void setVideo_consultancy_complete(String video_consultancy_complete) {
+            this.video_consultancy_complete = video_consultancy_complete;
         }
     }
 
