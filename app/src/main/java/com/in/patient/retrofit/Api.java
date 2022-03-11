@@ -16,6 +16,7 @@ import com.in.patient.model.MedicineOrderListModel;
 import com.in.patient.model.MedicinesModel;
 import com.in.patient.model.MyAppointmentModel;
 import com.in.patient.model.MyReviewModel;
+import com.in.patient.model.MyWalletModel;
 import com.in.patient.model.ProductModel;
 import com.in.patient.model.ProfileLifestyleModel;
 import com.in.patient.model.ProfileMedicalModel;
@@ -27,6 +28,7 @@ import com.in.patient.model.SendNotificationModel;
 import com.in.patient.model.SignInModel;
 import com.in.patient.model.SignUpModel;
 import com.in.patient.model.SpecialistDoctorModel;
+import com.in.patient.model.TransactionHistoryModel;
 import com.in.patient.model.ViewBookingDetailModel;
 
 import java.util.List;
@@ -527,5 +529,41 @@ public interface Api {
             @Field("token") String token,
             @Field("user_id") String user_id
     );
+
+    @FormUrlEncoded
+    @POST("my_wallet.php")
+    Call<MyWalletModel> myWalletBalance(
+            @Field("token") String token,
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
+    @POST("wallet_transaction_history.php")
+    Call<TransactionHistoryModel> getTransactionHistory(
+
+            @Field("token") String token,
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
+    @POST("deposit_wallet.php")
+    Call<CommonModel> depositAmount(
+
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("amount") String amount ,
+            @Field("payment_status") String payment_status
+
+    );
+
+    @FormUrlEncoded
+    @POST("withdrawal_request.php")
+    Call<CommonModel> withdrawalRequest(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("amount") String amount
+    );
+
+
 }
 

@@ -79,9 +79,10 @@ dependencies {
 //    razorpay
     implementation 'com.razorpay:checkout:1.6.12'
 
-//    sticker
+//    stickerChat
     implementation 'org.apache.commons:commons-lang3:3.4'
 
+//    fileUpload
     def uploadServiceVersion = "4.7.0"
     implementation "net.gotev:uploadservice:$uploadServiceVersion"
 }

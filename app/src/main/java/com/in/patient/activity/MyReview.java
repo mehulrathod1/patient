@@ -29,9 +29,9 @@ public class MyReview extends AppCompatActivity {
 
     ImageView nevBack;
     TextView headerTitle;
-    RecyclerView recyclerView;
-    MyReviewAdapter adapter;
-    List<MyReviewModel.ReviewData> list = new ArrayList<>();
+        RecyclerView recyclerView;
+        MyReviewAdapter adapter;
+        List<MyReviewModel.ReviewData> list = new ArrayList<>();
     String variable;
 
     @Override

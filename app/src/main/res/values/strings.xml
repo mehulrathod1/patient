@@ -92,6 +92,7 @@
 
     <string name="Pending">Pending</string>
     <string name="View_Booking_Details">View Booking Details</string>
+    <string name="View_Details">View Details</string>
 
     <!--    Manage Booking Request-->
     <string name="Order_Date">Order Date</string>
@@ -109,6 +110,15 @@
     <string name="Amount_paid">Amount paid</string>
     <string name="Chat_With_Patient">Chat With Patient</string>
 
+    <!--    view_lab_booking-->
+
+    <string name="test_date">Test Date</string>
+    <string name="test_time">Test Time</string>
+    <string name="test_name">Test Name</string>
+    <string name="lab_detail">Lab Detail</string>
+    <string name="lab_name">Lab Name</string>
+    <string name="lab_location">Lab Location</string>
+    <string name="available_test">Available Test</string>
 
     <!--    Wallet  -->
 
@@ -118,6 +128,7 @@
     <string name="Transaction_Amount">Transaction Amount</string>
     <string name="Current_Wallet_Balance">Current Wallet Balance:</string>
     <string name="Amount">Amount</string>
+    <string name="submit">Submit</string>
     <string name="Enter_Amount">Enter Amount</string>
 
 
@@ -274,6 +285,13 @@
     <!--    <string name="next">Next</string>-->
     <!--    <string name="next">Next</string>-->
     <!--    <string name="next">Next</string>-->
+
+    <!--    lab-->
+    <string name="Have_prescription">Have a prescription?</string>
+    <string name="Upload_book_your_tests">Upload &amp; book your tests</string>
+    <string name="Book_over_hone_call">Book over a phone call</string>
+    <string name="Our_team_of_experts_will_guide_you">Our team of experts will guide you</string>
+
 
 
 </resources>

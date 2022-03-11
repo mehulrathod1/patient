@@ -10,6 +10,7 @@ public class Glob {
     public static String Token = "123456789";
     public static String user_id;
     public static String Channel_name ;
+    public static String total_deposit_amount ;
 
 
     public static void progressDialog(Context context) {

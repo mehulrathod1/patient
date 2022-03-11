@@ -149,6 +149,8 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
 
         Checkout checkout = new Checkout();
         checkout.setKeyID("rzp_test_Wx4Pz8r5BYpqqQ");
+
+
         /**
          * Instantiate Checkout
          */

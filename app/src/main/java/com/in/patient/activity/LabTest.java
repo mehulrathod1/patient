@@ -74,6 +74,9 @@ public class LabTest extends AppCompatActivity {
             @Override
             public void ItemClick(int position) {
 
+                Intent intent = new Intent(getApplicationContext(), ViewLabBookingDetail.class);
+                startActivity(intent);
+
             }
         });
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);

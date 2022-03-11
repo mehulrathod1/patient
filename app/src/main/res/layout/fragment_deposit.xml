@@ -8,8 +8,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/btnSubmit"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_16sdp"
         android:layout_marginRight="@dimen/_16sdp"
         android:orientation="vertical">
@@ -28,7 +27,7 @@
                 android:text="@string/Amount" />
 
             <EditText
-                android:id="@+id/withdrawal_amount"
+                android:id="@+id/amount"
                 style="@style/sub_heading_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -42,7 +41,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btnSubmit"
+        android:id="@+id/proceed"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_46sdp"
         android:layout_alignParentBottom="true"
