@@ -39,6 +39,18 @@
         android:theme="@style/Theme.Patient"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.PrescriptionActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AllLabActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AllTestActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.LabPackages"
+            android:exported="true" />
+        <activity
             android:name=".activity.ViewLabBookingDetail"
             android:exported="true" />
         <activity

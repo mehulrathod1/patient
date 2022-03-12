@@ -2,6 +2,7 @@ package com.in.patient.retrofit;
 
 
 import com.in.patient.model.AddBookingAppointmentModel;
+import com.in.patient.model.AllTestModel;
 import com.in.patient.model.BillSummaryModel;
 import com.in.patient.model.BookingConformationModel;
 import com.in.patient.model.ChatDashboardModel;
@@ -28,6 +29,7 @@ import com.in.patient.model.SendNotificationModel;
 import com.in.patient.model.SignInModel;
 import com.in.patient.model.SignUpModel;
 import com.in.patient.model.SpecialistDoctorModel;
+import com.in.patient.model.TestPackagesModel;
 import com.in.patient.model.TransactionHistoryModel;
 import com.in.patient.model.ViewBookingDetailModel;
 
@@ -564,6 +566,18 @@ public interface Api {
             @Field("amount") String amount
     );
 
+    @FormUrlEncoded
+    @POST("get_all_packages.php")
+    Call<TestPackagesModel> getPackages(
+            @Field("token") String token,
+            @Field("user_id") String user_id
+    );
 
+    @FormUrlEncoded
+    @POST("get_all_test.php")
+    Call<AllTestModel> getTest(
+            @Field("token") String token,
+            @Field("user_id") String user_id
+    );
 }
 
