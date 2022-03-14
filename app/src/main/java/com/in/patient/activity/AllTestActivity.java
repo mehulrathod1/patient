@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -102,6 +103,9 @@ public class AllTestActivity extends AppCompatActivity {
         testAdapter = new TestAdapter(testDataList, getApplicationContext(), new TestAdapter.Click() {
             @Override
             public void onBookClick(int position) {
+
+                Intent intent = new Intent(getApplicationContext(), AllLabActivity.class);
+                startActivity(intent);
 
             }
         });

@@ -290,7 +290,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/montserrat_bold"
-                            android:text="@string/lab"
+                            android:text="Tests"
                             android:textColor="@color/action_mode_color"
                             android:textSize="@dimen/_18sdp" />
 

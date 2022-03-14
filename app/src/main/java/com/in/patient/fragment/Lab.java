@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.in.patient.R;
 import com.in.patient.activity.AllLabActivity;
 import com.in.patient.activity.AllTestActivity;
+import com.in.patient.activity.AvailableLab;
+import com.in.patient.activity.BookingWithCall;
+import com.in.patient.activity.LabDetail;
 import com.in.patient.activity.LabPackages;
 import com.in.patient.activity.MainActivity;
 import com.in.patient.activity.PrescriptionActivity;
@@ -92,6 +95,15 @@ public class Lab extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), PrescriptionActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        callLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getContext(), BookingWithCall.class);
                 startActivity(intent);
             }
         });
@@ -223,6 +235,8 @@ public class Lab extends Fragment {
             @Override
             public void onBookClick(int position) {
 
+                Intent intent = new Intent(getContext(), AvailableLab.class);
+                startActivity(intent);
 
             }
         });
@@ -240,6 +254,9 @@ public class Lab extends Fragment {
         testAdapter = new TestAdapter(testDataList, getContext(), new TestAdapter.Click() {
             @Override
             public void onBookClick(int position) {
+
+                Intent intent = new Intent(getContext(), AllLabActivity.class);
+                startActivity(intent);
 
             }
         });
@@ -268,6 +285,10 @@ public class Lab extends Fragment {
         adapter = new LabAdapter(list, getContext(), new LabAdapter.Click() {
             @Override
             public void onItemClick(int position) {
+
+
+                Intent intent = new Intent(getActivity(), LabDetail.class);
+                startActivity(intent);
 
             }
         });

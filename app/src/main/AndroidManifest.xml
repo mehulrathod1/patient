@@ -39,6 +39,15 @@
         android:theme="@style/Theme.Patient"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.LabDetail"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AvailableLab"
+            android:exported="true" />
+        <activity
+            android:name=".activity.BookingWithCall"
+            android:exported="true" />
+        <activity
             android:name=".activity.PrescriptionActivity"
             android:exported="true" />
         <activity

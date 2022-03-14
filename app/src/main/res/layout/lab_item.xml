@@ -87,6 +87,7 @@
                             android:text="Location" />
 
                         <TextView
+                            android:id="@+id/viewLab"
                             android:layout_width="match_parent"
                             android:layout_height="36dp"
                             android:layout_gravity="center_horizontal"

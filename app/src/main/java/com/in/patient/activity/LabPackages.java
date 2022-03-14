@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -100,6 +101,8 @@ public class LabPackages extends AppCompatActivity {
             @Override
             public void onBookClick(int position) {
 
+                Intent intent = new Intent(getApplicationContext(),AvailableLab.class);
+                startActivity(intent);
 
             }
         });

@@ -49,6 +49,14 @@ public class LabAdapter extends RecyclerView.Adapter<LabAdapter.ViewHolder> {
         holder.description.setText(model.getDescription());
         holder.Location.setText(model.getLocation());
 
+
+        holder.viewLab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                click.onItemClick(position);
+            }
+        });
+
     }
 
     @Override
@@ -58,7 +66,7 @@ public class LabAdapter extends RecyclerView.Adapter<LabAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView LabName, description, Location;
+        TextView LabName, description, Location,viewLab;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -66,6 +74,8 @@ public class LabAdapter extends RecyclerView.Adapter<LabAdapter.ViewHolder> {
             LabName = itemView.findViewById(R.id.LabName);
             description = itemView.findViewById(R.id.description);
             Location = itemView.findViewById(R.id.Location);
+            viewLab = itemView.findViewById(R.id.viewLab);
+
         }
     }
 }
