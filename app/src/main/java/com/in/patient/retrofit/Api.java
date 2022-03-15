@@ -1,7 +1,9 @@
 package com.in.patient.retrofit;
 
 
+import com.in.patient.activity.LabDetail;
 import com.in.patient.model.AddBookingAppointmentModel;
+import com.in.patient.model.AgoraKeyModel;
 import com.in.patient.model.AllTestModel;
 import com.in.patient.model.BillSummaryModel;
 import com.in.patient.model.BookingConformationModel;
@@ -13,6 +15,8 @@ import com.in.patient.model.DoctorConsultantSecondModel;
 import com.in.patient.model.DoctorProfileModel;
 import com.in.patient.model.FindDoctorModel;
 import com.in.patient.model.GetFcmTokenModel;
+import com.in.patient.model.LabDetailModel;
+import com.in.patient.model.LabModel;
 import com.in.patient.model.MedicineOrderListModel;
 import com.in.patient.model.MedicinesModel;
 import com.in.patient.model.MyAppointmentModel;
@@ -22,6 +26,7 @@ import com.in.patient.model.ProductModel;
 import com.in.patient.model.ProfileLifestyleModel;
 import com.in.patient.model.ProfileMedicalModel;
 import com.in.patient.model.ProfilePersonalModel;
+import com.in.patient.model.RazorpayKeyModel;
 import com.in.patient.model.RelativeModel;
 import com.in.patient.model.ReportModel;
 import com.in.patient.model.SearchModel;
@@ -418,6 +423,7 @@ public interface Api {
             @Field("message") String message,
             @Field("rating") String rating
     );
+
     @FormUrlEncoded
     @POST("get_doctor_review.php")
     Call<MyReviewModel> getReview(
@@ -553,7 +559,7 @@ public interface Api {
 
             @Field("token") String token,
             @Field("user_id") String user_id,
-            @Field("amount") String amount ,
+            @Field("amount") String amount,
             @Field("payment_status") String payment_status
 
     );
@@ -579,5 +585,46 @@ public interface Api {
             @Field("token") String token,
             @Field("user_id") String user_id
     );
+
+
+    @FormUrlEncoded
+    @POST("get_razorpay_keys.php")
+    Call<RazorpayKeyModel> getRazorpayKey(
+            @Field("token") String token,
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
+    @POST("get_agora_key_id.php")
+    Call<AgoraKeyModel> getAgoraKey(
+            @Field("token") String token,
+            @Field("user_id") String user_id
+    );
+
+    @FormUrlEncoded
+    @POST("get_all_labs.php")
+    Call<LabModel> getAllLab(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("city") String city
+    );
+
+    @FormUrlEncoded
+    @POST("get_lab_details.php")
+    Call<LabDetailModel> getLabDetail(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("lab_id") String lab_id
+    );
+
+
+    @FormUrlEncoded
+    @POST("get_lab_tests.php")
+    Call<AllTestModel> getLabTest(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("lab_id") String lab_id
+    );
+
 }
 

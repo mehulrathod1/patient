@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,9 +16,15 @@ import com.in.patient.adapter.PackageTestAdapter;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.LabModel;
 import com.in.patient.model.PackageTestModel;
+import com.in.patient.retrofit.Api;
+import com.in.patient.retrofit.RetrofitClient;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AvailableLab extends AppCompatActivity {
 
@@ -28,7 +35,7 @@ public class AvailableLab extends AppCompatActivity {
     LabAdapter adapter;
     PackageTestAdapter packageTestAdapter;
     List<PackageTestModel> packageTestModelList = new ArrayList<>();
-    List<LabModel> list = new ArrayList<>();
+    List<LabModel.LabListData> list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +45,7 @@ public class AvailableLab extends AppCompatActivity {
         init();
         labData();
         testName();
+        getAllLab(Glob.Token,Glob.user_id,Glob.yourLocation);
     }
 
     public void init() {
@@ -80,30 +88,58 @@ public class AvailableLab extends AppCompatActivity {
 
         testNameRecycler.setAdapter(packageTestAdapter);
     }
+    public void getAllLab(String token, String user_id, String city) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+
+        call.getAllLab(token, user_id, city).enqueue(new Callback<LabModel>() {
+            @Override
+            public void onResponse(Call<LabModel> call, Response<LabModel> response) {
+
+                LabModel labModel = response.body();
+
+                List<LabModel.LabListData> dataList = labModel.getLabListData();
+
+                for (int i = 0; i < dataList.size(); i++) {
+
+                    LabModel.LabListData model = dataList.get(i);
+
+                    LabModel.LabListData data = new LabModel.LabListData(
+                            model.getLab_id(), model.getLab_name(), model.getLocation(), model.getImage()
+                    );
+
+                    list.add(data);
+                }
+                labData();
+                Glob.dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<LabModel> call, Throwable t) {
+
+            }
+        });
+    }
 
     public void labData() {
-
-        LabModel model = new LabModel("LAB name", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-                "Location");
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
 
 
         adapter = new LabAdapter(list, getApplicationContext(), new LabAdapter.Click() {
             @Override
             public void onItemClick(int position) {
 
+
+                Intent intent = new Intent(getApplicationContext(), LabDetail.class);
+                startActivity(intent);
+
             }
         });
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
         labRecycle.setLayoutManager(mLayoutManager);
-        labRecycle.setNestedScrollingEnabled(false);
         labRecycle.setAdapter(adapter);
     }
+
 
 }

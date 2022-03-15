@@ -6,6 +6,7 @@ import static com.in.patient.globle.Glob.user_id;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +15,10 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.tabs.TabLayout;
 import com.in.patient.R;
 import com.in.patient.adapter.MyAppointmentAdapter;
+import com.in.patient.adapter.MyAppointmentTabAdapter;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.MyAppointmentModel;
 import com.in.patient.retrofit.Api;
@@ -33,10 +36,16 @@ public class MyAppointments extends AppCompatActivity {
     ImageView nevBack;
     TextView headerTitle;
 
-
     MyAppointmentAdapter adapter;
     RecyclerView recyclerView;
     List<MyAppointmentModel.AppointmentData> list = new ArrayList<>();
+
+
+    TabLayout tabLayout;
+    ViewPager viewPager;
+
+
+
 
     String id;
 
@@ -68,6 +77,35 @@ public class MyAppointments extends AppCompatActivity {
                 finish();
             }
         });
+
+        tabLayout = findViewById(R.id.tabb);
+        viewPager = findViewById(R.id.pager);
+
+        tabLayout.addTab(tabLayout.newTab().setText("Completed"));
+        tabLayout.addTab(tabLayout.newTab().setText("Upcoming"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
+        MyAppointmentTabAdapter myWalletAdapter = new MyAppointmentTabAdapter(getSupportFragmentManager(), getApplicationContext(), tabLayout.getTabCount());
+        viewPager.setAdapter(myWalletAdapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+
+
 
     }
 

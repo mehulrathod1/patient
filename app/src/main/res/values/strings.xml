@@ -294,6 +294,8 @@
     <string name="Health_Checkups">Health Checkups</string>
     <string name="lab">Lab</string>
     <string name="available_tests">Available Tests</string>
-
+    <string name="Lab_details">Lab Details</string>
+    <string name="Lab_location">Lab Location</string>
+    <string name="Test_detail">Test Detail</string>
 
 </resources>

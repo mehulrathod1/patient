@@ -39,6 +39,9 @@
         android:theme="@style/Theme.Patient"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".activity.LabTestBooking"
+            android:exported="true" />
+        <activity
             android:name=".activity.LabDetail"
             android:exported="true" />
         <activity

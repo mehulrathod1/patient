@@ -104,7 +104,9 @@ public class AllTestActivity extends AppCompatActivity {
             @Override
             public void onBookClick(int position) {
 
+                String testId = testDataList.get(position).getId();
                 Intent intent = new Intent(getApplicationContext(), AllLabActivity.class);
+                intent.putExtra("testId",testId);
                 startActivity(intent);
 
             }

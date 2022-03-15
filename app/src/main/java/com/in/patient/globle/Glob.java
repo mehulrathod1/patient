@@ -12,6 +12,12 @@ public class Glob {
     public static String Channel_name ;
     public static String total_deposit_amount ;
 
+    public static  String razorpayKeyId ;
+    public static String razorpayKeySecret;
+    public static String agoraId;
+
+    public static String yourLocation ;
+
 
     public static void progressDialog(Context context) {
         dialog = new ProgressDialog(context);

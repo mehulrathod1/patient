@@ -9,15 +9,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.in.patient.R;
 import com.in.patient.adapter.LabDetailTestAdapter;
 import com.in.patient.adapter.TestAdapter;
 import com.in.patient.adapter.TestPackageAdapter;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.AllTestModel;
+import com.in.patient.model.LabDetailModel;
 import com.in.patient.model.TestPackagesModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
@@ -31,13 +34,14 @@ import retrofit2.Response;
 
 public class LabDetail extends AppCompatActivity {
 
-    ImageView backButton;
+    ImageView backButton,labImage;
     RecyclerView labTestPackagesRecycler, labTestRecycler;
     TestPackageAdapter testPackageAdapter;
     List<TestPackagesModel.PackagesData> packagesDataList = new ArrayList<>();
     LabDetailTestAdapter testAdapter;
     List<AllTestModel.TestData> testDataList = new ArrayList<>();
-    TextView viewAllPackages;
+    TextView viewAllPackages, labName, labEmail, labNumber, labCity, labLocation;
+    Button bookLabAppointment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,8 @@ public class LabDetail extends AppCompatActivity {
         getSupportActionBar().hide();
         init();
         getPackages(Glob.Token, Glob.user_id);
-        getTest(Glob.Token, Glob.user_id);
+        getTest(Glob.Token, Glob.user_id,"60");
+        getLabDetail(Glob.Token,Glob.user_id,"60");
     }
 
     public void init() {
@@ -55,6 +60,15 @@ public class LabDetail extends AppCompatActivity {
         backButton = findViewById(R.id.backButton);
         labTestRecycler = findViewById(R.id.labTestRecycler);
         viewAllPackages = findViewById(R.id.viewAllPackages);
+        bookLabAppointment = findViewById(R.id.bookLabAppointment);
+
+        labImage = findViewById(R.id.labImage);
+        labName = findViewById(R.id.labName);
+        labEmail = findViewById(R.id.labEmail);
+        labNumber = findViewById(R.id.labNumber);
+        labCity = findViewById(R.id.labCity);
+        labLocation = findViewById(R.id.labLocation);
+
 
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +81,14 @@ public class LabDetail extends AppCompatActivity {
             public void onClick(View v) {
 
                 Intent intent = new Intent(getApplicationContext(), LabPackages.class);
+                startActivity(intent);
+            }
+        });
+        bookLabAppointment.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getApplicationContext(), LabTestBooking.class);
                 startActivity(intent);
             }
         });
@@ -129,11 +151,11 @@ public class LabDetail extends AppCompatActivity {
 
     }
 
-    public void getTest(String token, String user_id) {
+    public void getTest(String token, String user_id,String lab_id) {
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
 
-        call.getTest(token, user_id).enqueue(new Callback<AllTestModel>() {
+        call.getLabTest(token, user_id,lab_id).enqueue(new Callback<AllTestModel>() {
             @Override
             public void onResponse(Call<AllTestModel> call, Response<AllTestModel> response) {
 
@@ -178,4 +200,37 @@ public class LabDetail extends AppCompatActivity {
     }
 
 
+    public void getLabDetail(String token, String user_id, String lab_id) {
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+
+
+        call.getLabDetail(token, user_id, lab_id).enqueue(new Callback<LabDetailModel>() {
+            @Override
+            public void onResponse(Call<LabDetailModel> call, Response<LabDetailModel> response) {
+
+                LabDetailModel labDetailModel = response.body();
+
+                LabDetailModel.LabDetailData model = labDetailModel.getData();
+
+
+                Glide.with(getApplicationContext()).load(model.getLab_image()).into(labImage);
+                labName.setText(model.getLab_name());
+                labEmail.setText(model.getEmail());
+                labNumber.setText(model.getMobile_no());
+                labCity.setText(model.getCity());
+                labLocation.setText(model.getAddress());
+
+
+                Glob.dialog.dismiss();
+
+            }
+
+            @Override
+            public void onFailure(Call<LabDetailModel> call, Throwable t) {
+
+            }
+        });
+    }
 }

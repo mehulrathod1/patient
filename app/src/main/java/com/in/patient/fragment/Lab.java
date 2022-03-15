@@ -47,8 +47,7 @@ import retrofit2.Response;
 public class Lab extends Fragment {
 
     LabAdapter adapter;
-    RecyclerView recyclerView;
-    List<LabModel> list = new ArrayList<>();
+    List<LabModel.LabListData> list = new ArrayList<>();
     View view;
     TextView viewAllPackages, viewAllTest, viewAllLab;
     LinearLayout prescriptionLayout, callLayout;
@@ -70,9 +69,9 @@ public class Lab extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_lab, container, false);
         init();
-        recyclerData();
         getPackages(Glob.Token, Glob.user_id);
         getTest(Glob.Token, Glob.user_id);
+        getAllLab(Glob.Token,Glob.user_id,Glob.yourLocation);
         labData();
         return view;
     }
@@ -81,7 +80,6 @@ public class Lab extends Fragment {
 
         Glob.progressDialog(getContext());
 
-        recyclerView = view.findViewById(R.id.recycler);
         labTestPackagesRecycler = view.findViewById(R.id.labTestPackagesRecycler);
         labTestRecycler = view.findViewById(R.id.labTestRecycler);
         labRecycle = view.findViewById(R.id.labRecycle);
@@ -134,29 +132,6 @@ public class Lab extends Fragment {
         });
     }
 
-    public void recyclerData() {
-
-        LabModel model = new LabModel("LAB name", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-                "Location");
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-
-
-        adapter = new LabAdapter(list, getContext(), new LabAdapter.Click() {
-            @Override
-            public void onItemClick(int position) {
-
-            }
-        });
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.setAdapter(adapter);
-    }
 
     public void getPackages(String token, String user_id) {
 
@@ -255,7 +230,10 @@ public class Lab extends Fragment {
             @Override
             public void onBookClick(int position) {
 
+
+                String testId = testDataList.get(position).getId();
                 Intent intent = new Intent(getContext(), AllLabActivity.class);
+                intent.putExtra("testId",testId);
                 startActivity(intent);
 
             }
@@ -269,17 +247,42 @@ public class Lab extends Fragment {
 
     }
 
-    public void labData() {
+    public void getAllLab(String token, String user_id, String city) {
 
-        LabModel model = new LabModel("LAB name", "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et.",
-                "Location");
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
-        list.add(model);
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+
+        call.getAllLab(token, user_id, city).enqueue(new Callback<LabModel>() {
+            @Override
+            public void onResponse(Call<LabModel> call, Response<LabModel> response) {
+
+                LabModel labModel = response.body();
+
+                List<LabModel.LabListData> dataList = labModel.getLabListData();
+
+                for (int i = 0; i < dataList.size(); i++) {
+
+                    LabModel.LabListData model = dataList.get(i);
+
+                    LabModel.LabListData data = new LabModel.LabListData(
+                            model.getLab_id(), model.getLab_name(), model.getLocation(), model.getImage()
+                    );
+
+                    list.add(data);
+                }
+                labData();
+                Glob.dialog.dismiss();
+            }
+
+            @Override
+            public void onFailure(Call<LabModel> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void labData() {
 
 
         adapter = new LabAdapter(list, getContext(), new LabAdapter.Click() {

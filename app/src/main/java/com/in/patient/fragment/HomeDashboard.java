@@ -47,10 +47,12 @@ import com.in.patient.adapter.FindDoctorAdapter;
 import com.in.patient.adapter.HealthCareAdapter;
 import com.in.patient.adapter.SliderPagerAdapter;
 import com.in.patient.globle.Glob;
+import com.in.patient.model.AgoraKeyModel;
 import com.in.patient.model.CareAndCheckupModel;
 import com.in.patient.model.CommonModel;
 import com.in.patient.model.DoctorConsultantSecondModel;
 import com.in.patient.model.FindDoctorModel;
+import com.in.patient.model.RazorpayKeyModel;
 import com.in.patient.model.SliderModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
@@ -128,6 +130,8 @@ public class HomeDashboard extends Fragment implements LocationListener {
         healthCheckupData();
         addBottomDots(0);
         getDoctorSpecialist(Glob.Token, Glob.user_id);
+        getAgoraKey(Glob.Token,Glob.user_id);
+        getRazorpayKey(Glob.Token,Glob.user_id);
 
 
         locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
@@ -370,7 +374,6 @@ public class HomeDashboard extends Fragment implements LocationListener {
         }
     }
 
-
     public void getDoctorSpecialist(String token, String user_id) {
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
@@ -406,7 +409,6 @@ public class HomeDashboard extends Fragment implements LocationListener {
             }
         });
     }
-
 
     public void DoctorSpecialistData() {
 
@@ -558,6 +560,54 @@ public class HomeDashboard extends Fragment implements LocationListener {
         fragmentTransaction.commit();
     }
 
+    public void getRazorpayKey(String token,String user_id){
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+        call.getRazorpayKey(token,user_id).enqueue(new Callback<RazorpayKeyModel>() {
+            @Override
+            public void onResponse(Call<RazorpayKeyModel> call, Response<RazorpayKeyModel> response) {
+
+                RazorpayKeyModel model = response.body();
+
+                Glob.razorpayKeyId = model.getData().getRazorpay_key_id();
+                Glob.razorpayKeySecret = model.getData().getRazorpay_key_secret();
+
+
+                Log.e("agoraId", "onResponse: "+Glob.razorpayKeyId );
+                Log.e("agoraId", "onResponse: "+Glob.razorpayKeySecret );
+            }
+
+            @Override
+            public void onFailure(Call<RazorpayKeyModel> call, Throwable t) {
+
+            }
+        });
+
+    }
+
+    public void getAgoraKey(String token,String user_id){
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+
+        call.getAgoraKey(token,user_id).enqueue(new Callback<AgoraKeyModel>() {
+            @Override
+            public void onResponse(Call<AgoraKeyModel> call, Response<AgoraKeyModel> response) {
+
+                AgoraKeyModel model  = response.body();
+
+                Glob.agoraId = model.getData().getAgora_app_id();
+
+                Log.e("agoraId", "onResponse: "+Glob.agoraId );
+            }
+
+            @Override
+            public void onFailure(Call<AgoraKeyModel> call, Throwable t) {
+
+            }
+        });
+    }
+
 //    private void sendNotification(final String regToken) {
 //        new AsyncTask<Void, Void, Void>() {
 //            @Override
@@ -611,6 +661,7 @@ public class HomeDashboard extends Fragment implements LocationListener {
 //
 //    }
 
+
     @Override
     public void onDetach() {
         super.onDetach();
@@ -650,6 +701,7 @@ public class HomeDashboard extends Fragment implements LocationListener {
                 e.printStackTrace();
             }
             String s = cityName;
+            Glob.yourLocation = s;
 
 
             Log.e("cityName", "onLocationChanged: " + s);

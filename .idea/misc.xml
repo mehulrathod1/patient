@@ -49,6 +49,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_lab_packages.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_lab_test.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_lab_test2.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_lab_test_booking.xml" value="0.25" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_medicines_order.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/activity_my_appointments.xml" value="0.20416666666666666" />
@@ -87,6 +88,7 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/find_doctor_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_care_services.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_cart.xml" value="0.33" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_completed_appointment.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_consultation.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_deposit.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_doctor_consult_second.xml" value="0.20416666666666666" />
@@ -104,10 +106,11 @@
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_redemption.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_searvice_category.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_transaction_history.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/fragment_upcomming_appointment.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/health_care_checkup.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/image_slider_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/lab_detail_test_item.xml" value="0.20416666666666666" />
-        <entry key="..\:/Project/Patient/app/src/main/res/layout/lab_item.xml" value="0.20416666666666666" />
+        <entry key="..\:/Project/Patient/app/src/main/res/layout/lab_item.xml" value="0.25" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/lab_test_item.xml" value="0.25" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/lab_test_package_item.xml" value="0.20416666666666666" />
         <entry key="..\:/Project/Patient/app/src/main/res/layout/layout_review_slider.xml" value="0.20416666666666666" />
