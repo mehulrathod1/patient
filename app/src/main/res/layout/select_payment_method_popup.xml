@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16sdp"
+            android:fontFamily="@font/montserrat_semi_bold"
+            android:gravity="center"
+            android:text="@string/Select_payment_method"
+            android:textColor="@color/action_mode_color_300"
+            android:textSize="@dimen/_18sdp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_16sdp"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/Current_Wallet_Balance"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/action_mode_color_edt"
+                android:textSize="@dimen/_16sdp" />
+
+            <TextView
+                android:id="@+id/myBalance"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:text="$499"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:textColor="@color/action_mode_color"
+                android:textSize="@dimen/_20sdp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/payWithRazorpay"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_18sdp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="@string/Pay_with_razor"
+                android:textColor="@color/action_mode_color_edt"
+                android:textSize="@dimen/_16sdp" />
+
+            <TextView
+                android:id="@+id/payWithWallet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_18sdp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="@string/Pay_with_wallet"
+                android:textColor="@color/action_mode_color_edt"
+                android:textSize="@dimen/_16sdp" />
+
+            <TextView
+                android:id="@+id/cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_24sdp"
+                android:background="@drawable/button_blue_border"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:gravity="center"
+                android:paddingLeft="@dimen/_16sdp"
+                android:paddingRight="@dimen/_16sdp"
+                android:text="@string/Cancel"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

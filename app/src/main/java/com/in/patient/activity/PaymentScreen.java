@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ import com.in.patient.globle.Glob;
 import com.in.patient.model.BillSummaryModel;
 import com.in.patient.model.CommonModel;
 import com.in.patient.model.CouponModel;
+import com.in.patient.model.MyWalletModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
 import com.razorpay.Checkout;
@@ -43,7 +45,8 @@ import retrofit2.Response;
 public class PaymentScreen extends AppCompatActivity implements PaymentResultListener {
 
     Button pay_now;
-    TextView total_fees, to_be_paid, txtPatientName, txtPatientMobile, couponName, grandTotal, total_discount, selectCoupon;
+    TextView total_fees, to_be_paid, txtPatientName, txtPatientMobile, couponName, grandTotal,
+            total_discount, selectCoupon,payWithRazorpay, payWithWallet, cancel,myBalance;;
 
     ImageView backButton, cancelCoupon;
     String booking_id, doctor_id, total_amount, totalPayAmount;
@@ -55,8 +58,10 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
     List<CouponModel.CouponList> couponList = new ArrayList<>();
 
 
-    AlertDialog couponDialog;
-    AlertDialog.Builder couponAlertDialog;
+    AlertDialog couponDialog,paymentDialog;
+    AlertDialog.Builder couponAlertDialog,PaymentAlertDialog,builder;
+
+    String totalWalletBalance;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +71,8 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
 
         init();
         getBillSummary(Token, user_id, booking_id, "");
+        getWalletBalance(Glob.Token, Glob.user_id);
+
     }
 
     public void init() {
@@ -92,8 +99,6 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
         booking_id = intent.getStringExtra("booking_id");
         doctor_id = intent.getStringExtra("doctor_id");
 
-//        total_fees.setText(total_amount + " ₹");
-//        to_be_paid.setText(total_amount + " ₹");
 
 
         couponAlertDialog = new AlertDialog.Builder(this);
@@ -101,8 +106,19 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
         View dialogLayout = inflater.inflate(R.layout.coupon_poup_layout, null);
         couponAlertDialog.setView(dialogLayout);
         couponDialog = couponAlertDialog.create();
-
         couponRecycler = dialogLayout.findViewById(R.id.couponRecycler);
+
+        builder = new AlertDialog.Builder(this);
+
+        PaymentAlertDialog = new AlertDialog.Builder(this);
+        LayoutInflater inflater1 = getLayoutInflater();
+        View dialog = inflater1.inflate(R.layout.select_payment_method_popup, null);
+        PaymentAlertDialog.setView(dialog);
+        paymentDialog = PaymentAlertDialog.create();
+        payWithRazorpay = dialog.findViewById(R.id.payWithRazorpay);
+        payWithWallet = dialog.findViewById(R.id.payWithWallet);
+        cancel = dialog.findViewById(R.id.cancel);
+        myBalance = dialog.findViewById(R.id.myBalance);
 
         selectCoupon.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,12 +134,72 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
             public void onClick(View v) {
 
 
+                paymentDialog.show();
+                myBalance.setText(totalWalletBalance);
 
-                startPayment();
+//                startPayment();
 //                bookingConformation(Token, user_id, booking_id);
 
             }
         });
+
+        payWithRazorpay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                convertTotalAmount(grandTotal.getText().toString());
+
+            }
+        });
+
+        payWithWallet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                float WalletAmountInFloat = Float.parseFloat(totalWalletBalance);
+                int WalletAmountInInt = Math.round(WalletAmountInFloat);
+                totalWalletBalance = String.valueOf(WalletAmountInInt);
+
+                String payableAmount = grandTotal.getText().toString();
+                float payableAmountInFloat = Float.parseFloat(payableAmount);
+                int payableAmountInInt = Math.round(payableAmountInFloat);
+                payableAmount = String.valueOf(payableAmountInInt);
+
+
+                if (Integer.parseInt(payableAmount) > Integer.parseInt(totalWalletBalance)) {
+
+                    Toast.makeText(getApplicationContext(), "Not Enough Balance in your Wallet", Toast.LENGTH_SHORT).show();
+                } else {
+
+                    builder.setMessage(R.string.Booking_Id) .setTitle(R.string.Email_id);
+                    String finalPayableAmount = payableAmount;
+                    builder.setMessage("Continue payment with Wallet ?")
+                            .setCancelable(false)
+                            .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    dialog.cancel();
+                                    walletPayment(Token, user_id, finalPayableAmount);
+
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    //  Action for 'NO' Button
+                                    dialog.cancel();
+
+                                }
+                            });
+                    AlertDialog alert = builder.create();
+                    alert.setTitle("Wallet Payment");
+                    alert.show();
+                }
+
+            }
+        });
+
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -145,10 +221,10 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
 
     }
 
-    public void startPayment() {
+    public void startPayment(String amount) {
 
         Checkout checkout = new Checkout();
-        checkout.setKeyID("rzp_test_Wx4Pz8r5BYpqqQ");
+        checkout.setKeyID(Glob.razorpayKeyId);
 
 
         /**
@@ -177,7 +253,7 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
 //            options.put("order_id", "order_DBJOWzybf0sJbb");//from response of step 3.
             options.put("theme.color", "#3399cc");
             options.put("currency", "INR");
-            options.put("amount", "1000"); //300 * 100
+            options.put("amount", amount); //300 * 100
 
 //            options.put("prefill.email", "gaurav.kumar@example.com");
 //            options.put("prefill.contact","9988776655");
@@ -293,7 +369,7 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
                 total_discount.setText("₹ " + data.getCoupon_discount());
                 to_be_paid.setText("₹ " + data.getTo_be_paid());
 
-                grandTotal.setText("₹ " + data.getTo_be_paid());
+                grandTotal.setText(data.getTo_be_paid());
 
                 totalPayAmount = data.getTo_be_paid();
                 Glob.dialog.dismiss();
@@ -373,6 +449,78 @@ public class PaymentScreen extends AppCompatActivity implements PaymentResultLis
         couponRecycler.setLayoutManager(layoutManager);
         couponAdapter.notifyDataSetChanged();
         couponRecycler.setAdapter(couponAdapter);
+    }
+
+    public void getWalletBalance(String token, String user_id) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+
+        call.myWalletBalance(token, user_id).enqueue(new Callback<MyWalletModel>() {
+            @Override
+            public void onResponse(Call<MyWalletModel> call, Response<MyWalletModel> response) {
+
+
+                MyWalletModel myWalletModel = response.body();
+                totalWalletBalance = myWalletModel.getData().getWallet_balance();
+                Glob.dialog.dismiss();
+
+
+            }
+
+            @Override
+            public void onFailure(Call<MyWalletModel> call, Throwable t) {
+                Glob.dialog.dismiss();
+
+            }
+        });
+
+    }
+
+    public void walletPayment(String token, String user_id, String amount) {
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+
+        call.payWithWallet(token, user_id, amount).enqueue(new Callback<CommonModel>() {
+            @Override
+            public void onResponse(Call<CommonModel> call, Response<CommonModel> response) {
+
+
+                CommonModel commonModel = response.body();
+
+                Toast.makeText(getApplicationContext(), "" + commonModel.getMessage(), Toast.LENGTH_SHORT).show();
+
+                Glob.dialog.dismiss();
+                paymentDialog.dismiss();
+
+                addPaymentTransaction(Token, user_id, booking_id, total_amount, "success");
+                bookingConformation(Token, user_id, booking_id);
+                Toast.makeText(getApplicationContext(), "Payment SuccessFull", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getApplicationContext(), AfterPaymentScreen.class);
+                intent.putExtra("bookingId", booking_id);
+                intent.putExtra("doctorId", doctor_id);
+                startActivity(intent);
+                finish();
+
+            }
+
+            @Override
+            public void onFailure(Call<CommonModel> call, Throwable t) {
+
+            }
+        });
+    }
+
+    public void convertTotalAmount(String amount) {
+        float payableAmountInFloat = Float.parseFloat(amount);
+        int convert = Math.round(payableAmountInFloat);
+        int a = convert * 100;
+        amount = String.valueOf(a);
+        startPayment(amount);
+
     }
 
 

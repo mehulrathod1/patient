@@ -19,6 +19,7 @@ public class Glob {
     public static String yourLocation ;
 
 
+
     public static void progressDialog(Context context) {
         dialog = new ProgressDialog(context);
         dialog.setCancelable(false); // set cancelable to false

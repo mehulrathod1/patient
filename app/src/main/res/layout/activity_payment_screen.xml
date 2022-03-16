@@ -11,8 +11,8 @@
     <RelativeLayout
         android:id="@+id/layout"
         android:layout_width="match_parent"
-        android:layout_above="@+id/bottomLayout"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bottomLayout">
 
 
         <ImageView
@@ -95,7 +95,6 @@
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:visibility="gone"
                     android:id="@+id/couponSelectedLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -104,6 +103,7 @@
                     android:layout_marginRight="@dimen/_16sdp"
                     android:layout_marginBottom="@dimen/_16sdp"
                     android:orientation="horizontal"
+                    android:visibility="gone"
                     android:weightSum="8">
 
                     <TextView
@@ -175,14 +175,13 @@
                         android:id="@+id/selectCoupon"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center"
                         android:layout_weight="7"
                         android:fontFamily="@font/montserrat_bold"
-                        android:layout_gravity="center"
                         android:gravity="center"
                         android:text="Select Coupon"
                         android:textColor="@color/action_mode_color"
                         android:textSize="@dimen/_16sdp" />
-
 
 
                 </LinearLayout>
@@ -327,11 +326,11 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/bottomLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@color/white"
-        android:id="@+id/bottomLayout"
         android:orientation="vertical">
 
         <LinearLayout
@@ -357,15 +356,29 @@
                     android:layout_weight="1"
                     android:text="Total Amount" />
 
-                <TextView
-                    android:id="@+id/grandTotal"
-                    style="@style/m_semi_14"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="1"
-                    android:gravity="bottom"
-                    android:text="100.00"
-                    android:textColor="@color/action_mode_color_edt" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        style="@style/m_semi_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:text="₹ "
+                        android:textColor="@color/action_mode_color_edt" />
+
+                    <TextView
+                        android:id="@+id/grandTotal"
+                        style="@style/m_semi_14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="bottom"
+                        android:text="100.00"
+                        android:textColor="@color/action_mode_color_edt" />
+                </LinearLayout>
 
             </LinearLayout>
 

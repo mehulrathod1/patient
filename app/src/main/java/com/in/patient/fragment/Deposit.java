@@ -73,7 +73,7 @@ public class Deposit extends Fragment {
     public void startPayment(String amount) {
 
         Checkout checkout = new Checkout();
-        checkout.setKeyID("rzp_test_Wx4Pz8r5BYpqqQ");
+        checkout.setKeyID(Glob.razorpayKeyId);
 
 
         /**

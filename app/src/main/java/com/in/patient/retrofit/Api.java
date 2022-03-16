@@ -626,5 +626,12 @@ public interface Api {
             @Field("lab_id") String lab_id
     );
 
+    @FormUrlEncoded
+    @POST("pay_with_wallet.php")
+    Call<CommonModel> payWithWallet(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("amount") String amount
+    );
 }
 

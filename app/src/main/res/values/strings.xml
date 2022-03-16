@@ -298,4 +298,9 @@
     <string name="Lab_location">Lab Location</string>
     <string name="Test_detail">Test Detail</string>
 
+<!--    payment_popup-->
+    <string name="Select_payment_method">Select Payment Method</string>
+    <string name="Pay_with_razor">Pay With Razorpay</string>
+    <string name="Pay_with_wallet">Pay With Wallet</string>
+
 </resources>

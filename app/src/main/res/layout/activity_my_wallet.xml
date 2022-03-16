@@ -31,7 +31,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.5"
+                android:layout_weight="1"
                 android:text="@string/Current_Wallet_Balance"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:textColor="@color/action_mode_color_edt"
