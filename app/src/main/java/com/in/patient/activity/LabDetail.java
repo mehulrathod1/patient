@@ -201,10 +201,9 @@ public class LabDetail extends AppCompatActivity {
 
 
     public void getLabDetail(String token, String user_id, String lab_id) {
+
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
-
-
 
         call.getLabDetail(token, user_id, lab_id).enqueue(new Callback<LabDetailModel>() {
             @Override

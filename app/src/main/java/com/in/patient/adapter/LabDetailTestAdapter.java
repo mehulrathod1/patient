@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,9 +22,11 @@ public class LabDetailTestAdapter extends RecyclerView.Adapter<LabDetailTestAdap
     Context context;
 
 
+
     public LabDetailTestAdapter(List<AllTestModel.TestData> list, Context context) {
         this.list = list;
         this.context = context;
+
     }
 
     @NonNull
@@ -40,6 +43,8 @@ public class LabDetailTestAdapter extends RecyclerView.Adapter<LabDetailTestAdap
         AllTestModel.TestData model = list.get(position);
 
         holder.testName.setText(model.getTest_name());
+
+
 
     }
 

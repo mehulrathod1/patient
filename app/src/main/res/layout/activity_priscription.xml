@@ -55,6 +55,7 @@
                         android:layout_marginTop="@dimen/_8sdp"
                         android:layout_marginBottom="@dimen/_8sdp"
                         android:background="@color/black" />
+
                 </LinearLayout>
 
                 <LinearLayout

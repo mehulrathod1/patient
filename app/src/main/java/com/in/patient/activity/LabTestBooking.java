@@ -43,7 +43,7 @@ import retrofit2.Response;
 public class LabTestBooking extends AppCompatActivity implements PaymentResultListener {
 
     ImageView nevBack, cancelCoupon;
-    TextView headerTitle, selectCoupon, couponName, grandTotal, payWithRazorpay, payWithWallet, cancel,myBalance;
+    TextView headerTitle, selectCoupon, couponName, grandTotal, payWithRazorpay, payWithWallet, cancel, myBalance;
     Button payNow;
     RecyclerView couponRecycler;
     CouponAdapter couponAdapter;
@@ -172,15 +172,17 @@ public class LabTestBooking extends AppCompatActivity implements PaymentResultLi
                     Toast.makeText(getApplicationContext(), "Not Enough Balance in your Wallet", Toast.LENGTH_SHORT).show();
                 } else {
 
-//                    walletPayment(Token, user_id, payableAmount);
 
-                    builder.setMessage(R.string.Booking_Id) .setTitle(R.string.Email_id);
+                    builder.setMessage(R.string.Booking_Id).setTitle(R.string.Email_id);
+                    String finalPayableAmount = payableAmount;
                     builder.setMessage("Continue payment with Wallet ?")
                             .setCancelable(false)
                             .setPositiveButton("Continue", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
 
                                     dialog.cancel();
+                                    walletPayment(Token, user_id, finalPayableAmount);
+
                                 }
                             })
                             .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {

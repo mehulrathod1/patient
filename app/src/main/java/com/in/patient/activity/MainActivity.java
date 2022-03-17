@@ -106,9 +106,7 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
             spe_id.putString("specialist_id", "0");
             fragment.setArguments(spe_id);
             loadFragment(fragment);
-
         }
-
 
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
