@@ -2,6 +2,7 @@ package com.in.patient.fragment;
 
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.in.patient.R;
 import com.in.patient.adapter.HealthCareAdapter;
+import com.in.patient.adapter.HomeCareAdapter;
 import com.in.patient.globle.Glob;
 import com.in.patient.model.CareAndCheckupModel;
 import com.in.patient.model.CommonModel;
+import com.in.patient.model.HomeCareModel;
 import com.in.patient.retrofit.Api;
 import com.in.patient.retrofit.RetrofitClient;
 
@@ -35,15 +38,15 @@ import retrofit2.Response;
 
 public class CareServices extends Fragment {
     RecyclerView healthCareRecycler;
-    HealthCareAdapter healthCareAdapter;
-    List<CareAndCheckupModel> careList = new ArrayList<>();
-    View view;
-    TextView bookNow, CareSubmit;
+     View view;
+    TextView bookNow, CareSubmit,viewAllCare;
     AlertDialog alert;
     AlertDialog.Builder alertDialog;
     ImageView dialogClose;
     EditText Care, CareName, CareEmail, CareNumber, CareAddress;
 
+    List<HomeCareModel.CareData> careDataList = new ArrayList<>();
+    HomeCareAdapter homeCareAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -56,7 +59,7 @@ public class CareServices extends Fragment {
 
         view = inflater.inflate(R.layout.fragment_care_services, container, false);
         init();
-        healthCareData();
+        getHomeCareServices(Glob.Token,Glob.user_id);
         return view;
     }
 
@@ -65,14 +68,16 @@ public class CareServices extends Fragment {
         Glob.progressDialog(getContext());
         healthCareRecycler = view.findViewById(R.id.healthCareRecycler);
         bookNow = view.findViewById(R.id.bookNow);
+        viewAllCare = view.findViewById(R.id.viewAllCare);
+
+        viewAllCare.setText(Html.fromHtml("<u>View All</u>"));
+
 
         alertDialog = new AlertDialog.Builder(getContext());
         LayoutInflater inflater = getLayoutInflater();
         View dialogLayout = inflater.inflate(R.layout.book_now_dialog, null);
         alertDialog.setView(dialogLayout);
         alert = alertDialog.create();
-
-
         Care = dialogLayout.findViewById(R.id.Care);
         CareName = dialogLayout.findViewById(R.id.CareName);
         CareEmail = dialogLayout.findViewById(R.id.CareEmail);
@@ -120,37 +125,19 @@ public class CareServices extends Fragment {
                 }
             }
         });
-    }
 
-    public void healthCareData() {
-
-        CareAndCheckupModel model = new CareAndCheckupModel("", "Covid Care");
-        CareAndCheckupModel model1 = new CareAndCheckupModel("", "Physiotherapy");
-        CareAndCheckupModel model2 = new CareAndCheckupModel("", "Medical Equipment");
-        CareAndCheckupModel model3 = new CareAndCheckupModel("", "Gynaecologist");
-        careList.add(model);
-        careList.add(model1);
-        careList.add(model2);
-        careList.add(model3);
-        careList.add(model);
-        careList.add(model1);
-        careList.add(model2);
-        careList.add(model3);
-
-        healthCareAdapter = new HealthCareAdapter(careList, getContext(), new HealthCareAdapter.Click() {
+        viewAllCare.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(int position) {
+            public void onClick(View v) {
 
-                Fragment fragment = new ServiceCategory();
+                Fragment fragment = new HomeCareCategoryFragment();
                 loadFragment(fragment);
 
             }
         });
-
-        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.HORIZONTAL, false);
-        healthCareRecycler.setLayoutManager(mLayoutManager);
-        healthCareRecycler.setAdapter(healthCareAdapter);
     }
+
+
 
     private void loadFragment(Fragment fragment) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
@@ -162,7 +149,6 @@ public class CareServices extends Fragment {
     }
 
     public void SubmitCare(String token, String userId, String name, String email, String number, String care, String address) {
-
 
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
@@ -184,6 +170,59 @@ public class CareServices extends Fragment {
                 Glob.dialog.dismiss();
             }
         });
+    }
+
+    public void getHomeCareServices(String token, String userId){
+
+
+        Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
+        Glob.dialog.show();
+
+
+        call.getHomeCareServices(token,userId).enqueue(new Callback<HomeCareModel>() {
+            @Override
+            public void onResponse(Call<HomeCareModel> call, Response<HomeCareModel> response) {
+
+                careDataList.clear();
+                HomeCareModel homeCareModel = response.body();
+                List<HomeCareModel.CareData> dataList = homeCareModel.getCareDataList();
+                for (int i = 0;i<dataList.size();i++){
+
+                    HomeCareModel.CareData model = dataList.get(i);
+
+                    HomeCareModel.CareData data = new HomeCareModel.CareData(
+                            model.getService_id(),model.getServiceName(),model.getImage());
+
+
+                    careDataList.add(data);
+                }
+                homeCareData();
+                Glob.dialog.dismiss();
+
+            }
+
+            @Override
+            public void onFailure(Call<HomeCareModel> call, Throwable t) {
+                Glob.dialog.dismiss();
+            }
+        });
+    }
+
+
+    public void homeCareData() {
+
+
+        homeCareAdapter = new HomeCareAdapter(careDataList, getContext(), new HomeCareAdapter.Click() {
+            @Override
+            public void onItemClick(int position) {
+
+            }
+        });
+
+
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(getContext(), 2);
+        healthCareRecycler.setLayoutManager(mLayoutManager);
+        healthCareRecycler.setAdapter(homeCareAdapter);
     }
 
 }

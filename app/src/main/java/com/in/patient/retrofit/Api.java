@@ -15,6 +15,7 @@ import com.in.patient.model.DoctorConsultantSecondModel;
 import com.in.patient.model.DoctorProfileModel;
 import com.in.patient.model.FindDoctorModel;
 import com.in.patient.model.GetFcmTokenModel;
+import com.in.patient.model.HomeCareModel;
 import com.in.patient.model.LabDetailModel;
 import com.in.patient.model.LabModel;
 import com.in.patient.model.MedicineOrderListModel;
@@ -445,7 +446,17 @@ public interface Api {
 
     );
 
+
     @FormUrlEncoded
+    @POST("get_home_care_services.php")
+    Call<HomeCareModel> getHomeCareServices(
+            @Field("token") String token,
+            @Field("user_id") String user_id
+
+    );
+
+
+            @FormUrlEncoded
     @POST("add_payment_transaction.php")
     Call<CommonModel> addPaymentTransaction(
             @Field("token") String token,

@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements LocationListener 
         fragment = new HomeDashboard();
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.firstFrame, fragment);
-        transaction.addToBackStack(null);
         transaction.commit();
 
 

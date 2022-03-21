@@ -201,11 +201,14 @@
                                     android:textStyle="bold" />
 
                                 <TextView
-                                    android:layout_width="match_parent"
+                                    android:id="@+id/viewAllCare"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_centerInParent="true"
+                                    android:layout_alignParentRight="true"
                                     android:gravity="right"
                                     android:text="@string/View_all"
+                                    android:drawableRight="@drawable/ic_baseline_arrow_forward_24"
                                     android:textColor="@color/action_mode_color_300" />
 
                             </RelativeLayout>
