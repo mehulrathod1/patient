@@ -45,7 +45,7 @@ public class TestPackageAdapter extends RecyclerView.Adapter<TestPackageAdapter.
 
         holder.packageName.setText(model.getPackage_name());
         holder.packageDescription.setText("Lorem ipsum dolor sit amet, consetetur sadipscing elitr,");
-        holder.packagePrice.setText(model.getPrice());
+
 
         holder.bookNow.setOnClickListener(new View.OnClickListener() {
             @Override

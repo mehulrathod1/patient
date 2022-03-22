@@ -48,7 +48,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Full body Checkup" />
+                    android:text="" />
 
                 <TextView
                     android:id="@+id/packageDescription"
@@ -56,15 +56,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_8sdp"
-                    android:text="Full body Checkup" />
+                    android:text="" />
 
-                <TextView
-                    android:id="@+id/packagePrice"
-                    style="@style/p_medium_16"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:text="100" />
+<!--                <TextView-->
+<!--                    android:id="@+id/packagePrice"-->
+<!--                    style="@style/p_medium_16"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="@dimen/_8sdp"-->
+<!--                    android:text="100" />-->
             </LinearLayout>
 
             <LinearLayout

@@ -112,7 +112,7 @@ public class LabDetail extends AppCompatActivity {
                     TestPackagesModel.PackagesData model = dataList.get(i);
 
                     TestPackagesModel.PackagesData data = new TestPackagesModel.PackagesData(
-                            model.getPackage_id(), model.getPackage_name(), model.getPrice());
+                            model.getPackage_id(), model.getPackage_name());
 
                     packagesDataList.add(data);
 

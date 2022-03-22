@@ -591,6 +591,15 @@ public interface Api {
     );
 
     @FormUrlEncoded
+    @POST("get_package_details.php")
+    Call<TestPackagesModel> getPackageDetail(
+            @Field("token") String token,
+            @Field("user_id") String user_id,
+            @Field("package_id") String package_id
+    );
+
+
+    @FormUrlEncoded
     @POST("get_all_test.php")
     Call<AllTestModel> getTest(
             @Field("token") String token,

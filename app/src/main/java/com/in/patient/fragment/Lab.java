@@ -71,7 +71,7 @@ public class Lab extends Fragment {
         init();
         getPackages(Glob.Token, Glob.user_id);
         getTest(Glob.Token, Glob.user_id);
-        getAllLab(Glob.Token,Glob.user_id,Glob.yourLocation);
+        getAllLab(Glob.Token, Glob.user_id, Glob.yourLocation);
         labData();
         return view;
     }
@@ -135,6 +135,7 @@ public class Lab extends Fragment {
 
     public void getPackages(String token, String user_id) {
 
+
         Api call = RetrofitClient.getClient(Glob.Base_Url).create(Api.class);
         Glob.dialog.show();
 
@@ -149,11 +150,20 @@ public class Lab extends Fragment {
                 for (int i = 0; i < dataList.size(); i++) {
 
                     TestPackagesModel.PackagesData model = dataList.get(i);
-
                     TestPackagesModel.PackagesData data = new TestPackagesModel.PackagesData(
-                            model.getPackage_id(), model.getPackage_name(), model.getPrice());
+                            model.getPackage_id(), model.getPackage_name());
 
                     packagesDataList.add(data);
+
+                    List<TestPackagesModel.PackagesData.PackageTest> packageTestList = model.getPackageTestList();
+
+                    for (int j = 0 ; j<packageTestList.size();j++){
+
+                        TestPackagesModel.PackagesData.PackageTest test = packageTestList.get(j);
+                        TestPackagesModel.PackagesData.PackageTest packageTest = new TestPackagesModel.PackagesData.PackageTest(test.getTest(),test.getTest_name());
+
+                        Log.e("packageTest", "onResponse: "+packageTest.getTest_name() );
+                    }
 
 
                 }
@@ -233,7 +243,7 @@ public class Lab extends Fragment {
 
                 String testId = testDataList.get(position).getId();
                 Intent intent = new Intent(getContext(), AllLabActivity.class);
-                intent.putExtra("testId",testId);
+                intent.putExtra("testId", testId);
                 startActivity(intent);
 
             }

@@ -109,8 +109,9 @@ public class AvailableLab extends AppCompatActivity {
                     LabModel.LabListData data = new LabModel.LabListData(
                             model.getLab_id(), model.getLab_name(), model.getLocation(), model.getImage()
                     );
-
                     list.add(data);
+
+
                 }
                 labData();
                 Glob.dialog.dismiss();

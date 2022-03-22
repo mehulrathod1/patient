@@ -55,14 +55,13 @@ public class TestPackagesModel {
         @Expose
         String package_name;
 
-        @SerializedName("price")
+        @SerializedName("lab_test")
         @Expose
-        String price;
+        List<PackageTest> packageTestList = new ArrayList<>();
 
-        public PackagesData(String package_id, String package_name, String price) {
+        public PackagesData(String package_id, String package_name) {
             this.package_id = package_id;
             this.package_name = package_name;
-            this.price = price;
         }
 
         public String getPackage_id() {
@@ -81,12 +80,45 @@ public class TestPackagesModel {
             this.package_name = package_name;
         }
 
-        public String getPrice() {
-            return price;
+        public List<PackageTest> getPackageTestList() {
+            return packageTestList;
         }
 
-        public void setPrice(String price) {
-            this.price = price;
+        public void setPackageTestList(List<PackageTest> packageTestList) {
+            this.packageTestList = packageTestList;
+        }
+
+        public static class PackageTest {
+
+            @SerializedName("test")
+            @Expose
+            String test;
+
+            @SerializedName("test_name")
+            @Expose
+            String test_name;
+
+
+            public PackageTest(String test, String test_name) {
+                this.test = test;
+                this.test_name = test_name;
+            }
+
+            public String getTest() {
+                return test;
+            }
+
+            public void setTest(String test) {
+                this.test = test;
+            }
+
+            public String getTest_name() {
+                return test_name;
+            }
+
+            public void setTest_name(String test_name) {
+                this.test_name = test_name;
+            }
         }
     }
 }
